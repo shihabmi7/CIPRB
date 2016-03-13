@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.alhikmah.ciprb">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".HouseHoldInformationActivity"></activity>
+        <activity android:name=".SplashActivity">
+
+        </activity>
+        <activity android:name=".HouseHoldMemberDetailsActivity">
+
+        </activity>
+        <activity android:name=".DeathConfirmationActivity">
+
+
+        </activity>
+
+        <activity android:name=".InjuryMorbidityActivity">
+
+        </activity>
+
+        <activity android:name=".InjuryMortalityActivity">
+
+        </activity>
+        <activity android:name=".HomeActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <activity android:name=".SuicideAttemptActivity">
+        </activity>
+        <activity android:name=".RoadTransportInjuryActivity">
+        </activity>
+
+        <activity android:name=".BurnInjuryActivity">
+
+        </activity>
+        <activity android:name=".CutInjuryActivity">
+
+        </activity>
+        <activity android:name=".ElectrocutionActivity">
+
+        </activity>
+        <activity android:name=".FallInjuryActivity">
+
+        </activity>
+        <activity android:name=".InjuryBluntActivity">
+
+        </activity>
+        <activity android:name=".InsectInjuryActivity">
+
+        </activity>
+        <activity android:name=".NearDrowningActivity">
+
+        </activity>
+        <activity android:name=".QualityOfLifeActivity">
+
+        </activity>
+        <activity android:name=".SocioEconomicActivity">
+
+        </activity>
+        <activity android:name=".SuffocationActivity"></activity>
+
+        <activity android:name=".ToolInjuryActivity"></activity>
+        <activity android:name=".UnintentionalPoisoningActivity"></activity>
+
+    </application>
+
+</manifest>

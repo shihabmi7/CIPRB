@@ -1,0 +1,1451 @@
+<resources>
+    <string name="app_name">CIPRB</string>
+    <!--Form 2-->
+    <string name="name">নাম</string>
+    <string name="relation_hh">খানা প্রধানের সাথে সম্পর্ক</string>
+    <string name="date_of_birth">জন্ম তারিখ (দিন/মাস/বছর)</string>
+    <string name="current_age">বর্তমানে বয়স</string>
+    <string name="sex">লিঙ্গ</string>
+
+    ইনিজুরি জনিত অসুস্থ্য ব্যাক্তির লিঙ্গ
+    <string name="maritial_satus">বৈবাহিক অবস্থা</string>
+    <string name="occupasion"> প্রধান পেশা</string>
+    <string name="education">লেখাপড়া (সর্বোচ্চ শ্রেণী পাশ)</string>
+    <string name="injury_last_six_month"> গত ৬ মাসে কখনো ইনজুরি হয়েছিল? (ইনজুরি নোটিফিকেশান ফর্মে -১ এ তথ্য লিপিবদ্ধ করুন)</string>
+    <string name="injury_time_last_six"> যদি হ্যাঁ হয়, তাহলে কতবার ইনজুরি হয়েছিল?</string>
+
+    <!--Form 1-->
+    <string name="district_town">জেলা</string>
+    <string name="upozila">উপজেলা</string>
+    <string name="household_no">খানার নম্ব</string>
+    <string name="village">গ্রাম</string>
+    <string name="house_head"> খানা প্রধান</string>
+    <string name="last_24_death_histry">গত ২৪ মাসে খানায় মৃতের সংখ্যা (কেউ মারা না গিয়ে থাকলে ০০ লিখুন):</string>
+
+    <string name="hh_details_hd">Household and Socio-Economic Information</string>
+
+    <!--// form 3-->
+
+    <string name="death_conf_hd"> Death Confirmation</string>
+    <string name="death_date">মৃত্যূর তারিখ</string>
+    <string name="death_location">মৃত্যূর স্থান</string>
+    <string name="death_symptoms">শেষ অসুস্থতার সময়ের লক্ষণ ও উপসর্গ (আঘাত/ইনজুরি ব্যতীত মৃত্যূর ক্ষেত্রে)
+    (প্রতিটি প্রশ্ন জিজ্ঞাসা করুন)</string>
+    <string name="death_chronic_deseases">মৃত ব্যক্তির উল্লেখিতঅসুস্থতাগুলোর কোনটি ছিল কিনা জিজ্ঞাসা করুন
+    (প্রতিটি প্রশ্ন জিজ্ঞাসা করুন)</string>
+    <string name="weakness_time">মৃত্যূর পূর্বে কতদিন অসুস্থ ছিল?</string>
+    <string name="death_cause"> কি কারনে মৃত্যূ হয়েছিল?</string>
+
+
+    <string-array name="survey_loc">
+        <item>1. City Coorporation</item>
+        <item>2. District Town</item>
+        <item>3. Rural (Upazila)</item>
+    </string-array>
+
+    <string-array name="survey_city">
+        <item>01. Dhaka</item>
+        <item>02. Chittagong</item>
+        <item>03. Rajshahi</item>
+        <item>04. Khulna</item>
+        <item>05. Barisal</item>
+        <item>06. Sylhet</item>
+        <item>07. Rangpur</item>
+        <item>08. Mymensing</item>
+    </string-array>
+
+
+    <string-array name="survey_district_town">
+        <item>01. Dhaka</item>
+        <item>02. Chittagong</item>
+        <item>03. Rajshahi</item>
+        <item>04. Khulna</item>
+        <item>05. Barisal</item>
+        <item>06. Sylhet</item>
+        <item>07. Rangpur</item>
+        <item>08. Mymensing</item>
+    </string-array>
+
+
+    <string-array name="survey_district_rural">
+        <item>01. Dhaka</item>
+        <item>02. Rajbari</item>
+        <item>03. Sherpur</item>
+        <item>04. Bagerhat</item>
+        <item>05. Jessore</item>
+        <item>06. Khulna</item>
+        <item>07. Joypurhat</item>
+        <item>08. Pabna</item>
+        <item>09. Sylhet </item>
+        <item>10. Barisal</item>
+        <item>11. Bhola</item>
+        <item>12. Chandpur</item>
+        <item>13. Khagrachari</item>
+        <item>14. Kurigram</item>
+        <item>15. Thakurgaon</item>
+        <item>16. Sirajgonj</item>
+    </string-array>
+
+    <string-array name="survey_upozila">
+        <item>01. Dhamrai</item>
+        <item>02. Baliakandi</item>
+        <item>03. Nalitabari</item>
+        <item>04. Fakirhat</item>
+        <item>05. Chowgacha</item>
+        <item>06. Koira</item>
+        <item>07. Kalai</item>
+        <item>08. Santhia</item>
+        <item>09. Golapganj </item>
+        <item>10. Banaripara </item>
+        <item>11. Borhanuddin</item>
+        <item>12. Kachua</item>
+        <item>13. Khagrachari Sadar</item>
+        <item>14. Kurigram Sadar</item>
+        <item>15. Ranishankail</item>
+        <item>16. belkuchi</item>
+
+
+    </string-array>
+
+    <string-array name="survey_relation_to_hh">
+
+
+        <item>01. নিজ (খানা প্রধান)</item>
+        <item>02. বাবা</item>
+        <item>03. মা</item>
+        <item>04. ভাই/বোন</item>
+        <item>05. চাচা/মামা/খালু/ফুপা</item>
+        <item>06. চাচী/মামী/খালা/ফুপ</item>
+        <item>07. শ্বশুর/শ্বাশুরী </item>
+        <item>08. ছেলে</item>
+        <item>09. মেয়ে </item>
+        <item>10. স্বামী/স্ত্রী</item>
+        <item>11. জামাতা/পুত্রবধূ</item>
+        <item>12. দাদা/দাদী/নানা/নানী</item>
+        <item>13. নাতি/নাতনী</item>
+        <item>14. শ্যালক/দেবর/ভাসুর/ভায়রা/ভগ্নীপতি/ শ্যালিকা/ননদ</item>
+        <item>15. গৃহকর্মী</item>
+        <item>16. ভাতৃ/ভগ্নী-পুত্র/কন্যা</item>
+        <item>16.  অন্যান্য</item>
+
+
+    </string-array>
+
+    <string-array name="survey_sex">
+
+
+        <item>01. পুরুষ</item>
+        <item>02. মহিলা</item>
+
+    </string-array>
+
+    <string-array name="survey_marital_status">
+
+        <item>01. বিবাহিত</item>
+        <item>02. অবিবাহিত </item>
+        <item>03. তালাকপ্রাপ্তা </item>
+        <item>04. বিধবা</item>
+        <item>05. বিচ্ছিন্ন/ আলাদা</item>
+
+    </string-array>
+
+    <string-array name="survey_yes_no">
+
+        <item>01. হ্যাঁ</item>
+        <item>02. না</item>
+
+
+    </string-array>
+
+
+    <string-array name="survey_occupation">
+
+        <item>01. কৃষিকাজ</item>
+        <item>02. ব্যবসা</item>
+        <item>03. ছাত্র</item>
+        <item>04. গৃহিণী</item>
+        <item>05. চাকুরী</item>
+        <item>06. বেকার</item>
+        <item>07. দক্ষ শ্রমিক </item>
+        <item>08. অদক্ষ শ্রমিক </item>
+        <item>09. গৃহকমী</item>
+        <item>10. অবসরপ্রাপ্ত ্</item>
+        <item>11. ভ্যান/রিকশা চালক </item>
+        <item>12. সিএনজি/বাস/ট্রাক চালক</item>
+        <item>13. অন্যান্য</item>
+        <item>14. ৬ বছরের কমবয়সী </item>
+        <item>15. প্রযোজ্য নয় </item>
+
+    </string-array>
+
+    <string-array name="survey_death_loc">
+
+        <item>01. নিজ বাড়ি</item>
+        <item>02. হাসপাতাল</item>
+        <item>03. কর্মক্ষেত্র</item>
+        <item>04. যাত্রাপথে</item>
+        <item>05. অন্যান্য (নির্দিষ্ট করুন)</item>
+
+
+    </string-array>
+
+    <string-array name="survey_death_symptoms">
+
+        <item>01. নিজ বাড়ি</item>
+        <item>02. হাসপাতাল</item>
+        <item>03. কর্মক্ষেত্র</item>
+        <item>04. যাত্রাপথে</item>
+        <item>05. অন্যান্য (নির্দিষ্ট করুন)</item>
+
+
+    </string-array>
+
+    <string name="fever">জ্বর?</string>
+    <string name="rash">র‌্যাশ/ফুসকুড়ি?</string>
+    <string name="growth"> দৈহিক বৃদ্ধি কি স্বাভাবিক ছিল?</string>
+    <string name="jaundice">বিবর্নভাব(অ্যানিমিয়া)/ জন্ডিস?</string>
+    <string name="cough">কাশি?</string>
+    <string name="respiratory">শ্বাসজনিত কোনো সমস্যা? </string>
+    <string name="diarrhoea">পাতলা পায়খানা/ডায়রিয়া?</string>
+    <string name="vomiting">বমি?</string>
+    <string name="abdominal_pain">পেটে ব্যাথা?</string>
+    <string name="abdominal_distension">পেট ফাঁপা?</string>
+    <string name="weight_loss">ওজন হ্রাস?</string>
+    <string name="chest_pain">বুকে ব্যাথা?</string>
+    <string name="mass">পিন্ড?</string>
+    <string name="headache">মাথা ব্যাথা?</string>
+    <string name="stiff_neck">ঘাড় শক্ত?</string>
+    <string name="convulsion">খিঁচুনী?</string>
+    <string name="fits_unconsciousness">মূর্ছা/অজ্ঞান?</string>
+    <string name="paralysis">পক্ষাঘাত?</string>
+    <string name="urine_colour">প্র¯্রাবের রং কি স্বাভাবিক ছিল?</string>
+    <string name="surgery_operation">সার্জারী/অস্ত্রপোচার?</string>
+    <string name="Others_specify">অন্যান্য (নির্দিষ্ট করুন)</string>
+
+
+    <string name="yes">হ্যাঁ</string>
+    <string name="no">না</string>
+    <string name="dont_know">জানিনা</string>
+    <string name="sick_before_death">মৃত ব্যক্তির উল্লেখিতঅসুস্থতাগুলোর কোনটি ছিল কিনা জিজ্ঞাসা করুন(প্রতিটি প্রশ্ন জিজ্ঞাসা করুন)</string>
+    <string name="sickness_time"> মৃত্যূর পূর্বে কতদিন অসুস্থ ছিল ? দিন days</string>
+    <string name="cause_of_death">কি কারনে মৃত্যূ হয়েছিল?</string>
+
+    <string name="deaseases_hypertension">উচ্চ রক্তচাপ</string>
+    <string name="deaseases_heart">হৃদরোগ</string>
+    <string name="deaseases_diabatic">বহুমুত্র</string>
+    <string name="deaseases_cancer">ক্যানসার</string>
+
+
+    <string-array name="survey_cause_of_death">
+        <item>1. ইনিজুরী জনিত মৃত্যু</item>
+        <item>2. অসুস্থ্যতা জনিত মৃত্যু </item>
+    </string-array>
+    <string name="interviewer_notes_death_confirmation">• নিশ্চিত হোন মৃত্যু আঘাত/ইনজুরির কারনে হয়েছিল কি না ? Check if the death is due to an injury or
+    not. 1= হ্যঁ (Yes) 2= না (No)
+    • যদি মৃত্যু আঘাত/ ইনজুরির কারনে হয়ে থাকে তাহলে ইনজুরি মিটালিটি ফম© (Module VI) পূরণ করুন|
+    If the death is due to injury, complete a Injury Mortality Form (Module VI) for the death</string>
+
+    <!-- < Injury Morbidity>-->
+    <string name="injury_external_cause">উচ্চ রক্তচাপ</string>
+
+    <string name="injured_person_sex">ইনিজুরি জনিত অসুস্থ্য ব্যাক্তির লিঙ্গ</string>
+
+    <string name="causes_of_injury">কিভাবে ইনিজুরি হয়েছিল?</string>
+    <string name="date_of_injury">কত তারিখে ইনিজুরি ঘটেছিল?</string>
+    <string name="time_of_injury">কখন ইনিজুরি ঘটেছিল?</string>
+    <string name="place_of_injury">আঘাত প্রাপ্তির সময় ব্যক্তিটি কোথায় ছিল?</string>
+    <string name="intent_of_injury">ইনিজুরি অভিপ্রায় কি ছিল ?</string>
+    <string name="injured_parts_and_type_of_injury">ব্যক্তিটির শরীরের কোন কোন অঙ্গে এবং কি ধরনের ইনজুরি হয়েছিল?</string>
+    <string name="condition_of_victims_after_injury">যখন ইনজুরি ঘটেছিল তখন ব্যক্তিটির অবস্থা কেমন ছিল?</string>
+    <string name="mobility_condition_after_injury">যখন ইনজুরি ঘটেছিল তখন ব্যক্তিটির চলাফেরা ক্ষমতা কেমন ছিল? (যদি জ্ঞান থাকে)</string>
+    <string name="receive_first_aid">আহত ব্যক্তিটি কি প্রাথমিক চিকিৎসা পেয়েছিল?</string>
+    <string name="who_gave_first_aid">উত্তর হ্যাঁ হলে, কে প্রাথমিক চিকিৎসা দিয়েছিল?></string>
+    <string name="Was_he_trained_in_first_aid">সে কি প্রাথমিক চিকিৎসায় প্রশিক্ষন প্রাপ্ত?</string>
+    <string name="person_receive_treatment_for_injury">ইনজুরির জন্য কোন চিকিৎসা গ্রহন করা হয়েছিল কি ?</string>
+    <string name="Who_provided_the_treatment">আহত ব্যক্তিকে কে চিকিৎসা দিয়েছিল?</string>
+    <string name="Where_receive_treatment">আহত ব্যক্তিটি কোথায় চিকিৎসা নিয়েছিল? </string>
+    <string name="admitted_health_facility">ব্যক্তিটি হাসপাতালে/স্বাস্থ্যকেন্দ্রে ভর্তি হয়েছিল কি ?  </string>
+    <string name="type_admitted_health_facility">(উত্তর Ôহ্যাঁÕ হলে)  আহত ব্যক্তিকে যদি হাসপাতাল/স্বাস্থ্যকেন্দ্রে /ক্লিনিকে ভর্তি করা হয়ে থাকে তাহলে কোন ধরনের হাসপাতাল ?</string>
+    <string name="how_admitted_health_facility">হাসপাতালে/চিকিৎসা প্রদানকারীর নিকট কিভাবে নিয়ে যাওয়াv হয়েছিল ?</string>
+    <string name="time_take_health_facility">আঘাত পাওয়ার পর হাসপাতালে /সেবাদানকারীর নিকট পৌছাতে কত সময় লেগেছিল ? (ঘন্টায় লিখুন) যদিএক ঘস্টার কম হয় তবে 000</string>
+    <string name="days_take_health_facility">ব্যক্তিটি হাসপাতালে কতদিন ভর্তি ছিল ?</string>
+    <string name="any_surgery_operation_done">আহত ব্যক্তির সাজ©vরী বা অপারেশন হয়েছিল কি ?</string>
+    <string name="type_of_anesthesia_given">(উত্তর হ্যাঁ হলে)  অপারেশনে কি ধরনের অ্যানেসথেসিয়া দেয়া হয়েছিল?</string>
+    <string name="outcome_of_treatment">চিকিৎসার ফলাফল কি ?</string>
+    <string name="how_much_cost_reatment">চিকিৎসার জন্য সর্বমোট কত টাকা খরচ হয়েছিল ?</string>
+    <string name="Did_the_injured_person_become_disabled">ইনজুরির ফলে কোন পঙ্গুত্ব হয়েছিল কি?</string>
+    <string name="type_of_disability">উত্তর হ্যাঁ হলে, তা কি ধরনের পঙ্গুত্ব?</string>
+    <string name="disability_affects_sides">এই ইনজুরি কী শরীরের কোন অঙ্গের এক/উভয় দিককই পিঙ্গু করেছিল ?</string>
+    <string name="Number_of_days_work_loss">অসুস্থ্যতার কারণে কতদিন স্কুলে বা আঁচলে অনুপস্থিত ছিল বা স্বাভাবিক কাজকম© করতে পারেনি? </string>
+    <string name="significant_source_of_income_for_family">ব্যক্তিটি কি আপনাদের পরিবারের একজন উল্লেখযোগ্য আয় উপাজ©নকারী ?</string>
+    <string name="family_being_coping_loss_income">পরিবারটি উপাvজ©নের ক্ষতি কি ভাবে পুষিয়ে নিয়েছিল ?</string>
+
+
+    <string-array name="survey_cause_of_injury">
+        <item>01. আত্নহত্যা-</item>
+        <item>02. সড়ক দূঘ©টনা</item>
+        <item>03. সহিংসতা</item>
+        <item>04. পড়ে যাওয়া</item>
+        <item>05. ধারালো বস্তদ্বারা কেটে যাওয়া</item>
+        <item>06. পুড়ে যাওয়া</item>
+        <item>07. ডুবে যাওয়া</item>
+        <item>08. দূঘ©টনাজনিত বিষপান-দূঘ©টনা</item>
+        <item>09. মেশিন/যন্ত্রপাতির আঘাত-দূঘ©টনা</item>
+        <item>10. বিদ্যুৎস্পৃষ্ট-দূঘ©টনা</item>
+        <item>11. প্রাণী ও কীট পতঙ্গের কামড় /আঘাত</item>
+        <item>12. ভোঁতা বস্তুর আঘাত</item>
+        <item>13. দূঘ©টনাজনিত শ্বাসর</item>
+        <item>97. অন্যান্য (উল্লেখ করুন)</item>
+        <item>99. জানা নেই</item>
+
+    </string-array>
+    <string-array name="survey_place_of_injury">
+        <item>01. শোয়ার ঘর</item>
+        <item>02. বসার ঘর</item>
+        <item>03. রান্না ঘর</item>
+        <item>04. গোসল খানা/পায়খানা</item>
+        <item>05. বাড়ীর উঠান</item>
+        <item>06. বারান্দা</item>
+        <item>07. এককক্ষ বিশিষ্ট ঘর</item>
+        <item>08. শ্রেণীকক্ষ</item>
+        <item>09. স্কুলের খেলার মাঠ</item>
+        <item>10. শিক্ষা প্রতিষ্ঠানের হোস্টেল</item>
+        <item>11. অন্য খেলাধুলার স্থান/ ক্রীড়াঙ্গন</item>
+        <item>12. রাস্তায় /মহাসড়কে</item>
+        <item>13. রেলষ্টেশন/ফেরী/লঞ্চ ঘাট/বাসষ্ট্যান্ড/অন্য পরিবহনএলাক</item>
+        <item>14. কৃষিক্ষেত্রে/খামার বাড়ী/চাতাল</item>
+        <item>15. শিল্প/কলকারখানা/ওয়াvক©শপ</item>
+        <item>16. জলাশয়</item>
+        <item>17. হাট/বাজার</item>
+        <item>18. অফিস</item>
+        <item>19. নির্মান এলাকা</item>
+        <item>97. অন্যান্য (উল্লেখ করুন)</item>
+        <item>99. জিানা নেই</item>
+    </string-array>
+    <string-array name="survey_intent_of_injury">
+        <item>1. অনিচ্ছাকৃত</item>
+        <item>2. ইচ্ছাকৃত নিজের ক্ষতি </item>
+        <item>3. সহিংসতা </item>
+        <item>4. নিণ©য় করা যায় নি</item>
+
+    </string-array>
+    <string-array name="survey_condition_of_victims_after_injury">
+
+        <item>1. সজ্ঞান  </item>
+        <item>2. সংঙ্গাহীন</item>
+        <item>9. জানা নেই</item>
+
+    </string-array>
+    <string-array name="survey_mobility_condition_after_injury">
+        <item>1. হাঁটতে পেরেছিল</item>
+        <item>2. অন্যের সহযোগীতা্য় হাঁটতে পেরেছিল</item>
+        <item>3. হাঁটতে পারছিল না</item>
+        <item>9. জানা নেই</item>
+
+    </string-array>
+    <string-array name="survey_yes_no_dk">
+
+        <item>1.  হ্যাঁ </item>
+        <item>2.  না</item>
+        <item>9.  জানা নেই</item>
+
+    </string-array>
+
+
+    <string-array name="test72as">
+        <item>1. মেজেতে</item>
+        <item>2. খাট/চৌকির নিচে</item>
+        <item>3. তোষক/ পাটির নিচে</item>
+        <item>4. বাক্সের মধ্যে</item>
+        <item>5. সেলফ এর উপরে (1 মিটারের উর্দ্ধে)</item>
+        <item>6. সেলফ এর উপরে (1 মিটারের নীচে )</item>
+        <item>7. সিলিং এ ঝুলন্ত অবস্থায়</item>
+        <item>8. মাচায় ঝুলন্ত অবস্থায়</item>
+        <item>9. অন্যান্য (উল্লেখ করুন) </item>
+    </string-array>
+
+    <string-array name="survey_who_gave_first_aid">
+        <item>A. মা</item>
+        <item>B. বাবা</item>
+        <item>C. স্বামী/স্ত্রী</item>
+        <item>D. ফার্মেসী/পল্লীচিকিৎসক</item>
+        <item>E. অন্য প্রাপ্ত বয়স্ক সেবাদানকারী</item>
+        <item>F. ভাই/বোন</item>
+        <item>G. বন্ধু/ সমবয়সী শিশু</item>
+        <item>H. প্রতিবেশী</item>
+        <item>I. মাঠ পর্যায়ের স্বাস্থ্যক</item>
+        <item>J. কমিউনিটির স্বেচ্ছাসেব</item>
+        <item>K. প্রতিবেশী</item>
+        <item>L. নিজই</item>
+        <item>X. অন্যান্য (উল্লেখ করুন)</item>
+
+    </string-array>
+    <string-array name="survey_Who_provided_the_treatment">
+
+        <item>A. রেজিষ্টাড© ডাক্তার</item>
+        <item>B. মেডিকেল এসিস্ট্যান্ট</item>
+        <item>C. স্বাস্থ্য সহকারী /পরিবার কল্যান পরিদর্শিকা /পরিবার কল্যান সহকারী</item>
+        <item>D. এন. জি. ও স্বাস্থ্য কম©</item>
+        <item>E. ঔষধের দোকানদার / পল্লীচিকিৎসক</item>
+        <item>F. হোমিওপ্যাথিক চিকিৎসক </item>
+        <item>G. কবিরাজ</item>
+        <item>H. প্রশিক্ষনপ্রাপ্ত দাই </item>
+        <item>I. ঝিাড় ফুঁককারী / ইমাম/পুরোহিত</item>
+        <item>J. আত্নীয়-স্বজন / বন্ধু-বান্ধব</item>
+        <item>X. অন্যান্য (উল্লেখ করুন</item>
+
+    </string-array>
+    <string-array name="survey_Where_receive_treatment">
+
+        <item>A. বিশেষায়িত হাসপাতাল মেডিকেল কলেজ হাসপাতাল, পঙ্গু হাসপাতাল,পি. জি.হাসপাতাল ইত্যাদি)</item>
+        <item>B. জেলা হাসপাতাল</item>
+        <item>C. উপজেলা স্বাস্থ্য কমপ্লেক্স</item>
+        <item>D. ইউনিয়ন স্বাস্থ্য ও পরিবার কল্যান কেন্দ্র</item>
+        <item>E. প্রাইভেট ক্লিনিক </item>
+        <item>F. কমিউনিটি ক্লিনিক </item>
+        <item>G. এন.জি.ও ক্লিনিক </item>
+        <item>H. সেবাদানকারীর প্রা্ভেট চেম্বার </item>
+        <item>I. ফার্মেসী/ঔষধের দোকানদার</item>
+        <item>X. নিজ বাড়ীতে </item>
+
+    </string-array>
+    <string-array name="survey_type_admitted_health_facility">
+        <item>1. বিশেষায়িত হাসপাতাল মেডিকেল কলেজ হাসপাতাল, পঙ্গু হাসপাতাল,পি. জি.হাসপাতাল ইত্যাদি) </item>
+        <item>2. জেলা হাসপাতাল </item>
+        <item>3. উপজেলা স্বাস্থ্য কমপ্লেক্স </item>
+        <item>4. প্রাইভেট ক্লিনিক </item>
+        <item>5. এন.জি.ও ক্লিনিক </item>
+        <item>9. অন্যান্য (উল্লেখ করুন) </item>
+    </string-array>
+    <string-array name="survey_how_admitted_health_facility">
+
+        <item>A. এ্যাম্বুলেন্স </item>
+        <item>B. অন্য কোন মোটর চালিত গাড়ীতে (বাস, জীপ, কার এবং তিন চাকা বিশিষ্টগাড়ি) </item>
+        <item>C. মোটরবিহীন  যানবাহন (রিক্স, রিক্সা ভ্যান, ঠেলা গাড়ি)</item>
+        <item>D. নৌকা</item>
+        <item>E. ফেরী /লঞ্চ /স্টীমার </item>
+        <item>F. অন্যান্য (উল্লেখ করুন)</item>
+        <item>X. জানা নেই </item>
+
+    </string-array>
+    <string-array name="survey_type_of_anesthesia_given">
+
+        <item>1. স্থানীয়</item>
+        <item>2. সম্পূন© </item>
+        <item>3. দেয়া হয় নি</item>
+        <item>4. জানা নেই</item>
+
+    </string-array>
+    <string-array name="survey_outcome_of_treatment">
+        <item>1. সর্ম্পূন সুস্থ্য হয়ে গিয়েছিল</item>
+        <item>2. উন্নতি হয়েছিল  </item>
+        <item>3. কোন উন্নতি হয়নি </item>
+        <item>4. অবনতি ঘটছে</item>
+
+    </string-array>
+    <string-array name="survey_type_of_disability">
+        <item>A. দৃষ্টি শক্তি নষ্ট হয়ে গেছে</item>
+        <item>B. শ্রবন শক্তি নষ্ট হয়ে গেছে </item>
+        <item>C. হাঁটার শক্তি নষ্ট হয়ে গেছে</item>
+        <item>D. হাতদিয়ে কাজ করার শক্তি নষ্ট হয়ে গেছে</item>
+        <item>E. বাক শক্তি নষ্ট হয়ে গেছে</item>
+        <item>F. বৃদ্ধিশক্তি নষ্ট হয়ে গেছে</item>
+        <item>X. অন্যান্য (উল্লেখ করুন)</item>
+
+
+    </string-array>
+    <string-array name="survey_significant_source_of_income_for_family">
+
+        <item>1. প্রধান </item>
+        <item>2. অন্যতম তবে প্রধান নয় </item>
+        <item>3. গৌণ</item>
+        <item>4. উপাজনকারী নন</item>
+        <item>5. উত্তর দিতে সমথ©ন নন</item>
+
+    </string-array>
+    <string-array name="survey_family_being_coping_loss_income">
+
+        <item>A. আত্নীয়/বন্ধু/প্রতিবেশী কাছ থেকে সুদমুক্ত ধার</item>
+        <item>B. কোন ব্যক্তি বা সংস্থা থেকে সুদ সহ ধার</item>
+        <item>C. স্থাবর-অস্থাবর সম্পদ বিক্রি </item>
+        <item>D. খাবারের পরিমান  কমিয়ে </item>
+        <item>E. অন্যান্য¨ প্রয়োজনীয় খরচ কমিয়ে (যেমন, কাপড়, আশ্রয়))</item>
+        <item>G. অন্যান্য (উল্লেখ করুন) </item>
+        <item>X. জানা নেই</item>
+
+    </string-array>
+
+
+    <string name="injury_mortality_heading">ইনজুরি জনিত মৃত্যু ফম©</string>
+    <string name="im_any_surgery_operation_done">সাজ©vরী বা অপারেশন হয়েছিল কি ?</string>
+    <string name="im_type_of_anesthesia_given">যদি হ্যাঁ হয়, তাহলে কি ধরনের অ্যানেসথেসিয়া দেয়া হয়েছিল?</string>
+    <string name="im_death_date_of_person">ব্যক্তিটির (নাম উল্লেখ করুন) কবে মৃত্যু হয়েছিল?</string>
+    <string name="im_death_time_of_person">ব্যক্তিটির (নাম উল্লেখ করুন)  কখন মৃত্যু হয়েছিল? (24 ঘন্টায় লিখুন)</string>
+
+    <string name="im_die_on_spot">ব্যক্তিটির (নাম উল্লেখ করুন)  কি ঘটনাস্থলই মৃত্যু হয়েছিল?</string>
+    <string name="im_where_person_die">কোন জায়গায় মারা গিয়েছিল?</string>
+    <string name="im_post_mortem_done"> মৃত ব্যক্তির ময়না তদন্ত করা হয়েছিল কি?</string>
+    <string name="im_source_of_income_family">ব্যক্তিটি কি আপনারদের পরিবারের একজন উল্লেখযোগ্য আয় উপাজনকারী উপাজ©নকারী ?</string>
+    <string name="im_family_coping_loss">পরিবারটি এই উপাজ©নের ক্ষতি কিভাবে পুষিয়ে নিয়েছিল ?</string>
+
+    <string-array name="survey_where_person_die">
+        <item>1. হাসপাতালে </item>
+        <item>2. নিজবাড়ীতে</item>
+        <item>3. রাস্তায়</item>
+        <item>4. বাড়ীতে নেওয়ার পথে </item>
+        <item>5. হাসপাতালে নেওয়ার পথে</item>
+        <item>9. অন্যান্য (উল্লেখ করুন)</item>
+    </string-array>
+    <string-array name="survey_im_source_of_income_family">
+        <item>1. প্রধান</item>
+        <item>2. অন্যতম কিন্ত প্রধান নয়</item>
+        <item>3. গৌন  </item>
+        <item>4. উপাজ©নকারী নন</item>
+        <item>9. জানা নেই</item>
+
+    </string-array>
+    <string-array name="survey_im_cause_of_injury">
+
+        <item>01. আত্নহত্যা-এম 1</item>
+        <item>02. সড়ক দূঘ©টনা-এম 2 </item>
+        <item>03. সহিংসতা-এম 3</item>
+        <item>04. পড়ে যাওয়া-এম 4 </item>
+        <item>05. ধারালো বস্তদ্বারা কেটে যাওয়া-এম 5 </item>
+        <item>06. পুড়ে যাওয়া-এম 6 </item>
+        <item>07. ডুবে যাওয়া-এম 7 </item>
+        <item>08. দূঘ©টনাজনিত বিষপান-দূঘ©টনা 8 </item>
+        <item>09. মেশিন/যন্ত্রপাতির আঘাত-দূঘ©টনা 9 </item>
+        <item>10. বিদ্যুৎস্পৃষ্ট-দূঘ©টনা 10 </item>
+        <item>11. প্রাণী ও কীট পতঙ্গের কামড় /আঘাত-এম 11 </item>
+        <item>12. ভোঁতা বস্তুর আঘাত -এম 12</item>
+        <item>13. দূঘ©টনাজনিত শ্বাসরোধ-এম 13 </item>
+        <item>97. অন্যান্য  (উল্লেখ করুন) </item>
+        <item>99. জানা নেই </item>
+
+    </string-array>
+
+    <string name="suicide_hd">আত্মহত্যার প্রচেষ্টা/ আত্মহত্যা</string>
+    <string name="suicide_where_did">কোথায় আত্মহত্যা চেষ্টা/ আত্মহত্যা করেছিল?</string>
+    <string name="suicide_how">কিভাবে  আত্মহত্যার চেষ্টা/  আত্মহত্যা করেছিল?</string>
+    <string name="suicide_types">যদি বিষপান হয়, তাহলে বিষের প্রকার কি ছিল?</string>
+
+    <string-array name="survey_suicide_where">
+        <item>1. নিজবাড়ী</item>
+        <item>2. শ্বশুর বাড়ী </item>
+        <item>3. অন্যের বাড়ী </item>
+        <item>4. সড়ক/জনপথ </item>
+        <item>5. জলাশয় </item>
+        <item>6. অন্যান্য </item>
+
+    </string-array>
+    <string-array name="survey_suicide_how">
+        <item>1. বিষপান</item>
+        <item>2. ফাঁসি</item>
+        <item>3. পানিতে ডুবা </item>
+        <item>4. পুড়ে যাওয়া  </item>
+        <item>5. রক্তক্ষরণ </item>
+        <item>6. গুলিবিদ্ধ হওয়া  </item>
+        <item>7. অন্যান্য   </item>
+        <item>8. জানা নেই </item>
+    </string-array>
+    <string-array name="survey_suicide_type">
+
+        <item>1. কীটনাশক </item>
+        <item>2. মশা, মাছি, তেলাপোকা ইত্যাদি ধ্বংসকারী </item>
+        <item>3. ইদুঁর মারা বিষ </item>
+        <item>4. ঘুমের বড়ি  </item>
+        <item>5. অন্যান্য ঔষধ </item>
+        <item>6. সাবান, গুঁড়া সাবান     </item>
+        <item>7. কেরোসিন    </item>
+        <item>8. স্যাভলন / ডেটল </item>
+        <item>9. হারপিক </item>
+        <item>97. অন্যান্য (উল্লেখ করুন)  /  </item>
+        <item>99.  জানা নেই  /  </item>
+
+    </string-array>
+
+    <string name="transport_injury">পরিবহন দূঘ©টনা</string>
+
+    <string name="transport_travel">দুর্ঘটনার সময় ব্যক্তিটি কিভাবে ভ্রমন করছিল?</string>
+    <string name="transport_street_doing_what">ব্যক্তিটি রাস্তায় কি করছিল?</string>
+    <string name="transport_collide_partile">কিসের সাথে আহত ব্যক্তির বা তার বাহনের সংঘর্ষ হয়?</string>
+
+    <string name="transport_why_victim_on_road">ব্যক্তিটি রাস্তায় কেন গিয়েছিল?</string>
+    <string name="transport_any_safety_device">ব্যক্তিটি নিরাপত্তার জন্য কোন কিছু ব্যবহার করেছিল?</string>
+    <string name="transport_if_yes_safety_device">যদি হ্যাঁ হয়, তাহলে কিব্যবহার করেছিল?</string>
+    <string name="transport_condition_of_road">রাস্তার অবস্থা কেমন ছিল?</string>
+    <string name="transport_alcohol_mood_altering_substance">ব্যক্তিটি কি মাদকদ্রব্য সেবন করেছিল?</string>
+    <string-array name="survey_transport_travel">
+        <item>01. পায়ে হেঁটে </item>
+        <item>02. সাইকেল   </item>
+        <item>03. রিক্সা/ভ্যান  </item>
+        <item>04. মটর সাইকেল   </item>
+        <item>05. মটর কার  </item>
+        <item>06. অটো-রিক্সা /টেম্পু/পিক-আপ/ জিপ    </item>
+        <item>07. গাড়ী/মাইক্রোবা   </item>
+        <item>08. নসিমন    </item>
+        <item>09. ট্রাক  </item>
+        <item>10. বাস/ মিনিবাস  </item>
+        <item>11. ট্রেন   </item>
+        <item>12. নৌকা   </item>
+        <item>13. ফেরী   </item>
+        <item>14. স্টীমার/লঞ্চ  </item>
+        <item>97. অন্যান্য   </item>
+        <item>99. জানা নেই    </item>
+    </string-array>
+    <string-array name="survey_transport_street_doing_what">
+        <item>1. হাঁটছিল</item>
+        <item>2. গাড়ি চালাচ্ছিল</item>
+        <item>3. সা্কেল চালাচ্ছিল </item>
+        <item>4. মটর সা্কেল চালাচ্ছিল  </item>
+        <item>5. হেলপার/কন্টাক্টর </item>
+        <item>6. যাত্রী   </item>
+        <item>7. রাস্তায় খেলা   </item>
+        <item>8. অন্যান্য (উল্লেখ করুন)  </item>
+        <item>9. জানা নেই </item>
+    </string-array>
+    <string-array name="survey_transport_collide_partile">
+
+        <item>01. কোন সংঘস© হয় নি </item>
+        <item>02. সা্কেল</item>
+        <item>03. রিক্স/ভ্যান  </item>
+        <item>04. মটর সা্কেল </item>
+        <item>05. মটর কার </item>
+        <item>06. অটো-রিক্স/টেম্পু/পিক-আপ/জিপ গাড়ী/মা্ক্রোবাস   </item>
+        <item>07. নসিমন   </item>
+        <item>08. ট্রাক  </item>
+        <item>09.  বাস/ মিনিবাস  </item>
+        <item>10. ট্রেন  </item>
+        <item>11. নৌকা   </item>
+        <item>12. ফেরী </item>
+        <item>13.  স্টীমার/লঞ্চ </item>
+        <item>14.  পতচারী  </item>
+        <item>15.  স্থির বস্তু (দেয়াল, গাছ, খুঁটি ইত্যাদি) </item>
+        <item>97.   অন্যান্য (উল্লেখ করুন) </item>
+        <item>99.  জানা নেই  </item>
+
+    </string-array>
+    <string-array name="survey_transport_why_victim_on_road">
+
+        <item>01. স্কুলে যাচ্ছিল/ফিরছিল </item>
+        <item>02. কম©স্থলে যাচ্ছিলেন/ফিরছিলেন</item>
+        <item>03. বাহনটি চালাচ্ছিলেন </item>
+        <item>04. রাস্তায় খেলা করছিলেন</item>
+        <item>05. চালককে সহযোগিতা করছিল</item>
+        <item>06. বেড়াতে বেড়িয়েছিল </item>
+        <item>07. রাস্তায় কাজ করছিল</item>
+        <item>08. অন্যান্য (উল্লেখ করুন)</item>
+        <item>09. জানা নেই</item>
+
+    </string-array>
+    <string-array name="survey_transport_if_yes_safety_device">
+
+        <item>01. বেল্ট</item>
+        <item>02. হ্যালমেট</item>
+        <item>03. অন্যান্য (উল্লেখ করুন)</item>
+        <item>04. জানা নেই</item>
+
+    </string-array>
+    <string-array name="survey_transport_condition_of_road">
+
+        <item>01. ত্রুটিপূণ ©রাস্তায় নক্সা</item>
+        <item>02. ভাঙ্গাচোরা রাস্তা </item>
+        <item>03. দেখার অসুবিধা (ঝড়-বৃষ্টি,কুয়াশা, কম আলো - ভোর বা সন্ধা, কোন কিছুর বাধা </item>
+        <item>04. অন্যান্য (উল্লেখ করুন) </item>
+        <item>05. জানা নেই</item>
+
+    </string-array>
+
+    <!--/// =======================================-->
+
+    <string name="fall1">01.কোথা থেকে পড়েছিল?</string>
+    <string name="fall2">02.কিভাবে একই স্তর থেকে পড়ে গিয়েছিল? </string>
+    <string name="fall3">03.একই স্তর থেকে  পড়ে যাওয়ার স্থানটি কোথায় ছিল?</string>
+    <string name="fall4">04.কি ভাবে উঁচু স্তর থেকে পড়ে গিয়েছিল? </string>
+    <string name="fall5">05.কোনউঁচু স্তর থেকে পড়ে গিয়েছিল? </string>
+    <string name="fall6"> খানার নম্বর :</string>
+    <string name="fall7">আক্রান্ত ব্যক্তির নাম :</string>
+    <string name="fall8">আক্রান্ত ব্যক্তির ব্যক্তিগত ইউনিক কোড/আইডি : </string>
+
+    <string-array name="fall1">
+        <item>1.একই স্তর থেকে </item>
+        <item>2.উচুঁ স্তর থেকে</item>
+
+    </string-array>
+
+    <string-array name="fall2">
+        <item>1.হোঁচট খেয়ে </item>
+        <item>2.পিছলে বা কোন কিছুতে পা আটকে গিয়ে </item>
+        <item>3.ধাক্কা খেয়ে </item>
+        <item>4.অন্যান্য (উল্লেখ করুন) </item>
+        <item>9.জানা নেই </item>
+
+    </string-array>
+
+    <string-array name="fall3">
+        <item>1.গোসল খানা /পায়খানা </item>
+        <item>2.শোয়ার ঘর</item>
+        <item>3.রান্না ঘর </item>
+        <item>4.উঠান</item>
+        <item>5.রাস্তা </item>
+        <item>6.কর্মস্থল</item>
+        <item>7.খেলাধুলার মাঠ</item>
+        <item>8.অন্যান্য (উল্লেখ করুন)</item>
+        <item>9.জানা নেই</item>
+
+
+    </string-array>
+    <string-array name="fall4">
+        <item>1.দুর্ঘটনাক্রমে পড়ে গিয়ে</item>
+        <item>2.লাফ দিয়ে </item>
+        <item>3.ধাক্কা খেয়ে</item>
+        <item>4.অন্যান্য (উল্লেখ করুন)</item>
+        <item>9.জানা নেই</item>
+
+
+    </string-array>
+    <string-array name="fall5">
+        <item>1.সিঁড়ি</item>
+        <item>2.গাছ</item>
+        <item>3.বাড়ীর ছাদ</item>
+        <item>4.আসবাব পত্র</item>
+        <item>5.মই</item>
+        <item>6.কোন প্রানীর পিঠ</item>
+        <item>7.অন্যান্য (উল্লেখ করুন)</item>
+        <item>9.জানা নেই </item>
+
+
+    </string-array>
+
+    <string name="cut1">01.ধারালো বস্তুটি কি ছিল ? </string>
+    <string name="cut2">02.ব্যক্তিটি ঐ বস্তু দ্বারা কিভাবে আঘাতপ্রাপ্ত হয়েছিল ? </string>
+    <string name="cut3">03.সাধারণতঃ কাজ শেষে ধারালো বস্তুটি কোথায় রাখা হয় ?</string>
+
+
+    <string-array name="cut1">
+        <item>1.ছুরি </item>
+        <item>2.দা/বটি </item>
+        <item>3.কাস্তে</item>
+        <item>4.কাঁচি </item>
+        <item>5.কোদাল </item>
+        <item>6.কাঁচভাঙ্গা </item>
+        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+    </string-array>
+
+    <string-array name="cut2">
+        <item>1.কৃষি কাজ </item>
+        <item>2.গৃহস্থালি </item>
+        <item>3.কাঁঅিন্যের দ্বারা</item>
+        <item>4.খেলা </item>
+        <item>5.বস্তুটির ওপরে পড়ে গিয়েছিল </item>
+        <item>9.অন্যান্য (উল্লেখ করুন) </item>
+    </string-array>
+
+
+    <string-array name="cut3">
+        <item>1.রান্নাঘর </item>
+        <item>2.শোয়ার ঘর </item>
+        <item>3.খাওয়ার ঘর </item>
+        <item>4.বসার ঘর </item>
+        <item>5.গোসলখানা/পায়খানা</item>
+        <item>6.স্টোর রুম/গুদাম ঘর </item>
+        <item>7.এক কক্ষ বিশিষ্ট ঘর</item>
+        <item>8.বারান্দা</item>
+        <item>9.অন্যান্য (উল্লেখ করুন) </item>
+
+
+    </string-array>
+    <string name="Burn1">01.কি দ্বারা ব্যক্তিটি পুড়ে গিয়েছিল?</string>
+    <string name="Burn2">02.যদি অগ্নি শিখা হয়, অগ্নি শিখার উৎস কি ছিল?</string>
+    <string name="Burn3">03.যদি উত্তপ্ত তরল হয়, তরল পদাথ©টি কি ছিল  ?</string>
+    <string name="Burn4">04.যদি উত্তপ্ত বস্ত হয়, বস্তটি কি ছিল ? </string>
+    <string name="Burn5">05.যদি বিষ্ফোরক হয়, কেন তা ব্যবহার করা হয়েছিল?</string>
+    <string name="Burn6">06.যদি রাসায়নিক পদাথে© পুড়ে থাকে, তবে পদাথ©টি কি ?</string>
+    <string name="Burn7">07.সে সময় পুড়ে যাওয়া ব্যক্তিটি কি করছিল ?</string>
+    <string-array name="Burn1">
+        <item>1.অগ্নিশিখা </item>
+        <item>2.উত্তপ্ত তরল </item>
+        <item>3.উত্তপ্ত বস্তু</item>
+        <item>4.বিষ্ফোরক </item>
+        <item>5.রাসায়নিকপদাথ</item>
+        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+
+
+    </string-array>
+
+    <string-array name="Burn2">
+        <item>1.রান্নার আগুন (গ্যাস ব্যতিত)</item>
+        <item>2.রান্নার আগুন (গ্যাস)</item>
+        <item>3.আগুনে পোহানো</item>
+        <item>4.কম©স্থলে আগুন লেগে</item>
+        <item>5.বাড়ীতে আগুন লেগে</item>
+        <item>6.কুপি/হারিকেন</item>
+        <item>7.বিদ্যু</item>
+        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+
+
+    </string-array>
+    <string-array name="Burn3">
+        <item>01.রান্নার পানি</item>
+        <item>02.গোসলের পানি</item>
+        <item>03.ধোয়া ধুয়ির পানি</item>
+        <item>04.রান্নার তৈল </item>
+        <item>05.চা/কফি </item>
+        <item>06.ডাল/অন্য তরল খাবার</item>
+        <item>07.ভাতের মাড়</item>
+        <item>08.রাইসি মিলের গড়ম পানি</item>
+        <item>10.বাড়ীতেধান সিদ্ধেরগড়ম পানি</item>
+        <item>97.শিল্প কারখানার তরল</item>
+        <item>09.অন্যান্য (উল্লেখ করুন)</item>
+
+    </string-array>
+    <string-array name="Burn4">
+        <item>1.রান্নার তৈজষ পত্র</item>
+        <item>2.কয়লা </item>
+        <item>3.ইস্ত্রি </item>
+        <item>4.</item>
+        <item>5.ইঞ্জিনের অংশ </item>
+        <item>6.হিটার</item>
+        <item>7.কর্মংস্থলের উত্তপ্ত বস্তু </item>
+        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+
+
+    </string-array>
+    <string-array name="Burn5">
+        <item>1.আতশ বাজি</item>
+        <item>2.নিমা©ণ কাজে </item>
+        <item>3.সন্ত্রাসী কায© কলাপে</item>
+        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+
+    </string-array>
+    <string-array name="Burn6">
+        <item>1.এসিড</item>
+        <item>2.চুন</item>
+        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+
+    </string-array>
+    <string-array name="Burn7">
+        <item>1.কম©স্থলে কাজে ছিল</item>
+        <item>2.বাড়ীতে রান্না করছিল </item>
+        <item>3.রান্না ছাড়া অন্যান্য গৃহস্থালীর কাজ</item>
+        <item>4.বাড়ীতে ধান সিদ্ধ করছিল</item>
+        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+    </string-array>
+
+    <string name="Drowning1">01.ব্যক্তিটি (নাম উল্লেখ করুন) কোতায় ডুবে গিয়েছিল? </string>
+    <string name="Drowning2">02.কক্ষের মধ্যে হলে জলধারাটি কোথায় ছিল ?</string>
+    <string name="Drowning3">03.কক্ষের বাইরে হলে বাড়ী থেকে জলাশয়ের দুরত্ব কত?</string>
+    <string name="Drowning4">04.জল ধারাটি কি ঢাকা ছিল ?</string>
+    <string name="Drowning5">05.জলাশয়টি কি কাজে ব্যবহার হয়?</string>
+    <string name="Drowning6">06.যদি বাড়ীর বাইরে হয় তবে জলাশয়টির চারিদিক কি ঘেরা ছিল?</string>
+    <string name="Drowning7">07.ডুবে যাওয়ার আগে ব্যক্তিটি কি করছিল?</string>
+    <string name="Drowning8">08.ব্যক্তিটি কি সাঁতার কাটতে জানতো? </string>
+    <string name="Drowning9">09.ঘটনার পূব© মুহুতে© তার সঙ্গে কে ছিল ?</string>
+    <string name="Drowning10">10.সঙ্গীর বয়স কত ছিল? (বছরে) </string>
+    <string name="Drowning11">11.সে সময় মা/ পরিচযা©কারী কি করছিলেন ?</string>
+    <string name="Drowning12">12.কেউ কি তাকে পানি থেকে উদ্ধার করেছিল?</string>
+    <string name="Drowning13">13.কে তাকে উদ্ধার করেছিল?</string>
+    <string name="Drowning14">14.পানিতে ডুবা থেকে  উদ্ধার করার পর রুগীর সাথে কে ছিল?</string>
+    <string name="Drowning15">15.আপনার মতে,কি করলে শিশুদের পানিতে ডুবে যাওয়া থেকে রক্ষা করা যায়?</string>
+
+    <string-array name="Drowning1">
+        <item>01.কক্ষেরমধ্যে</item>
+        <item>02.বালতি</item>
+        <item>03.ড্রাম</item>
+        <item>04.চারি </item>
+        <item>05.পারনর ট্যাংক/হাউজ</item>
+        <item>06.কক্ষের বা্রে </item>
+        <item>07.পুকুর</item>
+        <item>08.ডোবা</item>
+        <item>10.কুয়া (কূপ)</item>
+        <item>11.চারি</item>
+        <item>12.খাল</item>
+        <item>13.নদী</item>
+        <item>14.সমুদ্র</item>
+        <item>97.পানির ট্যাঙ্ক/হাউজ</item>
+        <item>09.অন্যান্য (উল্লেখ করুন)</item>
+
+
+    </string-array>
+    <string-array name="Drowning2">
+        <item>1.গোসল খানা/পায়খানা</item>
+        <item>2.রান্নাঘরে</item>
+        <item>3.এক কক্ষ বিশিষ্ট ঘরে</item>
+        <item>4.বাড়ীর ছাদ </item>
+        <item>5.মাটির নিচে </item>
+        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+
+
+    </string-array>
+
+
+    <string-array name="Drowning4">
+        <item>1.ঢাকা ছিল না </item>
+        <item>2.আংশিক ঢাকা ছিল</item>
+        <item>3.সম্পূন© ঢাকা ছিল</item>
+        <item>4.প্রযোজ্য নয়(নদী, সমুদ্র,পুকুর ইত্যাদি)</item>
+
+
+    </string-array>
+
+    <string-array name="Drowning5">
+        <item>A.গোসল ধোয়াধুয়ি করা</item>
+        <item>B.রান্না ও পান করার পানি সংগ্রহ করা </item>
+        <item>C.মাছ চাষ </item>
+        <item>D.তেমন কোন ব্যবহার নেই</item>
+        <item>X.অন্যান্য (উল্লেখ করুন)</item>
+
+
+    </string-array>
+
+    <string-array name="Drowning6">
+        <item>1.হ্যাঁ</item>
+        <item>2.না</item>
+        <item>9.জানা নেই</item>
+
+
+    </string-array>
+    <string-array name="Drowning7">
+        <item>01.জলা শয়ে খেরা করছিল </item>
+        <item>02.জলাশয়ে গোসল/অযু/সাঁতার কাটছিল</item>
+        <item>03.ধোয়াধুয়ি করছিল</item>
+        <item>04.জলাশয়ের ধারে কাজ/খেলা করছিল</item>
+        <item>05.পানি আনতে গিয়েছিল</item>
+        <item>06.জলধারের পাড় দিয়ে হাঁটার সময় পা পিছলে পড়ে গিয়েছিল</item>
+        <item>07.মাছ ধরছিল</item>
+        <item>08.যাত্রী (নৌকা/ফেরী/লঞ্চ)</item>
+        <item>97.অন্যান্য (উল্লেখ করুন)</item>
+        <item>99.জানা নেই</item>
+
+
+    </string-array>
+    <string-array name="Drowning8">
+        <item>1.হ্যাঁ </item>
+        <item>2.না</item>
+        <item>3.প্রযোজ্য নয় (যদি শিশুর বয়স  বছরের কম হয়)</item>
+        <item>9.জানা নেই </item>
+    </string-array>
+    <string-array name="Drowning9">
+        <item>A.মা</item>
+        <item>B.বাবা</item>
+        <item>C.পরিচযা©কারী</item>
+        <item>D.বড়ভাই/বোন</item>
+        <item>E.স্বামী/স্ত্রী </item>
+        <item>F.অন্য আত্নীয় স্বজন</item>
+        <item>G.বন্ধু /সমবয়সী শিশু </item>
+        <item>H.সহকমী</item>
+        <item>J.কেউ নয় </item>
+        <item>K.অন্যান্য (উল্লেখ করুন)</item>
+        <item>X.জানা নেই</item>
+
+    </string-array>
+
+
+    <string-array name="Drowning11">
+        <item>1.গৃহকম© করছিলেন </item>
+        <item>2.অন্যদের সঙ্গে গল্প করছিলেন</item>
+        <item>3.ঘুমাচ্ছিলেন </item>
+        <item>4.বাড়ীর বাইরে কাজে ছিলেন</item>
+        <item>5.শিশুটির সাথে ছিলেন</item>
+        <item>6.খাচ্ছিলেন</item>
+        <item>7.অন্যশিশুর পরিচর্যা করছিলেন</item>
+        <item>8.প্রতিবেশীর বাড়ী বেড়াতে গিয়েছিলেন</item>
+        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+
+
+    </string-array>
+    <string-array name="Drowning12">
+        <item>1.হ্যাঁ </item>
+        <item>2.না </item>
+        <item>9.জানা নেই</item>
+
+
+    </string-array>
+    <string-array name="Drowning13">
+        <item>1.মা</item>
+        <item>2.বাবা</item>
+        <item>3.প্রাপ্ত বয়স্ত পরিচযা©কারী </item>
+        <item>4.বড় ভাইবোন </item>
+        <item>5.বন্ধু / সমবয়সী শিশু </item>
+        <item>6.প্রতিবেশী </item>
+        <item>7.অন্যান্য (উল্লেখ করুন)</item>
+        <item>9.জানা নেই</item>
+
+
+    </string-array>
+
+    <string-array name="Drowning14">
+        <item>মাথায় তুলে ঘুরানো হয়েছিল</item>
+        <item>পেটে চাপ দিয়ে বমি করানো হয়ে ছিল</item>
+        <item>শরীরে তৈল মালিশ করেছিল</item>
+        <item>শরীরে ছাই মেখেছিল</item>
+        <item>মুখে শ্বাস ও বুকে চাপ দিয়েছিল </item>
+        <item>দ্রুত ডাক্তারের কাছে নেয়া হয়েছিল</item>
+
+
+    </string-array>
+
+
+    <string-array name="Drowning15">
+        <item>A.সাব©ক্ষনিক দেখাশুনা করা </item>
+        <item>B.সাব©ক্ষনিক খেয়াল রাখার বিশেষ ব্যবস্থা করা (যেমন পায়ে/কোমরে ঘুঁঙুঁর বাঁধা, ইত্যাদি)</item>
+        <item>C.শিশুটিকে পানিতে যেতে না দেওয়া (পুকুর ঘেরা,বেবী কট, প্লেপেন)</item>
+        <item>D.অব্যবহায© /অপ্রয়োজনীয় জলাশয় ভরাট করা</item>
+        <item>E.সাঁতা শিখানো</item>
+        <item>F.পানি থেকে উদ্ধার করার সাথে সাথে সঠিক প্রাথমিক চিকিৎসা ও পরবতী© ব্যবস্থাপনা</item>
+        <item>G.পানিতেডুবে মৃত্যুর বিষয়ে জনসেচেতনাবৃদ্ধি করা</item>
+        <item>H.কোন ধরনের ধারনা নেই</item>
+        <item>X.অন্যান্য (উল্লেখ করুন)</item>
+
+
+    </string-array>
+
+
+    <string name="poisoning1">01.বিষের ধরিন কি ছিল?</string>
+    <string name="poisoning2">02.কি ধরনের পাত্রে বিষ রাখা হয়েছিল?</string>
+    <string name="poisoning3">03.পাত্রটি কি প্রকৃত না অন্য ছিল?</string>
+    <string name="poisoning4">04.যদি অন্য পাত্র হয় তবে কি সেটা লেবেল করা ছিল?</string>
+    <string name="poisoning5">05.যদি বোতল হয় তবে পাত্রের মুখ বন্ধ ছিল কি?</string>
+    <string name="poisoning6">06.পাত্রটি কোথায় রাখা হছিল ? (স্থান)</string>
+    <string name="poisoning7">07.পাত্রটি কি অবস্থায় ছিল ?</string>
+
+
+    <string-array name="poisoning1">
+        <item>01.কীটনাশক</item>
+        <item>02.মশা, মাছি, তেলাপোকা ইত্যাদি ধ্বংসকারী</item>
+        <item>03.ইদুর মারার বিষ</item>
+        <item>04.ঘুমের বড়ি </item>
+        <item>05.অন্যান্য বড়ি</item>
+        <item>06.সাবান, গুড়া সাবান</item>
+        <item>07.কোরোসিন </item>
+        <item>08.স্যাভলন / ডেটল </item>
+        <item>09.হারপিক</item>
+        <item>97.অন্যান্য (উল্লেখ করুন)</item>
+        <item>99.জানা নেই</item>
+
+    </string-array>
+
+    <string-array name="poisoning2">
+        <item>1.বোতল </item>
+        <item>2.কৌটা</item>
+        <item>3.প্যাকেট</item>
+        <item>4.স্ট্রিপ</item>
+        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+
+
+    </string-array>
+
+    <string-array name="poisoning3">
+        <item>1.বিষের প্রকৃত বোতল</item>
+        <item>2.অন্যান্য বোতলে (পেপসি/কোক/মজো ইত্যাদি)</item>
+
+
+    </string-array>
+
+    <string-array name="poisoning4">
+        <item>1.লেবেল করা</item>
+        <item>2.লেবেল বিহীন</item>
+
+
+    </string-array>
+    <string-array name="poisoning5">
+        <item>1.হ্যাঁ </item>
+        <item>2.না </item>
+        <item>9.জানা নেই</item>
+    </string-array>
+
+    <string-array name="poisoning6">
+        <item>1.মেজেতে </item>
+        <item>2.খাট/চৌকির নিচে</item>
+        <item>3.তোষক/ পাটির নিচে</item>
+        <item>4.বাক্সের মধ্যে</item>
+        <item>5.সেলফ এর উপরে (1 মিটারের উর্দ্ধে)</item>
+        <item>6.সেলফ এর উপরে (1 মিটারের নীচে )</item>
+        <item>7.সিলিং এ ঝুলন্ত অবস্থায়</item>
+        <item>8.মাচায় ঝুলন্ত অবস্থায় </item>
+        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+
+
+    </string-array>
+
+    <string-array name="poisoning7">
+        <item>1.খোলা অবস্থা</item>
+        <item>2.তালা বদ্ধ অবস্থায় </item>
+    </string-array>
+
+
+    <string name="machine1">01.এটা কি ধরনের মেশিন ছিল?</string>
+    <string name="machine2">02.কৃষি মেশিন হলে, কি ধরনের মেশিন ছিল?</string>
+    <string name="machine3">03.শিল্প কারখানার মেশিন হলে, এটা কি ধরনের মেশিন ছিল?</string>
+    <string name="machine4">04.এটা কি ধরনেরনিমা©ন কাজে ব্যবহৃত মেশিন ছিল?</string>
+
+
+    <string-array name="machine1">
+        <item>1.কৃষি কাজে ব্যবহৃত মেশিন </item>
+        <item>2.শিল্প/কারখানায় ব্যবহৃত মেশিন</item>
+        <item>3.নিমা©ণ কাজেব্যবহৃত মেশিন</item>
+        <item>4.অন্যান্য (উল্লেখ করুন)</item>
+
+
+    </string-array>
+
+    <string-array name="machine2">
+        <item>1.শ্রালো মেশিন ও অন্যান্য পাম্প</item>
+        <item>2.ট্রাক্টর </item>
+        <item>3.ধান মাড়াই এর কল</item>
+        <item>4.অন্যান্য যন্ত্রচালিত মেমিন</item>
+
+
+    </string-array>
+
+    <string-array name="machine3">
+        <item>1.রাইস মিল</item>
+        <item>2.প্রেস/ছাপা খানা</item>
+        <item>3.ছিদ্র করার যন্ত্র/ড্রিল মেশিন</item>
+        <item>4.করাত কল</item>
+        <item>5.ওয়েল্ডিং মেণশন</item>
+        <item>6.ধাতব্য বস্তু কাটার যন্ত্র</item>
+        <item>7.পিশন যন্ত্র</item>
+        <item>8.সেলাই মেশিন</item>
+        <item>তাঁত যন্ত্র</item>
+        <item>অন্যান্য (উল্লেখ করুন)</item>
+
+
+    </string-array>
+
+    <string-array name="machine4">
+        <item>1.মিক্সচার মেশিন </item>
+        <item>2.ভাইব্রেটর </item>
+        <item>3.মোজাইক/টাইলস কাটার</item>
+        <item>4.ক্রেন </item>
+        <item>মাটি কাটার যন্ত্র</item>
+        <item>অন্যান্য (উল্লেখ করুন)</item>
+
+    </string-array>
+
+    <string name="electrocution1">01.বিদ্যুতের উৎস কি ছিল ?</string>
+    <string name="electrocution2">02.যদি বাড়ীতে হয়, কোথায় ঘটেঠিল ?</string>
+    <string name="electrocution3">03.যদি বাড়ীর বাহিরে হয়, কোথায় বিদ্যুতস্পৃষ্ট হয়েছিল?</string>
+    <string name="electrocution4">04.কিভাবে বিদ্যুতায়িত হছিল?</string>
+
+    <string-array name="electrocution1">
+        <item>1.বজ্রপাত</item>
+        <item>2.বাড়ীতে ব্যবহৃত বিদ্যু</item>
+        <item>3.বাড়ীর বাহিরে ব্যবহৃত বিদ্যু</item>
+        <item>4.কারখানায় ব্যবহৃত বিদ্যু</item>
+        <item>5.বাড়ি বা কারখানা ব্যতিত বিল্ডিংএ ব্যবহৃত বিদ্যু</item>
+    </string-array>
+
+    <string-array name="electrocution2">
+        <item>1.রান্না ঘর</item>
+        <item>2.বসার ঘর</item>
+        <item>3.শোয়ার ঘর </item>
+        <item>4.এক কক্ষ বিশিষ্ট ঘর</item>
+        <item>5.গোসল খানা/পায়খানা </item>
+        <item>6.বারান্ধা </item>
+        <item>7.অন্যান্য (উল্লেখ করুন)</item>
+
+
+    </string-array>
+
+    <string-array name="electrocution3">
+        <item>1.রাস্তায়</item>
+        <item>2.মাঠে </item>
+        <item>3.অফিসে </item>
+        <item>4.শিল্প প্রতিষ্ঠানে </item>
+        <item>5.হাট/বাজার</item>
+        <item>6.অন্যান্য (উল্লেখ করুন)</item>
+
+    </string-array>
+
+
+    <string-array name="electrocution4">
+        <item>1.বিদ্যুতের তাঁর /সুইচে হাত পরে</item>
+        <item>2.বিদ্যুতের তাঁরের সংস্পর্শের কারণে(কাপড় নাড়া/দন্ডের মাধ্যমে)</item>
+        <item>3.রাস্তায় চলার সময় বিদ্যুতের তাঁর পায়ে জড়িয়ে যায়</item>
+        <item>4.বিদ্যুতের তাঁর চিড়ে পরেছিল</item>
+    </string-array>
+
+
+    <string name="insect1">01.প্রাণী/কীটপতঙ্গটি কি?</string>
+    <string name="insect2">02.এটা কি ধরনের ছিল ?</string>
+    <string name="insect3">03.আক্রমণের পূব© মুহুতে© ব্যক্তিটি কি করছিল ?</string>
+
+
+    <string-array name="insect1">
+        <item>01.পোষা কুকুর</item>
+        <item>02.রাস্তার কুকুর</item>
+        <item>03.পোষা বিড়াল</item>
+        <item>04.রাস্তার বিড়াল </item>
+        <item>05.সাপ</item>
+        <item>06.শিয়াল</item>
+        <item>07.গরু</item>
+        <item>08.মহিষ</item>
+        <item>09.ভিমরুল</item>
+        <item>10.বোলতা</item>
+        <item>11.মৌমাছি</item>
+        <item>97.অন্যান্য (উল্লেখ করুন) </item>
+
+    </string-array>
+
+    <string-array name="insect2">
+        <item>1.কামড়</item>
+        <item>2.হুল ফুটানো </item>
+        <item>3.লাথি</item>
+        <item>4.পায়ের তলায় পড়া</item>
+        <item>5.শিং বা মাথা দিয়ে আঘাত</item>
+        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+
+    </string-array>
+
+    <string-array name="insect3">
+        <item>1.খেলা/বিরক্ত করার কারনে </item>
+        <item>2.খাওয়ানো</item>
+        <item>3.কাজে ব্যবহার করা হচ্ছিল</item>
+        <item>4.বিরক্ত করা ছাড়াই</item>
+        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+    </string-array>
+
+
+    <string name="blunt1">01.ভোঁতা বস্তুটি কি চলন্ত/স্থির ছিল ?</string>
+    <string name="blunt2">02.ভোঁতা বস্তুটি কি কাজে ব্যবহার করা হচ্ছিল?</string>
+
+
+    <string-array name="blunt1">
+        <item>1.চলন্ত বস্তু(নাম লিখুন)</item>
+        <item>2.স্থির বস্তু (নাম লিখুন)</item>
+        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+    </string-array>
+    <string-array name="blunt2">
+        <item>1.চাষাবাদ/খামারের কাজে </item>
+        <item>2.গৃহস্থলীর কাজে </item>
+        <item>3.কল-কারখানার কাজে</item>
+        <item>4.দোকানের কাজে </item>
+        <item>5.নিমা©ন কাজে </item>
+        <item>6.অফিস আদালতে </item>
+        <item>7.খেলাধুলায়</item>
+        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+    </string-array>
+
+    <string name="suffocation1">01.শ্বাসরোধের কারণ?</string>
+    <string name="suffocation2">02.ঘটনার সংক্ষিপ্ত (সর্বোচ্চ তিনটি ব্যাক্য) বিবরণ </string>
+
+    <string-array name="suffocation1">
+        <item>01.কাব©ন মনোক্সাইড</item>
+        <item>02.অন্য গ্যাস (উল্লেখ করুন)</item>
+        <item>03.তরল (উল্লেখ করুন)</item>
+        <item>04.মাছের কাঁটা </item>
+        <item>05.অন্য কাদ্য বস্তু(উল্লেখ করুন)</item>
+        <item>06.ধাতব মুদ্রা(পয়সা/টাকা)</item>
+        <item>07.ছোট বস্তু(উল্লেখ করুন)</item>
+        <item>08.কাপড়ে ঢেকে যাওযার কারণে</item>
+        <item>09.প্লাস্টিকের ব্যাগ/দ্রব্য দ্বারা ঢাকে যাওয়া </item>
+        <item>10.বড় ব্যক্তির শরিীরের কোন অংশের চাপে</item>
+        <item>11.মাটি চাপা পড়ায়</item>
+        <item>97.অন্যান্য (উল্লেখ করুন)</item>
+    </string-array>
+
+    <string name="socio1">01.এই খানার অধীনে বসতবিটায় (পুকুর ও ডোবা সহ)কি পরিমান জমি (ডেসিমাল-এ)আছে? </string>
+    <string name="socio2">02.এই খানার অধীনে কি পরিমান চাষযোগ্য জমি (ডেসিমাল-এ)আছে? </string>
+    <string name="socio11">বসতভিটা(পুকুর ও ডোবা সহ):</string>
+    <string name="socio12">চাষ যোগ্য জমি :</string>
+    <string name="socio97">জানি না</string>
+    <string name="socio3">03.বসত ঘরের ছাদের প্রধান নিমা©vন সামগ্রী  </string>
+    <string name="socio4">04.বসত ঘরের মেঝের প্রধান নিমা©ণ-সামগ্রী </string>
+    <string name="socio5">05.বসত ঘরের দেয়ালের প্রধান নিমা©ণ-সামগ্রী </string>
+    <string name="socio6">06.আপনাদের খানায় কয়টি শোবার ঘর আছে? </string>
+    <string name="socio7">07.আপনার খানার সদস্যদের পানির প্রধান উৎস কি? </string>
+    <string name="socio8">08.আপনারদের খানার সদস্যরা সাধারনত কোন ধরনের পায়খারনা ব্যবহার করে?</string>
+    <string name="socio9">09.আপনাদের খানায় এই জিনিসগুলো আছে কি?</string>
+    <string name="socio10">10.আপনার খানায় কি বিদ্যুত আছে?</string>
+
+    <string name="socio31">প্রাকৃতিক ছাদ</string>
+    <string name="socio311">11.ছাদ নেই</string>
+    <string name="socio312">12.খড়/ছন/তাল পাতা</string>
+    <string name="socio32">কাঁচাঁ ছাদ </string>
+    <string name="socio321">21.বাঁশ</string>
+    <string name="socio322">22.কাঠের তক্তা</string>
+    <string name="socio323">23.কাড©বোড</string>
+    <string name="socio33">উন্নত ছাদ</string>
+    <string name="socio331">31.টিন</string>
+    <string name="socio332">32.কাঠ</string>
+    <string name="socio333">33.সিরামিক টাইলিস</string>
+    <string name="socio334">34.সিমেন্ট</string>
+    <string name="socio335">35.টালি</string>
+    <string name="socio336">36.কাষ্ট খন্ড (টালি/শ্লেট)</string>
+    <string name="socio337">37.অন্যান্য (নির্দিষ্ট উল্লেখ করুন)</string>
+
+    <string name="socio41">কাঁচা মেঝে </string>
+    <string name="socio411">11.মাটি/বালু</string>
+    <string name="socio42">প্রাথমিক পর্যায়ের মেঝে</string>
+    <string name="socio421">21.কাঠের তক্তা</string>
+    <string name="socio422">22.তালগাছ/বাঁশা</string>
+    <string name="socio43">উন্নত মেঝে</string>
+    <string name="socio431">31.নকশা করা কাঠের পাটাতন/পালিমকৃত কাঠ </string>
+    <string name="socio432">32.সিমেন্ট/ইটবালিজমানো </string>
+    <string name="socio433">33.সিরামিক টাইলস/মোজাইক</string>
+    <string name="socio434">34.কার্পেট </string>
+    <string name="socio435">97.অন্যান্য (নির্দিষ্ট উল্লেখ করুন)</string>
+
+    <string name="socio51">প্রাকৃতিক দেয়ালঃ</string>
+    <string name="socio511">11.দেয়াল নাই </string>
+    <string name="socio512">12.পাটকাঠি/বেত/তালগাছ/গাছের গুড়ি</string>
+    <string name="socio513">13.মাটি</string>
+    <string name="socio52">প্রাথমিক দেয়ালঃ</string>
+    <string name="socio521">21.মাটি সহ বাঁশ</string>
+    <string name="socio522">22.মাটি সহ পাথর</string>
+    <string name="socio523">23.প্লাই-উড</string>
+    <string name="socio524">24.কাড©বোড</string>
+    <string name="socio53">উন্নত দেয়ালঃ</string>
+    <string name="socio531">31.টিন</string>
+    <string name="socio532">32.ইট/সিমেন্ট/(প্লাষ্টারসহ)</string>
+    <string name="socio533">33.চুনসুরকি দিয়ে তৈরী পাথেরের দেয়াল</string>
+    <string name="socio534">34.ইট (প্লাষ্টার ছাড়া)</string>
+    <string name="socio535">35.উন্নত মানের কাঠের তক্তা</string>
+    <string name="socio536">97.অন্যান্য (নির্দিষ্ট উল্লেখ করুন)</string>
+
+    <string name="socio71">পাইপের পানিঃ</string>
+    <string name="socio711">11.বাড়ীর ভিতরে ট্যাপের (পাইপের)পানি </string>
+    <string name="socio712">12.বাড়ীর বাহিরে/উঠানে ট্যাপের ট্যাপের (পাইপের)পানি</string>
+    <string name="socio713">13.ট্যাপের (পাইপের)পানি</string>
+    <string name="socio714">21.টিউবওয়েল</string>
+
+    <string name="socio72">কুপের পানিঃ</string>
+    <string name="socio721">31.সংরক্ষিত কুপ </string>
+    <string name="socio722">32.অসংরক্ষিত কুপ</string>
+
+    <string name="socio73">ঝরণার পানিঃ</string>
+    <string name="socio731">41.সংরক্ষিতঝরণার পানি </string>
+    <string name="socio732">42.অসংরক্ষিত ঝরণার পানি</string>
+    <string name="socio733">51.বৃষ্টির পানি</string>
+    <string name="socio734">61.ট্যাঙ্কের পানি </string>
+    <string name="socio735">71.ছোট ট্যাঙ্কেরে পানি </string>
+    <string name="socio736">81.পুকুর/খাল/বদ্ধ জলাশয়/হ্রদ/দিধী/বিল/হাওর</string>
+    <string name="socio737">91.বোতলের পানি</string>
+    <string name="socio738">97.অন্যান্য (নির্দিষ্ট উল্লেখ করুন)</string>
+
+    <string name="socio81">ফ্লাশ ল্রাট্রিন/পায়খানা:</string>
+    <string name="socio811">11.ফ্ল্যাশ করে পাইপের মাধ্যমে অপসারন </string>
+    <string name="socio812">12.ফ্ল্যাশ করে সেপটিক ট্যাঙ্ক এ ধারন</string>
+    <string name="socio813">13.ফ্ল্যাশ করে গর্তে ধারন</string>
+    <string name="socio814">14.ফ্ল্যাশ করেপাইপের মাধ্যমে অপসারন</string>
+    <string name="socio815">15.ফ্ল্যাশ করে অজানা স্থানে অপসারন</string>
+
+
+    <string name="socio83">ফ্ল্যাশ করে অজানা স্থানে অপসারন:</string>
+    <string name="socio831">21.পিট ল্রাট্রিন(স্লাব সহ) </string>
+    <string name="socio832">22.পিট ল্রাট্রিন(স্লাব ছাড়া) খোলা গত© </string>
+    <string name="socio833">31.কম্পোস্টিং ল্যাট্রিন</string>
+    <string name="socio834">41.বালিতি টয়লেট</string>
+    <string name="socio835">51.খোলা/ঝুলন্ত ল্যাট্রিন </string>
+    <string name="socio836">61.ল্রাট্রি নাই/ঝোপ ঝাড়/মাঠ </string>
+    <string name="socio837">97.অন্যান্য (নির্দিষ্ট উল্লেখ করুন)</string>
+
+
+    <string name="socio91">রেডিও</string>
+    <string name="socio92">টেলিভিশন </string>
+    <string name="socio93">মোবাইল ফোন</string>
+    <string name="socio94">টেলিফোন</string>
+    <string name="socio95">ফ্রিজ</string>
+    <string name="socio96">বাইসাইকেল</string>
+    <string name="socio98">মোটর নাইকেল/স্কুটার </string>
+    <string name="socio99">ভিসিপি/ভিসিআর/ডিভিডি </string>
+    <string name="socio100">বৈদ্যতিক পাখা</string>
+    <string name="socio101">গাড়ি/মাইক্রোবাস </string>
+    <string name="socio102">নৌকা/ইঞ্জিন চালিত নৌকা</string>
+    <string name="socio103">পানির পাম্প</string>
+    <string name="socio104">আলমিরা</string>
+    <string name="socio105">টেবিল</string>
+    <string name="socio106">চেয়ার</string>
+
+
+    <string-array name="socio10">
+        <item>1.হ্যাঁ</item>
+        <item>2.না</item>
+
+    </string-array>
+
+    <string name="ha">1.হ্যাঁ</string>
+    <string name="na">2.না </string>
+
+    <string name="Quality1">Mobility</string>
+    <string name="Quality2">Self-Care</string>
+    <string name="Quality3">Usual Activities </string>
+    <string name="Quality4">Pain / Discomfort</string>
+    <string name="Quality5">Anxiety / Depression</string>
+
+    <string name="Quality11">I have no problems in walking</string>
+    <string name="Quality12">I have some problems in walking</string>
+    <string name="Quality13">I am confined to bed</string>
+
+    <string name="Quality21">I have no problems with self-care</string>
+    <string name="Quality22">I have some problems bathing or dressing myself</string>
+    <string name="Quality23">I am unable to bathe or dress myself</string>
+
+    <string name="Quality31">I have no problems in performing my usual activities</string>
+    <string name="Quality32">I have some problems in performing my usual activities</string>
+    <string name="Quality33">I am unable to perform my usual activities  </string>
+
+    <string name="Quality41">I have no pain or discomfort</string>
+    <string name="Quality42">I have moderate pain or discomfort</string>
+    <string name="Quality43">I have extreme pain or discomfort</string>
+
+    <string name="Quality51">I am not anxious or depressed</string>
+    <string name="Quality52">I am moderately anxious or depressed</string>
+    <string name="Quality53">I am extremely anxious or depressed</string>
+
+    <string name="test"></string>
+    <string-array name="survey_sample">
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+
+    </string-array>
+
+    <string-array name="survey_s">
+        <item>A.</item>
+        <item>B.</item>
+        <item>C.</item>
+        <item>D.</item>
+        <item>E.</item>
+        <item>F.</item>
+        <item>G.</item>
+        <item>H.</item>
+        <item>I.</item>
+        <item>J.</item>
+        <item>K.</item>
+        <item>L.</item>
+        <item>X.</item>
+
+    </string-array>
+
+    <string-array name="survey_">
+        <item>01. </item>
+        <item>02. </item>
+        <item>03. </item>
+        <item>04. </item>
+        <item>05. </item>
+        <item>06. </item>
+        <item>07. </item>
+        <item>08. </item>
+
+    </string-array>
+
+
+</resources>
