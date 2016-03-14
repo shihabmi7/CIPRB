@@ -28,14 +28,13 @@
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_below="@+id/layout_header"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/layout_header">
 
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_margin="8dp"
             android:orientation="vertical">
 
 
@@ -43,7 +42,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textView_interview_starting_time"
@@ -52,7 +51,7 @@
                     android:layout_centerVertical="true"
                     android:text="Interview Starting Time"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <!--<TextView
                     android:id="@+id/textView_interview_ending_time"
@@ -66,10 +65,16 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textView_interview_unique"
@@ -78,20 +83,29 @@
                     android:layout_centerVertical="true"
                     android:text="INTEVIEWER UNIQUE "
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <EditText
                     android:id="@+id/editText_interviewer_unique"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+                    android:layout_width="145dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:maxLength="2" />
+            </RelativeLayout>
 
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textView_branch_name"
@@ -103,7 +117,7 @@
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_location"
+                    android:id="@+id/spinner_survey_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -113,178 +127,154 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
-                    android:id="@+id/textView_city"
+
+                    android:id="@+id/textView_adjustable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="CITY CORPORATION"
+                    android:text="Adjust"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_city_corp"
+                    android:id="@+id/spinner_adjust"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:entries="@array/survey_loc"
+                    android:entries="@array/survey_city_corp"
                     android:focusable="false"
                     android:spinnerMode="dropdown" />
+
             </LinearLayout>
 
-
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textView_ward"
+                    style="text_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="WARD"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/ward"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <EditText
                     android:id="@+id/editText_ward"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="145dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:maxLength="2" />
 
-            </LinearLayout>
+                <Spinner
+                    android:id="@+id/spinner_upozila"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView_ward"
+                    android:entries="@array/survey_upozila"
+                    android:focusable="false"
+                    android:spinnerMode="dropdown"
+                    android:visibility="gone" />
 
-
-
+            </RelativeLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textView_moholla"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="MOHALLA"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/moholla"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <EditText
                     android:id="@+id/editText_moholla"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="145dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:maxLength="2" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+
+            <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="5dp">
-
-                <TextView
-                    android:id="@+id/textView_district"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="@string/district_town"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-
-                <Spinner
-                    android:id="@+id/spinner_district"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:entries="@array/survey_district_rural"
-                    android:focusable="false"
-                    android:spinnerMode="dropdown" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="5dp">
-
-                <TextView
-                    android:id="@+id/textView_district_upozila"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="@string/upozila"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-
-                <Spinner
-                    android:id="@+id/spinner_district_upozila"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:entries="@array/survey_upozila"
-                    android:focusable="false"
-                    android:spinnerMode="dropdown" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="5dp">
-
-                <TextView
-                    android:id="@+id/textView_village"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="@string/village"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/editText_village"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textView_household_no"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
                     android:text="@string/household_no"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <EditText
                     android:id="@+id/editText_household_no"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="145dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:maxLength="2" />
 
-            </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textView_household_unique_code"
@@ -293,20 +283,27 @@
                     android:layout_centerVertical="true"
                     android:text="HOUSEHOLD UNIQUE CODE"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <EditText
                     android:id="@+id/editText_household_unique_code"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:enabled="false" />
 
             </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textView_household_head_id"
@@ -315,7 +312,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/house_head"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <EditText
                     android:id="@+id/editText_household_head_id"
@@ -325,10 +322,16 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textView_"
@@ -337,7 +340,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/last_24_death_histry"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <NumberPicker
                     android:id="@+id/numberpicker_death_number"
@@ -346,6 +349,40 @@
                     android:layout_gravity="center_horizontal"></NumberPicker>
 
             </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/members_number"
+                    android:textColor="@android:color/black"
+                    android:textSize="22sp" />
+
+                <NumberPicker
+                    android:id="@+id/numberpicker_member_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"></NumberPicker>
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -367,7 +404,6 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="Next"></Button>
-
 
             </LinearLayout>
 

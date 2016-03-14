@@ -25,6 +25,7 @@
 
     </LinearLayout>
 
+
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="fill_parent"
@@ -36,6 +37,24 @@
             android:layout_height="fill_parent"
             android:layout_margin="8dp"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/house_hold_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp"
+                    android:text="dsdsds"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -53,7 +72,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/editText_ward"
+                    android:id="@+id/editText_members_name"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content" />
 
@@ -83,7 +102,7 @@
 
 
                 <Spinner
-                    android:id="@+id/spinner_realation"
+                    android:id="@+id/spinner_realation_with_hh"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -108,7 +127,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/edittext_date_o_birth"
+                    android:id="@+id/edittext_date_of_birth"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Click to set the date"></EditText>
@@ -252,6 +271,81 @@
                 android:padding="5dp">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/smoking"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/spinner_smoking"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:entries="@array/survey_yes_no"
+                    android:focusable="false"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/bettle_nut_chewing"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/spinner_buttle_nut"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:entries="@array/survey_yes_no"
+                    android:focusable="false"
+                    android:spinnerMode="dropdown" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/swimming"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/spinner_swiming"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:entries="@array/survey_yes_no"
+                    android:focusable="false"
+                    android:spinnerMode="dropdown" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
                     android:id="@+id/textView_injury_last6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -273,10 +367,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linerar_how_injury"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="5dp"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/textView_how_many_injury_last"

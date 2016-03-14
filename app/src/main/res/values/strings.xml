@@ -13,6 +13,10 @@
     <string name="education">লেখাপড়া (সর্বোচ্চ শ্রেণী পাশ)</string>
     <string name="injury_last_six_month"> গত ৬ মাসে কখনো ইনজুরি হয়েছিল? (ইনজুরি নোটিফিকেশান ফর্মে -১ এ তথ্য লিপিবদ্ধ করুন)</string>
     <string name="injury_time_last_six"> যদি হ্যাঁ হয়, তাহলে কতবার ইনজুরি হয়েছিল?</string>
+    <string name="smoking">ধূমপান করেন কি না ?</string>
+    <string name="bettle_nut_chewing">পান খান কি না?</string>
+    <string name="swimming">সাঁতার কাটতে জানেন কি না?</string>
+
 
     <!--Form 1-->
     <string name="district_town">জেলা</string>
@@ -21,6 +25,7 @@
     <string name="village">গ্রাম</string>
     <string name="house_head"> খানা প্রধান</string>
     <string name="last_24_death_histry">গত ২৪ মাসে খানায় মৃতের সংখ্যা (কেউ মারা না গিয়ে থাকলে ০০ লিখুন):</string>
+    <string name="members_number">খানায় সদস্য সংখ্যা</string>
 
     <string name="hh_details_hd">Household and Socio-Economic Information</string>
 
@@ -43,7 +48,7 @@
         <item>3. Rural (Upazila)</item>
     </string-array>
 
-    <string-array name="survey_city">
+    <string-array name="survey_city_corp">
         <item>01. Dhaka</item>
         <item>02. Chittagong</item>
         <item>03. Rajshahi</item>
@@ -56,14 +61,23 @@
 
 
     <string-array name="survey_district_town">
-        <item>01. Dhaka</item>
-        <item>02. Chittagong</item>
-        <item>03. Rajshahi</item>
-        <item>04. Khulna</item>
-        <item>05. Barisal</item>
-        <item>06. Sylhet</item>
-        <item>07. Rangpur</item>
-        <item>08. Mymensing</item>
+        <item>02. Rajbari</item>
+        <item>03. Sherpur</item>
+        <item>04. Bagerhat</item>
+        <item>05. Jessore</item>
+        <item>07. Joypurhat</item>
+        <item>08. Pabna</item>
+        <item>11. Bhola</item>
+        <item>12. Chandpur</item>
+        <item>13. Khagrachari</item>
+        <item>14. Kurigram</item>
+        <item>15. Thakurgaon</item>
+        <item>16. Sirajgonj</item>
+        <item>17. Manikgonj</item>
+        <item>18. Jhenaidah</item>
+        <item>19. Habignj</item>
+        <item>20. Barguna</item>
+
     </string-array>
 
 
@@ -136,7 +150,7 @@
 
         <item>01. পুরুষ</item>
         <item>02. মহিলা</item>
-
+        <item>03. মহিলা</item>
     </string-array>
 
     <string-array name="survey_marital_status">
@@ -1395,6 +1409,8 @@
     <string name="Quality53">I am extremely anxious or depressed</string>
 
     <string name="test"></string>
+    <string name="ward">ওয়ার্ড/উপজেলা</string>
+    <string name="moholla">মহল্লা/গ্রাম</string>
     <string-array name="survey_sample">
         <item></item>
         <item></item>
