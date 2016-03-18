@@ -7,32 +7,35 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class InjuryBluntActivity extends AppCompatActivity implements View.OnClickListener {
+public class ViolenceInjuryActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private Spinner spinner_violence_why, spinner_violence_relation, spinner_sex, spinner_violence_object;
+
+    private TextView fall1, fall2, fall3, fall4, fall5, textView2, textView4, textView6;
     private Button button_cancel, button_next;
-    private TextView blunt1, blunt2, blunt3, textView2, textView4, textView6;
-    private Spinner sp_blunt1, sp_blunt2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_injury_blunt);
+        setContentView(R.layout.activity_voilence_injury);
 
-        blunt1 = (TextView) findViewById(R.id.blunt1);
-        blunt2 = (TextView) findViewById(R.id.blunt2);
-        blunt3 = (TextView) findViewById(R.id.blunt3);
-        textView2 = (TextView) findViewById(R.id.textView2);
-        textView4 = (TextView) findViewById(R.id.textView4);
-        textView6 = (TextView) findViewById(R.id.textView6);
 
-        sp_blunt1 = (Spinner) findViewById(R.id.sp_blunt1);
-        sp_blunt2 = (Spinner) findViewById(R.id.sp_blunt2);
+        spinner_violence_why = (Spinner) findViewById(R.id.spinner_violence_why);
+        spinner_violence_relation = (Spinner) findViewById(R.id.spinner_violence_relation);
+        spinner_sex = (Spinner) findViewById(R.id.spinner_sex);
+        spinner_violence_object = (Spinner) findViewById(R.id.spinner_violence_object);
+
+        button_next = (Button) findViewById(R.id.button_next);
+        button_cancel = (Button) findViewById(R.id.button_cancel);
+
 
         button_cancel = (Button) findViewById(R.id.button_cancel);
         button_next = (Button) findViewById(R.id.button_next);
 
         button_cancel.setOnClickListener(this);
         button_next.setOnClickListener(this);
+
 
     }
 
@@ -55,4 +58,3 @@ public class InjuryBluntActivity extends AppCompatActivity implements View.OnCli
 
     }
 }
-

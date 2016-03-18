@@ -67,7 +67,7 @@
                         android:textStyle="normal" />
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/socio12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -96,7 +96,7 @@
                         android:textStyle="normal" />
 
                     <TextView
-                        android:id="@+id/textView4"
+                        android:id="@+id/socio14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -142,7 +142,7 @@
                         android:textStyle="normal" />
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/socio21"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -171,7 +171,7 @@
                         android:textStyle="normal" />
 
                     <TextView
-                        android:id="@+id/textView8"
+                        android:id="@+id/socio22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -189,6 +189,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:id="@+id/socio3"
                 android:text="@string/socio3"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
@@ -203,6 +204,7 @@
 
 
                 <TextView
+                    android:id="@+id/socio31"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -216,11 +218,13 @@
                     android:orientation="vertical">
 
                     <RadioButton
+                        android:id="@+id/socio311"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio311" />
 
                     <RadioButton
+                        android:id="@+id/socio312"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio312" />
@@ -241,6 +245,7 @@
 
 
                 <TextView
+                    android:id="@+id/socio32"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -254,17 +259,19 @@
                     android:orientation="vertical">
 
                     <RadioButton
+                        android:id="@+id/socio321"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio321" />
 
                     <RadioButton
+                        android:id="@+id/socio322"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio322" />
 
                     <RadioButton
-
+                        android:id="@+id/socio323"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio323" />
@@ -286,6 +293,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/socio33"
                     android:text="@string/socio33"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -296,39 +304,43 @@
                     android:orientation="vertical">
 
                     <RadioButton
+                        android:id="@+id/socio331"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio331" />
 
                     <RadioButton
+                        android:id="@+id/socio332"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio332" />
 
                     <RadioButton
-
+                        android:id="@+id/socio333"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio333" />
 
                     <RadioButton
+                        android:id="@+id/socio334"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio334" />
 
                     <RadioButton
+                        android:id="@+id/socio335"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio335" />
 
                     <RadioButton
-
+                        android:id="@+id/socio336"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio336" />
 
                     <RadioButton
-
+                        android:id="@+id/socio337"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio337" />
@@ -341,6 +353,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:id="@+id/socio4"
                 android:text="@string/socio4"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
@@ -358,6 +371,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/socio41"
                     android:text="@string/socio41"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -368,6 +382,7 @@
                     android:orientation="vertical">
 
                     <RadioButton
+                        android:id="@+id/socio411"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio411" />
@@ -389,6 +404,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/socio42"
                     android:text="@string/socio42"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -399,11 +415,13 @@
                     android:orientation="vertical">
 
                     <RadioButton
+                        android:id="@+id/socio421"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio421" />
 
                     <RadioButton
+                        android:id="@+id/socio422"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio422" />
@@ -426,6 +444,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/socio43"
                     android:text="@string/socio43"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -436,27 +455,31 @@
                     android:orientation="vertical">
 
                     <RadioButton
+                        android:id="@+id/socio431"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio431" />
 
                     <RadioButton
+                        android:id="@+id/socio432"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio432" />
 
                     <RadioButton
-
+                        android:id="@+id/socio433"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio433" />
 
                     <RadioButton
+                        android:id="@+id/socio434"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio434" />
 
                     <RadioButton
+                        android:id="@+id/socio435"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio435" />
@@ -469,6 +492,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:id="@+id/socio5"
                 android:text="@string/socio5"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
@@ -486,6 +510,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/socio51"
                     android:text="@string/socio51"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -498,14 +523,17 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio511"
                         android:text="@string/socio511" />
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio512"
                         android:text="@string/socio512" />
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio513"
                         android:text="@string/socio513" />
 
                 </RadioGroup>
@@ -525,6 +553,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/socio52"
                     android:text="@string/socio52"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -535,20 +564,24 @@
                     android:orientation="vertical">
 
                     <RadioButton
+                        android:id="@+id/socio521"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio521" />
 
                     <RadioButton
+                        android:id="@+id/socio522"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio522" />
                     <RadioButton
+                        android:id="@+id/socio523"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio523" />
 
                     <RadioButton
+                        android:id="@+id/socio524"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio524" />
@@ -572,6 +605,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/socio53"
+                    android:id="@+id/socio53"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
@@ -583,31 +617,37 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio531"
                         android:text="@string/socio531" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio532"
                         android:text="@string/socio532" />
 
                     <RadioButton
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio533"
                         android:text="@string/socio533" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio534"
                         android:text="@string/socio534" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio535"
                         android:text="@string/socio535" />
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio536"
                         android:text="@string/socio536" />
 
                 </RadioGroup>
@@ -625,6 +665,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+
                 android:text="@string/socio6"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
@@ -645,7 +686,7 @@
                     android:textStyle="normal" />
 
                 <TextView
-                    android:id="@+id/textView62"
+                    android:id="@+id/socio61"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -662,6 +703,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:id="@+id/socio7"
                 android:text="@string/socio7"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
@@ -680,6 +722,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/socio71"
+                    android:id="@+id/socio71"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
@@ -691,20 +734,24 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio711"
                         android:text="@string/socio711" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio712"
                         android:text="@string/socio712" />
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio713"
                         android:text="@string/socio713" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio714"
                         android:text="@string/socio714" />
 
 
@@ -727,6 +774,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/socio72"
                     android:text="@string/socio72"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -739,11 +787,13 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio721"
                         android:text="@string/socio721" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio722"
                         android:text="@string/socio722" />
 
 
@@ -766,6 +816,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/socio73"
+                    android:id="@+id/socio73"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
@@ -777,42 +828,47 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio731"
                         android:text="@string/socio731" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio732"
                         android:text="@string/socio732" />
 
                     <RadioButton
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio733"
                         android:text="@string/socio733" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio734"
                         android:text="@string/socio734" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio735"
                         android:text="@string/socio735" />
 
                     <RadioButton
-
+                        android:id="@+id/socio736"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio736" />
 
                     <RadioButton
-
+                        android:id="@+id/socio737"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio737" />
                     <RadioButton
-
+                        android:id="@+id/socio738"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio738" />
@@ -826,6 +882,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:id="@+id/socio8"
                 android:text="@string/socio8"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
@@ -843,6 +900,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/socio81"
                     android:text="@string/socio81"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -853,25 +911,30 @@
                     android:orientation="vertical">
 
                     <RadioButton
+                        android:id="@+id/socio811"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio811" />
 
                     <RadioButton
+                        android:id="@+id/socio812"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio812" />
                     <RadioButton
+                        android:id="@+id/socio813"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio813" />
 
                     <RadioButton
+                        android:id="@+id/socio814"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio814" />
 
                     <RadioButton
+                        android:id="@+id/socio815"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio815" />
@@ -896,6 +959,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/socio83"
+                    android:id="@+id/socio83"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
@@ -905,6 +969,7 @@
                     android:orientation="vertical">
 
                     <RadioButton
+                        android:id="@+id/socio831"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio831" />
@@ -912,32 +977,36 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio832"
                         android:text="@string/socio832" />
 
                     <RadioButton
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio833"
                         android:text="@string/socio833" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio834"
                         android:text="@string/socio834" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio835"
                         android:text="@string/socio835" />
 
                     <RadioButton
-
+                        android:id="@+id/socio836"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio836" />
 
                     <RadioButton
-
+                        android:id="@+id/socio837"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/socio837" />
@@ -949,6 +1018,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:id="@+id/socio9"
                 android:text="@string/socio9"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
@@ -964,6 +1034,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/socio91"
                     android:text="@string/socio91"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -976,11 +1047,13 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio911"
                         android:text="@string/ha" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio912"
                         android:text="@string/na" />
 
 
@@ -999,6 +1072,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/socio92"
                     android:text="@string/socio92"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -1011,11 +1085,13 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio921"
                         android:text="@string/ha" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio922"
                         android:text="@string/na" />
 
 
@@ -1035,6 +1111,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/socio93"
+                    android:id="@+id/socio93"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
@@ -1044,11 +1121,13 @@
                     android:orientation="horizontal">
 
                     <RadioButton
+                        android:id="@+id/socio931"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/ha" />
 
                     <RadioButton
+                        android:id="@+id/socio932"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/na" />
@@ -1069,6 +1148,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/socio94"
                     android:text="@string/socio94"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -1081,11 +1161,13 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio941"
                         android:text="@string/ha" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio942"
                         android:text="@string/na" />
 
 
@@ -1103,6 +1185,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/socio95"
                     android:text="@string/socio95"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -1115,11 +1198,13 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio951"
                         android:text="@string/ha" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio952"
                         android:text="@string/na" />
 
 
@@ -1139,6 +1224,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/socio96"
+                    android:id="@+id/socio96"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
@@ -1150,11 +1236,13 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio961"
                         android:text="@string/ha" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio962"
                         android:text="@string/na" />
 
 
@@ -1173,6 +1261,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/socio98"
+                    android:id="@+id/socio98"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
@@ -1184,11 +1273,13 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio981"
                         android:text="@string/ha" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio982"
                         android:text="@string/na" />
 
 
@@ -1207,6 +1298,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/socio99"
                     android:text="@string/socio99"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -1219,11 +1311,13 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio991"
                         android:text="@string/ha" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio992"
                         android:text="@string/na" />
 
 
@@ -1241,6 +1335,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/socio100"
                     android:text="@string/socio101"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -1253,11 +1348,51 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio1001"
                         android:text="@string/ha" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio1002"
+                        android:text="@string/na" />
+
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:id="@+id/socio101"
+                    android:text="@string/socio101"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/socio1011"
+                        android:text="@string/ha" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/socio1012"
                         android:text="@string/na" />
 
 
@@ -1275,6 +1410,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/socio102"
                     android:text="@string/socio102"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -1287,11 +1423,13 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio1021"
                         android:text="@string/ha" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio1022"
                         android:text="@string/na" />
 
 
@@ -1310,6 +1448,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/socio103"
                     android:text="@string/socio103"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -1322,11 +1461,13 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio1031"
                         android:text="@string/ha" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio1032"
                         android:text="@string/na" />
 
 
@@ -1345,6 +1486,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/socio104"
                     android:text="@string/socio104"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -1357,11 +1499,13 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio1041"
                         android:text="@string/ha" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio1042"
                         android:text="@string/na" />
 
 
@@ -1381,6 +1525,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/socio105"
+                    android:id="@+id/socio105"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
@@ -1392,11 +1537,13 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio1051"
                         android:text="@string/ha" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio1052"
                         android:text="@string/na" />
 
 
@@ -1416,6 +1563,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/socio106"
+                    android:id="@+id/socio106"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
@@ -1427,11 +1575,13 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio1061"
                         android:text="@string/ha" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/socio1062"
                         android:text="@string/na" />
 
 
@@ -1456,7 +1606,7 @@
 
 
                 <Spinner
-                    android:id="@+id/sp_Drowning4"
+                    android:id="@+id/sp_socio1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -1465,7 +1615,32 @@
                     android:spinnerMode="dropdown" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="20dp">
 
+                <Button
+                    android:id="@+id/button_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Cancel">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/button_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Next">
+
+                </Button>
+
+            </LinearLayout>
 
 
         </LinearLayout>

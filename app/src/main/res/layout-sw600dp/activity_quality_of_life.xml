@@ -53,6 +53,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/Quality1"
+                    android:id="@+id/Quality1"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
@@ -60,15 +61,18 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/Quality11"
                     android:text="@string/Quality11"
                     />
 
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/Quality12"
                     android:text="@string/Quality12"
                     />
                 <CheckBox
+                    android:id="@+id/Quality13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Quality13"
@@ -91,6 +95,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/Quality2"
+                    android:id="@+id/Quality2"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
@@ -98,17 +103,20 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/Quality21"
                     android:text="@string/Quality21"
                     />
 
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/Quality22"
                     android:text="@string/Quality22"
                     />
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/Quality23"
                     android:text="@string/Quality23"
                     />
 
@@ -129,6 +137,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/Quality3"
                     android:text="@string/Quality3"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -137,17 +146,20 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/Quality31"
                     android:text="@string/Quality31"
                     />
 
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/Quality32"
                     android:text="@string/Quality32"
                     />
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/Quality33"
                     android:text="@string/Quality33"
                     />
 
@@ -168,6 +180,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/Quality4"
                     android:text="@string/Quality4"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -176,17 +189,20 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/Quality41"
                     android:text="@string/Quality41"
                     />
 
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/Quality42"
                     android:text="@string/Quality42"
                     />
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/Quality43"
                     android:text="@string/Quality43"
                     />
 
@@ -207,6 +223,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:id="@+id/Quality5"
                     android:text="@string/Quality5"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
@@ -215,24 +232,52 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/Quality51"
                     android:text="@string/Quality51"
                     />
 
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/Quality52"
                     android:text="@string/Quality52"
                     />
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/Quality53"
                     android:text="@string/Quality53"
                     />
 
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="20dp">
 
+                <Button
+                    android:id="@+id/button_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Cancel">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/button_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Next">
+
+                </Button>
+
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

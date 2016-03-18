@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,38 +13,35 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".HouseHoldInformationActivity"></activity>
-        <activity android:name=".SplashActivity">
+        <activity android:name=".SplashActivity"></activity>
 
-        </activity>
-        <activity android:name=".HouseHoldMemberDetailsActivity">
-
-        </activity>
-        <activity android:name=".DeathConfirmationActivity">
-
-
-        </activity>
-
-        <activity android:name=".InjuryMorbidityActivity">
-
-        </activity>
-
-        <activity android:name=".InjuryMortalityActivity">
-
-        </activity>
-        <activity android:name=".HomeActivity">
-
+        <activity
+            android:name=".HomeActivity"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
         </activity>
 
+
+        <activity android:name=".HouseHoldMemberDetailsActivity">
+
+        </activity>
+        <activity android:name=".DeathConfirmationActivity"></activity>
+
+        <activity android:name=".InjuryMorbidityActivity"></activity>
+
+        <activity android:name=".InjuryMortalityActivity"></activity>
+
+
         <activity android:name=".SuicideAttemptActivity">
+
         </activity>
-        <activity android:name=".RoadTransportInjuryActivity">
-        </activity>
+        <activity android:name=".RoadTransportInjuryActivity"></activity>
+        <activity android:name=".ViolenceInjuryActivity"></activity>
+
 
         <activity android:name=".BurnInjuryActivity">
 

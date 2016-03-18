@@ -42,25 +42,83 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/house_hold_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="6dp"
-                    android:text="dsdsds"
+                    android:text="House Unique ID"
                     android:textColor="@android:color/black"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/textView_interview_unique"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="INTEVIEWER UNIQUE "
+                    android:textColor="@android:color/black"
+                    android:textSize="22sp" />
+
+                <EditText
+                    android:id="@+id/editText_interviewer_unique"
+                    android:layout_width="145dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:maxLength="2" />
+            </RelativeLayout>
+
+            <LinearLayout
+
+                android:id="@+id/linear_responder"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/is_responder"
+                    android:textColor="@android:color/black"
+                    android:textSize="22sp" />
+
+                <CheckBox
+                    android:id="@+id/chkb_responder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="200dp"
+                    android:checked="false"></CheckBox>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textView_name"
@@ -69,27 +127,29 @@
                     android:layout_centerVertical="true"
                     android:text="@string/name"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <EditText
                     android:id="@+id/editText_members_name"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:inputType="text" />
 
-                android:id="@+id/spinner_realation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:entries="@array/survey_relation_to_hh"
-                android:focusable="false"
-                android:spinnerMode="dropdown" />
+
             </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textView_relation"
@@ -98,8 +158,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/relation_hh"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_realation_with_hh"
@@ -112,10 +171,16 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textView_dob"
@@ -124,44 +189,60 @@
                     android:gravity="center"
                     android:text="@string/date_of_birth"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <EditText
                     android:id="@+id/edittext_date_of_birth"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Click to set the date"></EditText>
+                    android:focusable="false"
+                    android:hint="Click to set birth date"></EditText>
 
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+
+            <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
-                    android:id="@+id/textView_current_age"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:layout_centerVertical="true"
                     android:text="@string/current_age"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <EditText
                     android:id="@+id/edittext_current_age"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Click to set the date"></EditText>
+                    android:layout_width="145dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:maxLength="3" />
+            </RelativeLayout>
 
-            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textView_sex"
@@ -170,7 +251,7 @@
                     android:gravity="center"
                     android:text="@string/sex"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_sex"
@@ -182,6 +263,12 @@
                     android:spinnerMode="dropdown" />
 
             </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -196,7 +283,7 @@
                     android:gravity="center"
                     android:text="@string/maritial_satus"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_marital_status"
@@ -211,31 +298,41 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
-                    android:id="@+id/textView_edu"
+                    android:id="@+id/textView_education"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:layout_centerVertical="true"
                     android:text="@string/education"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
-                <Spinner
-                    android:id="@+id/spinner_education"
-                    android:layout_width="match_parent"
+                <EditText
+                    android:id="@+id/editText_educatoin_level"
+                    android:layout_width="145dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:entries="@array/survey_occupation"
-                    android:focusable="false"
-                    android:spinnerMode="dropdown" />
+                    android:layout_alignParentRight="true"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:maxLength="2" />
+            </RelativeLayout>
 
+            <LinearLayout
 
-            </LinearLayout>
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -250,7 +347,7 @@
                     android:gravity="center"
                     android:text="@string/occupasion"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_occupasion"
@@ -265,6 +362,12 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -276,7 +379,7 @@
                     android:gravity="center"
                     android:text="@string/smoking"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_smoking"
@@ -287,6 +390,12 @@
                     android:focusable="false"
                     android:spinnerMode="dropdown" />
             </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
 
 
             <LinearLayout
@@ -301,7 +410,7 @@
                     android:gravity="center"
                     android:text="@string/bettle_nut_chewing"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_buttle_nut"
@@ -315,6 +424,12 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -326,7 +441,7 @@
                     android:gravity="center"
                     android:text="@string/swimming"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_swiming"
@@ -338,6 +453,12 @@
                     android:spinnerMode="dropdown" />
 
             </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -352,7 +473,7 @@
                     android:gravity="center"
                     android:text="@string/injury_last_six_month"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_injury_last_six"
@@ -362,39 +483,47 @@
                     android:entries="@array/survey_yes_no"
                     android:focusable="false"
                     android:spinnerMode="dropdown" />
-
-
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <RelativeLayout
                 android:id="@+id/linerar_how_injury"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="5dp"
+                android:padding="20dp"
                 android:visibility="gone">
 
                 <TextView
                     android:id="@+id/textView_how_many_injury_last"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:layout_alignParentLeft="true"
                     android:text="@string/injury_time_last_six"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
-                <Spinner
-                    android:id="@+id/spinner_how_many_injury_last_six"
-                    android:layout_width="match_parent"
+                <EditText
+                    android:id="@+id/edittext_how_many_injury_last_six"
+                    android:layout_width="145dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:entries="@array/survey_marital_status"
-                    android:focusable="false"
-                    android:spinnerMode="dropdown" />
+                    android:layout_alignParentRight="true"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:maxLength="3" />
+
+            </RelativeLayout>
 
 
-            </LinearLayout>
+            <LinearLayout
 
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -416,7 +545,6 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="Next"></Button>
-
 
             </LinearLayout>
         </LinearLayout>

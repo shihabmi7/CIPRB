@@ -7,8 +7,9 @@
     <string name="current_age">বর্তমানে বয়স</string>
     <string name="sex">লিঙ্গ</string>
 
-    ইনিজুরি জনিত অসুস্থ্য ব্যাক্তির লিঙ্গ
+
     <string name="maritial_satus">বৈবাহিক অবস্থা</string>
+    <string name="is_responder">আপনি কি উত্তর দাতা?</string>
     <string name="occupasion"> প্রধান পেশা</string>
     <string name="education">লেখাপড়া (সর্বোচ্চ শ্রেণী পাশ)</string>
     <string name="injury_last_six_month"> গত ৬ মাসে কখনো ইনজুরি হয়েছিল? (ইনজুরি নোটিফিকেশান ফর্মে -১ এ তথ্য লিপিবদ্ধ করুন)</string>
@@ -26,7 +27,6 @@
     <string name="house_head"> খানা প্রধান</string>
     <string name="last_24_death_histry">গত ২৪ মাসে খানায় মৃতের সংখ্যা (কেউ মারা না গিয়ে থাকলে ০০ লিখুন):</string>
     <string name="members_number">খানায় সদস্য সংখ্যা</string>
-
     <string name="hh_details_hd">Household and Socio-Economic Information</string>
 
     <!--// form 3-->
@@ -47,7 +47,6 @@
         <item>2. District Town</item>
         <item>3. Rural (Upazila)</item>
     </string-array>
-
     <string-array name="survey_city_corp">
         <item>01. Dhaka</item>
         <item>02. Chittagong</item>
@@ -58,8 +57,6 @@
         <item>07. Rangpur</item>
         <item>08. Mymensing</item>
     </string-array>
-
-
     <string-array name="survey_district_town">
         <item>02. Rajbari</item>
         <item>03. Sherpur</item>
@@ -77,11 +74,10 @@
         <item>18. Jhenaidah</item>
         <item>19. Habignj</item>
         <item>20. Barguna</item>
-
     </string-array>
 
-
     <string-array name="survey_district_rural">
+
         <item>01. Dhaka</item>
         <item>02. Rajbari</item>
         <item>03. Sherpur</item>
@@ -98,8 +94,9 @@
         <item>14. Kurigram</item>
         <item>15. Thakurgaon</item>
         <item>16. Sirajgonj</item>
-    </string-array>
 
+
+    </string-array>
     <string-array name="survey_upozila">
         <item>01. Dhamrai</item>
         <item>02. Baliakandi</item>
@@ -120,9 +117,7 @@
 
 
     </string-array>
-
     <string-array name="survey_relation_to_hh">
-
 
         <item>01. নিজ (খানা প্রধান)</item>
         <item>02. বাবা</item>
@@ -142,17 +137,12 @@
         <item>16. ভাতৃ/ভগ্নী-পুত্র/কন্যা</item>
         <item>16.  অন্যান্য</item>
 
-
     </string-array>
-
     <string-array name="survey_sex">
-
-
         <item>01. পুরুষ</item>
         <item>02. মহিলা</item>
-        <item>03. মহিলা</item>
+        <item>03. অন্যান্য</item>
     </string-array>
-
     <string-array name="survey_marital_status">
 
         <item>01. বিবাহিত</item>
@@ -162,7 +152,6 @@
         <item>05. বিচ্ছিন্ন/ আলাদা</item>
 
     </string-array>
-
     <string-array name="survey_yes_no">
 
         <item>01. হ্যাঁ</item>
@@ -170,8 +159,6 @@
 
 
     </string-array>
-
-
     <string-array name="survey_occupation">
 
         <item>01. কৃষিকাজ</item>
@@ -191,7 +178,6 @@
         <item>15. প্রযোজ্য নয় </item>
 
     </string-array>
-
     <string-array name="survey_death_loc">
 
         <item>01. নিজ বাড়ি</item>
@@ -202,7 +188,6 @@
 
 
     </string-array>
-
     <string-array name="survey_death_symptoms">
 
         <item>01. নিজ বাড়ি</item>
@@ -263,7 +248,7 @@
     <string name="injury_external_cause">উচ্চ রক্তচাপ</string>
 
     <string name="injured_person_sex">ইনিজুরি জনিত অসুস্থ্য ব্যাক্তির লিঙ্গ</string>
-
+    <string name="injured_person_name">ব্যক্তির নাম </string>
     <string name="causes_of_injury">কিভাবে ইনিজুরি হয়েছিল?</string>
     <string name="date_of_injury">কত তারিখে ইনিজুরি ঘটেছিল?</string>
     <string name="time_of_injury">কখন ইনিজুরি ঘটেছিল?</string>
@@ -296,22 +281,21 @@
 
 
     <string-array name="survey_cause_of_injury">
-        <item>01. আত্নহত্যা-</item>
-        <item>02. সড়ক দূঘ©টনা</item>
-        <item>03. সহিংসতা</item>
-        <item>04. পড়ে যাওয়া</item>
-        <item>05. ধারালো বস্তদ্বারা কেটে যাওয়া</item>
-        <item>06. পুড়ে যাওয়া</item>
-        <item>07. ডুবে যাওয়া</item>
-        <item>08. দূঘ©টনাজনিত বিষপান-দূঘ©টনা</item>
-        <item>09. মেশিন/যন্ত্রপাতির আঘাত-দূঘ©টনা</item>
+        <item>1. আত্নহত্যা-</item>
+        <item>2. সড়ক দূঘ©টনা</item>
+        <item>3. সহিংসতা</item>
+        <item>4. পড়ে যাওয়া</item>
+        <item>5. ধারালো বস্তদ্বারা কেটে যাওয়া</item>
+        <item>6. পুড়ে যাওয়া</item>
+        <item>7. ডুবে যাওয়া</item>
+        <item>8. দূঘ©টনাজনিত বিষপান-দূঘ©টনা</item>
+        <item>9. মেশিন/যন্ত্রপাতির আঘাত-দূঘ©টনা</item>
         <item>10. বিদ্যুৎস্পৃষ্ট-দূঘ©টনা</item>
         <item>11. প্রাণী ও কীট পতঙ্গের কামড় /আঘাত</item>
         <item>12. ভোঁতা বস্তুর আঘাত</item>
         <item>13. দূঘ©টনাজনিত শ্বাসর</item>
         <item>97. অন্যান্য (উল্লেখ করুন)</item>
         <item>99. জানা নেই</item>
-
     </string-array>
     <string-array name="survey_place_of_injury">
         <item>01. শোয়ার ঘর</item>
@@ -364,8 +348,6 @@
         <item>9.  জানা নেই</item>
 
     </string-array>
-
-
     <string-array name="test72as">
         <item>1. মেজেতে</item>
         <item>2. খাট/চৌকির নিচে</item>
@@ -377,7 +359,6 @@
         <item>8. মাচায় ঝুলন্ত অবস্থায়</item>
         <item>9. অন্যান্য (উল্লেখ করুন) </item>
     </string-array>
-
     <string-array name="survey_who_gave_first_aid">
         <item>A. মা</item>
         <item>B. বাবা</item>
@@ -549,7 +530,9 @@
         <item>3. অন্যের বাড়ী </item>
         <item>4. সড়ক/জনপথ </item>
         <item>5. জলাশয় </item>
-        <item>6. অন্যান্য </item>
+        <item>6. গাছ </item>
+        <item>7. রেল লাইন </item>
+        <item>9. অন্যান্য </item>
 
     </string-array>
     <string-array name="survey_suicide_how">
@@ -558,9 +541,11 @@
         <item>3. পানিতে ডুবা </item>
         <item>4. পুড়ে যাওয়া  </item>
         <item>5. রক্তক্ষরণ </item>
-        <item>6. গুলিবিদ্ধ হওয়া  </item>
-        <item>7. অন্যান্য   </item>
-        <item>8. জানা নেই </item>
+        <item>6. উপর থেকে লাফ দেওয়া</item>
+        <item>7. গুলিবিদ্ধ হওয়া  </item>
+        <item>8. ঘুমের বড়ি খাওয়ার মাধ্যমে </item>
+        <item>97. অন্যান্য   </item>
+        <item>99. জানা নেই </item>
     </string-array>
     <string-array name="survey_suicide_type">
 
@@ -573,37 +558,100 @@
         <item>7. কেরোসিন    </item>
         <item>8. স্যাভলন / ডেটল </item>
         <item>9. হারপিক </item>
+        <item>10. ব্লিচিং পাউডার </item>
+        <item>11. চুন </item>
+        <item>12. এসিড </item>
         <item>97. অন্যান্য (উল্লেখ করুন)  /  </item>
         <item>99.  জানা নেই  /  </item>
 
     </string-array>
+
+    <string name="violence_hd">সহিংসতার তথ্যা</string>
+    <string name="violence_event_occur">কি কারনে সহিংসতা ঘটেছিল?</string>
+    <string name="violence_relation">আক্রমনকারীর সাথে ঘটনার শিকার ব্যক্তির সম্পক© কি?</string>
+    <string name="violence_sex">আক্রমনকারীর লিঙ্গ কি?  </string>
+    <string name="violence_object">কি দিয়ে আগাত করেছিল? </string>
+
+
+    <string-array name="survey_violence_event_occur">
+
+        <item>1. ঝগড়া/মারামারি  </item>
+        <item>2. ডাকাতি/ছিনতাই </item>
+        <item>3.  সংগবদ্ধ সহিংসতা/সন্ত্রাস </item>
+        <item>4.  অন্যান্য     </item>
+        <item>9.  জানা নেই    </item>
+
+    </string-array>
+
+
+    <string-array name="survey_violence_relation">
+        <item>1. স্বামী/স্ত্রী  </item>
+        <item>2. বাবা </item>
+        <item>3. মা </item>
+        <item>4. সন্তান</item>
+        <item>5. ভাই/বোন</item>
+        <item>6. দাদা/দাদী,নানা/নাদী </item>
+        <item>7. অন্যান্য আত্নীয় </item>
+        <item>8. বন্ধু/সমবয়সী  </item>
+        <item>9. সহকমী©   </item>
+        <item>10. পরিচিত (অনাত্নীয়)   </item>
+        <item>11. অপিরিচিত </item>
+        <item>97. অন্যান্য  </item>
+        <item>99. জানা নেই </item>
+    </string-array>
+    <string-array name="survey_violence_sex">
+        <item>1. হাসপাতালে </item>
+        <item>2. নিজবাড়ীতে</item>
+        <item>3. রাস্তায়</item>
+        <item>4. বাড়ীতে নেওয়ার পথে </item>
+        <item>5. হাসপাতালে নেওয়ার পথে</item>
+        <item>9. অন্যান্য (উল্লেখ করুন)</item>
+    </string-array>
+
+    <string-array name="survey_violence_object">
+        <item>1. লাঠি </item>
+        <item>2. ছুরি /ধারালো অস্ত্র </item>
+        <item>3. আগুন</item>
+        <item>4. বন্দক/ অন্যান্য আগ্নেয়াস্ত্র</item>
+        <item>5. এসিড       </item>
+        <item>6. শরীরের অংশ যেমন মুষ্টি, পা  </item>
+        <item>7. বল্লম/টেটা</item>
+        <item>97. অন্যান্য </item>
+        <item>97. জানা নেই </item>
+    </string-array>
+
 
     <string name="transport_injury">পরিবহন দূঘ©টনা</string>
 
     <string name="transport_travel">দুর্ঘটনার সময় ব্যক্তিটি কিভাবে ভ্রমন করছিল?</string>
     <string name="transport_street_doing_what">ব্যক্তিটি রাস্তায় কি করছিল?</string>
     <string name="transport_collide_partile">কিসের সাথে আহত ব্যক্তির বা তার বাহনের সংঘর্ষ হয়?</string>
-
     <string name="transport_why_victim_on_road">ব্যক্তিটি রাস্তায় কেন গিয়েছিল?</string>
     <string name="transport_any_safety_device">ব্যক্তিটি নিরাপত্তার জন্য কোন কিছু ব্যবহার করেছিল?</string>
     <string name="transport_if_yes_safety_device">যদি হ্যাঁ হয়, তাহলে কিব্যবহার করেছিল?</string>
     <string name="transport_condition_of_road">রাস্তার অবস্থা কেমন ছিল?</string>
     <string name="transport_alcohol_mood_altering_substance">ব্যক্তিটি কি মাদকদ্রব্য সেবন করেছিল?</string>
+    <string name="talking_over_mobile">চালক কি মোবাইল ফোনে কথা বলছিল?</string>
+
+
     <string-array name="survey_transport_travel">
         <item>01. পায়ে হেঁটে </item>
         <item>02. সাইকেল   </item>
         <item>03. রিক্সা/ভ্যান  </item>
         <item>04. মটর সাইকেল   </item>
         <item>05. মটর কার  </item>
-        <item>06. অটো-রিক্সা /টেম্পু/পিক-আপ/ জিপ    </item>
-        <item>07. গাড়ী/মাইক্রোবা   </item>
-        <item>08. নসিমন    </item>
-        <item>09. ট্রাক  </item>
-        <item>10. বাস/ মিনিবাস  </item>
-        <item>11. ট্রেন   </item>
-        <item>12. নৌকা   </item>
-        <item>13. ফেরী   </item>
-        <item>14. স্টীমার/লঞ্চ  </item>
+        <item>06. অটো-রিক্সা /টেম্পু/পিক-আপ/ জিপ/গাড়ী/মাইক্রোবা    </item>
+        <item>07. নসিমন </item>
+        <item>08. ট্রাক   </item>
+        <item>09. বাস/ মিনিবাস </item>
+        <item>10. ট্রেন  </item>
+        <item>11. নৌকা      </item>
+        <item>12. ফেরী  </item>
+        <item>13. স্টীমার/লঞ্চ </item>
+        <item>14. স্পীড বোট </item>
+        <item>15. গরু মহিষের গাড়ী</item>
+        <item>16. ঘোড়া</item>
+        <item>14.   </item>
         <item>97. অন্যান্য   </item>
         <item>99. জানা নেই    </item>
     </string-array>
@@ -614,9 +662,10 @@
         <item>4. মটর সা্কেল চালাচ্ছিল  </item>
         <item>5. হেলপার/কন্টাক্টর </item>
         <item>6. যাত্রী   </item>
-        <item>7. রাস্তায় খেলা   </item>
-        <item>8. অন্যান্য (উল্লেখ করুন)  </item>
-        <item>9. জানা নেই </item>
+        <item>7. রাস্তায় কাজ করছিল  </item>
+        <item>8. রাস্তায় খেলা   </item>
+        <item>97. অন্যান্য (উল্লেখ করুন)  </item>
+        <item>99. জানা নেই </item>
     </string-array>
     <string-array name="survey_transport_collide_partile">
 
@@ -656,17 +705,20 @@
 
         <item>01. বেল্ট</item>
         <item>02. হ্যালমেট</item>
-        <item>03. অন্যান্য (উল্লেখ করুন)</item>
-        <item>04. জানা নেই</item>
+        <item>03. লাইফ জ্যাকেট </item>
+        <item>97. অন্যান্য (উল্লেখ করুন)</item>
+        <item>99. জানা নেই</item>
 
     </string-array>
     <string-array name="survey_transport_condition_of_road">
 
-        <item>01. ত্রুটিপূণ ©রাস্তায় নক্সা</item>
-        <item>02. ভাঙ্গাচোরা রাস্তা </item>
-        <item>03. দেখার অসুবিধা (ঝড়-বৃষ্টি,কুয়াশা, কম আলো - ভোর বা সন্ধা, কোন কিছুর বাধা </item>
-        <item>04. অন্যান্য (উল্লেখ করুন) </item>
-        <item>05. জানা নেই</item>
+
+        <item>01. ভাল অবস্থা</item>
+        <item>02. ত্রুটিপূণ ©রাস্তায় নক্সা</item>
+        <item>03. ভাঙ্গাচোরা রাস্তা </item>
+        <item>04. দেখার অসুবিধা (ঝড়-বৃষ্টি,কুয়াশা, কম আলো - ভোর বা সন্ধা, কোন কিছুর বাধা </item>
+        <item>97. অন্যান্য (উল্লেখ করুন) </item>
+        <item>99. জানা নেই</item>
 
     </string-array>
 
@@ -677,22 +729,36 @@
     <string name="fall3">03.একই স্তর থেকে  পড়ে যাওয়ার স্থানটি কোথায় ছিল?</string>
     <string name="fall4">04.কি ভাবে উঁচু স্তর থেকে পড়ে গিয়েছিল? </string>
     <string name="fall5">05.কোনউঁচু স্তর থেকে পড়ে গিয়েছিল? </string>
+    <string name="fall06">06. সমতল থেকে নিচে পরে গেলে কোথায় ?</string>
+
     <string name="fall6"> খানার নম্বর :</string>
     <string name="fall7">আক্রান্ত ব্যক্তির নাম :</string>
     <string name="fall8">আক্রান্ত ব্যক্তির ব্যক্তিগত ইউনিক কোড/আইডি : </string>
 
     <string-array name="fall1">
-        <item>1.একই স্তর থেকে </item>
-        <item>2.উচুঁ স্তর থেকে</item>
+        <item>1. একই স্তর থেকে </item>
+        <item>2. উচুঁ স্তর থেকে</item>
+        <item>3. সমতল থেকে নিচে</item>
+
 
     </string-array>
 
+
     <string-array name="fall2">
-        <item>1.হোঁচট খেয়ে </item>
-        <item>2.পিছলে বা কোন কিছুতে পা আটকে গিয়ে </item>
-        <item>3.ধাক্কা খেয়ে </item>
-        <item>4.অন্যান্য (উল্লেখ করুন) </item>
-        <item>9.জানা নেই </item>
+        <item>1. হোঁচট খেয়ে </item>
+        <item>2. পিছলে বা কোন কিছুতে পা আটকে গিয়ে </item>
+        <item>3. অন্য কারো ধাক্কা খেয়ে  </item>
+        <item>4. অন্যান্য (উল্লেখ করুন) </item>
+        <item>9. জানা নেই </item>
+
+    </string-array>
+
+    <string-array name="fall06">
+        <item>1. মাটির গর্তে</item>
+        <item>2. জলাশয়ে</item>
+        <item>3. নদী /খালের পার হতে </item>
+        <item>4. পানির ড্রেনে </item>
+        <item>5. পানির সেফটি ট্যাংক </item>
 
     </string-array>
 
@@ -704,20 +770,21 @@
         <item>5.রাস্তা </item>
         <item>6.কর্মস্থল</item>
         <item>7.খেলাধুলার মাঠ</item>
-        <item>8.অন্যান্য (উল্লেখ করুন)</item>
-        <item>9.জানা নেই</item>
-
+        <item>97.অন্যান্য (উল্লেখ করুন)</item>
+        <item>99.জানা নেই</item>
 
     </string-array>
+
     <string-array name="fall4">
-        <item>1.দুর্ঘটনাক্রমে পড়ে গিয়ে</item>
-        <item>2.লাফ দিয়ে </item>
-        <item>3.ধাক্কা খেয়ে</item>
-        <item>4.অন্যান্য (উল্লেখ করুন)</item>
-        <item>9.জানা নেই</item>
 
+        <item>1. দুর্ঘটনাক্রমে পড়ে গিয়ে</item>
+        <item>2. লাফ দিয়ে </item>
+        <item>3. অন্য কারো সাথে ধাক্কা খেয়ে </item>
+        <item>97. অন্যান্য (উল্লেখ করুন)</item>
+        <item>99. জানা নেই</item>
 
     </string-array>
+
     <string-array name="fall5">
         <item>1.সিঁড়ি</item>
         <item>2.গাছ</item>
@@ -737,22 +804,31 @@
 
 
     <string-array name="cut1">
+
         <item>1.ছুরি </item>
         <item>2.দা/বটি </item>
         <item>3.কাস্তে</item>
         <item>4.কাঁচি </item>
         <item>5.কোদাল </item>
-        <item>6.কাঁচভাঙ্গা </item>
-        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+        <item>6.  টিন </item>
+        <item>7.  শাবল/খুন্তি </item>
+        <item>8.   শামুক</item>
+        <item>9.  লাঙ্গলের ফলা</item>
+        <item>10. পেরেক/তারকাটা </item>
+        <item>11.  ব্লেড</item>
+        <item>12. গাছের কাটা</item>
+        <item>13.কাঁচভাঙ্গা </item>
+        <item>97.অন্যান্য (উল্লেখ করুন)</item>
     </string-array>
 
     <string-array name="cut2">
-        <item>1.কৃষি কাজ </item>
-        <item>2.গৃহস্থালি </item>
-        <item>3.কাঁঅিন্যের দ্বারা</item>
-        <item>4.খেলা </item>
-        <item>5.বস্তুটির ওপরে পড়ে গিয়েছিল </item>
-        <item>9.অন্যান্য (উল্লেখ করুন) </item>
+        <item>1. কৃষিকাজ/কৃষি যন্ত্র দিয়ে কাজ করার সময়</item>
+        <item>2. গৃহস্থালি </item>
+        <item>3. কাঁঅিন্যের দ্বারা</item>
+        <item>4. খেলা </item>
+        <item>5. অন্য কোন কাজ করার সময় </item>
+        <item>6. বস্তুটির ওপরে পড়ে গিয়েছিল </item>
+        <item>97. অন্যান্য (উল্লেখ করুন) </item>
     </string-array>
 
 
@@ -765,10 +841,11 @@
         <item>6.স্টোর রুম/গুদাম ঘর </item>
         <item>7.এক কক্ষ বিশিষ্ট ঘর</item>
         <item>8.বারান্দা</item>
+        <item>9.ঘরের বাহিরে</item>
         <item>9.অন্যান্য (উল্লেখ করুন) </item>
 
-
     </string-array>
+
     <string name="Burn1">01.কি দ্বারা ব্যক্তিটি পুড়ে গিয়েছিল?</string>
     <string name="Burn2">02.যদি অগ্নি শিখা হয়, অগ্নি শিখার উৎস কি ছিল?</string>
     <string name="Burn3">03.যদি উত্তপ্ত তরল হয়, তরল পদাথ©টি কি ছিল  ?</string>
@@ -777,6 +854,8 @@
     <string name="Burn6">06.যদি রাসায়নিক পদাথে© পুড়ে থাকে, তবে পদাথ©টি কি ?</string>
     <string name="Burn7">07.সে সময় পুড়ে যাওয়া ব্যক্তিটি কি করছিল ?</string>
     <string-array name="Burn1">
+
+
         <item>1.অগ্নিশিখা </item>
         <item>2.উত্তপ্ত তরল </item>
         <item>3.উত্তপ্ত বস্তু</item>
@@ -788,13 +867,16 @@
     </string-array>
 
     <string-array name="Burn2">
-        <item>1.রান্নার আগুন (গ্যাস ব্যতিত)</item>
-        <item>2.রান্নার আগুন (গ্যাস)</item>
+
+
+        <item>1.রান্নার আগুন</item>
+        <item>2.গ্যাসের আগুন</item>
         <item>3.আগুনে পোহানো</item>
         <item>4.কম©স্থলে আগুন লেগে</item>
         <item>5.বাড়ীতে আগুন লেগে</item>
         <item>6.কুপি/হারিকেন</item>
         <item>7.বিদ্যু</item>
+        <item>8.মোমের আগুন</item>
         <item>9.অন্যান্য (উল্লেখ করুন)</item>
 
 
@@ -852,32 +934,31 @@
     <string name="Drowning4">04.জল ধারাটি কি ঢাকা ছিল ?</string>
     <string name="Drowning5">05.জলাশয়টি কি কাজে ব্যবহার হয়?</string>
     <string name="Drowning6">06.যদি বাড়ীর বাইরে হয় তবে জলাশয়টির চারিদিক কি ঘেরা ছিল?</string>
-    <string name="Drowning7">07.ডুবে যাওয়ার আগে ব্যক্তিটি কি করছিল?</string>
+    <string name="Drowning7">07. ডুবে যাওয়ার আগে ব্যক্তিটি কি করছিল?</string>
     <string name="Drowning8">08.ব্যক্তিটি কি সাঁতার কাটতে জানতো? </string>
     <string name="Drowning9">09.ঘটনার পূব© মুহুতে© তার সঙ্গে কে ছিল ?</string>
     <string name="Drowning10">10.সঙ্গীর বয়স কত ছিল? (বছরে) </string>
     <string name="Drowning11">11.সে সময় মা/ পরিচযা©কারী কি করছিলেন ?</string>
     <string name="Drowning12">12.কেউ কি তাকে পানি থেকে উদ্ধার করেছিল?</string>
     <string name="Drowning13">13.কে তাকে উদ্ধার করেছিল?</string>
-    <string name="Drowning14">14.পানিতে ডুবা থেকে  উদ্ধার করার পর রুগীর সাথে কে ছিল?</string>
+    <string name="Drowning14">14.পানিতে ডুবা থেকে উদ্ধার করার পর তাকে কি করা হয়েছিল ?  </string>
     <string name="Drowning15">15.আপনার মতে,কি করলে শিশুদের পানিতে ডুবে যাওয়া থেকে রক্ষা করা যায়?</string>
 
     <string-array name="Drowning1">
-        <item>01.কক্ষেরমধ্যে</item>
-        <item>02.বালতি</item>
-        <item>03.ড্রাম</item>
-        <item>04.চারি </item>
-        <item>05.পারনর ট্যাংক/হাউজ</item>
-        <item>06.কক্ষের বা্রে </item>
-        <item>07.পুকুর</item>
-        <item>08.ডোবা</item>
-        <item>10.কুয়া (কূপ)</item>
-        <item>11.চারি</item>
-        <item>12.খাল</item>
-        <item>13.নদী</item>
-        <item>14.সমুদ্র</item>
-        <item>97.পানির ট্যাঙ্ক/হাউজ</item>
-        <item>09.অন্যান্য (উল্লেখ করুন)</item>
+
+        <item>01. কক্ষের মধ্যে বালতি</item>
+        <item>02. কক্ষের মধ্যে ড্রাম</item>
+        <item>03. কক্ষের মধ্যে চারি </item>
+        <item>04. কক্ষের মধ্যে পারনর ট্যাংক/হাউজ</item>
+        <item>05. পুকুর</item>
+        <item>06. ডোবা</item>
+        <item>07. কুয়া (কূপ)</item>
+        <item>08. চারি</item>
+        <item>09. খাল</item>
+        <item>10. নদী</item>
+        <item>11. সমুদ্র</item>
+        <item>12. পানির ট্যাঙ্ক/হাউজ</item>
+        <item>97. অন্যান্য</item>
 
 
     </string-array>
@@ -953,8 +1034,6 @@
         <item>X.জানা নেই</item>
 
     </string-array>
-
-
     <string-array name="Drowning11">
         <item>1.গৃহকম© করছিলেন </item>
         <item>2.অন্যদের সঙ্গে গল্প করছিলেন</item>
@@ -1015,13 +1094,14 @@
     </string-array>
 
 
-    <string name="poisoning1">01.বিষের ধরিন কি ছিল?</string>
-    <string name="poisoning2">02.কি ধরনের পাত্রে বিষ রাখা হয়েছিল?</string>
-    <string name="poisoning3">03.পাত্রটি কি প্রকৃত না অন্য ছিল?</string>
-    <string name="poisoning4">04.যদি অন্য পাত্র হয় তবে কি সেটা লেবেল করা ছিল?</string>
-    <string name="poisoning5">05.যদি বোতল হয় তবে পাত্রের মুখ বন্ধ ছিল কি?</string>
-    <string name="poisoning6">06.পাত্রটি কোথায় রাখা হছিল ? (স্থান)</string>
-    <string name="poisoning7">07.পাত্রটি কি অবস্থায় ছিল ?</string>
+    <string name="poisoning1">01. বিষের ধরিন কি ছিল?</string>
+    <string name="poisoning2">02. কি ধরনের পাত্রে বিষ রাখা হয়েছিল?</string>
+    <string name="poisoning3">03. পাত্রটি কি প্রকৃত না অন্য ছিল?</string>
+    <string name="poisoning4">04. যদি অন্য পাত্র হয় তবে কি সেটা লেবেল করা ছিল?</string>
+    <string name="poisoning5">05. যদি বোতল হয় তবে পাত্রের মুখ বন্ধ ছিল কি?</string>
+    <string name="poisoning6">06. পাত্রটি কোথায় রাখা হছিল ? (স্থান)</string>
+    <string name="poisoning7">07. পাত্রটি কি অবস্থায় ছিল ?</string>
+    <string name="poisoning8">08. ঘটনা ঘটার/বিষক্রিয়ার স্থান কোথায় ছিল?</string>
 
 
     <string-array name="poisoning1">
@@ -1087,18 +1167,29 @@
         <item>2.তালা বদ্ধ অবস্থায় </item>
     </string-array>
 
+    <string-array name="poisoning8">
+        <item>1. ঘরের ভিতর</item>
+        <item>2. উঠানে     </item>
+        <item>3. শস্য ক্ষেতে   </item>
+        <item>99. জানা নেই     </item>
+    </string-array>
 
-    <string name="machine1">01.এটা কি ধরনের মেশিন ছিল?</string>
-    <string name="machine2">02.কৃষি মেশিন হলে, কি ধরনের মেশিন ছিল?</string>
-    <string name="machine3">03.শিল্প কারখানার মেশিন হলে, এটা কি ধরনের মেশিন ছিল?</string>
-    <string name="machine4">04.এটা কি ধরনেরনিমা©ন কাজে ব্যবহৃত মেশিন ছিল?</string>
+    <string name="machine1">01. এটা কি ধরনের মেশিন ছিল?</string>
+    <string name="machine2">02. কৃষি মেশিন হলে, কি ধরনের মেশিন ছিল?</string>
+    <string name="machine3">03. শিল্প কারখানার মেশিন হলে, এটা কি ধরনের মেশিন ছিল?</string>
+    <string name="machine4">04. এটা কি ধরনেরনিমা©ন কাজে ব্যবহৃত মেশিন ছিল?</string>
+    <string name="machine5">05. যানবাহনের ইঞ্জিন -?</string>
+    <string name="machine6">06. ইনজুরি ঘটার সময় ব্যক্তিটি কি করছিল ?</string>
 
 
     <string-array name="machine1">
-        <item>1.কৃষি কাজে ব্যবহৃত মেশিন </item>
-        <item>2.শিল্প/কারখানায় ব্যবহৃত মেশিন</item>
-        <item>3.নিমা©ণ কাজেব্যবহৃত মেশিন</item>
-        <item>4.অন্যান্য (উল্লেখ করুন)</item>
+        <item>1. কৃষি কাজে ব্যবহৃত মেশিন </item>
+        <item>2. শিল্প/কারখানায় ব্যবহৃত মেশিন</item>
+
+        <item>3. নিমা©ণ কাজেব্যবহৃত মেশিন</item>
+        <item>4. যানবাহনের ইঞ্জিন/ মেশিন</item>
+
+        <item>97. অন্যান্য (উল্লেখ করুন)</item>
 
 
     </string-array>
@@ -1128,19 +1219,36 @@
     </string-array>
 
     <string-array name="machine4">
-        <item>1.মিক্সচার মেশিন </item>
-        <item>2.ভাইব্রেটর </item>
-        <item>3.মোজাইক/টাইলস কাটার</item>
-        <item>4.ক্রেন </item>
-        <item>মাটি কাটার যন্ত্র</item>
-        <item>অন্যান্য (উল্লেখ করুন)</item>
+        <item>1. মিক্সচার মেশিন </item>
+        <item>2. ভাইব্রেটর </item>
+        <item>3. মোজাইক/টাইলস কাটার</item>
+        <item>4. নির্মান সামগ্রী উপরে তোলার যন্ত্র   </item>
+        <item>5. মাটি কাটার যন্ত্র</item>
+        <item>97. অন্যান্য (উল্লেখ করুন)</item>
 
     </string-array>
 
-    <string name="electrocution1">01.বিদ্যুতের উৎস কি ছিল ?</string>
-    <string name="electrocution2">02.যদি বাড়ীতে হয়, কোথায় ঘটেঠিল ?</string>
-    <string name="electrocution3">03.যদি বাড়ীর বাহিরে হয়, কোথায় বিদ্যুতস্পৃষ্ট হয়েছিল?</string>
-    <string name="electrocution4">04.কিভাবে বিদ্যুতায়িত হছিল?</string>
+    <string-array name="machine5">
+
+        <item>1. যানবাহনের ইঞ্জিন</item>
+        <item>2. নসিমন/ ভটভটির  ইঞ্জিন </item>
+
+    </string-array>
+
+    <string-array name="machine6">
+
+        <item>1. মেশিনটি চালু করছিল </item>
+        <item>2. মেশিন দিয়ে কাজ করছিল </item>
+        <item>3. মেশিনের কাছে অবস্থান করছিল</item>
+        <item>97. অন্যান্য (উল্লেখ করুন)  </item>
+
+    </string-array>
+
+
+    <string name="electrocution1">01. বিদ্যুতের উৎস কি ছিল ?</string>
+    <string name="electrocution2">02. যদি বাড়ীতে হয়, কোথায় ঘটেঠিল ?</string>
+    <string name="electrocution3">03. যদি বাড়ীর বাহিরে হয়, কোথায় বিদ্যুতস্পৃষ্ট হয়েছিল?</string>
+    <string name="electrocution4">04. কিভাবে বিদ্যুতায়িত হছিল?</string>
 
     <string-array name="electrocution1">
         <item>1.বজ্রপাত</item>
@@ -1159,7 +1267,6 @@
         <item>6.বারান্ধা </item>
         <item>7.অন্যান্য (উল্লেখ করুন)</item>
 
-
     </string-array>
 
     <string-array name="electrocution3">
@@ -1168,16 +1275,16 @@
         <item>3.অফিসে </item>
         <item>4.শিল্প প্রতিষ্ঠানে </item>
         <item>5.হাট/বাজার</item>
-        <item>6.অন্যান্য (উল্লেখ করুন)</item>
-
+        <item>6.জলাশয়ে</item>
+        <item>7. গাছ তলায়</item>
+        <item>97.অন্যান্য</item>
     </string-array>
 
 
     <string-array name="electrocution4">
-        <item>1.বিদ্যুতের তাঁর /সুইচে হাত পরে</item>
-        <item>2.বিদ্যুতের তাঁরের সংস্পর্শের কারণে(কাপড় নাড়া/দন্ডের মাধ্যমে)</item>
-        <item>3.রাস্তায় চলার সময় বিদ্যুতের তাঁর পায়ে জড়িয়ে যায়</item>
-        <item>4.বিদ্যুতের তাঁর চিড়ে পরেছিল</item>
+        <item>1.  বিদ্যুতের তার/ সুইচে ছোঁয়ার মাধ্যমে</item>
+        <item>2.  বিদ্যুতের তার ছিঁড়ে পড়ে</item>
+        <item>3.  বজ্রপাতের মাধ্যমে</item>
     </string-array>
 
 
@@ -1187,28 +1294,28 @@
 
 
     <string-array name="insect1">
-        <item>01.পোষা কুকুর</item>
-        <item>02.রাস্তার কুকুর</item>
-        <item>03.পোষা বিড়াল</item>
-        <item>04.রাস্তার বিড়াল </item>
-        <item>05.সাপ</item>
-        <item>06.শিয়াল</item>
-        <item>07.গরু</item>
-        <item>08.মহিষ</item>
-        <item>09.ভিমরুল</item>
-        <item>10.বোলতা</item>
-        <item>11.মৌমাছি</item>
-        <item>97.অন্যান্য (উল্লেখ করুন) </item>
+        <item>01. পোষা কুকুর</item>
+        <item>02.  কুকুর</item>
+        <item>03. পোষা বিড়াল</item>
+        <item>04. রাস্তার বিড়াল </item>
+        <item>05. সাপ</item>
+        <item>06. শিয়াল</item>
+        <item>07. গরু</item>
+        <item>08. মহিষ</item>
+        <item>09. ভিমরুল</item>
+        <item>10. বোলতা</item>
+        <item>11. মৌমাছি</item>
+        <item>97. অন্যান্য   </item>
 
     </string-array>
 
     <string-array name="insect2">
-        <item>1.কামড়</item>
-        <item>2.হুল ফুটানো </item>
-        <item>3.লাথি</item>
-        <item>4.পায়ের তলায় পড়া</item>
-        <item>5.শিং বা মাথা দিয়ে আঘাত</item>
-        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+        <item>1. কামড়/আঁচড়</item>
+        <item>2. হুল ফুটানো </item>
+        <item>3. লাথি</item>
+        <item>4. পায়ের তলায় পড়া</item>
+        <item>5. শিং বা মাথা দিয়ে আঘাত</item>
+        <item>97. অন্যান্য </item>
 
     </string-array>
 
@@ -1217,7 +1324,7 @@
         <item>2.খাওয়ানো</item>
         <item>3.কাজে ব্যবহার করা হচ্ছিল</item>
         <item>4.বিরক্ত করা ছাড়াই</item>
-        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+        <item>97.অন্যান্য</item>
     </string-array>
 
 
@@ -1255,7 +1362,10 @@
         <item>08.কাপড়ে ঢেকে যাওযার কারণে</item>
         <item>09.প্লাস্টিকের ব্যাগ/দ্রব্য দ্বারা ঢাকে যাওয়া </item>
         <item>10.বড় ব্যক্তির শরিীরের কোন অংশের চাপে</item>
+
         <item>11.মাটি চাপা পড়ায়</item>
+        <item>12.পানির ট্যাংক / সেফ্টি ট্যা্কং বা কুয়াতে নামার ফলে</item>
+
         <item>97.অন্যান্য (উল্লেখ করুন)</item>
     </string-array>
 

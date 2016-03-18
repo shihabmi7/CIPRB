@@ -12,6 +12,15 @@ public class PrefsValues {
     private String members_died_no = "mem_died_no";
     private String house_id = "house_id";
 
+    private String injury_type = "injury_type";
+
+    public int getInjury_type() {
+        return mPrefs.getInt(members_no, 0);
+    }
+
+    public void setInjury_type(int mem_no) {
+        mPrefs.edit().putInt(members_no, mem_no).commit();
+    }
 
     public PrefsValues(Context context) {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(context);
@@ -41,7 +50,7 @@ public class PrefsValues {
 
     public String getHouseUniqueId() {
         return mPrefs.getString(house_id, "");
-}
+    }
 
     public void setHouseUnique_id(String houseUnique_id) {
 

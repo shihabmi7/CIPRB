@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="6dp"
-            android:text="@string/suicide_hd"
+            android:text="@string/violence_hd"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -49,16 +49,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="@string/suicide_where_did"
+                    android:text="@string/violence_event_occur"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_survey_suicide_where"
+                    android:id="@+id/spinner_violence_why"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:entries="@array/survey_suicide_where"
+                    android:entries="@array/survey_violence_event_occur"
                     android:focusable="false"
                     android:spinnerMode="dropdown" />
             </LinearLayout>
@@ -73,16 +73,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="@string/suicide_how"
+                    android:text="@string/violence_relation"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_survey_suicide_how"
+                    android:id="@+id/spinner_violence_relation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:entries="@array/survey_suicide_how"
+                    android:entries="@array/survey_violence_relation"
                     android:focusable="false"
                     android:spinnerMode="dropdown" />
             </LinearLayout>
@@ -98,19 +98,44 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="@string/suicide_types"
+                    android:text="@string/violence_sex"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_survey_suicide_type"
+                    android:id="@+id/spinner_sex"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:entries="@array/survey_suicide_type"
+                    android:entries="@array/survey_sex"
                     android:focusable="false"
                     android:spinnerMode="dropdown" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/violence_object"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/spinner_violence_object"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:entries="@array/survey_violence_object"
+                    android:focusable="false"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="fill_parent"

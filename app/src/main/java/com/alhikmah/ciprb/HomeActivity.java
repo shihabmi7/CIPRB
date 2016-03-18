@@ -13,15 +13,34 @@ public class HomeActivity extends AppCompatActivity {
     private static final int SPLASH_TIME = 1600;
     private static final String AUDIO_FILE_NAME = "labbaiyk_allah_first";
 
+    /*"মডিউল-১  ফেস ফর্ম ",
+    মডিউল-২ মৃত্যু নিশ্চিত করণ ফর্ম
+    মডিউল- ৩ ইনজুরি জনিত অসুস্থতার ফর্ম
+    মডিউল-৪  ইনজুরি জনিত মৃত্যু ফর্ম
+    এম-১ আত্মহত্যা
+    এম-২ সড়ক দুর্ঘটনা
+    এম-৩ সহিংসতার তথ্য
+    এম-৪ পড়ে যাওয়া
+    এম-৫  ধারালো বস্তুর আঘাত/ কেটে যাওয়া
+    এম-৬ পুড়ে যাওয়া
+    এম-৭ পানিতে দুবে যাওয়া
+    এম-৮ দুর্ঘটনা জনিত বিষক্রিয়া
+    এম-৯  মেশিন/ যন্ত্রপাতির দারা আঘাত
+    এম-১০ বিদ্যুৎ স্পৃষ্টতা
+    এম-১১ প্রানি/ কিট পতঙ্গের দ্বারা জখম
+    এম-১২ ভোতা বস্তু দ্বারা আঘাত
+    এম-১৩ শ্বাস রোধ
+    মডিউল-৬ দৈনন্দিন জীবনের মানদণ্ড
+*/
     String form[] = {
-
             "Face Sheet",
             "Detection of injury morbidity",
-            "Death Confirmation",
             "Information on injury morbidity",
+            "Death Confirmation",
             "Injury Mortality  Form",
-            " Suicide",
-            "  RTI",
+            "Suicide",
+            "RTI",
+            "Violence",
             " Fall  injury",
             " Cut injury",
             " Burn injury",
@@ -33,7 +52,6 @@ public class HomeActivity extends AppCompatActivity {
             " Injury by blunt object",
             " Suffocation",
             " Quality of life assessment"
-
     }; //" Assult",
 
 
@@ -41,18 +59,17 @@ public class HomeActivity extends AppCompatActivity {
             {
                     HouseHoldInformationActivity.class,
                     HouseHoldMemberDetailsActivity.class,
-                    DeathConfirmationActivity.class,
                     InjuryMorbidityActivity.class,
+                    DeathConfirmationActivity.class,
                     InjuryMortalityActivity.class,
                     SuicideAttemptActivity.class,
                     RoadTransportInjuryActivity.class,
+                    ViolenceInjuryActivity.class,
                     FallInjuryActivity.class, CutInjuryActivity.class,
                     BurnInjuryActivity.class, NearDrowningActivity.class,
                     UnintentionalPoisoningActivity.class, ToolInjuryActivity.class, ElectrocutionActivity.class, InsectInjuryActivity.class,
                     InjuryBluntActivity.class, SuffocationActivity.class, QualityOfLifeActivity.class
-
             };
-
     ListView listView;
 
     @Override
@@ -100,9 +117,8 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-
     void getFormList() {
-
+        //form.length
         for (int i = 0; i < form.length; i++) {
 
             Form formObj = new Form();

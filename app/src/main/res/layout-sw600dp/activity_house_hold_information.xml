@@ -270,62 +270,62 @@
                 android:layout_height="1dp"
                 android:background="@color/heading_bg"></LinearLayout>
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+            <!-- <LinearLayout
+                 android:layout_width="fill_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="vertical"
+                 android:padding="20dp">
 
-                <TextView
-                    android:id="@+id/textView_household_unique_code"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="HOUSEHOLD UNIQUE CODE"
-                    android:textColor="@android:color/black"
-                    android:textSize="22sp" />
+                 <TextView
+                     android:id="@+id/textView_household_unique_code"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_centerVertical="true"
+                     android:text="HOUSEHOLD UNIQUE CODE"
+                     android:textColor="@android:color/black"
+                     android:textSize="22sp" />
 
-                <EditText
-                    android:id="@+id/editText_household_unique_code"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false" />
+                 <EditText
+                     android:id="@+id/editText_household_unique_code"
+                     android:layout_width="fill_parent"
+                     android:layout_height="wrap_content"
+                     android:enabled="false" />
 
-            </LinearLayout>
+             </LinearLayout>
 
-            <LinearLayout
+             <LinearLayout
 
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:background="@color/heading_bg"></LinearLayout>
+                 android:layout_width="fill_parent"
+                 android:layout_height="1dp"
+                 android:background="@color/heading_bg"></LinearLayout>
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+             <LinearLayout
+                 android:layout_width="fill_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="vertical"
+                 android:padding="20dp">
 
-                <TextView
-                    android:id="@+id/textView_household_head_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="@string/house_head"
-                    android:textColor="@android:color/black"
-                    android:textSize="22sp" />
+                 <TextView
+                     android:id="@+id/textView_household_head_id"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_centerVertical="true"
+                     android:text="@string/house_head"
+                     android:textColor="@android:color/black"
+                     android:textSize="22sp" />
 
-                <EditText
-                    android:id="@+id/editText_household_head_id"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" />
+                 <EditText
+                     android:id="@+id/editText_household_head_id"
+                     android:layout_width="fill_parent"
+                     android:layout_height="wrap_content" />
 
-            </LinearLayout>
+             </LinearLayout>
 
-            <LinearLayout
+             <LinearLayout
 
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:background="@color/heading_bg"></LinearLayout>
+                 android:layout_width="fill_parent"
+                 android:layout_height="1dp"
+                 android:background="@color/heading_bg"></LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -342,11 +342,15 @@
                     android:textColor="@android:color/black"
                     android:textSize="22sp" />
 
-                <NumberPicker
-                    android:id="@+id/numberpicker_death_number"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/edittext_death_number"
+                    android:layout_width="145dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"></NumberPicker>
+                    android:layout_alignParentRight="true"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:maxLength="2" />
+
 
             </LinearLayout>
 
@@ -370,11 +374,15 @@
                     android:textColor="@android:color/black"
                     android:textSize="22sp" />
 
-                <NumberPicker
-                    android:id="@+id/numberpicker_member_number"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/editText_member_number"
+                    android:layout_width="145dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"></NumberPicker>
+                    android:layout_alignParentRight="true"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:maxLength="2" />
+
 
             </LinearLayout>
 

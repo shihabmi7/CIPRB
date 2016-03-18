@@ -1,6 +1,5 @@
 package com.alhikmah.ciprb;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,7 +7,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,9 +21,9 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
             spinner_adjust;
     TextView textView_interview_starting_time, textView_adjustable;
     String Datetime;
-    NumberPicker death_number_picker, member_number_picker;
+    //NumberPicker death_number_picker, member_number_picker;
     Button button_cancel, button_next;
-    EditText editText_ward, editText_moholla, editText_household_unique_code, editText_interviewer_unique;
+    EditText editText_ward, editText_moholla, edittext_death_number, editText_member_number;
     PrefsValues prefsValues;
 
     @Override
@@ -34,7 +32,6 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
         setContentView(R.layout.activity_house_hold_information);
 
         prefsValues = new PrefsValues(this);
-
         int member_mo = prefsValues.getMembersNo();
 
         spinner_survey_location = (Spinner) findViewById(R.id.spinner_survey_location);
@@ -45,13 +42,16 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
         textView_adjustable = (TextView) findViewById(R.id.textView_adjustable);
         editText_ward = (EditText) findViewById(R.id.editText_ward);
         editText_moholla = (EditText) findViewById(R.id.editText_moholla);
-        editText_interviewer_unique = (EditText) findViewById(R.id.editText_interviewer_unique);
+
+        edittext_death_number = (EditText) findViewById(R.id.edittext_death_number);
+        editText_member_number = (EditText) findViewById(R.id.editText_member_number);
+
         button_cancel = (Button) findViewById(R.id.button_cancel);
         button_next = (Button) findViewById(R.id.button_next);
         button_cancel.setOnClickListener(this);
         button_next.setOnClickListener(this);
 
-        editText_household_unique_code = (EditText) findViewById(R.id.editText_household_unique_code);
+        //editText_household_unique_code = (EditText) findViewById(R.id.editText_household_unique_code);
         spinner_survey_location.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -89,14 +89,14 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
         });
 
 
-        death_number_picker = (NumberPicker) findViewById(R.id.numberpicker_death_number);
+        /*death_number_picker = (NumberPicker) findViewById(R.id.numberpicker_death_number);
         death_number_picker.setMaxValue(ApplicationData.HOUSE_HOLD_MWMBERS_MAX);
-        death_number_picker.setMinValue(ApplicationData.HOUSE_HOLD_MWMBERS_MIN);
-        member_number_picker = (NumberPicker) findViewById(R.id.numberpicker_member_number);
+        death_number_picker.setMinValue(ApplicationData.HOUSE_HOLD_MWMBERS_MIN);*/
+        /*member_number_picker = (NumberPicker) findViewById(R.id.numberpicker_member_number);
         member_number_picker.setMaxValue(ApplicationData.HOUSE_HOLD_MWMBERS_MAX);
-        member_number_picker.setMinValue(ApplicationData.HOUSE_HOLD_MWMBERS_MIN);
+        member_number_picker.setMinValue(1);*/
 
-        death_number_picker.setOnValueChangedListener(new NumberPicker.
+        /*death_number_picker.setOnValueChangedListener(new NumberPicker.
                 OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int
@@ -105,7 +105,7 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
                 Toast.makeText(getApplicationContext(), "" + death_number_picker.getValue(), Toast.LENGTH_LONG).show();
 
             }
-        });
+        });*/
 
         Calendar c = Calendar.getInstance();
         SimpleDateFormat dateformat = new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss aa"); //
@@ -140,17 +140,20 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
 
                 case 0:
                 case 1:
-                    if (editText_ward.getText().length() == 2 && editText_moholla.getText().length() == 2 && member_number_picker.getValue() >= 1) {
-                        ApplicationData.HOUSE_HOLD_UNIQE_ID = "" + spilitString(spinner_survey_location.getSelectedItem().toString()) +
-                                "" + spilitString(spinner_adjust.getSelectedItem().toString()) + "" +
+                    if (editText_ward.getText().length() == 2 && editText_moholla.getText().length() == 2) {
+                        ApplicationData.HOUSE_HOLD_UNIQE_ID = "" + ApplicationData.spilitStringFirst(spinner_survey_location.getSelectedItem().toString()) +
+                                "" + ApplicationData.spilitStringFirst(spinner_adjust.getSelectedItem().toString()) + "" +
                                 editText_ward.getText().toString() + "" + editText_moholla.getText().toString();
 
-                        editText_household_unique_code.setText(ApplicationData.HOUSE_HOLD_UNIQE_ID);
+                        //editText_household_unique_code.setText(ApplicationData.HOUSE_HOLD_UNIQE_ID);
                         Toast.makeText(getApplicationContext(), ApplicationData.HOUSE_HOLD_UNIQE_ID, Toast.LENGTH_LONG).show();
 
                         prefsValues.setHouseUnique_id(ApplicationData.HOUSE_HOLD_UNIQE_ID);
-                        prefsValues.setMembers_no(member_number_picker.getValue());
-                        prefsValues.setMembers_died_no(death_number_picker.getValue());
+                        prefsValues.setMembers_no(Integer.parseInt(editText_member_number.getText().toString()));
+                        prefsValues.setMembers_died_no(Integer.parseInt(edittext_death_number.getText().toString()));
+
+                        //ApplicationData.memberListHashMap.put(ApplicationData.TAG_HOUSE_HOLD_UNIQE_ID,ApplicationData.HOUSE_HOLD_UNIQE_ID);
+                        ApplicationData.gotToNextActivity(this, HouseHoldMemberDetailsActivity.class);
 
                     } else
 
@@ -162,16 +165,18 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
 
                     if (editText_moholla.getText().length() == 2) {
 
-                        ApplicationData.HOUSE_HOLD_UNIQE_ID = "" + spilitString(spinner_survey_location.getSelectedItem().toString()) +
-                                "" + spilitString(spinner_adjust.getSelectedItem().toString()) + "" +
-                                spilitString(spinner_upozila.getSelectedItem().toString()) + "" + editText_moholla.getText().toString();
+                        ApplicationData.HOUSE_HOLD_UNIQE_ID = "" + ApplicationData.spilitStringFirst(spinner_survey_location.getSelectedItem().toString()) +
+                                "" + ApplicationData.spilitStringFirst(spinner_adjust.getSelectedItem().toString()) + "" +
+                                ApplicationData.spilitStringFirst(spinner_upozila.getSelectedItem().toString()) + "" + editText_moholla.getText().toString();
 
-                        editText_household_unique_code.setText(ApplicationData.HOUSE_HOLD_UNIQE_ID);
+                        //editText_household_unique_code.setText(ApplicationData.HOUSE_HOLD_UNIQE_ID);
                         Toast.makeText(getApplicationContext(), ApplicationData.HOUSE_HOLD_UNIQE_ID, Toast.LENGTH_LONG).show();
 
                         prefsValues.setHouseUnique_id(ApplicationData.HOUSE_HOLD_UNIQE_ID);
-                        prefsValues.setMembers_no(member_number_picker.getValue());
-                        prefsValues.setMembers_died_no(death_number_picker.getValue());
+                        prefsValues.setMembers_no(Integer.parseInt(editText_member_number.getText().toString()));
+                        prefsValues.setMembers_died_no(Integer.parseInt(edittext_death_number.getText().toString()));
+
+                        ApplicationData.gotToNextActivity(this, HouseHoldMemberDetailsActivity.class);
 
                     } else
                         Toast.makeText(getApplicationContext(), "Give all code correctly", Toast.LENGTH_LONG).show();
@@ -180,23 +185,11 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
 
             }
 
-            gotTONextActivity(HouseHoldMemberDetailsActivity.class);
+//            ApplicationData.gotToNextActivity(this, HouseHoldMemberDetailsActivity.class);
 
         }
 
     }
 
-    void gotTONextActivity(Class actiivty) {
-
-        startActivity(new Intent(getApplicationContext(), actiivty));
-
-    }
-
-    String spilitString(String string) {
-
-        String[] namesList = string.split("\\.");
-        return namesList[0];
-
-    }
 
 }

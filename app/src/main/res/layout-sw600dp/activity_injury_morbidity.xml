@@ -43,6 +43,7 @@
             android:layout_margin="8dp"
             android:orientation="vertical">
 
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -50,16 +51,15 @@
                 android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/textView_sex"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/injured_person_sex"
+                    android:text="@string/injured_person_name"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_sex"
+                    android:id="@+id/spinner_person_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -69,14 +69,16 @@
 
             </LinearLayout>
 
+
             <LinearLayout
+                android:id="@+id/lay_how_injured"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/textView_marrital_status"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -85,16 +87,70 @@
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_marital_status"
+                    android:id="@+id/spinner_how_injured"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:entries="@array/survey_marital_status"
+                    android:entries="@array/survey_cause_of_injury"
                     android:focusable="false"
                     android:spinnerMode="dropdown" />
 
 
             </LinearLayout>
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical"-->
+                <!--android:padding="5dp">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/textView_sex"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="@string/injured_person_sex"-->
+                    <!--android:textColor="@android:color/black"-->
+                    <!--android:textSize="18sp" />-->
+
+                <!--<Spinner-->
+                    <!--android:id="@+id/spinner_sex"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:entries="@array/survey_sex"-->
+                    <!--android:focusable="false"-->
+                    <!--android:spinnerMode="dropdown" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical"-->
+                <!--android:padding="5dp">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/textView_marrital_status"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="@string/causes_of_injury"-->
+                    <!--android:textColor="@android:color/black"-->
+                    <!--android:textSize="18sp" />-->
+
+                <!--<Spinner-->
+                    <!--android:id="@+id/spinner_how_injured"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:entries="@array/survey_cause_of_injury"-->
+                    <!--android:focusable="false"-->
+                    <!--android:spinnerMode="dropdown" />-->
+
+
+            <!--</LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -114,6 +170,7 @@
                     android:id="@+id/edittext_date_of_injury"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:focusable="false"
                     android:hint="Click to set the date"></EditText>
 
 
@@ -138,6 +195,7 @@
                     android:id="@+id/edittext_time_of_injury"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:focusable="false"
                     android:hint="Click to set the time"></EditText>
 
 
@@ -185,7 +243,7 @@
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_injury_last_six"
+                    android:id="@+id/spinner_injury_intent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -770,6 +828,29 @@
                     android:entries="@array/survey_family_being_coping_loss_income"
                     android:focusable="false"
                     android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
+                <Button
+                    android:id="@+id/button_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Cancel"></Button>
+
+                <Button
+                    android:id="@+id/button_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Next"></Button>
+
             </LinearLayout>
 
         </LinearLayout>
