@@ -118,6 +118,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     void getFormList() {
+
         //form.length
         for (int i = 0; i < form.length; i++) {
 

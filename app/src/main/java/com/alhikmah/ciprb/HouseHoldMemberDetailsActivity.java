@@ -167,17 +167,6 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
     }
 
-    void cleartext() {
-
-        editText_members_name.getText().clear();
-        edittext_date_of_birth.getText().clear();
-        edittext_current_age.getText().clear();
-        editText_educatoin_level.getText().clear();
-
-        if (edittext_how_many_injury_last_six != null)
-            edittext_how_many_injury_last_six.getText().clear();
-
-    }
 
     private void updateLabel() {
 
@@ -187,52 +176,6 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
         edittext_date_of_birth.setText(sdf.format(myCalendar.getTime()));
     }
 
-
-    void saveDataToOnline(Person person) {
-
-        progressDialog.show();
-        // post with no parameters
-        AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
-        params.put("house_member_id", person.getPerson_id());
-        params.put("name", person.getMembers_name());
-        params.put("sex", ApplicationData.spilitStringFirst(person.getSex()));
-        params.put("date_of_birth", edittext_current_age.getText().toString());
-        params.put("maritial_status", ApplicationData.spilitStringFirst(spinner_marital_status.getSelectedItem().toString()));
-        params.put("education", edittext_current_age.getText().toString());
-        params.put("relation_with_hh", ApplicationData.spilitStringFirst(spinner_realation_with_hh.getSelectedItem().toString()));
-        params.put("age", edittext_current_age.getText().toString());
-        params.put("occupasion", ApplicationData.spilitStringFirst(spinner_occupasion.getSelectedItem().toString()));
-        params.put("smoking", ApplicationData.spilitStringFirst(spinner_smoking.getSelectedItem().toString()));
-        params.put("bettle_nut_chew", ApplicationData.spilitStringFirst(spinner_buttle_nut.getSelectedItem().toString()));
-        params.put("swimming", ApplicationData.spilitStringFirst(spinner_swiming.getSelectedItem().toString()));
-        params.put("responder", isResonder.isPressed());
-        params.put("interviewer_code", editText_interviewer_unique.getText().toString());
-        params.put("injury_last_six", ApplicationData.spilitStringFirst(spinner_injury_last_six.getSelectedItem().toString()));
-
-        if (linerar_how_injury.getVisibility() == View.VISIBLE) {
-
-            params.put("how_many_injury_last_six", person.getInjury_number());
-            //params.put("e02", person.getInjury_type());
-        }
-
-        client.post(ApplicationData.URL_HOUSE_HOLD_MEMBERS, params,
-                new JsonHttpResponseHandler() {
-                    // Your implementation here
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-
-                        cleartext();
-                        progressDialog.dismiss();
-                        if (count >= member_no) {
-                            showTextLong("finish this input");
-                            //ApplicationData.memberListHashMap.clear();
-                            ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
-                        }
-                    }
-                }
-        );
-    }
 
     void convertTwodates(Calendar calendar) {
 
@@ -359,6 +302,68 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
         }
     }
 
+    void cleartext() {
+
+        editText_members_name.getText().clear();
+        edittext_date_of_birth.getText().clear();
+        edittext_current_age.getText().clear();
+        editText_educatoin_level.getText().clear();
+
+        if (edittext_how_many_injury_last_six != null)
+            edittext_how_many_injury_last_six.getText().clear();
+
+    }
+
+    void saveDataToOnline(Person person) {
+
+        /*progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait...");
+        progressDialog.setTitle("Loading");
+        progressDialog.setCancelable(true);*/
+        progressDialog.show();
+        // post with no parameters
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        params.put("house_member_id", person.getPerson_id());
+        params.put("name", person.getMembers_name());
+        params.put("sex", ApplicationData.spilitStringFirst(person.getSex()));
+        params.put("date_of_birth", edittext_current_age.getText().toString());
+        params.put("maritial_status", ApplicationData.spilitStringFirst(spinner_marital_status.getSelectedItem().toString()));
+        params.put("education", edittext_current_age.getText().toString());
+        params.put("relation_with_hh", ApplicationData.spilitStringFirst(spinner_realation_with_hh.getSelectedItem().toString()));
+        params.put("age", edittext_current_age.getText().toString());
+        params.put("occupasion", ApplicationData.spilitStringFirst(spinner_occupasion.getSelectedItem().toString()));
+        params.put("smoking", ApplicationData.spilitStringFirst(spinner_smoking.getSelectedItem().toString()));
+        params.put("bettle_nut_chew", ApplicationData.spilitStringFirst(spinner_buttle_nut.getSelectedItem().toString()));
+        params.put("swimming", ApplicationData.spilitStringFirst(spinner_swiming.getSelectedItem().toString()));
+        params.put("responder", isResonder.isPressed());
+        params.put("interviewer_code", editText_interviewer_unique.getText().toString());
+        params.put("injury_last_six", ApplicationData.spilitStringFirst(spinner_injury_last_six.getSelectedItem().toString()));
+
+        if (linerar_how_injury.getVisibility() == View.VISIBLE) {
+
+            params.put("how_many_injury_last_six", person.getInjury_number());
+            //params.put("e02", person.getInjury_type());
+        }
+
+        client.post(ApplicationData.URL_HOUSE_HOLD_MEMBERS, params,
+                new JsonHttpResponseHandler() {
+                    // Your implementation here
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+                        cleartext();
+                        progressDialog.dismiss();
+                        if (count >= member_no) {
+                            showTextLong("finish this input");
+                            //ApplicationData.memberListHashMap.clear();
+                            ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+                        }
+                    }
+                }
+        );
+    }
+
 
     public void showAlert(final Activity activity) {
 
@@ -370,7 +375,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
             new AlertDialog.Builder(activity)
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .setTitle("No Internet Connection")
-                    .setMessage("Please check your connectivity.")
+                    .setMessage(getString(R.string.internet_check_bn))
                     .setPositiveButton("Exit",
                             new DialogInterface.OnClickListener() {
 

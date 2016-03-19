@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">CIPRB</string>
+
+    <string name="internet_check_bn">ইন্টারনেট সংযোগ চালু করুন</string>
+    <string name="laoding">ডাটা সংরক্ষিত হচ্ছে...অপেক্ষা করুন</string>
+
+
+
     <!--Form 2-->
     <string name="name">নাম</string>
     <string name="relation_hh">খানা প্রধানের সাথে সম্পর্ক</string>
