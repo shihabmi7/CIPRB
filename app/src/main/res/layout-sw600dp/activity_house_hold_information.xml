@@ -60,7 +60,7 @@
                     android:layout_centerVertical="true"
                     android:text="Date:"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />-->
+                    android:textSize="22sp" />-->
 
             </LinearLayout>
 
@@ -81,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="INTEVIEWER UNIQUE "
+                    android:text="Interviewer Code"
                     android:textColor="@android:color/black"
                     android:textSize="22sp" />
 
@@ -89,6 +89,7 @@
                     android:id="@+id/editText_interviewer_unique"
                     android:layout_width="145dp"
                     android:layout_height="wrap_content"
+                    android:focusable="true"
                     android:layout_alignParentRight="true"
                     android:gravity="right"
                     android:inputType="number"
@@ -112,9 +113,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="TYPE OF SURVEY LOCATION"
+                    android:text="জরিপ এলাকার ধরন"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_survey_location"
@@ -123,7 +124,8 @@
                     android:layout_gravity="center_horizontal"
                     android:entries="@array/survey_loc"
                     android:focusable="false"
-                    android:spinnerMode="dropdown" />
+                    android:spinnerMode="dropdown"
+                    android:textSize="22sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -344,7 +346,7 @@
 
                 <EditText
                     android:id="@+id/edittext_death_number"
-                    android:layout_width="145dp"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:gravity="right"
@@ -376,7 +378,7 @@
 
                 <EditText
                     android:id="@+id/editText_member_number"
-                    android:layout_width="145dp"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:gravity="right"

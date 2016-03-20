@@ -49,7 +49,7 @@
         <activity android:name=".CutInjuryActivity">
 
         </activity>
-        <activity android:name=".ElectrocutionActivity">
+        <activity android:name=".ElectrocautionActivity">
 
         </activity>
         <activity android:name=".FallInjuryActivity">
@@ -67,7 +67,7 @@
         <activity android:name=".QualityOfLifeActivity">
 
         </activity>
-        <activity android:name=".SocioEconomicActivity">
+        <activity android:name=".HouseHoldCharacteristicsActivity">
 
         </activity>
         <activity android:name=".SuffocationActivity"></activity>

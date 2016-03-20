@@ -5,7 +5,6 @@
     <string name="laoding">ডাটা সংরক্ষিত হচ্ছে...অপেক্ষা করুন</string>
 
 
-
     <!--Form 2-->
     <string name="name">নাম</string>
     <string name="relation_hh">খানা প্রধানের সাথে সম্পর্ক</string>
@@ -28,7 +27,7 @@
     <!--Form 1-->
     <string name="district_town">জেলা</string>
     <string name="upozila">উপজেলা</string>
-    <string name="household_no">খানার নম্ব</string>
+    <string name="household_no">খানার নম্বর</string>
     <string name="village">গ্রাম</string>
     <string name="house_head"> খানা প্রধান</string>
     <string name="last_24_death_histry">গত ২৪ মাসে খানায় মৃতের সংখ্যা (কেউ মারা না গিয়ে থাকলে ০০ লিখুন):</string>
@@ -163,7 +162,6 @@
         <item>01. হ্যাঁ</item>
         <item>02. না</item>
 
-
     </string-array>
     <string-array name="survey_occupation">
 
@@ -179,9 +177,10 @@
         <item>10. অবসরপ্রাপ্ত ্</item>
         <item>11. ভ্যান/রিকশা চালক </item>
         <item>12. সিএনজি/বাস/ট্রাক চালক</item>
-        <item>13. অন্যান্য</item>
-        <item>14. ৬ বছরের কমবয়সী </item>
-        <item>15. প্রযোজ্য নয় </item>
+        <item>13. শিক্ষক</item>
+        <item>97. অন্যান্য</item>
+        <item>15. ৬ বছরের কমবয়সী </item>
+        <item>16. প্রযোজ্য নয় </item>
 
     </string-array>
     <string-array name="survey_death_loc">
@@ -260,7 +259,17 @@
     <string name="time_of_injury">কখন ইনিজুরি ঘটেছিল?</string>
     <string name="place_of_injury">আঘাত প্রাপ্তির সময় ব্যক্তিটি কোথায় ছিল?</string>
     <string name="intent_of_injury">ইনিজুরি অভিপ্রায় কি ছিল ?</string>
-    <string name="injured_parts_and_type_of_injury">ব্যক্তিটির শরীরের কোন কোন অঙ্গে এবং কি ধরনের ইনজুরি হয়েছিল?</string>
+    <string name="injured_parts">ব্যক্তিটির শরীরের কোন কোন অঙ্গে ইনজুরি হয়েছিল?</string>
+    <string name="injured_type_of_injury">ব্যক্তিটি কি ধরনের ইনজুরি হয়েছিল?</string>
+
+    <string name="injured_parts_and_type_of_injury_tips">*** ক্ষত অঙ্গ
+১. মাথা ,২. মুখমন্ডল,  ৩. চোখ,  ৪. ঘাড়,  ৫. বুক/পিঠ,  ৬. পেট,  ৭. বাহু হাত ব্যতীত , ৮. হাত , ৯.  নিম্নাঙ্গ (পায়ের পাতা ব্যতীত) ,১০.পায়ের পাতা , ১১.কোমর \n \n
+
+</string>
+
+    <string name="injured_parts_and_type_of_injury_tips_2">*** ইনজুরি ধরনের কোড
+০১. হাড় ভাঙ্গা, ০২.মচকে যাওয়া, ০৩. হাড় সরে যাওয়া , ০৪.  কেটে যাওয়া / উন্মুক্ত ক্ষত, ০৫. কামড়,   ০৬.ছিলে/ থেঁতলে যাওয়া,  ০৭.পুড়ে যাওয়া , ০৮.মাথায় আঘাত, ০৯. শরীরের ভিতরের অঙ্গের ক্ষত ,৯৭. অন্যান্য </string>
+    >
     <string name="condition_of_victims_after_injury">যখন ইনজুরি ঘটেছিল তখন ব্যক্তিটির অবস্থা কেমন ছিল?</string>
     <string name="mobility_condition_after_injury">যখন ইনজুরি ঘটেছিল তখন ব্যক্তিটির চলাফেরা ক্ষমতা কেমন ছিল? (যদি জ্ঞান থাকে)</string>
     <string name="receive_first_aid">আহত ব্যক্তিটি কি প্রাথমিক চিকিৎসা পেয়েছিল?</string>
@@ -274,32 +283,32 @@
     <string name="how_admitted_health_facility">হাসপাতালে/চিকিৎসা প্রদানকারীর নিকট কিভাবে নিয়ে যাওয়াv হয়েছিল ?</string>
     <string name="time_take_health_facility">আঘাত পাওয়ার পর হাসপাতালে /সেবাদানকারীর নিকট পৌছাতে কত সময় লেগেছিল ? (ঘন্টায় লিখুন) যদিএক ঘস্টার কম হয় তবে 000</string>
     <string name="days_take_health_facility">ব্যক্তিটি হাসপাতালে কতদিন ভর্তি ছিল ?</string>
-    <string name="any_surgery_operation_done">আহত ব্যক্তির সাজ©vরী বা অপারেশন হয়েছিল কি ?</string>
+    <string name="any_surgery_operation_done">আহত ব্যক্তির সার্জারি বা অপারেশন হয়েছিল কি ?</string>
     <string name="type_of_anesthesia_given">(উত্তর হ্যাঁ হলে)  অপারেশনে কি ধরনের অ্যানেসথেসিয়া দেয়া হয়েছিল?</string>
     <string name="outcome_of_treatment">চিকিৎসার ফলাফল কি ?</string>
     <string name="how_much_cost_reatment">চিকিৎসার জন্য সর্বমোট কত টাকা খরচ হয়েছিল ?</string>
     <string name="Did_the_injured_person_become_disabled">ইনজুরির ফলে কোন পঙ্গুত্ব হয়েছিল কি?</string>
     <string name="type_of_disability">উত্তর হ্যাঁ হলে, তা কি ধরনের পঙ্গুত্ব?</string>
     <string name="disability_affects_sides">এই ইনজুরি কী শরীরের কোন অঙ্গের এক/উভয় দিককই পিঙ্গু করেছিল ?</string>
-    <string name="Number_of_days_work_loss">অসুস্থ্যতার কারণে কতদিন স্কুলে বা আঁচলে অনুপস্থিত ছিল বা স্বাভাবিক কাজকম© করতে পারেনি? </string>
+    <string name="Number_of_days_work_loss">অসুস্থ্যতার কারণে কতদিন স্কুলে বা আঁচলে অনুপস্থিত ছিল বা স্বাভাবিক কাজ কর্ম করতে পারেনি? </string>
     <string name="significant_source_of_income_for_family">ব্যক্তিটি কি আপনাদের পরিবারের একজন উল্লেখযোগ্য আয় উপাজ©নকারী ?</string>
-    <string name="family_being_coping_loss_income">পরিবারটি উপাvজ©নের ক্ষতি কি ভাবে পুষিয়ে নিয়েছিল ?</string>
+    <string name="family_being_coping_loss_income">পরিবারটি উপার্জনর ক্ষতি কি ভাবে পুষিয়ে নিয়েছিল ?</string>
 
 
     <string-array name="survey_cause_of_injury">
         <item>1. আত্নহত্যা-</item>
-        <item>2. সড়ক দূঘ©টনা</item>
+        <item>2. সড়ক দুর্ঘটনা </item>
         <item>3. সহিংসতা</item>
         <item>4. পড়ে যাওয়া</item>
         <item>5. ধারালো বস্তদ্বারা কেটে যাওয়া</item>
         <item>6. পুড়ে যাওয়া</item>
         <item>7. ডুবে যাওয়া</item>
-        <item>8. দূঘ©টনাজনিত বিষপান-দূঘ©টনা</item>
-        <item>9. মেশিন/যন্ত্রপাতির আঘাত-দূঘ©টনা</item>
-        <item>10. বিদ্যুৎস্পৃষ্ট-দূঘ©টনা</item>
+        <item>8. দুর্ঘটনা জনিত বিষপান</item>
+        <item>9. মেশিন/যন্ত্রপাতির আঘাত-</item>
+        <item>10. বিদ্যুৎস্পৃষ্ট-</item>
         <item>11. প্রাণী ও কীট পতঙ্গের কামড় /আঘাত</item>
         <item>12. ভোঁতা বস্তুর আঘাত</item>
-        <item>13. দূঘ©টনাজনিত শ্বাসর</item>
+        <item>13. দুর্ঘটনা জনিত শ্বাসর</item>
         <item>97. অন্যান্য (উল্লেখ করুন)</item>
         <item>99. জানা নেই</item>
     </string-array>
@@ -354,6 +363,8 @@
         <item>9.  জানা নেই</item>
 
     </string-array>
+
+
     <string-array name="test72as">
         <item>1. মেজেতে</item>
         <item>2. খাট/চৌকির নিচে</item>
@@ -389,11 +400,7 @@
         <item>D. এন. জি. ও স্বাস্থ্য কম©</item>
         <item>E. ঔষধের দোকানদার / পল্লীচিকিৎসক</item>
         <item>F. হোমিওপ্যাথিক চিকিৎসক </item>
-        <item>G. কবিরাজ</item>
-        <item>H. প্রশিক্ষনপ্রাপ্ত দাই </item>
-        <item>I. ঝিাড় ফুঁককারী / ইমাম/পুরোহিত</item>
-        <item>J. আত্নীয়-স্বজন / বন্ধু-বান্ধব</item>
-        <item>X. অন্যান্য (উল্লেখ করুন</item>
+        <item>G. কবিরাজ ও ওঝা </item>
 
     </string-array>
     <string-array name="survey_Where_receive_treatment">
@@ -478,7 +485,7 @@
 
 
     <string name="injury_mortality_heading">ইনজুরি জনিত মৃত্যু ফম©</string>
-    <string name="im_any_surgery_operation_done">সাজ©vরী বা অপারেশন হয়েছিল কি ?</string>
+    <string name="im_any_surgery_operation_done">সার্জারি বা অপারেশন হয়েছিল কি ?</string>
     <string name="im_type_of_anesthesia_given">যদি হ্যাঁ হয়, তাহলে কি ধরনের অ্যানেসথেসিয়া দেয়া হয়েছিল?</string>
     <string name="im_death_date_of_person">ব্যক্তিটির (নাম উল্লেখ করুন) কবে মৃত্যু হয়েছিল?</string>
     <string name="im_death_time_of_person">ব্যক্তিটির (নাম উল্লেখ করুন)  কখন মৃত্যু হয়েছিল? (24 ঘন্টায় লিখুন)</string>
@@ -508,18 +515,18 @@
     <string-array name="survey_im_cause_of_injury">
 
         <item>01. আত্নহত্যা-এম 1</item>
-        <item>02. সড়ক দূঘ©টনা-এম 2 </item>
+        <item>02. সড়ক দুর্ঘটনা -এম 2 </item>
         <item>03. সহিংসতা-এম 3</item>
         <item>04. পড়ে যাওয়া-এম 4 </item>
         <item>05. ধারালো বস্তদ্বারা কেটে যাওয়া-এম 5 </item>
         <item>06. পুড়ে যাওয়া-এম 6 </item>
         <item>07. ডুবে যাওয়া-এম 7 </item>
-        <item>08. দূঘ©টনাজনিত বিষপান-দূঘ©টনা 8 </item>
-        <item>09. মেশিন/যন্ত্রপাতির আঘাত-দূঘ©টনা 9 </item>
-        <item>10. বিদ্যুৎস্পৃষ্ট-দূঘ©টনা 10 </item>
+        <item>08. দুর্ঘটনা জনিত বিষপান-দুর্ঘটনা  8 </item>
+        <item>09. মেশিন/যন্ত্রপাতির আঘাত-দুর্ঘটনা  9 </item>
+        <item>10. বিদ্যুৎস্পৃষ্ট-দুর্ঘটনা  10 </item>
         <item>11. প্রাণী ও কীট পতঙ্গের কামড় /আঘাত-এম 11 </item>
         <item>12. ভোঁতা বস্তুর আঘাত -এম 12</item>
-        <item>13. দূঘ©টনাজনিত শ্বাসরোধ-এম 13 </item>
+        <item>13. দুর্ঘটনা জনিত শ্বাসরোধ-এম 13 </item>
         <item>97. অন্যান্য  (উল্লেখ করুন) </item>
         <item>99. জানা নেই </item>
 
@@ -529,6 +536,7 @@
     <string name="suicide_where_did">কোথায় আত্মহত্যা চেষ্টা/ আত্মহত্যা করেছিল?</string>
     <string name="suicide_how">কিভাবে  আত্মহত্যার চেষ্টা/  আত্মহত্যা করেছিল?</string>
     <string name="suicide_types">যদি বিষপান হয়, তাহলে বিষের প্রকার কি ছিল?</string>
+
 
     <string-array name="survey_suicide_where">
         <item>1. নিজবাড়ী</item>
@@ -588,8 +596,6 @@
         <item>9.  জানা নেই    </item>
 
     </string-array>
-
-
     <string-array name="survey_violence_relation">
         <item>1. স্বামী/স্ত্রী  </item>
         <item>2. বাবা </item>
@@ -613,7 +619,6 @@
         <item>5. হাসপাতালে নেওয়ার পথে</item>
         <item>9. অন্যান্য (উল্লেখ করুন)</item>
     </string-array>
-
     <string-array name="survey_violence_object">
         <item>1. লাঠি </item>
         <item>2. ছুরি /ধারালো অস্ত্র </item>
@@ -627,7 +632,7 @@
     </string-array>
 
 
-    <string name="transport_injury">পরিবহন দূঘ©টনা</string>
+    <string name="transport_injury">পরিবহন দুর্ঘটনা </string>
 
     <string name="transport_travel">দুর্ঘটনার সময় ব্যক্তিটি কিভাবে ভ্রমন করছিল?</string>
     <string name="transport_street_doing_what">ব্যক্তিটি রাস্তায় কি করছিল?</string>
@@ -657,7 +662,6 @@
         <item>14. স্পীড বোট </item>
         <item>15. গরু মহিষের গাড়ী</item>
         <item>16. ঘোড়া</item>
-        <item>14.   </item>
         <item>97. অন্যান্য   </item>
         <item>99. জানা নেই    </item>
     </string-array>
@@ -830,7 +834,7 @@
     <string-array name="cut2">
         <item>1. কৃষিকাজ/কৃষি যন্ত্র দিয়ে কাজ করার সময়</item>
         <item>2. গৃহস্থালি </item>
-        <item>3. কাঁঅিন্যের দ্বারা</item>
+        <item>3. অন্যের দ্বারা</item>
         <item>4. খেলা </item>
         <item>5. অন্য কোন কাজ করার সময় </item>
         <item>6. বস্তুটির ওপরে পড়ে গিয়েছিল </item>
@@ -875,15 +879,15 @@
     <string-array name="Burn2">
 
 
-        <item>1.রান্নার আগুন</item>
-        <item>2.গ্যাসের আগুন</item>
-        <item>3.আগুনে পোহানো</item>
-        <item>4.কম©স্থলে আগুন লেগে</item>
-        <item>5.বাড়ীতে আগুন লেগে</item>
-        <item>6.কুপি/হারিকেন</item>
-        <item>7.বিদ্যু</item>
-        <item>8.মোমের আগুন</item>
-        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+        <item>1. রান্নার আগুন (গ্যাস ব্যাতিত)</item>
+        <item>2. গ্যাসের আগুন</item>
+        <item>3. আগুনে পোহানো</item>
+        <item>4. কম©স্থলে আগুন লেগে</item>
+        <item>5. বাড়ীতে আগুন লেগে</item>
+        <item>6. কুপি/হারিকেন</item>
+        <item>7. বিদ্যু</item>
+        <item>8. মোমের আগুন</item>
+        <item>9. অন্যান্য (উল্লেখ করুন)</item>
 
 
     </string-array>
@@ -1007,7 +1011,7 @@
 
     </string-array>
     <string-array name="Drowning7">
-        <item>01.জলা শয়ে খেরা করছিল </item>
+        <item>01.জলা শয়ে খেলা  করছিল </item>
         <item>02.জলাশয়ে গোসল/অযু/সাঁতার কাটছিল</item>
         <item>03.ধোয়াধুয়ি করছিল</item>
         <item>04.জলাশয়ের ধারে কাজ/খেলা করছিল</item>
@@ -1108,6 +1112,7 @@
     <string name="poisoning6">06. পাত্রটি কোথায় রাখা হছিল ? (স্থান)</string>
     <string name="poisoning7">07. পাত্রটি কি অবস্থায় ছিল ?</string>
     <string name="poisoning8">08. ঘটনা ঘটার/বিষক্রিয়ার স্থান কোথায় ছিল?</string>
+    <string name="poisoning9">09. শিশুর বিষক্রিয়ার মাধ্যম?</string>
 
 
     <string-array name="poisoning1">
@@ -1178,6 +1183,16 @@
         <item>2. উঠানে     </item>
         <item>3. শস্য ক্ষেতে   </item>
         <item>99. জানা নেই     </item>
+    </string-array>
+
+
+    <string-array name="poisoning9">
+        <item>1. মুখে দেয়ারমাধ্যমে   </item>
+        <item>2. খাবারএরমাধ্যমে      </item>
+        <item>3. শ্বাস প্রশ্বাস এর মাধ্যমে      </item>
+        <item>4.  ত্বকের অভ্যন্তরে কোনভাবে প্রবেশের মাধ্যমে       </item>
+        <item>5. ত্বকের সংস্পর্শের মাধ্যমে     </item>
+        <item>97.  অন্যান্য     </item>
     </string-array>
 
     <string name="machine1">01. এটা কি ধরনের মেশিন ছিল?</string>
@@ -1377,7 +1392,6 @@
 
     <string name="socio1">01.এই খানার অধীনে বসতবিটায় (পুকুর ও ডোবা সহ)কি পরিমান জমি (ডেসিমাল-এ)আছে? </string>
     <string name="socio2">02.এই খানার অধীনে কি পরিমান চাষযোগ্য জমি (ডেসিমাল-এ)আছে? </string>
-    <string name="socio11">বসতভিটা(পুকুর ও ডোবা সহ):</string>
     <string name="socio12">চাষ যোগ্য জমি :</string>
     <string name="socio97">জানি না</string>
     <string name="socio3">03.বসত ঘরের ছাদের প্রধান নিমা©vন সামগ্রী  </string>
@@ -1388,88 +1402,81 @@
     <string name="socio8">08.আপনারদের খানার সদস্যরা সাধারনত কোন ধরনের পায়খারনা ব্যবহার করে?</string>
     <string name="socio9">09.আপনাদের খানায় এই জিনিসগুলো আছে কি?</string>
     <string name="socio10">10.আপনার খানায় কি বিদ্যুত আছে?</string>
+    <string name="socio11">11.প্রতি মাসের আয়</string>
 
-    <string name="socio31">প্রাকৃতিক ছাদ</string>
-    <string name="socio311">11.ছাদ নেই</string>
-    <string name="socio312">12.খড়/ছন/তাল পাতা</string>
-    <string name="socio32">কাঁচাঁ ছাদ </string>
-    <string name="socio321">21.বাঁশ</string>
-    <string name="socio322">22.কাঠের তক্তা</string>
-    <string name="socio323">23.কাড©বোড</string>
-    <string name="socio33">উন্নত ছাদ</string>
-    <string name="socio331">31.টিন</string>
-    <string name="socio332">32.কাঠ</string>
-    <string name="socio333">33.সিরামিক টাইলিস</string>
-    <string name="socio334">34.সিমেন্ট</string>
-    <string name="socio335">35.টালি</string>
-    <string name="socio336">36.কাষ্ট খন্ড (টালি/শ্লেট)</string>
-    <string name="socio337">37.অন্যান্য (নির্দিষ্ট উল্লেখ করুন)</string>
+    <string-array name="survey_c03">
+        <item>11.ছাদ নেই</item>
+        <item>12.খড়/ছন/তাল পাতা</item>
+        <item>21.বাঁশ</item>
+        <item>22.কাঠের তক্তা</item>
+        <item>23.কাড©বোড</item>
+        <item>31.টিন</item>
+        <item>32.কাঠ</item>
+        <item>33.সিরামিক টাইলিস</item>
+        <item>34.সিমেন্ট</item>
+        <item>35.টালি</item>
+        <item>36.কাষ্ট খন্ড (টালি/শ্লেট)</item>
+        <item>97.37.অন্যান্য</item>
+    </string-array>
 
-    <string name="socio41">কাঁচা মেঝে </string>
-    <string name="socio411">11.মাটি/বালু</string>
-    <string name="socio42">প্রাথমিক পর্যায়ের মেঝে</string>
-    <string name="socio421">21.কাঠের তক্তা</string>
-    <string name="socio422">22.তালগাছ/বাঁশা</string>
-    <string name="socio43">উন্নত মেঝে</string>
-    <string name="socio431">31.নকশা করা কাঠের পাটাতন/পালিমকৃত কাঠ </string>
-    <string name="socio432">32.সিমেন্ট/ইটবালিজমানো </string>
-    <string name="socio433">33.সিরামিক টাইলস/মোজাইক</string>
-    <string name="socio434">34.কার্পেট </string>
-    <string name="socio435">97.অন্যান্য (নির্দিষ্ট উল্লেখ করুন)</string>
+    <string-array name="survey_c04">
 
-    <string name="socio51">প্রাকৃতিক দেয়ালঃ</string>
-    <string name="socio511">11.দেয়াল নাই </string>
-    <string name="socio512">12.পাটকাঠি/বেত/তালগাছ/গাছের গুড়ি</string>
-    <string name="socio513">13.মাটি</string>
-    <string name="socio52">প্রাথমিক দেয়ালঃ</string>
-    <string name="socio521">21.মাটি সহ বাঁশ</string>
-    <string name="socio522">22.মাটি সহ পাথর</string>
-    <string name="socio523">23.প্লাই-উড</string>
-    <string name="socio524">24.কাড©বোড</string>
-    <string name="socio53">উন্নত দেয়ালঃ</string>
-    <string name="socio531">31.টিন</string>
-    <string name="socio532">32.ইট/সিমেন্ট/(প্লাষ্টারসহ)</string>
-    <string name="socio533">33.চুনসুরকি দিয়ে তৈরী পাথেরের দেয়াল</string>
-    <string name="socio534">34.ইট (প্লাষ্টার ছাড়া)</string>
-    <string name="socio535">35.উন্নত মানের কাঠের তক্তা</string>
-    <string name="socio536">97.অন্যান্য (নির্দিষ্ট উল্লেখ করুন)</string>
+        <item>11.মাটি/বালু</item>
+        <item>21.কাঠের তক্তা</item>
+        <item>22.তালগাছ/বাঁশা</item>
+        <item>31.নকশা করা কাঠের পাটাতন/পালিমকৃত কাঠ </item>
+        <item>32.সিমেন্ট/ইটবালিজমানো </item>
+        <item>33.সিরামিক টাইলস/মোজাইক</item>
+        <item>34.কার্পেট</item>
+        <item>97.অন্যান্য </item>
 
-    <string name="socio71">পাইপের পানিঃ</string>
-    <string name="socio711">11.বাড়ীর ভিতরে ট্যাপের (পাইপের)পানি </string>
-    <string name="socio712">12.বাড়ীর বাহিরে/উঠানে ট্যাপের ট্যাপের (পাইপের)পানি</string>
-    <string name="socio713">13.ট্যাপের (পাইপের)পানি</string>
-    <string name="socio714">21.টিউবওয়েল</string>
+    </string-array>
+    <string-array name="survey_c05">
+        <item>11.দেয়াল নাই </item>
+        <item>12.পাটকাঠি/বেত/তালগাছ/গাছের গুড়ি</item>
+        <item>13.মাটি</item>
+        <item>21.মাটি সহ বাঁশ</item>
+        <item>22.মাটি সহ পাথর</item>
+        <item>23.প্লাই-উড</item>
+        <item>24.কাড©বোড</item>
+        <item>31.টিন</item>
+        <item>32.ইট/সিমেন্ট/(প্লাষ্টারসহ)</item>
+        <item>33.চুনসুরকি দিয়ে তৈরী পাথেরের দেয়াল</item>
+        <item>34.ইট (প্লাষ্টার ছাড়া)</item>
+        <item>35.উন্নত মানের কাঠের তক্তা</item>
+        <item>97.অন্যান্য </item>
+    </string-array>
+    <string-array name="survey_c07">
+        <item>11.বাড়ীর ভিতরে ট্যাপের (পাইপের)পানি  </item>
+        <item>12.বাড়ীর বাহিরে/উঠানে ট্যাপের ট্যাপের (পাইপের)পানি </item>
+        <item>13.ট্যাপের (পাইপের)পানি </item>
+        <item>21.টিউবওয়েল </item>
+        <item>31.সংরক্ষিত কুপ </item>
+        <item>32.অসংরক্ষিত কুপ </item>
+        <item>41.সংরক্ষিতঝরণার পানি  </item>
+        <item>42.অসংরক্ষিত ঝরণার পানি </item>
+        <item>51.বৃষ্টির পানি </item>
+        <item>61.ট্যাঙ্কের পানি  </item>
+        <item>71.ছোট ট্যাঙ্কেরে পানি </item>
+        <item>81.পুকুর/খাল/বদ্ধ জলাশয়/হ্রদ/দিধী/বিল/হাওর </item>
+        <item>91.বোতলের পানি</item>
+        <item>97.অন্যান্য</item>
+    </string-array>
 
-    <string name="socio72">কুপের পানিঃ</string>
-    <string name="socio721">31.সংরক্ষিত কুপ </string>
-    <string name="socio722">32.অসংরক্ষিত কুপ</string>
+    <string-array name="survey_c08">
+        <item>11.ফ্ল্যাশ করে পাইপের মাধ্যমে অপসারন </item>
+        <item>12.ফ্ল্যাশ করে সেপটিক ট্যাঙ্ক এ ধারন</item>
+        <item>13.ফ্ল্যাশ করে গর্তে ধারন</item>
+        <item>14.ফ্ল্যাশ করেপাইপের মাধ্যমে অপসারন</item>
+        <item>15.ফ্ল্যাশ করে অজানা স্থানে অপসারন</item>
+        <item>22.পিট ল্রাট্রিন(স্লাব ছাড়া) খোলা গত© </item>
+        <item>31.কম্পোস্টিং ল্যাট্রিন</item>
+        <item>41.বালিতি টয়লেট</item>
+        <item>51.খোলা/ঝুলন্ত ল্যাট্রিন </item>
+        <item>61.ল্রাট্রি নাই/ঝোপ ঝাড়/মাঠ</item>
+        <item>97.অন্যান্য</item>
 
-    <string name="socio73">ঝরণার পানিঃ</string>
-    <string name="socio731">41.সংরক্ষিতঝরণার পানি </string>
-    <string name="socio732">42.অসংরক্ষিত ঝরণার পানি</string>
-    <string name="socio733">51.বৃষ্টির পানি</string>
-    <string name="socio734">61.ট্যাঙ্কের পানি </string>
-    <string name="socio735">71.ছোট ট্যাঙ্কেরে পানি </string>
-    <string name="socio736">81.পুকুর/খাল/বদ্ধ জলাশয়/হ্রদ/দিধী/বিল/হাওর</string>
-    <string name="socio737">91.বোতলের পানি</string>
-    <string name="socio738">97.অন্যান্য (নির্দিষ্ট উল্লেখ করুন)</string>
-
-    <string name="socio81">ফ্লাশ ল্রাট্রিন/পায়খানা:</string>
-    <string name="socio811">11.ফ্ল্যাশ করে পাইপের মাধ্যমে অপসারন </string>
-    <string name="socio812">12.ফ্ল্যাশ করে সেপটিক ট্যাঙ্ক এ ধারন</string>
-    <string name="socio813">13.ফ্ল্যাশ করে গর্তে ধারন</string>
-    <string name="socio814">14.ফ্ল্যাশ করেপাইপের মাধ্যমে অপসারন</string>
-    <string name="socio815">15.ফ্ল্যাশ করে অজানা স্থানে অপসারন</string>
-
-
-    <string name="socio83">ফ্ল্যাশ করে অজানা স্থানে অপসারন:</string>
-    <string name="socio831">21.পিট ল্রাট্রিন(স্লাব সহ) </string>
-    <string name="socio832">22.পিট ল্রাট্রিন(স্লাব ছাড়া) খোলা গত© </string>
-    <string name="socio833">31.কম্পোস্টিং ল্যাট্রিন</string>
-    <string name="socio834">41.বালিতি টয়লেট</string>
-    <string name="socio835">51.খোলা/ঝুলন্ত ল্যাট্রিন </string>
-    <string name="socio836">61.ল্রাট্রি নাই/ঝোপ ঝাড়/মাঠ </string>
-    <string name="socio837">97.অন্যান্য (নির্দিষ্ট উল্লেখ করুন)</string>
+    </string-array>
 
 
     <string name="socio91">রেডিও</string>
@@ -1498,11 +1505,48 @@
     <string name="ha">1.হ্যাঁ</string>
     <string name="na">2.না </string>
 
-    <string name="Quality1">Mobility</string>
-    <string name="Quality2">Self-Care</string>
-    <string name="Quality3">Usual Activities </string>
-    <string name="Quality4">Pain / Discomfort</string>
-    <string name="Quality5">Anxiety / Depression</string>
+    <string name="Quality1">চলাচল</string>
+    <string name="Quality2">নিজের যত্ন</string>
+    <string name="Quality3">দৈনন্দিন কর্মকাণ্ড ( কাজ, পড়াশুনা, ঘরের কাজ, বিস্রাম)</string>
+    <string name="Quality4">ব্যাথা বা অসস্থি</string>
+    <string name="Quality5">বিচলিত বা  চিন্তিত</string>
+    <string name="Quality6"> আপনার আজকের স্বাস্থ্য অবস্থা ( আপনি আপনার আজকের
+   দিনের স্বাস্থ্য কে ১০০ নম্বর এর মধে কত নম্বর দিবেন)
+</string>
+
+    <string-array name="q_1">
+        <item> 1. আমার হাঁটতে কোন সমস্যা নেই</item>
+        <item>2. আমার হাঁটতে কিছু সমস্যা হয়</item>
+        <item>3. আমি আকদম বিছানাই শোয়া</item>
+    </string-array>
+
+
+    <string-array name="q_2">
+        <item> 1. আমি নিজেই নিজের কাজ করতে পারি  </item>
+        <item>2. আমার গোসল বা কাপড় পরতে একটু  সমস্যা হয়</item>
+        <item>3. 2. আমার গোসল বা কাপড় পরতে একটু  সমস্যা হয় </item>
+    </string-array>
+
+
+    <string-array name="q_3">
+        <item> 1. আমার দৈনন্দিন কার্যকলাপ করতে সমস্যা হয় না </item>
+        <item> 2. আমার দৈনন্দিন কার্যকলাপ করতে অল্প সমস্যা হয়়</item>
+        <item> 3. আমি দৈনন্দিন কার্যকলাপ করতে আকেবারেই পারিনাা</item>
+    </string-array>
+
+
+    <string-array name="q_4">
+        <item> 1. আমার শরিরে কোন ব্যাথা বা অসস্থি নেই </item>
+        <item> 2. আমার শরিরে মাঝারী  ব্যাথা বা অসস্থি বোধ করি</item>
+        <item> 3. আমার শরিরে প্রচণ্ড ব্যাথা বা অসস্থি বোধ করি</item>
+    </string-array>
+
+
+    <string-array name="q_5">
+        <item> 1. আমি বিচলিত বা  চিন্তিত নই</item>
+        <item> 2. আমি অল্প অল্প বিচলিত বা  চিন্তিত</item>
+        <item> 3. আমি খুবই বিচলিত বা  চিন্তিত</item>
+    </string-array>
 
     <string name="Quality11">I have no problems in walking</string>
     <string name="Quality12">I have some problems in walking</string>

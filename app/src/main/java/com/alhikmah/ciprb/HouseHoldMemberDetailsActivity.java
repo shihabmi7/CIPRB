@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,7 +30,6 @@ import org.json.JSONObject;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 import cz.msebera.android.httpclient.Header;
@@ -37,7 +37,7 @@ import cz.msebera.android.httpclient.Header;
 public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    EditText editText_educatoin_level, editText_interviewer_unique, edittext_date_of_birth, edittext_current_age, editText_members_name, edittext_how_many_injury_last_six;
+    EditText editText_educatoin_level, edittext_date_of_birth, edittext_current_age, editText_members_name, edittext_how_many_injury_last_six;
     Calendar myCalendar;
     DatePickerDialog.OnDateSetListener date;
 
@@ -47,7 +47,8 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
     PrefsValues prefsValues;
     RelativeLayout linerar_how_injury;
-    int count = 1;
+    int count = 01;
+    int calculate_member = 0;
     Button button_cancel, button_next;
     int member_no;
     TextView house_hold_id;
@@ -55,175 +56,139 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
     String value[] = {"খানা প্রধান", "", ""};
     LinearLayout linear_responder;
     DecimalFormat formatter;
-    ProgressDialog progressDialog;
+    ProgressDialog progressDialog = null;
     Activity activity = this;
 
     String mCURRENT_MEMBER_ID = "";
-
     CheckBox isResonder;
-
     LinearLayout lay_how_injured;
+    private Person aPerson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_household_member_details);
 
-        prefsValues = new PrefsValues(this);
-        formatter = new DecimalFormat("00");
-        house_hold_id = (TextView) findViewById(R.id.house_hold_id);
-        isResonder = (CheckBox) findViewById(R.id.chkb_responder);
+        try {
+            //prefsValues = new PrefsValues(this);
+            //count = prefsValues.getSerial();
+            formatter = new DecimalFormat("00");
+            house_hold_id = (TextView) findViewById(R.id.house_hold_id);
+            isResonder = (CheckBox) findViewById(R.id.chkb_responder);
 
-        edittext_date_of_birth = (EditText) findViewById(R.id.edittext_date_of_birth);
-        edittext_current_age = (EditText) findViewById(R.id.edittext_current_age);
-        editText_members_name = (EditText) findViewById(R.id.editText_members_name);
-        editText_educatoin_level = (EditText) findViewById(R.id.editText_members_name);
-        editText_interviewer_unique = (EditText) findViewById(R.id.editText_interviewer_unique);
-        linear_responder = (LinearLayout) findViewById(R.id.linear_responder);
-        spinner_occupasion = (Spinner) findViewById(R.id.spinner_occupasion);
-        spinner_marital_status = (Spinner) findViewById(R.id.spinner_marital_status);
-        spinner_sex = (Spinner) findViewById(R.id.spinner_sex);
-        spinner_realation_with_hh = (Spinner) findViewById(R.id.spinner_realation_with_hh);
+            edittext_date_of_birth = (EditText) findViewById(R.id.edittext_date_of_birth);
+            edittext_current_age = (EditText) findViewById(R.id.edittext_current_age);
+            editText_members_name = (EditText) findViewById(R.id.editText_members_name);
+            editText_educatoin_level = (EditText) findViewById(R.id.editText_educatoin_level);
 
-        spinner_smoking = (Spinner) findViewById(R.id.spinner_smoking);
-        spinner_buttle_nut = (Spinner) findViewById(R.id.spinner_buttle_nut);
-        spinner_swiming = (Spinner) findViewById(R.id.spinner_swiming);
+            linear_responder = (LinearLayout) findViewById(R.id.linear_responder);
+            spinner_occupasion = (Spinner) findViewById(R.id.spinner_occupasion);
+            spinner_marital_status = (Spinner) findViewById(R.id.spinner_marital_status);
+            spinner_sex = (Spinner) findViewById(R.id.spinner_sex);
+            spinner_realation_with_hh = (Spinner) findViewById(R.id.spinner_realation_with_hh);
 
-        spinner_injury_last_six = (Spinner) findViewById(R.id.spinner_injury_last_six);
-        edittext_how_many_injury_last_six = (EditText) findViewById(R.id.edittext_how_many_injury_last_six);
-        spinner_how_injured = (Spinner) findViewById(R.id.spinner_how_injured);
+            spinner_smoking = (Spinner) findViewById(R.id.spinner_smoking);
+            spinner_buttle_nut = (Spinner) findViewById(R.id.spinner_buttle_nut);
+            spinner_swiming = (Spinner) findViewById(R.id.spinner_swiming);
 
-        button_cancel = (Button) findViewById(R.id.button_cancel);
-        button_next = (Button) findViewById(R.id.button_next);
-        button_cancel.setOnClickListener(this);
-        button_next.setOnClickListener(this);
+            spinner_injury_last_six = (Spinner) findViewById(R.id.spinner_injury_last_six);
+            edittext_how_many_injury_last_six = (EditText) findViewById(R.id.edittext_how_many_injury_last_six);
+            spinner_how_injured = (Spinner) findViewById(R.id.spinner_how_injured);
 
-        linerar_how_injury = (RelativeLayout) findViewById(R.id.linerar_how_injury);
-        linerar_how_injury.setVisibility(View.GONE);
+            button_cancel = (Button) findViewById(R.id.button_cancel);
+            button_next = (Button) findViewById(R.id.button_next);
+            button_cancel.setOnClickListener(this);
+            button_next.setOnClickListener(this);
+
+            linerar_how_injury = (RelativeLayout) findViewById(R.id.linerar_how_injury);
+            linerar_how_injury.setVisibility(View.GONE);
 
        /* lay_how_injured = (LinearLayout) findViewById(R.id.lay_how_injured);
         lay_how_injured.setVisibility(View.GONE);*/
 
-        spinner_injury_last_six.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            spinner_injury_last_six.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                if (position == 0) {
+                    if (position == 0) {
 
-                    linerar_how_injury.setVisibility(View.VISIBLE);
-                    // lay_how_injured.setVisibility(View.VISIBLE);
+                        linerar_how_injury.setVisibility(View.VISIBLE);
+                        // lay_how_injured.setVisibility(View.VISIBLE);
 
-                } else {
+                    } else {
 
-                    linerar_how_injury.setVisibility(View.GONE);
-                    //lay_how_injured.setVisibility(View.GONE);
+                        linerar_how_injury.setVisibility(View.GONE);
+                        //lay_how_injured.setVisibility(View.GONE);
+
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
 
                 }
-            }
+            });
+            myCalendar = Calendar.getInstance();
+            date = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                      int dayOfMonth) {
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+                    myCalendar.set(Calendar.YEAR, year);
+                    myCalendar.set(Calendar.MONTH, monthOfYear);
+                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    updateLabel();
+                }
+            };
 
-            }
-        });
-        myCalendar = Calendar.getInstance();
-        date = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                  int dayOfMonth) {
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, monthOfYear);
-                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateLabel();
-                convertTwodates(myCalendar);
-            }
-        };
+            edittext_date_of_birth.setOnClickListener(new View.OnClickListener() {
 
-        edittext_date_of_birth.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-            @Override
-            public void onClick(View v) {
+                    new DatePickerDialog(HouseHoldMemberDetailsActivity.this, date, myCalendar
+                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                }
 
-                new DatePickerDialog(HouseHoldMemberDetailsActivity.this, date, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-
-        });
+            });
 
 
-        member_no = prefsValues.getMembersNo();
+            member_no = prefsValues.getMembersNo();
+            editText_members_name.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
-        /*if (count == 1) {
-            house_hold_id.setText(value[0]);
-        }*/
 
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Please wait...");
-        progressDialog.setTitle("Loading");
-        progressDialog.setCancelable(true);
+            // showTextLong(""+spinner_injury_last_six.getSelectedItem().toString());
+            setheader();
+        } catch (NullPointerException e) {
 
-        // showTextLong(""+spinner_injury_last_six.getSelectedItem().toString());
+            //Toast.makeText(activity,"",Toast.makeText())
+
+        } catch (Exception e) {
+
+
+        }
 
     }
 
+    void setheader() {
+
+        house_hold_id.setText("Total Members: " + member_no + "   Remain Member: " + (member_no - calculate_member));
+    }
 
     private void updateLabel() {
 
-        String myFormat = "dd/mm/yyyy"; //In which you need put here
+        String myFormat = "dd/MM/yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
         edittext_date_of_birth.setText(sdf.format(myCalendar.getTime()));
+
     }
 
-
-    void convertTwodates(Calendar calendar) {
-
-
-        try {
-
-            //Calendar c = Calendar.getInstance();
-            //SimpleDateFormat dateformat = new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss aa");
-            // Datetime = dateformat.format(calendar.getTime());
-            // String toyBornTime = "2014-06-18 12:56:50";
-
-            SimpleDateFormat dateFormat = new SimpleDateFormat(
-                    "dd-MM-yyyy hh:mm:ss aa");
-
-            String toyBornTime = dateFormat.format(calendar.getTime());
-            Date oldDate = dateFormat.parse(toyBornTime);
-            System.out.println(oldDate);
-
-            Date currentDate = new Date();
-
-            long diff = currentDate.getTime() - oldDate.getTime();
-            long seconds = diff / 1000;
-            long minutes = seconds / 60;
-            long hours = minutes / 60;
-            long days = hours / 24;
-            long month = days / 30;
-            long year = month / 12;
-
-            if (oldDate.before(currentDate)) {
-
-                Log.e("oldDate", "is previous date");
-                Log.e("Difference: ", " seconds: " + seconds + " minutes: " + minutes
-                        + " hours: " + hours + " days: " + days + "month:" + month + "year:" + year);
-
-            }
-
-            // Log.e("toyBornTime", "" + toyBornTime);
-
-        } catch (java.text.ParseException e) {
-
-            e.printStackTrace();
-        }
-    }
 
     @Override
     protected void onResume() {
         super.onResume();
-        count = 1;
+        //count = 1;
     }
 
     /**
@@ -238,63 +203,46 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
             if (InternetConnection.checkNetworkConnection(this)) {
 
                 if (!editText_members_name.getText().toString().isEmpty()
-                        && !edittext_current_age.getText().toString().isEmpty() && !edittext_date_of_birth.getText().toString().isEmpty()) {
+                        && !edittext_current_age.getText().toString().isEmpty()) {
 
 
-                    mCURRENT_MEMBER_ID = ApplicationData.HOUSE_HOLD_UNIQE_ID + formatter.format(count);
-
-                    /*ApplicationData.memberListHashMap.put(mCURRENT_MEMBER_ID,
-                            editText_members_name.getText().toString());
-                    */
-
-                    Person aPerson = new Person();
-                    aPerson.setMembers_name(editText_members_name.getText().toString());
-                    aPerson.setSex(spinner_sex.getSelectedItem().toString());
                     // aPerson.setInjury_type(spinner_how_injured.getSelectedItem().toString());
-
                     if (linerar_how_injury.getVisibility() == View.VISIBLE
                             && !edittext_how_many_injury_last_six.getText().toString().isEmpty()) {
 
-                        aPerson.setInjury_number(Integer.parseInt(edittext_how_many_injury_last_six.getText().toString()));
+                        int num = Integer.parseInt(edittext_how_many_injury_last_six.getText().toString());
+                        for (int i = 1; i <= num; i++) {
 
-                        for (int i = 0; i < aPerson.getInjury_number(); i++) {
-                            aPerson.setPerson_id(ApplicationData.HOUSE_HOLD_UNIQE_ID + formatter.format(count));
+                            mCURRENT_MEMBER_ID = ApplicationData.HOUSE_HOLD_UNIQE_ID + "" + formatter.format(count);
                             count++;
-
-
+                            //prefsValues.setSerial(count);
+                            aPerson = new Person();
+                            aPerson.setMembers_name(editText_members_name.getText().toString());
+                            aPerson.setSex(spinner_sex.getSelectedItem().toString());
+                            aPerson.setInjury_number(num);
+                            aPerson.setPerson_id(mCURRENT_MEMBER_ID);
                             // if a injury happen
                             ApplicationData.alive_person_List.add(aPerson);
                         }
 
                     } else {
-                        aPerson.setPerson_id(ApplicationData.HOUSE_HOLD_UNIQE_ID + formatter.format(count));
+
+                        aPerson = new Person();
+                        aPerson.setMembers_name(editText_members_name.getText().toString());
+                        aPerson.setSex(spinner_sex.getSelectedItem().toString());
+
+                        mCURRENT_MEMBER_ID = ApplicationData.HOUSE_HOLD_UNIQE_ID + "" + formatter.format(count);
                         count++;
+                        //prefsValues.setSerial(count);
+                        aPerson.setPerson_id(mCURRENT_MEMBER_ID);
                     }
-
                     // have to find a solution if only one man is there or no injury
-                    if (count >= member_no) {
-
-                        if (ApplicationData.alive_person_List.size() != 0) {
-                            ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
-                        } else {
-                            //  go to home activity n fill up home characteristics
-                            ApplicationData.gotToNextActivity(activity, HomeActivity.class);
-                        }
-                    }
-                    showTextLong("" + aPerson.getMembers_name() + " : Data saved Successfully...: " + mCURRENT_MEMBER_ID);
-                    //ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
-                    // open this >>>>
-                    //saveDataToOnline(aPerson);
-
-
-                    // save to data base , check if count > member then go to next activity n save to
-
+                    saveDataToOnline(aPerson);
                 } else {
                     showTextLong(" empty field not allowed");
                 }
-
             } else
-                showAlert(this);
+                showAlert(aPerson);
         } else if (v == button_cancel) {
 
             cleartext();
@@ -303,11 +251,13 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
     }
 
     void cleartext() {
+        setheader();
 
         editText_members_name.getText().clear();
         edittext_date_of_birth.getText().clear();
         edittext_current_age.getText().clear();
         editText_educatoin_level.getText().clear();
+        isResonder.setChecked(false);
 
         if (edittext_how_many_injury_last_six != null)
             edittext_how_many_injury_last_six.getText().clear();
@@ -316,59 +266,87 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
     void saveDataToOnline(Person person) {
 
-        /*progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Please wait...");
-        progressDialog.setTitle("Loading");
-        progressDialog.setCancelable(true);*/
-        progressDialog.show();
-        // post with no parameters
-        AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
-        params.put("house_member_id", person.getPerson_id());
-        params.put("name", person.getMembers_name());
-        params.put("sex", ApplicationData.spilitStringFirst(person.getSex()));
-        params.put("date_of_birth", edittext_current_age.getText().toString());
-        params.put("maritial_status", ApplicationData.spilitStringFirst(spinner_marital_status.getSelectedItem().toString()));
-        params.put("education", edittext_current_age.getText().toString());
-        params.put("relation_with_hh", ApplicationData.spilitStringFirst(spinner_realation_with_hh.getSelectedItem().toString()));
-        params.put("age", edittext_current_age.getText().toString());
-        params.put("occupasion", ApplicationData.spilitStringFirst(spinner_occupasion.getSelectedItem().toString()));
-        params.put("smoking", ApplicationData.spilitStringFirst(spinner_smoking.getSelectedItem().toString()));
-        params.put("bettle_nut_chew", ApplicationData.spilitStringFirst(spinner_buttle_nut.getSelectedItem().toString()));
-        params.put("swimming", ApplicationData.spilitStringFirst(spinner_swiming.getSelectedItem().toString()));
-        params.put("responder", isResonder.isPressed());
-        params.put("interviewer_code", editText_interviewer_unique.getText().toString());
-        params.put("injury_last_six", ApplicationData.spilitStringFirst(spinner_injury_last_six.getSelectedItem().toString()));
+        try {
+            progressDialog = new ProgressDialog(activity);
+            progressDialog.setMessage("Please wait...");
+            progressDialog.setTitle("Loading");
+            progressDialog.setCancelable(true);
+            progressDialog.show();
 
-        if (linerar_how_injury.getVisibility() == View.VISIBLE) {
+            AsyncHttpClient client = new AsyncHttpClient();
+            RequestParams params = new RequestParams();
+            params.put("household_unique_code", person.getPerson_id());
+            params.put("name", person.getMembers_name());
+            params.put("sex", ApplicationData.spilitStringFirst(person.getSex()));
+            params.put("date_of_birth", edittext_date_of_birth.getText().toString());
+            params.put("maritial_status", ApplicationData.spilitStringFirst(spinner_marital_status.getSelectedItem().toString()));
+            params.put("education", editText_educatoin_level.getText().toString());
+            params.put("relation_with_hh", ApplicationData.spilitStringFirst(spinner_realation_with_hh.getSelectedItem().toString()));
+            params.put("age", edittext_current_age.getText().toString());
+            params.put("occupasion", ApplicationData.spilitStringFirst(spinner_occupasion.getSelectedItem().toString()));
+            params.put("smoking", ApplicationData.spilitStringFirst(spinner_smoking.getSelectedItem().toString()));
+            params.put("bettle_nut_chew", ApplicationData.spilitStringFirst(spinner_buttle_nut.getSelectedItem().toString()));
+            params.put("swimming", ApplicationData.spilitStringFirst(spinner_swiming.getSelectedItem().toString()));
+            params.put("responder", isResonder.isPressed());
+            params.put("interviewer_code", prefsValues.getInterviewer_code());
+            params.put("injury_last_six", ApplicationData.spilitStringFirst(spinner_injury_last_six.getSelectedItem().toString()));
+            params.put("interview_time", ApplicationData.getCurrentDate());
+            params.put("household_no", prefsValues.gethouse_hold_no());
+            if (linerar_how_injury.getVisibility() == View.VISIBLE) {
 
-            params.put("how_many_injury_last_six", person.getInjury_number());
-            //params.put("e02", person.getInjury_type());
-        }
+                params.put("how_many_injury_last_six", person.getInjury_number());
+                //params.put("e02", person.getInjury_type());
 
-        client.post(ApplicationData.URL_HOUSE_HOLD_MEMBERS, params,
-                new JsonHttpResponseHandler() {
-                    // Your implementation here
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+            }
 
-                        cleartext();
-                        progressDialog.dismiss();
-                        if (count >= member_no) {
-                            showTextLong("finish this input");
-                            //ApplicationData.memberListHashMap.clear();
-                            ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+            client.post(ApplicationData.URL_HOUSE_HOLD_MEMBERS, params,
+                    new JsonHttpResponseHandler() {
+                        // save to data base ,
+                        // check if count > member then go to next activity n save to
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                            calculate_member++;
+                            if (statusCode == ApplicationData.STATUS_SUCCESS) {
+                                progressDialog.dismiss();
+                                showTextLong(" : Data saved Successfully...: " + mCURRENT_MEMBER_ID);
+                                if (calculate_member >= member_no) {
+                                    finish();
+                                    if (ApplicationData.alive_person_List.size() != 0) {
+                                        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+                                    } else {
+                                        //  go to home activity n fill up home characteristics
+                                        ApplicationData.gotToNextActivity(activity, HomeActivity.class);
+                                    }
+                                }
+                                cleartext();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+
+                            progressDialog.dismiss();
+                            showTextLong(" : Data not Saved Successfully...: " + statusCode);
+                            super.onFailure(statusCode, headers, responseString, throwable);
+
+                            Log.e("" + getTitle(), "OnFailure" + statusCode);
                         }
                     }
-                }
-        );
+            );
+        } catch (NullPointerException e) {
+
+
+        }
+
     }
 
 
-    public void showAlert(final Activity activity) {
+    public void showAlert(final Person person) {
 
         if (InternetConnection.isAvailable(activity)) {
 
+            if (person != null)
+                saveDataToOnline(person);
 
         } else {
 
@@ -376,14 +354,14 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .setTitle("No Internet Connection")
                     .setMessage(getString(R.string.internet_check_bn))
-                    .setPositiveButton("Exit",
+                    .setPositiveButton("Ok",
                             new DialogInterface.OnClickListener() {
 
                                 @Override
                                 public void onClick(DialogInterface dialog,
                                                     int which) {
 
-                                    finish();
+                                    // finish();
 
                                 }
 
@@ -396,7 +374,8 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                                                     int which) {
 
                                     // Stop the activity
-                                    showAlert(activity);
+                                    if (person != null)
+                                        showAlert(person);
 
                                 }
 
@@ -411,4 +390,9 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
         Toast.makeText(getApplicationContext(), value, Toast.LENGTH_LONG).show();
     }
 
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+    }
 }

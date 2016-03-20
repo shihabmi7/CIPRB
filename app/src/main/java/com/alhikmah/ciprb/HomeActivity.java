@@ -13,50 +13,33 @@ public class HomeActivity extends AppCompatActivity {
     private static final int SPLASH_TIME = 1600;
     private static final String AUDIO_FILE_NAME = "labbaiyk_allah_first";
 
-    /*"মডিউল-১  ফেস ফর্ম ",
-    মডিউল-২ মৃত্যু নিশ্চিত করণ ফর্ম
-    মডিউল- ৩ ইনজুরি জনিত অসুস্থতার ফর্ম
-    মডিউল-৪  ইনজুরি জনিত মৃত্যু ফর্ম
-    এম-১ আত্মহত্যা
-    এম-২ সড়ক দুর্ঘটনা
-    এম-৩ সহিংসতার তথ্য
-    এম-৪ পড়ে যাওয়া
-    এম-৫  ধারালো বস্তুর আঘাত/ কেটে যাওয়া
-    এম-৬ পুড়ে যাওয়া
-    এম-৭ পানিতে দুবে যাওয়া
-    এম-৮ দুর্ঘটনা জনিত বিষক্রিয়া
-    এম-৯  মেশিন/ যন্ত্রপাতির দারা আঘাত
-    এম-১০ বিদ্যুৎ স্পৃষ্টতা
-    এম-১১ প্রানি/ কিট পতঙ্গের দ্বারা জখম
-    এম-১২ ভোতা বস্তু দ্বারা আঘাত
-    এম-১৩ শ্বাস রোধ
-    মডিউল-৬ দৈনন্দিন জীবনের মানদণ্ড
 
-    //just cheange
-*/
     String form[] = {
-            "Face Sheet",
-            "Detection of injury morbidity",
-            "Information on injury morbidity",
-            "Death Confirmation",
-            "Injury Mortality  Form",
-            "Suicide",
-            "RTI",
-            "Violence",
-            " Fall  injury",
-            " Cut injury",
-            " Burn injury",
-            " Drowning",
-            " Unintentional Poisoning",
-            " Machinetool injury",
-            " Electrocution",
-            " Animalinsect injury",
-            " Injury by blunt object",
-            " Suffocation",
-            " Quality of life assessment"
-    }; //" Assult",
 
+            "মডিউল-১  ফেস ফর্ম",
+            "খানা সদস্যদের ইঞ্জুরী তথ্য",
+            "মডিউল- ৩ ইনজুরি জনিত অসুস্থতার ফর্ম",
+            "মডিউল-২ মৃত্যু নিশ্চিত করণ ফর্ম",
+            "মডিউল-৪  ইনজুরি জনিত মৃত্যু ফর্ম",
+            "বাড়ির তথ্য",
+            "এম-১ আত্মহত্যা",
+            "এম-২ সড়ক দুর্ঘটনা",
+            "এম-৩ সহিংসতার তথ্য",
+            "এম-৪ পড়ে যাওয়া",
+            "এম-৫  ধারালো বস্তুর আঘাত/ কেটে যাওয়া",
+            "এম-৬ পুড়ে যাওয়া",
+            "এম-৭ পানিতে দুবে যাওয়া",
+            "এম-৮ দুর্ঘটনা জনিত বিষক্রিয়া",
+            "এম-৯  মেশিন/ যন্ত্রপাতির দারা আঘাত",
+            "এম-১০ বিদ্যুৎ স্পৃষ্টতা",
+            "এম-১১ প্রানি/ কিট পতঙ্গের দ্বারা জখম",
+            "এম-১২ ভোতা বস্তু দ্বারা আঘাত",
+            "এম-১৩ শ্বাস রোধ",
+            "মডিউল-৬ দৈনন্দিন জীবনের মানদণ্ড"
 
+    };
+
+    //" Assult",
     Class[] samples =
             {
                     HouseHoldInformationActivity.class,
@@ -64,12 +47,13 @@ public class HomeActivity extends AppCompatActivity {
                     InjuryMorbidityActivity.class,
                     DeathConfirmationActivity.class,
                     InjuryMortalityActivity.class,
+                    HouseHoldCharacteristicsActivity.class,
                     SuicideAttemptActivity.class,
                     RoadTransportInjuryActivity.class,
                     ViolenceInjuryActivity.class,
                     FallInjuryActivity.class, CutInjuryActivity.class,
                     BurnInjuryActivity.class, NearDrowningActivity.class,
-                    UnintentionalPoisoningActivity.class, ToolInjuryActivity.class, ElectrocutionActivity.class, InsectInjuryActivity.class,
+                    UnintentionalPoisoningActivity.class, ToolInjuryActivity.class, ElectrocautionActivity.class, InsectInjuryActivity.class,
                     InjuryBluntActivity.class, SuffocationActivity.class, QualityOfLifeActivity.class
             };
     ListView listView;
@@ -81,8 +65,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         listView = (ListView) findViewById(R.id.listView_form_list);
-
         getFormList();
+
         FormAdapter formAdapter = new FormAdapter(HomeActivity.this);
         listView.setAdapter(formAdapter);
 
@@ -97,7 +81,18 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ApplicationData.formList.clear();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        ApplicationData.formList.clear();
     }
 
     private static class Sample {

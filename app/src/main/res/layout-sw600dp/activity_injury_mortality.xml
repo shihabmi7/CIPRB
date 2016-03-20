@@ -204,7 +204,56 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/injured_parts_and_type_of_injury"
+                    android:text="@string/injured_parts"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/edittext_injured_parts"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="enter following code"
+                    android:inputType="number"></EditText>
+
+                <TextView
+                    android:id="@+id/textView_tips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/injured_parts_and_type_of_injury_tips"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <!--have to discuss parts -->
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/injured_type_of_injury"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/edittext_injured_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="enter following code"
+                    android:inputType="number"></EditText>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/injured_parts_and_type_of_injury_tips_2"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 

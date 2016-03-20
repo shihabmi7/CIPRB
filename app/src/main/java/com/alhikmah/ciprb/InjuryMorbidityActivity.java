@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -32,7 +34,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class InjuryMorbidityActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText edittext_date_of_injury, edittext_time_of_injury, edittext_how_much_cost_reatment,
+    EditText edittext_date_of_injury, edittext_time_of_injury, edittext_how_much_cost_reatment, edittext_injured_parts, edittext_injured_type,
             edittext_number_of_days_work_loss, edittext_days_take_health_facility, edittext_time_take_health_facility;
     Calendar myCalendar = null;
     DatePickerDialog.OnDateSetListener date;
@@ -55,107 +57,181 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 //    spinner_sex,
 
     ProgressDialog progressDialog;
-
     Button button_cancel, button_next;
+    int alive_count = 0;
+
+    LinearLayout layout_type_admitted_health_facility, lay_type_of_disability,
+            lay_type_of_anesthesia_given, lay_who_gave_first_aid;
+    List<String> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);/**/
         setContentView(R.layout.activity_injury_morbidity);
 
-        /*edittext*/
-        edittext_date_of_injury = (EditText) findViewById(R.id.edittext_date_of_injury);
-        edittext_time_of_injury = (EditText) findViewById(R.id.edittext_time_of_injury);
-        edittext_number_of_days_work_loss = (EditText) findViewById(R.id.edittext_number_of_days_work_loss);
-        edittext_days_take_health_facility = (EditText) findViewById(R.id.edittext_days_take_health_facility);
-        edittext_time_take_health_facility = (EditText) findViewById(R.id.edittext_time_take_health_facility);
 
-        //spinner_sex = (Spinner) findViewById(R.id.spinner_sex);
+        try {
+            layout_type_admitted_health_facility = (LinearLayout) findViewById(R.id.layout_type_admitted_health_facility);
+            lay_type_of_disability = (LinearLayout) findViewById(R.id.lay_type_of_disability);
+            lay_type_of_anesthesia_given = (LinearLayout) findViewById(R.id.lay_type_of_anesthesia_given);
+            lay_who_gave_first_aid = (LinearLayout) findViewById(R.id.lay_type_of_anesthesia_given);
+            edittext_date_of_injury = (EditText) findViewById(R.id.edittext_date_of_injury);
+            edittext_time_of_injury = (EditText) findViewById(R.id.edittext_time_of_injury);
+            edittext_number_of_days_work_loss = (EditText) findViewById(R.id.edittext_number_of_days_work_loss);
+            edittext_days_take_health_facility = (EditText) findViewById(R.id.edittext_days_take_health_facility);
+            edittext_time_take_health_facility = (EditText) findViewById(R.id.edittext_time_take_health_facility);
+            edittext_injured_parts = (EditText) findViewById(R.id.edittext_injured_parts);
+            spinner_person_name = (Spinner) findViewById(R.id.spinner_person_name);
 
-        spinner_person_name = (Spinner) findViewById(R.id.spinner_person_name);
-
-        List<String> list = new ArrayList<String>();
-        /*list.add("Android");
-        list.add("Java");
-        list.add("Spinner Data");
-        list.add("Spinner Adapter");
-        list.add("Spinner Example");*/
-
-        //list = ApplicationData.alive_person_List;
-
-        for (Person dataAdapter : ApplicationData.alive_person_List) {
-
-            list.add(dataAdapter.getMembers_name() + "." + dataAdapter.getPerson_id());
-
-           /* for (int i = 1; i <= dataAdapter.getInjury_number(); i++) {
-
-                list.add(dataAdapter.getMembers_name() + "." + dataAdapter.getPerson_id());
-
-            }*/
-        }
-
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>
-                (this, android.R.layout.simple_spinner_item, list);
-
-        dataAdapter.setDropDownViewResource
-                (android.R.layout.simple_spinner_dropdown_item);
-
-        spinner_person_name.setAdapter(dataAdapter);
+            list = new ArrayList<String>();
+            //list = ApplicationData.alive_person_List;
 
 
-        spinner_how_injured = (Spinner) findViewById(R.id.spinner_how_injured);
-        spinner_place_of_injury = (Spinner) findViewById(R.id.spinner_place_of_injury);
-        spinner_injury_intent = (Spinner) findViewById(R.id.spinner_injury_intent);
-        spinner_condition_of_victims_after_injury = (Spinner) findViewById(R.id.spinner_condition_of_victims_after_injury);
-        spinner_mobility_condition_after_injury = (Spinner) findViewById(R.id.spinner_mobility_condition_after_injury);
-        spinner_did_receive_first_aid = (Spinner) findViewById(R.id.spinner_did_receive_first_aid);
-        spinner_who_gave_first_aid = (Spinner) findViewById(R.id.spinner_who_gave_first_aid);
-        spinner_Was_he_trained_in_first_aid = (Spinner) findViewById(R.id.spinner_Was_he_trained_in_first_aid);
-        spinner_person_receive_treatment_for_injury = (Spinner) findViewById(R.id.spinner_person_receive_treatment_for_injury);
-        spinner_Who_provided_the_treatment = (Spinner) findViewById(R.id.spinner_Who_provided_the_treatment);
-        spinner_Where_receive_treatment = (Spinner) findViewById(R.id.spinner_Where_receive_treatment);
-        spinner_admitted_health_facility = (Spinner) findViewById(R.id.spinner_admitted_health_facility);
-        spinner_type_admitted_health_facility = (Spinner) findViewById(R.id.spinner_type_admitted_health_facility);
-        spinner_how_admitted_health_facility = (Spinner) findViewById(R.id.spinner_how_admitted_health_facility);
-        spinner_any_surgery_operation_done = (Spinner) findViewById(R.id.spinner_any_surgery_operation_done);
-        spinner_type_of_anesthesia_given = (Spinner) findViewById(R.id.spinner_type_of_anesthesia_given);
-        spinner_outcome_of_treatment = (Spinner) findViewById(R.id.spinner_outcome_of_treatment);
+            spinner_how_injured = (Spinner) findViewById(R.id.spinner_how_injured);
+            spinner_place_of_injury = (Spinner) findViewById(R.id.spinner_place_of_injury);
+            spinner_injury_intent = (Spinner) findViewById(R.id.spinner_injury_intent);
+            spinner_condition_of_victims_after_injury = (Spinner) findViewById(R.id.spinner_condition_of_victims_after_injury);
+            spinner_mobility_condition_after_injury = (Spinner) findViewById(R.id.spinner_mobility_condition_after_injury);
+            spinner_did_receive_first_aid = (Spinner) findViewById(R.id.spinner_did_receive_first_aid);
+            spinner_who_gave_first_aid = (Spinner) findViewById(R.id.spinner_who_gave_first_aid);
+            spinner_Was_he_trained_in_first_aid = (Spinner) findViewById(R.id.spinner_Was_he_trained_in_first_aid);
+            spinner_person_receive_treatment_for_injury = (Spinner) findViewById(R.id.spinner_person_receive_treatment_for_injury);
+            spinner_Who_provided_the_treatment = (Spinner) findViewById(R.id.spinner_Who_provided_the_treatment);
+            spinner_Where_receive_treatment = (Spinner) findViewById(R.id.spinner_Where_receive_treatment);
+            spinner_admitted_health_facility = (Spinner) findViewById(R.id.spinner_admitted_health_facility);
+            spinner_type_admitted_health_facility = (Spinner) findViewById(R.id.spinner_type_admitted_health_facility);
+            spinner_how_admitted_health_facility = (Spinner) findViewById(R.id.spinner_how_admitted_health_facility);
+            spinner_any_surgery_operation_done = (Spinner) findViewById(R.id.spinner_any_surgery_operation_done);
+            spinner_type_of_anesthesia_given = (Spinner) findViewById(R.id.spinner_type_of_anesthesia_given);
+            spinner_outcome_of_treatment = (Spinner) findViewById(R.id.spinner_outcome_of_treatment);
+            edittext_how_much_cost_reatment = (EditText) findViewById(R.id.edittext_how_much_cost_reatment);
+            spinner_injured_person_become_disabled = (Spinner) findViewById(R.id.spinner_injured_person_become_disabled);
+            spinner_type_of_disability = (Spinner) findViewById(R.id.spinner_type_of_disability);
+            spinner_significant_source_of_income_for_family = (Spinner) findViewById(R.id.spinner_significant_source_of_income_for_family);
+            spinner_family_being_coping_loss_income = (Spinner) findViewById(R.id.spinner_family_being_coping_loss_income);
 
 
-        edittext_how_much_cost_reatment = (EditText) findViewById(R.id.edittext_how_much_cost_reatment);
-        spinner_injured_person_become_disabled = (Spinner) findViewById(R.id.spinner_injured_person_become_disabled);
-        spinner_type_of_disability = (Spinner) findViewById(R.id.spinner_type_of_disability);
-        spinner_significant_source_of_income_for_family = (Spinner) findViewById(R.id.spinner_significant_source_of_income_for_family);
-        spinner_family_being_coping_loss_income = (Spinner) findViewById(R.id.spinner_family_being_coping_loss_income);
+            spinner_did_receive_first_aid.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    if (position == 0) {
+
+                        lay_who_gave_first_aid.setVisibility(View.VISIBLE);
+                        // lay_how_injured.setVisibility(View.VISIBLE);
+
+                    } else {
+
+                        lay_who_gave_first_aid.setVisibility(View.GONE);
+                        //lay_how_injured.setVisibility(View.GONE);
+
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
 
 
-        myCalendar = Calendar.getInstance();
+            spinner_admitted_health_facility.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        date = new DatePickerDialog.OnDateSetListener() {
+                    if (position == 0) {
 
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                  int dayOfMonth) {
+                        layout_type_admitted_health_facility.setVisibility(View.VISIBLE);
+                        // lay_how_injured.setVisibility(View.VISIBLE);
 
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, monthOfYear);
-                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateLabel();
-            }
+                    } else {
 
-        };
+                        layout_type_admitted_health_facility.setVisibility(View.GONE);
+                        //lay_how_injured.setVisibility(View.GONE);
 
-        edittext_date_of_injury.setOnClickListener(new View.OnClickListener() {
+                    }
+                }
 
-            @Override
-            public void onClick(View v) {
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
 
-                new DatePickerDialog(activity, date, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
+                }
+            });
 
-        });
+            spinner_any_surgery_operation_done.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    if (position == 0) {
+
+                        lay_type_of_anesthesia_given.setVisibility(View.VISIBLE);
+                        // lay_how_injured.setVisibility(View.VISIBLE);
+
+                    } else {
+
+                        lay_type_of_anesthesia_given.setVisibility(View.GONE);
+                        //lay_how_injured.setVisibility(View.GONE);
+
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+
+            spinner_injured_person_become_disabled.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    if (position == 0) {
+
+                        lay_type_of_disability.setVisibility(View.VISIBLE);
+                        // lay_how_injured.setVisibility(View.VISIBLE);
+
+                    } else {
+
+                        lay_type_of_disability.setVisibility(View.GONE);
+                        //lay_how_injured.setVisibility(View.GONE);
+
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+            myCalendar = Calendar.getInstance();
+
+            date = new DatePickerDialog.OnDateSetListener() {
+
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                      int dayOfMonth) {
+
+                    myCalendar.set(Calendar.YEAR, year);
+                    myCalendar.set(Calendar.MONTH, monthOfYear);
+                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    updateLabel();
+                }
+
+            };
+
+            edittext_date_of_injury.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+
+                    new DatePickerDialog(activity, date, myCalendar
+                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                }
+
+            });
 
         /*time = new TimePickerDialog.OnTimeSetListener() {
 
@@ -179,22 +255,61 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
         });*/
 
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Please wait...");
-        progressDialog.setTitle("Loading");
-        progressDialog.setCancelable(true);
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("Please wait...");
+            progressDialog.setTitle("Loading");
+            progressDialog.setCancelable(true);
 
-        button_cancel = (Button) findViewById(R.id.button_cancel);
-        button_next = (Button) findViewById(R.id.button_next);
+            button_cancel = (Button) findViewById(R.id.button_cancel);
+            button_next = (Button) findViewById(R.id.button_next);
 
-        button_cancel.setOnClickListener(this);
-        button_next.setOnClickListener(this);
+            button_cancel.setOnClickListener(this);
+            button_next.setOnClickListener(this);
 
+        } catch (NullPointerException e) {
+
+            //Toast.makeText("Some Error Occurs");
+
+        } catch (Exception e) {
+
+
+        }
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (ApplicationData.alive_person_List.size() <= 0) {
+
+            Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
+            finish();
+
+        } else {
+
+            setMemberSpinner(list);
+        }
+    }
+
+    private void setMemberSpinner(List<String> list) {
+        alive_count = ApplicationData.alive_person_List.size();
+        for (Person aPerson : ApplicationData.alive_person_List) {
+            list.add(aPerson.getMembers_name() + "." + aPerson.getPerson_id());
+        }
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>
+                (this, android.R.layout.simple_spinner_item, list);
+
+        dataAdapter.setDropDownViewResource
+                (android.R.layout.simple_spinner_dropdown_item);
+
+        spinner_person_name.setAdapter(dataAdapter);
     }
 
     private void updateLabel() {
 
-        String myFormat = "dd/mm/yyyy"; //In which you need put here
+        String myFormat = "dd/MM/yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         edittext_date_of_injury.setText(sdf.format(myCalendar.getTime()));
 
@@ -208,17 +323,19 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
     }
 
-    void saveDataToOnline(String id) {
+    void saveDataToOnline(int pos) {
+
 
         progressDialog.show();
+        final Person person = ApplicationData.alive_person_List.get(pos);
+        person.setInjury_type(spinner_how_injured.getSelectedItem().toString());
         // post with no parameters
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 
-
         //ApplicationData.spilitStringFirst(getSelectedItem().toString())
-        params.put("household_unique_code", id);
-        //params.put("e01", ApplicationData.spilitStringFirst(spinner_sex.getSelectedItem().toString()));
+        params.put("household_unique_code", person.getPerson_id());
+//        params.put("e01", ApplicationData.spilitStringFirst(spinner_sex.getSelectedItem().toString()));
         params.put("e02", ApplicationData.spilitStringFirst(spinner_how_injured.getSelectedItem().toString()));
         params.put("e03", edittext_date_of_injury.getText().toString());
         params.put("e04", edittext_time_of_injury.getText().toString());
@@ -228,22 +345,22 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
         params.put("e08", ApplicationData.spilitStringFirst(spinner_condition_of_victims_after_injury.getSelectedItem().toString()));
         params.put("e09", ApplicationData.spilitStringFirst(spinner_mobility_condition_after_injury.getSelectedItem().toString()));
         params.put("e10", ApplicationData.spilitStringFirst(spinner_did_receive_first_aid.getSelectedItem().toString()));
-        params.put("e11", ApplicationData.spilitStringFirst(spinner_who_gave_first_aid.getSelectedItem().toString()));
+        //params.put("e11", ApplicationData.spilitStringFirst(spinner_who_gave_first_aid.getSelectedItem().toString()));
         params.put("e12", ApplicationData.spilitStringFirst(spinner_Was_he_trained_in_first_aid.getSelectedItem().toString()));
         params.put("e13", ApplicationData.spilitStringFirst(spinner_person_receive_treatment_for_injury.getSelectedItem().toString()));
         params.put("e14", ApplicationData.spilitStringFirst(spinner_Who_provided_the_treatment.getSelectedItem().toString()));
         params.put("e15", ApplicationData.spilitStringFirst(spinner_Where_receive_treatment.getSelectedItem().toString()));
         params.put("e16", ApplicationData.spilitStringFirst(spinner_admitted_health_facility.getSelectedItem().toString()));
-        params.put("e17", ApplicationData.spilitStringFirst(spinner_type_admitted_health_facility.getSelectedItem().toString()));
+        // params.put("e17", ApplicationData.spilitStringFirst(spinner_type_admitted_health_facility.getSelectedItem().toString()));
         params.put("e18", ApplicationData.spilitStringFirst(spinner_how_admitted_health_facility.getSelectedItem().toString()));
         params.put("e19", edittext_time_take_health_facility.getText().toString());
         params.put("e20", edittext_days_take_health_facility.getText().toString());
         params.put("e21", ApplicationData.spilitStringFirst(spinner_any_surgery_operation_done.getSelectedItem().toString()));
-        params.put("e22", ApplicationData.spilitStringFirst(spinner_type_of_anesthesia_given.getSelectedItem().toString()));
+        //params.put("e22", ApplicationData.spilitStringFirst(spinner_type_of_anesthesia_given.getSelectedItem().toString()));
         params.put("e23", ApplicationData.spilitStringFirst(spinner_outcome_of_treatment.getSelectedItem().toString()));
         //params.put("e24", );
         params.put("e25", ApplicationData.spilitStringFirst(spinner_injured_person_become_disabled.getSelectedItem().toString()));
-        params.put("e26", ApplicationData.spilitStringFirst(spinner_type_of_disability.getSelectedItem().toString()));
+        //params.put("e26", ApplicationData.spilitStringFirst(spinner_type_of_disability.getSelectedItem().toString()));
         //params.put("e27", ApplicationData.spilitStringFirst(spinner_outcome_of_treatment.getSelectedItem().toString()));
         //params.put("e28", ApplicationData.spilitStringFirst(spinner_outcome_of_treatment.getSelectedItem().toString()));
         params.put("e29", edittext_number_of_days_work_loss.getText().toString());
@@ -251,38 +368,48 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
         params.put("e31", ApplicationData.spilitStringFirst(spinner_family_being_coping_loss_income.getSelectedItem().toString()));
 
 
-        client.post(ApplicationData.URL_HOUSE_HOLD_MEMBERS, params,
+        if (layout_type_admitted_health_facility.getVisibility() == View.VISIBLE) {
+            params.put("e17", ApplicationData.spilitStringFirst(spinner_type_admitted_health_facility.getSelectedItem().toString()));
+            //params.put("e02", person.getInjury_type());
+        }
+
+        if (lay_type_of_disability.getVisibility() == View.VISIBLE) {
+            params.put("e26", ApplicationData.spilitStringFirst(spinner_type_of_disability.getSelectedItem().toString()));
+            //params.put("e02", person.getInjury_type());
+        }
+
+        if (lay_type_of_anesthesia_given.getVisibility() == View.VISIBLE) {
+            params.put("e22", ApplicationData.spilitStringFirst(spinner_type_of_anesthesia_given.getSelectedItem().toString()));
+            //params.put("e02", person.getInjury_type());
+        }
+        if (lay_who_gave_first_aid.getVisibility() == View.VISIBLE) {
+            params.put("e11", ApplicationData.spilitStringFirst(spinner_who_gave_first_aid.getSelectedItem().toString()));
+            //params.put("e02", person.getInjury_type());
+        }
+
+        client.post(ApplicationData.URL_INJURY_MORBIDITY, params,
                 new JsonHttpResponseHandler() {
                     // Your implementation here
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-
-                        cleartext();
                         progressDialog.dismiss();
-                        /*if (count >= member_no) {
+                        int type = spinner_how_injured.getSelectedItemPosition() + 1;
+                        showTextLong("Success! Select Type:" + type);
+                        ApplicationData.alive_person_List.remove(spinner_person_name.getSelectedItemPosition());
+                        cleartext();
+                        moveToInjurySelectionActivity(type, person.getPerson_id());
+                        // go to next activity > module
+                    }
 
-                            showTextLong("finish this input");
-                            ApplicationData.memberListHashMap.clear();
-                            ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
-
-                        }
-*/
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                        showTextLong("Failed...");
+                        super.onFailure(statusCode, headers, responseString, throwable);
                     }
                 }
         );
     }
 
-    void cleartext() {
-
-       /* editText_members_name.getText().clear();
-        edittext_date_of_birth.getText().clear();
-        edittext_current_age.getText().clear();
-        editText_educatoin_level.getText().clear();
-
-        if (edittext_how_many_injury_last_six != null)
-            edittext_how_many_injury_last_six.getText().clear();*/
-
-    }
 
     public void showAlert(final Activity activity) {
 
@@ -302,7 +429,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                                 public void onClick(DialogInterface dialog,
                                                     int which) {
 
-                                    finish();
+                                    // finish();
 
                                 }
 
@@ -315,12 +442,24 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                                                     int which) {
 
                                     // Stop the activity
-                                    showAlert(activity);
+                                    //showAlert(activity);
 
                                 }
 
                             }).show();
         }
+
+    }
+
+    void cleartext() {
+
+       /* editText_members_name.getText().clear();
+        edittext_date_of_birth.getText().clear();
+        edittext_current_age.getText().clear();
+        editText_educatoin_level.getText().clear();
+
+        if (edittext_how_many_injury_last_six != null)
+            edittext_how_many_injury_last_six.getText().clear();*/
 
     }
 
@@ -335,27 +474,20 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                         && !edittext_time_of_injury.getText().toString().isEmpty()) {
 
                     int pos = spinner_person_name.getSelectedItemPosition();
-                    Person person = ApplicationData.alive_person_List.get(pos);
-                    person.setInjury_type(spinner_how_injured.getSelectedItem().toString());
+
                     //String id = ApplicationData.alive_person_List.get(pos).getPerson_id();
                     //String type_of_injury = ApplicationData.alive_person_List.get(pos).getInjury_type();
-
                     //int val = Integer.parseInt(ApplicationData.spilitStringFirst(type_of_injury));
 
-                    moveToInjurySelectionActivity(person);
-                    // go to next activity > module
-                    showTextLong("" + person.getInjury_type());
-                    //ApplicationData.memberListHashMap.clear();
-                    // ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
-
-                    //Toast.makeText(getApplicationContext(), "Saved" + id, Toast.LENGTH_LONG).show();
-                    // saveDataToOnline(person);
+                    saveDataToOnline(pos);
 
                 } else {
-                    // showTextLong(" empty field not allowed");
+
+                    showTextLong(" Fill the form correctly");
                 }
 
             } else
+
                 showAlert(this);
 
         } else if (v == button_cancel) {
@@ -365,50 +497,50 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
         }
     }
 
-    void moveToInjurySelectionActivity(Person person) {
-
-        switch (Integer.parseInt(ApplicationData.spilitStringFirst(person.getInjury_type()))) {
+    void moveToInjurySelectionActivity(int type, String id) {
+        // Integer.parseInt(ApplicationData.spilitStringFirst(person.getInjury_type()))
+        switch (type) {
             case 1:
-                ApplicationData.gotToNextActivity(this, SuicideAttemptActivity.class, person);
+                ApplicationData.gotToNextActivity(this, SuicideAttemptActivity.class, id);
                 break;
             case 2:
-                ApplicationData.gotToNextActivity(this, RoadTransportInjuryActivity.class, person);
+                ApplicationData.gotToNextActivity(this, RoadTransportInjuryActivity.class, id);
                 break;
             case 3:
-                ApplicationData.gotToNextActivity(this, ViolenceInjuryActivity.class, person);
+                ApplicationData.gotToNextActivity(this, ViolenceInjuryActivity.class, id);
                 break;
             case 4:
-                ApplicationData.gotToNextActivity(this, FallInjuryActivity.class, person);
+                ApplicationData.gotToNextActivity(this, FallInjuryActivity.class, id);
                 break;
             case 5:
-                ApplicationData.gotToNextActivity(this, CutInjuryActivity.class, person);
+                ApplicationData.gotToNextActivity(this, CutInjuryActivity.class, id);
                 break;
             case 6:
-                ApplicationData.gotToNextActivity(this, BurnInjuryActivity.class, person);
+                ApplicationData.gotToNextActivity(this, BurnInjuryActivity.class, id);
                 break;
             case 7:
-                ApplicationData.gotToNextActivity(this, NearDrowningActivity.class, person);
+                ApplicationData.gotToNextActivity(this, NearDrowningActivity.class, id);
                 break;
             case 8:
-                ApplicationData.gotToNextActivity(this, UnintentionalPoisoningActivity.class, person);
+                ApplicationData.gotToNextActivity(this, UnintentionalPoisoningActivity.class, id);
                 break;
             case 9:
-                ApplicationData.gotToNextActivity(this, ToolInjuryActivity.class, person);
+                ApplicationData.gotToNextActivity(this, ToolInjuryActivity.class, id);
                 break;
             case 10:
-                ApplicationData.gotToNextActivity(this, ElectrocutionActivity.class, person);
+                ApplicationData.gotToNextActivity(this, ElectrocautionActivity.class, id);
                 break;
             case 11:
-                ApplicationData.gotToNextActivity(this, InsectInjuryActivity.class, person);
+                ApplicationData.gotToNextActivity(this, InsectInjuryActivity.class, id);
                 break;
             case 12:
-                ApplicationData.gotToNextActivity(this, InjuryBluntActivity.class, person);
+                ApplicationData.gotToNextActivity(this, InjuryBluntActivity.class, id);
                 break;
             case 13:
-                ApplicationData.gotToNextActivity(this, SuffocationActivity.class, person);
+                ApplicationData.gotToNextActivity(this, SuffocationActivity.class, id);
                 break;
             case 14:
-                ApplicationData.gotToNextActivity(this, QualityOfLifeActivity.class, person);
+                ApplicationData.gotToNextActivity(this, QualityOfLifeActivity.class, id);
                 break;
         }
 
@@ -417,6 +549,13 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
     void showTextLong(String value) {
 
         Toast.makeText(getApplicationContext(), value, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        Toast.makeText(activity, "You have to fill the form carefully", Toast.LENGTH_LONG).show();
+        super.onBackPressed();
     }
 }
 

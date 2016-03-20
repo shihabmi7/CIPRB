@@ -20,7 +20,7 @@ import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
-public class ElectrocutionActivity extends AppCompatActivity implements View.OnClickListener {
+public class ElectrocautionActivity extends AppCompatActivity implements View.OnClickListener {
     private Spinner sp_electrocution1, sp_electrocution2, sp_electrocution3, sp_electrocution4;
     private TextView electrocution1, electrocution2, electrocution3, electrocution4, textView2, textView4, textView6;
     private Button button_cancel, button_next;

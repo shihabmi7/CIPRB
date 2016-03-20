@@ -49,6 +49,7 @@ public class InsectInjuryActivity extends AppCompatActivity implements View.OnCl
 
         button_cancel.setOnClickListener(this);
         button_next.setOnClickListener(this);
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait...");
         progressDialog.setTitle("Loading");

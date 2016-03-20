@@ -27,6 +27,8 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
     ProgressDialog progressDialog;
     SuicideAttemptActivity activity = this;
 
+    String person_id;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -34,9 +36,11 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_suicide_attempt);
 
 
-        Person aPerson = (Person) getIntent().getSerializableExtra("aPerson");
+        person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
+        Toast.makeText(activity, "" + person_id, Toast.LENGTH_LONG).show();
+     /*   Person aPerson = (Person) getIntent().getSerializableExtra("aPerson");
+        Toast.makeText(this, "" + aPerson.getPerson_id() + aPerson.getMembers_name(), Toast.LENGTH_LONG).show();*/
 
-        Toast.makeText(this, "" + aPerson.getPerson_id() + aPerson.getMembers_name(), Toast.LENGTH_LONG).show();
         spinner_survey_suicide_where = (Spinner) findViewById(R.id.spinner_survey_suicide_where);
         spinner_survey_suicide_how = (Spinner) findViewById(R.id.spinner_survey_suicide_how);
         spinner_survey_suicide_type = (Spinner) findViewById(R.id.spinner_survey_suicide_type);
@@ -149,6 +153,7 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
 
         if (v == button_next) {
 
+            finish();
 
         } else if (v == button_cancel) {
 

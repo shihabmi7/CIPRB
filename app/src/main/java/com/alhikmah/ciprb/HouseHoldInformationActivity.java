@@ -23,7 +23,7 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
     String Datetime;
     //NumberPicker death_number_picker, member_number_picker;
     Button button_cancel, button_next;
-    EditText editText_ward, editText_moholla, edittext_death_number, editText_member_number;
+    EditText editText_ward, editText_household_no, editText_moholla, editText_interviewer_code, edittext_death_number, editText_member_number;
     PrefsValues prefsValues;
 
     @Override
@@ -32,7 +32,7 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
         setContentView(R.layout.activity_house_hold_information);
 
         prefsValues = new PrefsValues(this);
-        int member_mo = prefsValues.getMembersNo();
+
 
         spinner_survey_location = (Spinner) findViewById(R.id.spinner_survey_location);
         spinner_adjust = (Spinner) findViewById(R.id.spinner_adjust);
@@ -45,6 +45,8 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
 
         edittext_death_number = (EditText) findViewById(R.id.edittext_death_number);
         editText_member_number = (EditText) findViewById(R.id.editText_member_number);
+        editText_interviewer_code = (EditText) findViewById(R.id.editText_interviewer_unique);
+        editText_household_no = (EditText) findViewById(R.id.editText_household_no);
 
         button_cancel = (Button) findViewById(R.id.button_cancel);
         button_next = (Button) findViewById(R.id.button_next);
@@ -60,21 +62,21 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
                 switch (position) {
                     case 0:
                         array_id = R.array.survey_city_corp;
-                        textView_adjustable.setText("City Corporation");
+                        textView_adjustable.setText(" সিটি কর্পোরেশন");
                         spinner_upozila.setVisibility(View.GONE);
                         editText_ward.setVisibility(View.VISIBLE);
                         setSpinner(array_id);
                         break;
                     case 1:
                         array_id = R.array.survey_district_town;
-                        textView_adjustable.setText("District Town");
+                        textView_adjustable.setText("জেলা শহর");
                         spinner_upozila.setVisibility(View.GONE);
                         editText_ward.setVisibility(View.VISIBLE);
                         setSpinner(array_id);
                         break;
                     case 2:
                         array_id = R.array.survey_district_rural;
-                        textView_adjustable.setText("District Rural");
+                        textView_adjustable.setText("জেলা (গ্রাম)");
                         spinner_upozila.setVisibility(View.VISIBLE);
                         editText_ward.setVisibility(View.GONE);
                         setSpinner(array_id);
@@ -108,12 +110,11 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
         });*/
 
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat dateformat = new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss aa"); //
+        SimpleDateFormat dateformat = new SimpleDateFormat("dd-MMM-yyyy hh:mm"); //
         Datetime = dateformat.format(c.getTime());
-        textView_interview_starting_time.setText("Date: " + Datetime);
-
-
+        textView_interview_starting_time.setText("Date: " + ApplicationData.getCurrentDate());
     }
+
 
     void setSpinner(int value) {
 
@@ -140,25 +141,14 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
 
                 case 0:
                 case 1:
-                    if (editText_ward.getText().length() == 2 && editText_moholla.getText().length() == 2) {
+                    if (editText_ward.getText().length() == 2 && editText_moholla.getText().length() == 2 && editText_household_no.getText().length() == 2) {
+
                         ApplicationData.HOUSE_HOLD_UNIQE_ID = "" + ApplicationData.spilitStringFirst(spinner_survey_location.getSelectedItem().toString()) +
                                 "" + ApplicationData.spilitStringFirst(spinner_adjust.getSelectedItem().toString()) + "" +
-                                editText_ward.getText().toString() + "" + editText_moholla.getText().toString();
-
-                        //editText_household_unique_code.setText(ApplicationData.HOUSE_HOLD_UNIQE_ID);
-                        Toast.makeText(getApplicationContext(), ApplicationData.HOUSE_HOLD_UNIQE_ID, Toast.LENGTH_LONG).show();
-
-                        prefsValues.setHouseUnique_id(ApplicationData.HOUSE_HOLD_UNIQE_ID);
-                        prefsValues.setMembers_no(Integer.parseInt(editText_member_number.getText().toString()));
-                        prefsValues.setMembers_died_no(Integer.parseInt(edittext_death_number.getText().toString()));
-
-                        //ApplicationData.memberListHashMap.put(ApplicationData.TAG_HOUSE_HOLD_UNIQE_ID,ApplicationData.HOUSE_HOLD_UNIQE_ID);
-                        ApplicationData.gotToNextActivity(this, HouseHoldMemberDetailsActivity.class);
+                                editText_ward.getText().toString() + "" + editText_moholla.getText().toString() + "" + editText_household_no.getText().toString();
 
                     } else
-
                         Toast.makeText(getApplicationContext(), "Give all code correctly", Toast.LENGTH_LONG).show();
-
                     break;
 
                 case 2:
@@ -167,26 +157,26 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
 
                         ApplicationData.HOUSE_HOLD_UNIQE_ID = "" + ApplicationData.spilitStringFirst(spinner_survey_location.getSelectedItem().toString()) +
                                 "" + ApplicationData.spilitStringFirst(spinner_adjust.getSelectedItem().toString()) + "" +
-                                ApplicationData.spilitStringFirst(spinner_upozila.getSelectedItem().toString()) + "" + editText_moholla.getText().toString();
+                                ApplicationData.spilitStringFirst(spinner_upozila.getSelectedItem().toString()) + ""
+                                + editText_moholla.getText().toString() + "" + editText_household_no.getText().toString();
 
                         //editText_household_unique_code.setText(ApplicationData.HOUSE_HOLD_UNIQE_ID);
-                        Toast.makeText(getApplicationContext(), ApplicationData.HOUSE_HOLD_UNIQE_ID, Toast.LENGTH_LONG).show();
 
-                        prefsValues.setHouseUnique_id(ApplicationData.HOUSE_HOLD_UNIQE_ID);
-                        prefsValues.setMembers_no(Integer.parseInt(editText_member_number.getText().toString()));
-                        prefsValues.setMembers_died_no(Integer.parseInt(edittext_death_number.getText().toString()));
-
-                        ApplicationData.gotToNextActivity(this, HouseHoldMemberDetailsActivity.class);
 
                     } else
                         Toast.makeText(getApplicationContext(), "Give all code correctly", Toast.LENGTH_LONG).show();
-
                     break;
 
             }
 
-//            ApplicationData.gotToNextActivity(this, HouseHoldMemberDetailsActivity.class);
+            Toast.makeText(getApplicationContext(), ApplicationData.HOUSE_HOLD_UNIQE_ID, Toast.LENGTH_LONG).show();
+            prefsValues.setHouseUnique_id(ApplicationData.HOUSE_HOLD_UNIQE_ID);
+            prefsValues.setMembers_no(Integer.parseInt(editText_member_number.getText().toString()));
+            prefsValues.setMembers_died_no(Integer.parseInt(edittext_death_number.getText().toString()));
+            prefsValues.setinterviewer_code(editText_interviewer_code.getText().toString());
+            prefsValues.sethouse_hold_no(editText_household_no.getText().toString());
 
+            ApplicationData.gotToNextActivity(this, HouseHoldMemberDetailsActivity.class);
         }
 
     }

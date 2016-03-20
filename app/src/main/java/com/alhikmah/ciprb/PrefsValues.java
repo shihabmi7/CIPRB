@@ -11,8 +11,37 @@ public class PrefsValues {
     private String members_no = "mem_no";
     private String members_died_no = "mem_died_no";
     private String house_id = "house_id";
-
+    private String interviewer_code = "interviewer_code";
     private String injury_type = "injury_type";
+    private String house_hold_no = "house_hold_no";
+    private String serial = "serial";
+
+
+    public int getSerial() {
+        return mPrefs.getInt(serial, ApplicationData.SERIAL);
+    }
+
+    public void setSerial(int serial_no) {
+        mPrefs.edit().putInt(serial, serial_no).commit();
+    }
+
+
+    public String gethouse_hold_no() {
+        return mPrefs.getString(house_hold_no, "");
+    }
+
+    public void sethouse_hold_no(String house_hold) {
+        mPrefs.edit().putString(house_hold_no, house_hold).commit();
+    }
+
+    public String getInterviewer_code() {
+        return mPrefs.getString(interviewer_code, "");
+    }
+
+    public void setinterviewer_code(String code) {
+        mPrefs.edit().putString(interviewer_code, code).commit();
+    }
+
 
     public int getInjury_type() {
         return mPrefs.getInt(members_no, 0);

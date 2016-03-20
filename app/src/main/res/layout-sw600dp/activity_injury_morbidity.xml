@@ -56,7 +56,7 @@
                     android:gravity="center"
                     android:text="@string/injured_person_name"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_person_name"
@@ -84,7 +84,7 @@
                     android:gravity="center"
                     android:text="@string/causes_of_injury"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_how_injured"
@@ -100,54 +100,54 @@
 
 
             <!--<LinearLayout-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="vertical"-->
-                <!--android:padding="5dp">-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical"-->
+            <!--android:padding="5dp">-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/textView_sex"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="@string/injured_person_sex"-->
-                    <!--android:textColor="@android:color/black"-->
-                    <!--android:textSize="18sp" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/textView_sex"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/injured_person_sex"-->
+            <!--android:textColor="@android:color/black"-->
+            <!--android:textSize="22sp"  />-->
 
-                <!--<Spinner-->
-                    <!--android:id="@+id/spinner_sex"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="center_horizontal"-->
-                    <!--android:entries="@array/survey_sex"-->
-                    <!--android:focusable="false"-->
-                    <!--android:spinnerMode="dropdown" />-->
+            <!--<Spinner-->
+            <!--android:id="@+id/spinner_sex"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:entries="@array/survey_sex"-->
+            <!--android:focusable="false"-->
+            <!--android:spinnerMode="dropdown" />-->
 
             <!--</LinearLayout>-->
 
             <!--<LinearLayout-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="vertical"-->
-                <!--android:padding="5dp">-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical"-->
+            <!--android:padding="5dp">-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/textView_marrital_status"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="@string/causes_of_injury"-->
-                    <!--android:textColor="@android:color/black"-->
-                    <!--android:textSize="18sp" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/textView_marrital_status"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/causes_of_injury"-->
+            <!--android:textColor="@android:color/black"-->
+            <!--android:textSize="22sp"  />-->
 
-                <!--<Spinner-->
-                    <!--android:id="@+id/spinner_how_injured"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="center_horizontal"-->
-                    <!--android:entries="@array/survey_cause_of_injury"-->
-                    <!--android:focusable="false"-->
-                    <!--android:spinnerMode="dropdown" />-->
+            <!--<Spinner-->
+            <!--android:id="@+id/spinner_how_injured"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:entries="@array/survey_cause_of_injury"-->
+            <!--android:focusable="false"-->
+            <!--android:spinnerMode="dropdown" />-->
 
 
             <!--</LinearLayout>-->
@@ -164,15 +164,15 @@
                     android:gravity="center"
                     android:text="@string/date_of_injury"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <EditText
                     android:id="@+id/edittext_date_of_injury"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="right"
                     android:focusable="false"
                     android:hint="Click to set the date"></EditText>
-
 
             </LinearLayout>
 
@@ -183,23 +183,25 @@
                 android:padding="5dp">
 
                 <TextView
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:hint="input time 24 hours format"
                     android:text="@string/time_of_injury"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <EditText
                     android:id="@+id/edittext_time_of_injury"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:focusable="false"
-                    android:hint="Click to set the time"></EditText>
-
+                    android:gravity="right"
+                    android:hint="Click to set the time"
+                    android:inputType="number"
+                    android:maxLength="2"></EditText>
 
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -213,7 +215,7 @@
                     android:gravity="center"
                     android:text="@string/place_of_injury"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_place_of_injury"
@@ -240,7 +242,7 @@
                     android:gravity="center"
                     android:text="@string/intent_of_injury"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_injury_intent"
@@ -265,9 +267,56 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/injured_parts_and_type_of_injury"
+                    android:text="@string/injured_parts"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
+
+                <EditText
+                    android:id="@+id/edittext_injured_parts"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="enter following code"></EditText>
+
+                <TextView
+                    android:id="@+id/textView_tips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/injured_parts_and_type_of_injury_tips"
+                    android:textColor="@android:color/black"
+                    android:textSize="22sp"  />
+
+                <!--have to discuss parts -->
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/injured_type_of_injury"
+                    android:textColor="@android:color/black"
+                    android:textSize="22sp"  />
+
+                <EditText
+                    android:id="@+id/edittext_injured_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="enter following code"></EditText>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/injured_parts_and_type_of_injury_tips_2"
+                    android:textColor="@android:color/black"
+                    android:textSize="22sp"  />
 
                 <!--have to discuss parts -->
 
@@ -285,14 +334,14 @@
                     android:gravity="center"
                     android:text="@string/condition_of_victims_after_injury"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_condition_of_victims_after_injury"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:entries="@array/survey_intent_of_injury"
+                    android:entries="@array/survey_condition_of_victims_after_injury"
                     android:focusable="false"
                     android:spinnerMode="dropdown" />
 
@@ -300,6 +349,7 @@
             </LinearLayout>
 
             <LinearLayout
+
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -311,7 +361,7 @@
                     android:gravity="center"
                     android:text="@string/mobility_condition_after_injury"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_mobility_condition_after_injury"
@@ -337,7 +387,7 @@
                     android:gravity="center"
                     android:text="@string/receive_first_aid"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_did_receive_first_aid"
@@ -351,6 +401,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/lay_who_gave_first_aid"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -362,7 +413,7 @@
                     android:gravity="center"
                     android:text="@string/who_gave_first_aid"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_who_gave_first_aid"
@@ -387,7 +438,7 @@
                     android:gravity="center"
                     android:text="@string/Was_he_trained_in_first_aid"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_Was_he_trained_in_first_aid"
@@ -412,7 +463,7 @@
                     android:gravity="center"
                     android:text="@string/person_receive_treatment_for_injury"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_person_receive_treatment_for_injury"
@@ -437,7 +488,7 @@
                     android:gravity="center"
                     android:text="@string/Who_provided_the_treatment"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_Who_provided_the_treatment"
@@ -462,7 +513,7 @@
                     android:gravity="center"
                     android:text="@string/Where_receive_treatment"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_Where_receive_treatment"
@@ -488,7 +539,7 @@
                     android:gravity="center"
                     android:text="@string/admitted_health_facility"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_admitted_health_facility"
@@ -502,6 +553,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/layout_type_admitted_health_facility"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -513,7 +565,7 @@
                     android:gravity="center"
                     android:text="@string/type_admitted_health_facility"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_type_admitted_health_facility"
@@ -538,7 +590,7 @@
                     android:gravity="center"
                     android:text="@string/how_admitted_health_facility"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_how_admitted_health_facility"
@@ -562,7 +614,7 @@
                     android:gravity="center"
                     android:text="@string/time_take_health_facility"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <EditText
                     android:id="@+id/edittext_time_take_health_facility"
@@ -584,7 +636,7 @@
                     android:gravity="center"
                     android:text="@string/days_take_health_facility"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <EditText
                     android:id="@+id/edittext_days_take_health_facility"
@@ -606,7 +658,7 @@
                     android:gravity="center"
                     android:text="@string/any_surgery_operation_done"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_any_surgery_operation_done"
@@ -620,6 +672,7 @@
 
 
             <LinearLayout
+                android:id="@+id/lay_type_of_anesthesia_given"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -631,7 +684,7 @@
                     android:gravity="center"
                     android:text="@string/type_of_anesthesia_given"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_type_of_anesthesia_given"
@@ -655,7 +708,7 @@
                     android:gravity="center"
                     android:text="@string/outcome_of_treatment"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_outcome_of_treatment"
@@ -679,7 +732,7 @@
                     android:gravity="center"
                     android:text="@string/how_much_cost_reatment"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <EditText
                     android:id="@+id/edittext_how_much_cost_reatment"
@@ -702,7 +755,7 @@
                     android:gravity="center"
                     android:text="@string/Did_the_injured_person_become_disabled"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_injured_person_become_disabled"
@@ -715,6 +768,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/lay_type_of_disability"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -726,7 +780,7 @@
                     android:gravity="center"
                     android:text="@string/type_of_disability"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_type_of_disability"
@@ -750,7 +804,7 @@
                     android:gravity="center"
                     android:text="@string/disability_affects_sides"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 // neeed to be clear
 
@@ -769,15 +823,15 @@
                     android:gravity="center"
                     android:text="@string/Number_of_days_work_loss"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <EditText
                     android:id="@+id/edittext_number_of_days_work_loss"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="days"
-                    android:maxLength="4"
-                    android:inputType="number"></EditText>
+                    android:inputType="number"
+                    android:maxLength="4"></EditText>
 
             </LinearLayout>
 
@@ -793,7 +847,7 @@
                     android:gravity="center"
                     android:text="@string/significant_source_of_income_for_family"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_significant_source_of_income_for_family"
@@ -818,7 +872,7 @@
                     android:gravity="center"
                     android:text="@string/family_being_coping_loss_income"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"  />
 
                 <Spinner
                     android:id="@+id/spinner_family_being_coping_loss_income"
