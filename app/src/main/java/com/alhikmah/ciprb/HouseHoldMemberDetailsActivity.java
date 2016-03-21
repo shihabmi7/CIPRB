@@ -211,7 +211,6 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                 if (!editText_members_name.getText().toString().isEmpty()
                         && !edittext_current_age.getText().toString().isEmpty()) {
 
-
                     // aPerson.setInjury_type(spinner_how_injured.getSelectedItem().toString());
                     if (linerar_how_injury.getVisibility() == View.VISIBLE
                             && !edittext_how_many_injury_last_six.getText().toString().isEmpty()) {

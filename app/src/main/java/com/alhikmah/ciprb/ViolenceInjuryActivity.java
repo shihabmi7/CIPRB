@@ -3,9 +3,11 @@ package com.alhikmah.ciprb;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -18,63 +20,62 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
+
 import cz.msebera.android.httpclient.Header;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class ViolenceInjuryActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Spinner spinner_violence_why, spinner_violence_relation, spinner_sex, spinner_violence_object;
+    private Spinner spinner_i01, spinner_i02, spinner_i03, spinner_i04;
 
     private TextView fall1, fall2, fall3, fall4, fall5, textView2, textView4, textView6;
     private Button button_cancel, button_next;
     ProgressDialog progressDialog;
     Activity activity = this;
 
-    //String person_id = "101323210";
-    String person_id = "";
+    String person_id = "30202102501";
     TextView textView_person_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voilence_injury);
-
-
         try {
-
             textView_person_id = (TextView) findViewById(R.id.textView_person_id);
             person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
             textView_person_id.setText("Person Id:" + person_id);
 
         } catch (NullPointerException e) {
 
-
         } catch (Exception e) {
 
-
         }
-
-
-        spinner_violence_why = (Spinner) findViewById(R.id.spinner_violence_why);
-        spinner_violence_relation = (Spinner) findViewById(R.id.spinner_violence_relation);
-        spinner_sex = (Spinner) findViewById(R.id.spinner_sex);
-        spinner_violence_object = (Spinner) findViewById(R.id.spinner_violence_object);
-
-        button_next = (Button) findViewById(R.id.button_next);
-        button_cancel = (Button) findViewById(R.id.button_cancel);
-
-
-        button_cancel = (Button) findViewById(R.id.button_cancel);
-        button_next = (Button) findViewById(R.id.button_next);
-
-        button_cancel.setOnClickListener(this);
-        button_next.setOnClickListener(this);
-
+        initUI();
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait...");
         progressDialog.setTitle("Loading");
         progressDialog.setCancelable(true);
     }
+      private void initUI(){
+          spinner_i01 = (Spinner) findViewById(R.id.spinner_i01);
+          spinner_i02 = (Spinner) findViewById(R.id.spinner_i02);
+          spinner_i03 = (Spinner) findViewById(R.id.spinner_i03);
+          spinner_i04 = (Spinner) findViewById(R.id.spinner_i04);
+
+          button_next = (Button) findViewById(R.id.button_next);
+          button_cancel = (Button) findViewById(R.id.button_cancel);
 
 
+          button_cancel = (Button) findViewById(R.id.button_cancel);
+          button_next = (Button) findViewById(R.id.button_next);
+
+          button_cancel.setOnClickListener(this);
+          button_next.setOnClickListener(this);
+}
     void cleartext() {
 
       /*  editText_members_name.getText().clear();
@@ -172,9 +173,82 @@ public class ViolenceInjuryActivity extends AppCompatActivity implements View.On
 
 
         if (v == button_next) {
-
+            String url=ApplicationData.URL_VIOLENCEINJURY + person_id;
+            new PutAsync().execute(url,createJsonBody());
 
         } else if (v == button_cancel) {
+
+
+        }
+
+    }
+
+    public String putRequestWithHeaderAndBody(String url,String jsonBody) throws IOException {
+
+
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+
+        OkHttpClient client = new OkHttpClient();
+        RequestBody body = RequestBody.create(JSON, jsonBody);
+        Request request = new Request.Builder()
+                .url(url)
+                .put(body)
+                .build();
+        Response response = client.newCall(request).execute();
+        Response httpResponse = client.newCall(request).execute();
+        httpResponse.code();
+
+        Log.i("Response data are ", response.body().string());
+        Log.i("Response code are ",""+response.code());
+        //makeCall(client, request);
+
+        return response.body().string();
+    }
+    String createJsonBody() {
+        String jsonData="{" +
+                "\"i01\":\"" +
+                ApplicationData.spilitStringFirst(spinner_i01.getSelectedItem().toString()) +
+                "\",\"i02\":\"" +
+                ApplicationData.spilitStringFirst(spinner_i02.getSelectedItem().toString()) +
+                "\",\"i03\":\"" +
+                ApplicationData.spilitStringFirst(spinner_i03.getSelectedItem().toString()) +
+                "\",\"i04\":\"" +
+                ApplicationData.spilitStringFirst(spinner_i04.getSelectedItem().toString()) +
+                "\"}";
+        return jsonData;
+    }
+    private class PutAsync extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String Result="";
+                Log.i("URL are ", params[0]);
+                Result= putRequestWithHeaderAndBody(params[0],params[1]);
+
+                Log.i("Result Are ",Result);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
 
 
         }

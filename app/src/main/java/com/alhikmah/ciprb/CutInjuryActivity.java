@@ -3,9 +3,11 @@ package com.alhikmah.ciprb;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -18,16 +20,26 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
+
 import cz.msebera.android.httpclient.Header;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class CutInjuryActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Spinner sp_cut1, sp_cut2, sp_cut3;
+    private Spinner spinner_k01, spinner_k02, spinner_k03;
     private TextView cut1, cut2, cut3, textView2, textView4, textView6;
     private Button button_cancel, button_next;
 
     Activity activity = this;
     ProgressDialog progressDialog;
+    String person_id = "101323210";
+    TextView textView_person_id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +47,6 @@ public class CutInjuryActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_cut_injury);
 
         //String person_id = "101323210";
-        String person_id = "101323210";
-        TextView textView_person_id;
 
         try {
 
@@ -51,30 +61,32 @@ public class CutInjuryActivity extends AppCompatActivity implements View.OnClick
 
 
         }
-        textView2 = (TextView) findViewById(R.id.textView2);
-        textView4 = (TextView) findViewById(R.id.textView4);
-        textView6 = (TextView) findViewById(R.id.textView6);
-
-        cut1 = (TextView) findViewById(R.id.cut1);
-        cut2 = (TextView) findViewById(R.id.cut2);
-        cut3 = (TextView) findViewById(R.id.cut3);
-
-        sp_cut1 = (Spinner) findViewById(R.id.sp_cut1);
-        sp_cut2 = (Spinner) findViewById(R.id.sp_cut2);
-        sp_cut3 = (Spinner) findViewById(R.id.sp_cut3);
-
-        button_cancel = (Button) findViewById(R.id.button_cancel);
-        button_next = (Button) findViewById(R.id.button_next);
-
-        button_cancel.setOnClickListener(this);
-        button_next.setOnClickListener(this);
+        initUI();
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait...");
         progressDialog.setTitle("Loading");
         progressDialog.setCancelable(true);
     }
 
+private void initUI(){
+    textView2 = (TextView) findViewById(R.id.textView2);
+    textView4 = (TextView) findViewById(R.id.textView4);
+    textView6 = (TextView) findViewById(R.id.textView6);
 
+    cut1 = (TextView) findViewById(R.id.cut1);
+    cut2 = (TextView) findViewById(R.id.cut2);
+    cut3 = (TextView) findViewById(R.id.cut3);
+
+    spinner_k01 = (Spinner) findViewById(R.id.spinner_k01);
+    spinner_k02 = (Spinner) findViewById(R.id.spinner_k02);
+    spinner_k03 = (Spinner) findViewById(R.id.spinner_k03);
+
+    button_cancel = (Button) findViewById(R.id.button_cancel);
+    button_next = (Button) findViewById(R.id.button_next);
+
+    button_cancel.setOnClickListener(this);
+    button_next.setOnClickListener(this);
+}
     void cleartext() {
 
       /*  editText_members_name.getText().clear();
@@ -172,9 +184,80 @@ public class CutInjuryActivity extends AppCompatActivity implements View.OnClick
 
 
         if (v == button_next) {
-
+            String url=ApplicationData.URL_CUTINJURY + person_id;
+            new PutAsync().execute(url,createJsonBody());
 
         } else if (v == button_cancel) {
+
+
+        }
+
+    }
+
+    public String putRequestWithHeaderAndBody(String url,String jsonBody) throws IOException {
+
+
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+
+        OkHttpClient client = new OkHttpClient();
+        RequestBody body = RequestBody.create(JSON, jsonBody);
+        Request request = new Request.Builder()
+                .url(url)
+                .put(body)
+                .build();
+        Response response = client.newCall(request).execute();
+        Response httpResponse = client.newCall(request).execute();
+        httpResponse.code();
+
+        Log.i("Response data are ", response.body().string());
+        Log.i("Response code are ",""+response.code());
+        //makeCall(client, request);
+
+        return response.body().string();
+    }
+    String createJsonBody() {
+        String jsonData="{" +
+                "\"k01\":\"" +
+                ApplicationData.spilitStringFirst(spinner_k01.getSelectedItem().toString()) +
+                "\",\"k02\":\"" +
+                ApplicationData.spilitStringFirst(spinner_k02.getSelectedItem().toString()) +
+                "\",\"k03\":\"" +
+                ApplicationData.spilitStringFirst(spinner_k03.getSelectedItem().toString()) +
+                "\"}";
+        return jsonData;
+    }
+    private class PutAsync extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String Result="";
+                Log.i("URL are ", params[0]);
+                Result= putRequestWithHeaderAndBody(params[0],params[1]);
+
+                Log.i("Result Are ",Result);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
 
 
         }

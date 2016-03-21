@@ -62,7 +62,7 @@
 
 
         <Spinner
-            android:id="@+id/sp_cut1"
+            android:id="@+id/spinner_k01"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -88,7 +88,7 @@
 
 
         <Spinner
-            android:id="@+id/sp_cut2"
+            android:id="@+id/spinner_k02"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -114,7 +114,7 @@
 
 
         <Spinner
-            android:id="@+id/sp_cut3"
+            android:id="@+id/spinner_k03"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

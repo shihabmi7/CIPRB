@@ -18,11 +18,6 @@
             android:name=".HomeActivity"
             android:launchMode="singleInstance">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
         </activity>
 
         <activity android:name=".HouseHoldMemberDetailsActivity">
@@ -30,11 +25,18 @@
         </activity>
         <activity android:name=".DeathConfirmationActivity">
 
+        </activity>
+        <activity android:name=".InjuryMorbidityActivity">
+
 
         </activity>
-        <activity android:name=".InjuryMorbidityActivity"></activity>
         <activity android:name=".InjuryMortalityActivity"></activity>
         <activity android:name=".SuicideAttemptActivity">
+
+            <!-- <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>-->
 
 
         </activity>
@@ -48,6 +50,11 @@
 
         </activity>
         <activity android:name=".FallInjuryActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity android:name=".InjuryBluntActivity">
@@ -63,6 +70,7 @@
 
         </activity>
         <activity android:name=".HouseHoldCharacteristicsActivity">
+
 
         </activity>
         <activity android:name=".SuffocationActivity"></activity>

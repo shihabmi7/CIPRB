@@ -3,9 +3,11 @@ package com.alhikmah.ciprb;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -18,7 +20,14 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
+
 import cz.msebera.android.httpclient.Header;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * Created by Shihab on 3/12/2016.
@@ -30,9 +39,13 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
     private ProgressDialog progressDialog;
     Activity activity = this;
 
+    private Spinner spinner_h01, spinner_h02, spinner_h03,
+            spinner_h04, spinner_h05, spinner_h06, spinner_h07,
+            spinner_h08, spinner_h09;
+
 
     //String person_id = "101323210";
-    String person_id = "101323210";
+    String person_id = "";
     TextView textView_person_id;
 
     @Override
@@ -40,25 +53,8 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transport_injury);
-
-        button_cancel = (Button) findViewById(R.id.button_cancel);
-        button_next = (Button) findViewById(R.id.button_next);
-
-        button_cancel.setOnClickListener(this);
-        button_next.setOnClickListener(this);
-
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Please wait...");
-        progressDialog.setTitle("Loading");
-        progressDialog.setCancelable(true);
-
         //String person_id = "101323210";
-        String person_id = "101323210";
-        TextView textView_person_id;
-
-
         try {
-
             textView_person_id = (TextView) findViewById(R.id.textView_person_id);
             person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
             textView_person_id.setText("Person Id:" + person_id);
@@ -70,8 +66,26 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
 
 
         }
+        initUI();
     }
 
+    private void initUI() {
+        spinner_h01 = (Spinner) findViewById(R.id.spinner_h01);
+        spinner_h02 = (Spinner) findViewById(R.id.spinner_h02);
+        spinner_h03 = (Spinner) findViewById(R.id.spinner_h03);
+        spinner_h04 = (Spinner) findViewById(R.id.spinner_h04);
+        spinner_h05 = (Spinner) findViewById(R.id.spinner_h05);
+        spinner_h06 = (Spinner) findViewById(R.id.spinner_h06);
+        spinner_h07 = (Spinner) findViewById(R.id.spinner_h07);
+        spinner_h08 = (Spinner) findViewById(R.id.spinner_h08);
+        spinner_h09 = (Spinner) findViewById(R.id.spinner_h09);
+
+        button_cancel = (Button) findViewById(R.id.button_cancel);
+        button_next = (Button) findViewById(R.id.button_next);
+
+        button_cancel.setOnClickListener(this);
+        button_next.setOnClickListener(this);
+    }
 
     void cleartext() {
 
@@ -86,8 +100,8 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
     }
 
     void saveDataToOnline(Person person) {
-       // Activity activity = this;
-        progressDialog.show();
+        // Activity activity = this;
+        // progressDialog.show();
         // post with no parameters
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
@@ -110,7 +124,6 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
                         cleartext();
-                        progressDialog.dismiss();
 
                         showTextLong("finish this input");
                         //ApplicationData.memberListHashMap.clear();
@@ -173,9 +186,99 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
 
 
         if (v == button_next) {
-
+            String url = ApplicationData.URL_ROADTRANSPORTINJURY + person_id;
+            new PutAsync().execute(url, createJsonBody());
 
         } else if (v == button_cancel) {
+            this.finish();
+
+        }
+
+    }
+
+
+    //ali Code
+    public String putRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
+
+
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+
+        OkHttpClient client = new OkHttpClient();
+        RequestBody body = RequestBody.create(JSON, jsonBody);
+        Request request = new Request.Builder()
+                .url(url)
+                .put(body)
+                .build();
+        Response response = client.newCall(request).execute();
+        Response httpResponse = client.newCall(request).execute();
+        httpResponse.code();
+
+        Log.i("Response data are ", response.body().string());
+        Log.i("Response code are ", "" + response.code());
+        //makeCall(client, request);
+
+        return response.body().string();
+    }
+
+    String createJsonBody() {
+        String jsonData = "{" +
+                "\"h01\":\"" +
+                ApplicationData.spilitStringFirst(spinner_h01.getSelectedItem().toString()) +
+                "\",\"h02\":\"" +
+                ApplicationData.spilitStringFirst(spinner_h02.getSelectedItem().toString()) +
+                "\",\"h03\":\"" +
+                ApplicationData.spilitStringFirst(spinner_h03.getSelectedItem().toString()) +
+                "\",\"h04\":\"" +
+                ApplicationData.spilitStringFirst(spinner_h04.getSelectedItem().toString()) +
+                "\",\"h05\":\"" +
+                ApplicationData.spilitStringFirst(spinner_h05.getSelectedItem().toString()) +
+                "\",\"h06\":\"" +
+                ApplicationData.spilitStringFirst(spinner_h06.getSelectedItem().toString()) +
+                "\",\"h07\":\"" +
+                ApplicationData.spilitStringFirst(spinner_h07.getSelectedItem().toString()) +
+                "\",\"h08\":\"" +
+                ApplicationData.spilitStringFirst(spinner_h08.getSelectedItem().toString()) +
+                "\",\"h09\":\"" +
+                ApplicationData.spilitStringFirst(spinner_h09.getSelectedItem().toString()) +
+                "\"}";
+        return jsonData;
+    }
+
+    private class PutAsync extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(RoadTransportInjuryActivity.this);
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage("Please wait...");
+            progressDialog.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String Result = "";
+                Log.i("URL are ", params[0]);
+                Result = putRequestWithHeaderAndBody(params[0], params[1]);
+
+                Log.i("Result Are ", Result);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
 
 
         }

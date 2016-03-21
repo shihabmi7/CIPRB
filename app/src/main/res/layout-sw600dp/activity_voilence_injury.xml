@@ -65,7 +65,7 @@
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_violence_why"
+                    android:id="@+id/spinner_i01"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -89,7 +89,7 @@
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_violence_relation"
+                    android:id="@+id/spinner_i02"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -114,7 +114,7 @@
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_sex"
+                    android:id="@+id/spinner_i03"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -138,7 +138,7 @@
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_violence_object"
+                    android:id="@+id/spinner_i04"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"

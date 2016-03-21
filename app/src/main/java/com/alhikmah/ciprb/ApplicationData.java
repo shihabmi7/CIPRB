@@ -5,11 +5,18 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.DatePicker;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * Created by Shihab on 3/11/2016.
@@ -17,12 +24,18 @@ import java.util.HashMap;
 public class ApplicationData {
 
     public static String URL_HOUSE_HOLD_MEMBERS = "http://saeradesign.com/LumenApi/public/index.php/api/household";
-    public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity";
+    public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/household/injurymorbidity/";
     public static String URL_SUICIDE = "http://saeradesign.com/LumenApi/public/index.php/api/household/suicideattemptactivity/";
+    public static String URL_ROADTRANSPORTINJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/roadtransportinjury/";
+    public static String URL_CUTINJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/cutinjury/";
+    public static String URL_VIOLENCEINJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/violenceinjury/";
+    public static String URL_FALL = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/fallinjury/";
+
     // public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity";
     // public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity";
     // public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity";
     // public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity";
+    public static String URL_CHARACTERISTIC = "http://saeradesign.com/LumenApi/public/index.php/api/household/characteristics/";
 
 
     public static int STATUS_SUCCESS = 200;
@@ -46,6 +59,46 @@ public class ApplicationData {
     public static int SERIAL = 1;
     public static int SERIAL_DEATH = 90;
 
+    public static String putRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
+
+
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+        OkHttpClient client = new OkHttpClient();
+        RequestBody body = RequestBody.create(JSON, jsonBody);
+        Request request = new Request.Builder()
+                .url(url)
+                .put(body)
+                .build();
+        Response response = client.newCall(request).execute();
+        Response httpResponse = client.newCall(request).execute();
+        httpResponse.code();
+        Log.i("Response JsonBody are ", jsonBody);
+        Log.i("Response data are ", response.body().string());
+        Log.i("Response code are ", "" + httpResponse.code());
+        //makeCall(client, request);
+
+        return response.body().string();
+    }
+
+    public static int putRequestWithBody(String url, String jsonBody) throws IOException {
+
+
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+        OkHttpClient client = new OkHttpClient();
+        RequestBody body = RequestBody.create(JSON, jsonBody);
+        Request request = new Request.Builder()
+                .url(url)
+                .put(body)
+                .build();
+        Response response = client.newCall(request).execute();
+        Log.i("Response JsonBody are ", jsonBody);
+        Log.i("Response data are ", response.body().string());
+        Log.i("Response code are ", "" + response.code());
+
+        return response.code();
+    }
 
     public static void gotToNextActivity(Activity activity, Class actiivty) {
 

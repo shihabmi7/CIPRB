@@ -64,7 +64,7 @@
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_survey_transport_travel"
+                    android:id="@+id/spinner_h01"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -88,7 +88,7 @@
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_transport_street_doing_what"
+                    android:id="@+id/spinner_h02"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -113,7 +113,7 @@
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_transport_collide_partile"
+                    android:id="@+id/spinner_h03"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -137,7 +137,7 @@
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_transport_why_victim_on_road"
+                    android:id="@+id/spinner_h04"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -161,7 +161,7 @@
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_transport_any_safety_device"
+                    android:id="@+id/spinner_h05"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -185,7 +185,7 @@
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_transport_if_yes_safety_device"
+                    android:id="@+id/spinner_h06"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -209,7 +209,7 @@
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_transport_condition_of_road"
+                    android:id="@+id/spinner_h07"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -233,7 +233,7 @@
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_transport_alcohol_mood_altering_substance"
+                    android:id="@+id/spinner_h08"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -257,7 +257,7 @@
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spinner_talking_over_mobile"
+                    android:id="@+id/spinner_h09"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"

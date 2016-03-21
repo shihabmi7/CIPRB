@@ -5,9 +5,11 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,6 +26,7 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -63,6 +66,8 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
     LinearLayout layout_type_admitted_health_facility, lay_type_of_disability,
             lay_type_of_anesthesia_given, lay_who_gave_first_aid;
     List<String> list;
+
+    String person_id = "101323210";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -276,7 +281,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
     protected void onResume() {
         super.onResume();
 
-        if (ApplicationData.alive_person_List.size() <= 0) {
+       /* if (ApplicationData.alive_person_List.size() <= 0) {
 
             Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
             finish();
@@ -284,7 +289,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
         } else {
 
             setMemberSpinner(list);
-        }
+        }*/
     }
 
     private void setMemberSpinner(List<String> list) {
@@ -319,7 +324,6 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
     void saveDataToOnline(int pos) {
 
-        //
         progressDialog.show();
         final Person person = ApplicationData.alive_person_List.get(pos);
         person.setInjury_type(spinner_how_injured.getSelectedItem().toString());
@@ -381,7 +385,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
             //params.put("e02", person.getInjury_type());
         }
 
-        client.post(ApplicationData.URL_INJURY_MORBIDITY, params,
+        client.put(ApplicationData.URL_INJURY_MORBIDITY, params,
                 new JsonHttpResponseHandler() {
                     // Your implementation here
                     @Override
@@ -405,6 +409,151 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
         );
     }
 
+    String createJsonBody() {
+
+        String e17 = "";
+        String e22 = "";
+        String e26 = "";
+        String e11 = "";
+        if (layout_type_admitted_health_facility.getVisibility() == View.VISIBLE) {
+            e17 = ApplicationData.spilitStringFirst(spinner_type_admitted_health_facility.getSelectedItem().toString());
+        }
+        if (lay_type_of_disability.getVisibility() == View.VISIBLE) {
+            e26 = ApplicationData.spilitStringFirst(spinner_type_of_disability.getSelectedItem().toString());
+        }
+        if (lay_type_of_anesthesia_given.getVisibility() == View.VISIBLE) {
+            e22 = ApplicationData.spilitStringFirst(spinner_type_of_anesthesia_given.getSelectedItem().toString());
+        }
+        if (lay_who_gave_first_aid.getVisibility() == View.VISIBLE) {
+            e11 = ApplicationData.spilitStringFirst(spinner_who_gave_first_aid.getSelectedItem().toString());
+        }
+
+        //Log.i("Test String ", ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString()));
+        String rep = "{" +
+                "\"e01\":\"" +
+                "" +
+                "\",\"e02\":\"" +
+                ApplicationData.spilitStringFirst((spinner_how_injured.getSelectedItem().toString()) +
+                        "\",\"e03\":\"" +
+                        edittext_date_of_injury.getText().toString() +
+                        "\",\"e04\":\"" +
+                        edittext_time_of_injury.getText().toString().toString() +
+                        "\",\"e05\":\"" +
+                        ApplicationData.spilitStringFirst(spinner_place_of_injury.getSelectedItem().toString())) +
+                "\",\"e06\":\"" +
+                ApplicationData.spilitStringFirst(spinner_injury_intent.getSelectedItem().toString()) +
+                "\",\"e07\":\"" +
+                "" +
+                "\",\"e08\":\"" +
+                ApplicationData.spilitStringFirst(spinner_condition_of_victims_after_injury.getSelectedItem().toString()) +
+                "\",\"e09\":\"" +
+                ApplicationData.spilitStringFirst(spinner_mobility_condition_after_injury.getSelectedItem().toString()) +
+                "\",\"e10\":\"" +
+                ApplicationData.spilitStringFirst(spinner_did_receive_first_aid.getSelectedItem().toString()) +
+                "\",\"e11\":\"" +
+                e11 +
+                "\",\"e12\":\"" +
+                ApplicationData.spilitStringFirst(spinner_Was_he_trained_in_first_aid.getSelectedItem().toString()) +
+                "\",\"e13\":\"" +
+                ApplicationData.spilitStringFirst(spinner_person_receive_treatment_for_injury.getSelectedItem().toString()) +
+                "\",\"e14\":\"" +
+                ApplicationData.spilitStringFirst(spinner_Who_provided_the_treatment.getSelectedItem().toString()) +
+                "\",\"e15\":\"" +
+                ApplicationData.spilitStringFirst(spinner_Where_receive_treatment.getSelectedItem().toString()) +
+                "\",\"e16\":\"" +
+                ApplicationData.spilitStringFirst(spinner_admitted_health_facility.getSelectedItem().toString()) +
+                "\",\"e17\":\"" +
+                e17 +
+                "\",\"e18\":\"" +
+                ApplicationData.spilitStringFirst(spinner_how_admitted_health_facility.getSelectedItem().toString()) +
+                "\",\"e19\":\"" +
+                edittext_time_take_health_facility.getText().toString() +
+                "\",\"e20\":\"" +
+                edittext_days_take_health_facility.getText().toString() +
+                "\",\"e21\":\"" +
+                ApplicationData.spilitStringFirst(spinner_any_surgery_operation_done.getSelectedItem().toString()) +
+                "\",\"e22\":\"" +
+                e22 +
+                "\",\"e23\":\"" +
+                ApplicationData.spilitStringFirst(spinner_outcome_of_treatment.getSelectedItem().toString()) +
+                "\",\"e24\":\"" +
+                edittext_how_much_cost_reatment.getText().toString() +
+                "\",\"e25\":\"" +
+                ApplicationData.spilitStringFirst(spinner_injured_person_become_disabled.getSelectedItem().toString()) +
+                "\",\"e26\":\"" +
+                e26 +
+                "\",\"e27\":\"" +
+                "" +
+                "\",\"e28\":\"" +
+                "" +
+                "\",\"e29\":\"" +
+                edittext_number_of_days_work_loss.getText().toString() +
+                "\",\"e30\":\"" +
+                ApplicationData.spilitStringFirst(spinner_significant_source_of_income_for_family.getSelectedItem().toString()) +
+                "\",\"e31\":\"" +
+                ApplicationData.spilitStringFirst(spinner_family_being_coping_loss_income.getSelectedItem().toString()) +
+                "\",\"e32\":\"" +
+                "" +
+                "\",\"e33\":\"" +
+                "" +
+                "\"}";
+        //return "{\"g03\":\"10\"}";
+        return rep;
+    }
+
+    String PostcreateJsonBody() {
+        return "{\"household_unique_code\":\"101323210\"," +
+                "\"f01\":\"05\"}";
+    }
+
+    private class PutAsync extends AsyncTask<String, Void, String> {
+        int value;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String Result = "";
+                Log.i("URL are ", params[0]);
+                //Result = ApplicationData.putRequestWithHeaderAndBody(params[0], params[1]);
+                value = ApplicationData.putRequestWithBody(params[0], params[1]);
+                Log.i("Result Are ", Result);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
+            if (value == ApplicationData.STATUS_SUCCESS) {
+                //// TODO: 3/22/2016
+
+                int type = spinner_how_injured.getSelectedItemPosition() + 1;
+                //showTextLong("Success! Select Type:" + type);
+                Toast.makeText(activity, "Success" + type, Toast.LENGTH_LONG).show();
+
+                //ApplicationData.alive_person_List.remove(spinner_person_name.getSelectedItemPosition());
+                cleartext();
+
+                moveToInjurySelectionActivity(type, person_id);
+            } else {
+                Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
 
     public void showAlert(final Activity activity) {
 
@@ -465,7 +614,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
             if (InternetConnection.checkNetworkConnection(this)) {
 
-                if (!edittext_date_of_injury.getText().toString().isEmpty()
+                /*if (!edittext_date_of_injury.getText().toString().isEmpty()
                         && !edittext_time_of_injury.getText().toString().isEmpty()) {
 
                     int pos = spinner_person_name.getSelectedItemPosition();
@@ -479,7 +628,16 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                 } else {
 
                     showTextLong(" Fill the form correctly");
-                }
+                }*/
+
+                //putRequestWithHeaderAndBody(ApplicationData.URL_SUICIDE + person_id);
+                String url = ApplicationData.URL_INJURY_MORBIDITY + person_id;
+                //Put
+                Log.i("String are ", createJsonBody());
+                new PutAsync().execute(url, createJsonBody());
+                //Post
+                //new PostAsync().execute("http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity", PostcreateJsonBody());
+
 
             } else
 

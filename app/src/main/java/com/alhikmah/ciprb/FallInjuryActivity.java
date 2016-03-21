@@ -3,9 +3,11 @@ package com.alhikmah.ciprb;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -17,6 +19,8 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
+
+import java.io.IOException;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -30,7 +34,7 @@ public class FallInjuryActivity extends AppCompatActivity implements View.OnClic
     Activity activity = this;
 
     //String person_id = "101323210";
-    String person_id = "101323210";
+    String person_id = "";
     TextView textView_person_id;
 
     @Override
@@ -50,21 +54,12 @@ public class FallInjuryActivity extends AppCompatActivity implements View.OnClic
 
         }
 
-        textView2 = (TextView) findViewById(R.id.textView2);
-        textView4 = (TextView) findViewById(R.id.textView4);
-        textView6 = (TextView) findViewById(R.id.textView6);
-        fall1 = (TextView) findViewById(R.id.fall1);
-        fall2 = (TextView) findViewById(R.id.fall2);
-        fall3 = (TextView) findViewById(R.id.fall3);
-        fall4 = (TextView) findViewById(R.id.fall4);
-        fall5 = (TextView) findViewById(R.id.fall5);
-
         sp_fall1 = (Spinner) findViewById(R.id.sp_fall1);
         sp_fall2 = (Spinner) findViewById(R.id.sp_fall2);
         sp_fall3 = (Spinner) findViewById(R.id.sp_fall3);
         sp_fall4 = (Spinner) findViewById(R.id.sp_fall4);
         sp_fall5 = (Spinner) findViewById(R.id.sp_fall5);
-        sp_fall06 = (Spinner) findViewById(R.id.sp_fall5);
+        sp_fall06 = (Spinner) findViewById(R.id.sp_fall6);
 
 
         button_cancel = (Button) findViewById(R.id.button_cancel);
@@ -72,6 +67,7 @@ public class FallInjuryActivity extends AppCompatActivity implements View.OnClic
 
         button_cancel.setOnClickListener(this);
         button_next.setOnClickListener(this);
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait...");
         progressDialog.setTitle("Loading");
@@ -165,11 +161,63 @@ public class FallInjuryActivity extends AppCompatActivity implements View.OnClic
         Toast.makeText(getApplicationContext(), value, Toast.LENGTH_LONG).show();
     }
 
+    private class PutAsync extends AsyncTask<String, Void, String> {
+
+        int value;
+        String Result = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String Result = "";
+                Log.i("URL are ", params[0]);
+                //Result = putRequestWithHeaderAndBody(params[0], params[1]);
+
+                value = ApplicationData.putRequestWithBody(params[0], params[1]);
+                Log.i("Result Are ", Result);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
+            if (value == ApplicationData.STATUS_SUCCESS) {
+                //// TODO: 3/22/2016
+                Toast.makeText(activity, "Success", Toast.LENGTH_LONG).show();
+                //ApplicationData.alive_person_List.remove(spinner_person_name.getSelectedItemPosition());
+                cleartext();
+
+            } else {
+                Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
+            }
+
+
+        }
+
+    }
+
     /**
      * Called when a view has been clicked.
      *
      * @param v The view that was clicked.
      */
+
     @Override
     public void onClick(View v) {
 
@@ -177,10 +225,46 @@ public class FallInjuryActivity extends AppCompatActivity implements View.OnClic
         if (v == button_next) {
 
 
+            if (person_id.length() > 0) {
+
+                //putRequestWithHeaderAndBody(ApplicationData.URL_SUICIDE + person_id);
+                String url = ApplicationData.URL_FALL + person_id;
+                //Put
+                Log.i("String are ", createJsonBody());
+                new PutAsync().execute(url, createJsonBody());
+                //Post
+                //new PostAsync().execute("http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity", PostcreateJsonBody());
+
+            } else {
+            }
+
         } else if (v == button_cancel) {
 
 
         }
 
+    }
+
+    String createJsonBody() {
+//        Log.i("Test String ", ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString()));
+
+
+        String rep = "{" +
+                "\"j01\":\"" +
+                ApplicationData.spilitStringFirst(sp_fall1.getSelectedItem().toString()) +
+                "\",\"j02\":\"" +
+                ApplicationData.spilitStringFirst(sp_fall2.getSelectedItem().toString()) +
+                "\",\"j03\":\"" +
+                ApplicationData.spilitStringFirst(sp_fall3.getSelectedItem().toString()) +
+                "\",\"j04\":\"" +
+                ApplicationData.spilitStringFirst(sp_fall4.getSelectedItem().toString()) +
+                "\",\"j05\":\"" +
+                ApplicationData.spilitStringFirst(sp_fall5.getSelectedItem().toString()) +
+                "\",\"j06\":\"" +
+                ApplicationData.spilitStringFirst(sp_fall06.getSelectedItem().toString()) +
+                "\"}";
+
+        //return "{\"g03\":\"10\"}";
+        return rep;
     }
 }

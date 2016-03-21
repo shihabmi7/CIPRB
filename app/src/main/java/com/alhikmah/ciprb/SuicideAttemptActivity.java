@@ -1,14 +1,10 @@
 package com.alhikmah.ciprb;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -18,22 +14,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import cz.msebera.android.httpclient.Header;
 import okhttp3.MediaType;
@@ -54,13 +41,9 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
     final static int FAILURE = 0;
 
     //String person_id = "101323210";
-    String person_id = "101323211";
+    String person_id = "";
     TextView textView_person_id;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client2;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -100,9 +83,7 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
         progressDialog.setMessage("Please wait...");
         progressDialog.setTitle("Loading");
         progressDialog.setCancelable(true);
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client2 = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
     }
 
 
@@ -125,11 +106,10 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
 //
 
 
-    public String putRequestWithHeaderAndBody(String url,String jsonBody) throws IOException {
+    public String putRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
 
 
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-
 
         OkHttpClient client = new OkHttpClient();
         RequestBody body = RequestBody.create(JSON, jsonBody);
@@ -140,18 +120,18 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
         Response response = client.newCall(request).execute();
         Response httpResponse = client.newCall(request).execute();
         httpResponse.code();
-
+        Log.i("Response JsonBody are ", jsonBody);
         Log.i("Response data are ", response.body().string());
-        Log.i("Response code are ",""+httpResponse.code());
+        Log.i("Response code are ", "" + httpResponse.code());
         //makeCall(client, request);
 
         return response.body().string();
     }
-    public String postRequestWithHeaderAndBody(String url,String jsonBody) throws IOException {
+
+    public String postRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
 
 
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-
 
         OkHttpClient client = new OkHttpClient();
         RequestBody body = RequestBody.create(JSON, jsonBody);
@@ -164,34 +144,52 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
         httpResponse.code();
 
         Log.i("Response data are ", response.body().string());
-        Log.i("Response code are ",""+httpResponse.code());
+        Log.i("Response code are ", "" + httpResponse.code());
         //makeCall(client, request);
 
         return response.body().string();
     }
 
     String createJsonBody() {
-        return "{\"g03\":\"10\"}";
+        Log.i("Test String ", ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString()));
+        String rep = "{" +
+                "\"g01\":\"" +
+                ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString()) +
+                "\",\"g02\":\"" +
+                ApplicationData.spilitStringFirst(spinner_survey_suicide_how.getSelectedItem().toString()) +
+                "\",\"g03\":\"" +
+                ApplicationData.spilitStringFirst(spinner_survey_suicide_type.getSelectedItem().toString()) +
+                "\"}";
+        //return "{\"g03\":\"10\"}";
+        return rep;
     }
+
     String PostcreateJsonBody() {
         return "{\"household_unique_code\":\"101323210\"," +
                 "\"f01\":\"05\"}";
     }
+
     private class PutAsync extends AsyncTask<String, Void, String> {
+
+        int value;
+        String Result = "";
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
 
+            progressDialog.show();
         }
 
         @Override
         protected String doInBackground(String... params) {
             try {
-                String Result="";
-                Log.i("URL are ", params[0]);
-                Result= putRequestWithHeaderAndBody(params[0],params[1]);
 
-                Log.i("Result Are ",Result);
+                Log.i("URL are ", params[0]);
+                // Result = putRequestWithHeaderAndBody(params[0], params[1]);
+
+                value = ApplicationData.putRequestWithBody(params[0], params[1]);
+                Log.i("Result Are ", Result);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -206,12 +204,19 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
+            if (value == ApplicationData.STATUS_SUCCESS) {
+                //// TODO: 3/22/2016
+                Toast.makeText(activity, "Success", Toast.LENGTH_LONG).show();
+                //ApplicationData.alive_person_List.remove(spinner_person_name.getSelectedItemPosition());
+                cleartext();
 
-
+            } else {
+                Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
+            }
 
         }
-
     }
+
     private class PostAsync extends AsyncTask<String, Void, String> {
         @Override
         protected void onPreExecute() {
@@ -221,11 +226,11 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
         @Override
         protected String doInBackground(String... params) {
             try {
-                String Result="";
+                String Result = "";
                 Log.i("URL are ", params[0]);
-                Result= postRequestWithHeaderAndBody(params[0],params[1]);
+                Result = postRequestWithHeaderAndBody(params[0], params[1]);
 
-                Log.i("Result Are ",Result);
+                Log.i("Result Are ", Result);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -239,8 +244,6 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-
-
 
 
         }
@@ -409,12 +412,19 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
             // finish();
             //saveDataToOnline();
             try {
-                //putRequestWithHeaderAndBody(ApplicationData.URL_SUICIDE + person_id);
-                String url=ApplicationData.URL_SUICIDE + person_id;
-                //Put
-               // new PutAsync().execute(url,createJsonBody());
-                //Post
-                new PostAsync().execute("http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity",PostcreateJsonBody());
+
+                if (person_id.length() > 0) {
+
+                    //putRequestWithHeaderAndBody(ApplicationData.URL_SUICIDE + person_id);
+                    String url = ApplicationData.URL_SUICIDE + person_id;
+                    //Put
+                    Log.i("String are ", createJsonBody());
+                    new PutAsync().execute(url, createJsonBody());
+                    //Post
+                    //new PostAsync().execute("http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity", PostcreateJsonBody());
+
+                } else {
+                }
 
             } catch (Exception e) {
 //Log.i("Exception ",e.getMessage());
@@ -432,123 +442,5 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
 
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client2.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "SuicideAttempt Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://com.alhikmah.ciprb/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client2, viewAction);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "SuicideAttempt Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://com.alhikmah.ciprb/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client2, viewAction);
-        client2.disconnect();
-    }
-
-
-    public class PostThread extends Thread {
-
-
-        public void run() {
-
-            URL url = null;
-            try {
-                //        String generate = ApplicationData.URL_SUICIDE + person_id +
-//                "?g01=" + g01 + "&g02=" + g02 + "&g03=" + g03;
-                // String generate = ApplicationData.URL_SUICIDE + person_id;
-
-                String g01 = ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString());
-                String g02 = ApplicationData.spilitStringFirst(spinner_survey_suicide_how.getSelectedItem().toString());
-                String g03 = ApplicationData.spilitStringFirst(spinner_survey_suicide_type.getSelectedItem().toString());
-
-                String REQUEST_URL = ApplicationData.URL_SUICIDE + person_id +
-                        "?g01=" + g01 + "&g02=" + g02 + "&g03=" + g03;
-
-                url = new URL(REQUEST_URL);
-                Toast.makeText(activity, "shohag success" + url, Toast.LENGTH_LONG).show();
-                HttpURLConnection client = (HttpURLConnection) url.openConnection();
-                int statusCode = client.getResponseCode();
-                if (statusCode == 200) {
-                    BufferedReader r = new BufferedReader(new InputStreamReader(client.getInputStream()));
-                    String line;
-                    while ((line = r.readLine()) != null) {
-                        Toast.makeText(activity, "shohag success1" + url, Toast.LENGTH_LONG).show();
-                        JSONObject respObject = new JSONObject(line);
-                        //int success = respObject.getInt("success");
-                        postHandler.sendEmptyMessage(SUCCESS);
-
-                    }
-                } else {
-                    postHandler.sendEmptyMessage(FAILURE);
-                }
-
-            } catch (MalformedURLException e) {
-                postHandler.sendEmptyMessage(FAILURE);
-                e.printStackTrace();
-            } catch (IOException e) {
-                postHandler.sendEmptyMessage(FAILURE);
-                e.printStackTrace();
-            } catch (JSONException e) {
-                postHandler.sendEmptyMessage(FAILURE);
-                e.printStackTrace();
-            }
-
-
-        }
-
-        @SuppressLint("HandlerLeak")
-        Handler postHandler = new Handler() {
-            public void handleMessage(Message msg) {
-
-                if (msg.what == SUCCESS) {
-
-                    Toast.makeText(activity, "shohag success", Toast.LENGTH_LONG).show();
-
-                } else {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(activity);
-                    alert.setMessage("You must fill  brand name or generic name");
-                    alert.setNegativeButton("Please fill up",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-
-                    alert.show();
-                }
-
-            }
-
-        };
-
-    }
 
 }
