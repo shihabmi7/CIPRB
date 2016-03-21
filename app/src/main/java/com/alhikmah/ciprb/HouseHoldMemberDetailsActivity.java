@@ -229,6 +229,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                             aPerson.setPerson_id(mCURRENT_MEMBER_ID);
                             // if a injury happen
                             ApplicationData.alive_person_List.add(aPerson);
+
                         }
 
                     } else {

@@ -25,7 +25,7 @@ import java.util.Locale;
 public class DeathConfirmationActivity extends AppCompatActivity implements View.OnClickListener {
 
     Calendar myCalendar;
-    DatePickerDialog.OnDateSetListener date;
+    DatePickerDialog.OnDateSetListener date, deathdate;
 
     RelativeLayout linerar_how_injury;
     int count = 01;
@@ -70,7 +70,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         }
 
         edittext_date_of_birth = (EditText) findViewById(R.id.edittext_date_of_birth);
-        editText_death_date = (EditText) findViewById(R.id.edittext_date_of_birth);
+        editText_death_date = (EditText) findViewById(R.id.editText_death_date);
 
         edittext_current_age = (EditText) findViewById(R.id.edittext_current_age);
         editText_members_name = (EditText) findViewById(R.id.editText_members_name);
@@ -87,7 +87,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateLabel();
+                updateBirthLabel();
             }
         };
 
@@ -97,6 +97,30 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
             public void onClick(View v) {
 
                 new DatePickerDialog(activity, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+
+        });
+
+        deathdate = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateDeathLabel();
+            }
+        };
+
+        editText_death_date.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                new DatePickerDialog(activity, deathdate, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
@@ -125,13 +149,22 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
     }
 
-    private void updateLabel() {
+    private void updateBirthLabel() {
 
         String myFormat = "dd/MM/yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         edittext_date_of_birth.setText(sdf.format(myCalendar.getTime()));
 
     }
+
+    private void updateDeathLabel() {
+
+        String myFormat = "dd/MM/yyyy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        editText_death_date.setText(sdf.format(myCalendar.getTime()));
+
+    }
+
 
     void setheader() {
 
@@ -161,6 +194,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
                     // saveDataToOnline(aPerson);
                     showTextLong(mCURRENT_MEMBER_ID);
+                    ApplicationData.died_person_List.add(aPerson);
 
                 } else
                     showTextLong("Fill data correctly");

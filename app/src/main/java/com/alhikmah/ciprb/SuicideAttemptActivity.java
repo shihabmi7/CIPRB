@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -35,6 +36,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import cz.msebera.android.httpclient.Header;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 
 public class SuicideAttemptActivity extends AppCompatActivity implements View.OnClickListener {
@@ -48,7 +54,7 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
     final static int FAILURE = 0;
 
     //String person_id = "101323210";
-    String person_id = "101323214";
+    String person_id = "101323211";
     TextView textView_person_id;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -117,6 +123,129 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
 //    params.put("g02", ApplicationData.spilitStringFirst(spinner_survey_suicide_how.getSelectedItem().toString()));
 //    params.put("g03", ApplicationData.spilitStringFirst(spinner_survey_suicide_type.getSelectedItem().toString()));
 //
+
+
+    public String putRequestWithHeaderAndBody(String url,String jsonBody) throws IOException {
+
+
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+
+        OkHttpClient client = new OkHttpClient();
+        RequestBody body = RequestBody.create(JSON, jsonBody);
+        Request request = new Request.Builder()
+                .url(url)
+                .put(body)
+                .build();
+        Response response = client.newCall(request).execute();
+        Response httpResponse = client.newCall(request).execute();
+        httpResponse.code();
+
+        Log.i("Response data are ", response.body().string());
+        Log.i("Response code are ",""+httpResponse.code());
+        //makeCall(client, request);
+
+        return response.body().string();
+    }
+    public String postRequestWithHeaderAndBody(String url,String jsonBody) throws IOException {
+
+
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+
+        OkHttpClient client = new OkHttpClient();
+        RequestBody body = RequestBody.create(JSON, jsonBody);
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        Response response = client.newCall(request).execute();
+        Response httpResponse = client.newCall(request).execute();
+        httpResponse.code();
+
+        Log.i("Response data are ", response.body().string());
+        Log.i("Response code are ",""+httpResponse.code());
+        //makeCall(client, request);
+
+        return response.body().string();
+    }
+
+    String createJsonBody() {
+        return "{\"g03\":\"10\"}";
+    }
+    String PostcreateJsonBody() {
+        return "{\"household_unique_code\":\"101323210\"," +
+                "\"f01\":\"05\"}";
+    }
+    private class PutAsync extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String Result="";
+                Log.i("URL are ", params[0]);
+                Result= putRequestWithHeaderAndBody(params[0],params[1]);
+
+                Log.i("Result Are ",Result);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+
+
+
+        }
+
+    }
+    private class PostAsync extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String Result="";
+                Log.i("URL are ", params[0]);
+                Result= postRequestWithHeaderAndBody(params[0],params[1]);
+
+                Log.i("Result Are ",Result);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+
+
+
+        }
+
+    }
 
     void saveDataToOnline() {
 
@@ -278,9 +407,22 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
 
         if (v == button_next) {
             // finish();
-//            saveDataToOnline();
+            //saveDataToOnline();
+            try {
+                //putRequestWithHeaderAndBody(ApplicationData.URL_SUICIDE + person_id);
+                String url=ApplicationData.URL_SUICIDE + person_id;
+                //Put
+               // new PutAsync().execute(url,createJsonBody());
+                //Post
+                new PostAsync().execute("http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity",PostcreateJsonBody());
 
-            new PostThread();
+            } catch (Exception e) {
+//Log.i("Exception ",e.getMessage());
+
+            }
+
+
+            /// new PostThread();
 
 //            prepare();
 //
@@ -340,7 +482,7 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
             try {
                 //        String generate = ApplicationData.URL_SUICIDE + person_id +
 //                "?g01=" + g01 + "&g02=" + g02 + "&g03=" + g03;
-                String generate = ApplicationData.URL_SUICIDE + person_id;
+                // String generate = ApplicationData.URL_SUICIDE + person_id;
 
                 String g01 = ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString());
                 String g02 = ApplicationData.spilitStringFirst(spinner_survey_suicide_how.getSelectedItem().toString());
@@ -350,21 +492,18 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
                         "?g01=" + g01 + "&g02=" + g02 + "&g03=" + g03;
 
                 url = new URL(REQUEST_URL);
+                Toast.makeText(activity, "shohag success" + url, Toast.LENGTH_LONG).show();
                 HttpURLConnection client = (HttpURLConnection) url.openConnection();
                 int statusCode = client.getResponseCode();
                 if (statusCode == 200) {
                     BufferedReader r = new BufferedReader(new InputStreamReader(client.getInputStream()));
                     String line;
                     while ((line = r.readLine()) != null) {
-
+                        Toast.makeText(activity, "shohag success1" + url, Toast.LENGTH_LONG).show();
                         JSONObject respObject = new JSONObject(line);
-                        int success = respObject.getInt("success");
-                        if (success == 1) {
-                            Log.i("REQUEST URL:", "postReq" + success);
-                            postHandler.sendEmptyMessage(SUCCESS);
-                        } else {
-                            postHandler.sendEmptyMessage(FAILURE);
-                        }
+                        //int success = respObject.getInt("success");
+                        postHandler.sendEmptyMessage(SUCCESS);
+
                     }
                 } else {
                     postHandler.sendEmptyMessage(FAILURE);
@@ -390,7 +529,7 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
 
                 if (msg.what == SUCCESS) {
 
-                    Toast.makeText(activity,"shohag success",Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity, "shohag success", Toast.LENGTH_LONG).show();
 
                 } else {
                     AlertDialog.Builder alert = new AlertDialog.Builder(activity);
