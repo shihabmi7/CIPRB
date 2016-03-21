@@ -538,6 +538,8 @@
     <string name="suicide_types">যদি বিষপান হয়, তাহলে বিষের প্রকার কি ছিল?</string>
 
 
+    <string name="person_id">Person Id:</string>
+
     <string-array name="survey_suicide_where">
         <item>1. নিজবাড়ী</item>
         <item>2. শ্বশুর বাড়ী </item>

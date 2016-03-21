@@ -26,6 +26,7 @@
 
     </LinearLayout>
 
+
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -38,6 +39,17 @@
             android:layout_margin="8dp"
             android:orientation="vertical">
 
+
+            <TextView
+
+                android:id="@+id/textView_person_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:text="@string/person_id"
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -120,7 +132,7 @@
                 android:padding="20dp">
 
                 <Button
-                    android:id="@+id/button_cancel"
+                    android:id="@+id/button_sui_cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -129,7 +141,7 @@
                 </Button>
 
                 <Button
-                    android:id="@+id/button_next"
+                    android:id="@+id/button_sui_next"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"

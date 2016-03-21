@@ -6,9 +6,11 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -27,7 +29,9 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
     ProgressDialog progressDialog;
     SuicideAttemptActivity activity = this;
 
-    String person_id;
+    //String person_id = "101323210";
+    String person_id = "101323210";
+    TextView textView_person_id;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,8 +39,20 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suicide_attempt);
 
+        try {
 
-        person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
+            textView_person_id = (TextView) findViewById(R.id.textView_person_id);
+            person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
+            textView_person_id.setText("Person Id:" + person_id);
+
+        } catch (NullPointerException e) {
+
+
+        } catch (Exception e) {
+
+
+        }
+
         Toast.makeText(activity, "" + person_id, Toast.LENGTH_LONG).show();
      /*   Person aPerson = (Person) getIntent().getSerializableExtra("aPerson");
         Toast.makeText(this, "" + aPerson.getPerson_id() + aPerson.getMembers_name(), Toast.LENGTH_LONG).show();*/
@@ -45,8 +61,8 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
         spinner_survey_suicide_how = (Spinner) findViewById(R.id.spinner_survey_suicide_how);
         spinner_survey_suicide_type = (Spinner) findViewById(R.id.spinner_survey_suicide_type);
 
-        button_cancel = (Button) findViewById(R.id.button_cancel);
-        button_next = (Button) findViewById(R.id.button_next);
+        button_cancel = (Button) findViewById(R.id.button_sui_cancel);
+        button_next = (Button) findViewById(R.id.button_sui_next);
 
         button_cancel.setOnClickListener(this);
         button_next.setOnClickListener(this);
@@ -70,19 +86,32 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
 
     }
 
-    void saveDataToOnline(Person person) {
+//    params.put("household_unique_code", person_id);
+//    params.put("g01", ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString()));
+//    params.put("g02", ApplicationData.spilitStringFirst(spinner_survey_suicide_how.getSelectedItem().toString()));
+//    params.put("g03", ApplicationData.spilitStringFirst(spinner_survey_suicide_type.getSelectedItem().toString()));
+//
+
+    void saveDataToOnline() {
 
         progressDialog.show();
         // post with no parameters
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 
-        params.put("house_member_id", person.getPerson_id());
-        params.put("g01", person.getMembers_name());
-        params.put("g02", person.getPerson_id());
-        params.put("g03", person.getMembers_name());
+        String g01 = ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString());
+        String g02 = ApplicationData.spilitStringFirst(spinner_survey_suicide_how.getSelectedItem().toString());
+        String g03 = ApplicationData.spilitStringFirst(spinner_survey_suicide_type.getSelectedItem().toString());
+        // String generate = ApplicationData.URL_SUICIDE + "" = g01 =;
 
-        client.post(ApplicationData.URL_HOUSE_HOLD_MEMBERS, params,
+        //http://saeradesign.com/LumenApi/public/index.php/api/household/suicideattemptactivity/
+        // 101323210?household_unique_code=101323210&g01=11111111111111111&g02=11111111111&g03=111111111111111111111
+
+        String generate = ApplicationData.URL_SUICIDE + person_id + "?household_unique_code=" + person_id +
+                "&g01=" + g01 + "&g02=" + g02 + "&g03=" + g03;
+
+        Log.e("URL", generate);
+        client.put(generate,
                 new JsonHttpResponseHandler() {
                     // Your implementation here
                     @Override
@@ -90,14 +119,68 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
 
                         cleartext();
                         progressDialog.dismiss();
-
-                        showTextLong("finish this input");
+                        showTextLong("Saved");
                         //ApplicationData.memberListHashMap.clear();
                         ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+                    }
 
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+
+                        Log.e("onFailure: suicide", responseString);
+                        progressDialog.dismiss();
+                        showTextLong("Not Saved");
+                        super.onFailure(statusCode, headers, responseString, throwable);
                     }
                 }
         );
+    }
+
+    void prepare() {
+        progressDialog.show();
+        AsyncHttpClient client = new AsyncHttpClient(); // not null
+
+        RequestParams params = new RequestParams();
+        //params.put("household_unique_code", person_id);
+        params.put("g01", ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString()));
+        params.put("g02", ApplicationData.spilitStringFirst(spinner_survey_suicide_how.getSelectedItem().toString()));
+        params.put("g03", ApplicationData.spilitStringFirst(spinner_survey_suicide_type.getSelectedItem().toString()));
+
+
+       /* String g01 = ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString());
+        String g02 = ApplicationData.spilitStringFirst(spinner_survey_suicide_how.getSelectedItem().toString());
+        String g03 = ApplicationData.spilitStringFirst(spinner_survey_suicide_type.getSelectedItem().toString());*/
+        // String generate = ApplicationData.URL_SUICIDE + "" = g01 =;
+
+        // http://saeradesign.com/LumenApi/public/index.php/api/household/suicideattemptactivity/
+        // 101323210?household_unique_code=101323210&g01=hello&g02=mama&g03=ami to sesh
+       /* String generate = ApplicationData.URL_SUICIDE + person_id + "?household_unique_code=" + person_id +
+                "&g01=" + g01 + "&g02=" + g02 + "&g03=" + g03;
+*/
+
+        String URL = ApplicationData.URL_SUICIDE + person_id + "?";
+        client.put(URL, params, new JsonHttpResponseHandler() {
+            // Your implementation here
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+                cleartext();
+                progressDialog.dismiss();
+                showTextLong("finish this input");
+                //ApplicationData.memberListHashMap.clear();
+                ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+
+                Log.e("onFailure: suicide", responseString);
+                progressDialog.dismiss();
+                showTextLong("Not Saved");
+                super.onFailure(statusCode, headers, responseString, throwable);
+            }
+        });
+
     }
 
 
@@ -152,11 +235,12 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
 
 
         if (v == button_next) {
+            // finish();
+            saveDataToOnline();
 
-            finish();
-
+//            prepare();
+//
         } else if (v == button_cancel) {
-
 
         }
 

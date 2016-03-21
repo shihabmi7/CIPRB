@@ -18,6 +18,12 @@ public class ApplicationData {
 
     public static String URL_HOUSE_HOLD_MEMBERS = "http://saeradesign.com/LumenApi/public/index.php/api/household";
     public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity";
+    public static String URL_SUICIDE = "http://saeradesign.com/LumenApi/public/index.php/api/household/suicideattemptactivity/";
+    // public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity";
+    // public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity";
+    // public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity";
+    // public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity";
+
 
     public static int STATUS_SUCCESS = 200;
     public static String STATUS_FAILED = "400";

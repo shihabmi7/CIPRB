@@ -34,6 +34,23 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quality_of_life);
 
+        //String person_id = "101323210";
+        String person_id = "101323210";
+        TextView textView_person_id;
+
+        try {
+
+            textView_person_id = (TextView) findViewById(R.id.textView_person_id);
+            person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
+            textView_person_id.setText("Person Id:" + person_id);
+
+        } catch (NullPointerException e) {
+
+
+        } catch (Exception e) {
+
+
+        }
         Quality1 = (TextView) findViewById(R.id.Quality1);
         Quality2 = (TextView) findViewById(R.id.Quality2);
         Quality3 = (TextView) findViewById(R.id.Quality3);

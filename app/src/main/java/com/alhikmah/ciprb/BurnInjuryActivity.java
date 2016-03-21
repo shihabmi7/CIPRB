@@ -28,11 +28,28 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
 
     ProgressDialog progressDialog;
     Activity activity = this;
+    //String person_id = "101323210";
+    String person_id = "101323210";
+    TextView textView_person_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_burn_injury);
+
+        try {
+
+            textView_person_id = (TextView) findViewById(R.id.textView_person_id);
+            person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
+            textView_person_id.setText("Person Id:" + person_id);
+
+        } catch (NullPointerException e) {
+
+
+        } catch (Exception e) {
+
+
+        }
 
         textView2 = (TextView) findViewById(R.id.textView2);
         textView4 = (TextView) findViewById(R.id.textView4);

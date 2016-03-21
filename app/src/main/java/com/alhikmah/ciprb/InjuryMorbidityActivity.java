@@ -397,6 +397,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                         showTextLong("Success! Select Type:" + type);
                         ApplicationData.alive_person_List.remove(spinner_person_name.getSelectedItemPosition());
                         cleartext();
+
                         moveToInjurySelectionActivity(type, person.getPerson_id());
                         // go to next activity > module
                     }

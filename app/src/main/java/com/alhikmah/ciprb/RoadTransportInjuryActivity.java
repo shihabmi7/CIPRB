@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -29,6 +30,11 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
     private ProgressDialog progressDialog;
     Activity activity = this;
 
+
+    //String person_id = "101323210";
+    String person_id = "101323210";
+    TextView textView_person_id;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -45,6 +51,25 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
         progressDialog.setMessage("Please wait...");
         progressDialog.setTitle("Loading");
         progressDialog.setCancelable(true);
+
+        //String person_id = "101323210";
+        String person_id = "101323210";
+        TextView textView_person_id;
+
+
+        try {
+
+            textView_person_id = (TextView) findViewById(R.id.textView_person_id);
+            person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
+            textView_person_id.setText("Person Id:" + person_id);
+
+        } catch (NullPointerException e) {
+
+
+        } catch (Exception e) {
+
+
+        }
     }
 
 

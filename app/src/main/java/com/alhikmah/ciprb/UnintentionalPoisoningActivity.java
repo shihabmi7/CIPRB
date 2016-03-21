@@ -34,6 +34,23 @@ public class UnintentionalPoisoningActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unintentional_poisoning);
 
+        //String person_id = "101323210";
+        String person_id = "101323210";
+        TextView textView_person_id;
+
+        try {
+            textView_person_id = (TextView) findViewById(R.id.textView_person_id);
+            person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
+            textView_person_id.setText("Person Id:" + person_id);
+
+        } catch (NullPointerException e) {
+
+
+        } catch (Exception e) {
+
+
+        }
+
         poisoning1 = (TextView) findViewById(R.id.poisoning1);
         poisoning2 = (TextView) findViewById(R.id.poisoning2);
         poisoning3 = (TextView) findViewById(R.id.poisoning3);

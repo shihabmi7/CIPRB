@@ -18,6 +18,7 @@
         <activity
             android:name=".HomeActivity"
             android:launchMode="singleInstance">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -30,21 +31,15 @@
 
         </activity>
         <activity android:name=".DeathConfirmationActivity"></activity>
-
         <activity android:name=".InjuryMorbidityActivity"></activity>
-
         <activity android:name=".InjuryMortalityActivity"></activity>
-
-
         <activity android:name=".SuicideAttemptActivity">
+
 
         </activity>
         <activity android:name=".RoadTransportInjuryActivity"></activity>
         <activity android:name=".ViolenceInjuryActivity"></activity>
-
-
         <activity android:name=".BurnInjuryActivity">
-
         </activity>
         <activity android:name=".CutInjuryActivity">
 
@@ -71,7 +66,6 @@
 
         </activity>
         <activity android:name=".SuffocationActivity"></activity>
-
         <activity android:name=".ToolInjuryActivity"></activity>
         <activity android:name=".UnintentionalPoisoningActivity"></activity>
 

@@ -37,6 +37,22 @@ public class SuffocationActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suffocation);
 
+        //String person_id = "101323210";
+        String person_id = "101323210";
+        TextView textView_person_id;
+
+        try {
+            textView_person_id = (TextView) findViewById(R.id.textView_person_id);
+            person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
+            textView_person_id.setText("Person Id:" + person_id);
+        } catch (NullPointerException e) {
+
+
+        } catch (Exception e) {
+
+
+        }
+
         button_next = (Button) findViewById(R.id.button_next);
         button_cancel = (Button) findViewById(R.id.button_cancel);
 

@@ -29,10 +29,28 @@ public class ViolenceInjuryActivity extends AppCompatActivity implements View.On
     ProgressDialog progressDialog;
     Activity activity = this;
 
+    //String person_id = "101323210";
+    String person_id = "";
+    TextView textView_person_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voilence_injury);
+
+
+        try {
+
+            textView_person_id = (TextView) findViewById(R.id.textView_person_id);
+            person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
+            textView_person_id.setText("Person Id:" + person_id);
+
+        } catch (NullPointerException e) {
+
+
+        } catch (Exception e) {
+
+
+        }
 
 
         spinner_violence_why = (Spinner) findViewById(R.id.spinner_violence_why);
