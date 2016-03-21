@@ -325,7 +325,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
     void saveDataToOnline(int pos) {
 
-
+    //
         progressDialog.show();
         final Person person = ApplicationData.alive_person_List.get(pos);
         person.setInjury_type(spinner_how_injured.getSelectedItem().toString());
