@@ -67,10 +67,6 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
         machine3 = (TextView) findViewById(R.id.machine3);
         machine4 = (TextView) findViewById(R.id.machine4);
 
-        textView2 = (TextView) findViewById(R.id.textView2);
-        textView4 = (TextView) findViewById(R.id.textView4);
-        textView6 = (TextView) findViewById(R.id.textView6);
-
         button_cancel = (Button) findViewById(R.id.button_cancel);
         button_next = (Button) findViewById(R.id.button_next);
 

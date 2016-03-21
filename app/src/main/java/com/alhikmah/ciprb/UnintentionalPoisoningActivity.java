@@ -3,9 +3,11 @@ package com.alhikmah.ciprb;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -18,25 +20,31 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
+
 import cz.msebera.android.httpclient.Header;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class UnintentionalPoisoningActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button button_cancel, button_next;
-    private Spinner sp_poisoning1, sp_poisoning2, sp_poisoning3, sp_poisoning4, sp_poisoning5, sp_poisoning6, sp_poisoning7, sp_poisoning8;
+    private Spinner spinner_n01, spinner_n02, spinner_n03, spinner_n04, spinner_n05, spinner_n06, spinner_n07, spinner_n08, spinner_n09;
     private TextView poisoning1, poisoning2, poisoning3, poisoning4, poisoning5, poisoning6, poisoning7, textView2, textView4, textView6;
 
     ProgressDialog progressDialog;
     Activity activity = this;
+    //String person_id = "101323210";
+    String person_id = "101323212";
+    TextView textView_person_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unintentional_poisoning);
-
-        //String person_id = "101323210";
-        String person_id = "101323210";
-        TextView textView_person_id;
 
         try {
             textView_person_id = (TextView) findViewById(R.id.textView_person_id);
@@ -50,32 +58,8 @@ public class UnintentionalPoisoningActivity extends AppCompatActivity implements
 
 
         }
+        initUI();
 
-        poisoning1 = (TextView) findViewById(R.id.poisoning1);
-        poisoning2 = (TextView) findViewById(R.id.poisoning2);
-        poisoning3 = (TextView) findViewById(R.id.poisoning3);
-        poisoning4 = (TextView) findViewById(R.id.poisoning4);
-        poisoning5 = (TextView) findViewById(R.id.poisoning5);
-        poisoning6 = (TextView) findViewById(R.id.poisoning6);
-        poisoning7 = (TextView) findViewById(R.id.poisoning7);
-        textView2 = (TextView) findViewById(R.id.textView2);
-        textView4 = (TextView) findViewById(R.id.textView4);
-        textView6 = (TextView) findViewById(R.id.textView6);
-
-        sp_poisoning1 = (Spinner) findViewById(R.id.sp_poisoning1);
-        sp_poisoning2 = (Spinner) findViewById(R.id.sp_poisoning2);
-        sp_poisoning3 = (Spinner) findViewById(R.id.sp_poisoning3);
-        sp_poisoning4 = (Spinner) findViewById(R.id.sp_poisoning4);
-        sp_poisoning5 = (Spinner) findViewById(R.id.sp_poisoning5);
-        sp_poisoning6 = (Spinner) findViewById(R.id.sp_poisoning6);
-        sp_poisoning7 = (Spinner) findViewById(R.id.sp_poisoning7);
-        sp_poisoning8 = (Spinner) findViewById(R.id.sp_poisoning8);
-
-        button_cancel = (Button) findViewById(R.id.button_cancel);
-        button_next = (Button) findViewById(R.id.button_next);
-
-        button_cancel.setOnClickListener(this);
-        button_next.setOnClickListener(this);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait...");
@@ -83,6 +67,31 @@ public class UnintentionalPoisoningActivity extends AppCompatActivity implements
         progressDialog.setCancelable(true);
     }
 
+    private void initUI() {
+        poisoning1 = (TextView) findViewById(R.id.poisoning1);
+        poisoning2 = (TextView) findViewById(R.id.poisoning2);
+        poisoning3 = (TextView) findViewById(R.id.poisoning3);
+        poisoning4 = (TextView) findViewById(R.id.poisoning4);
+        poisoning5 = (TextView) findViewById(R.id.poisoning5);
+        poisoning6 = (TextView) findViewById(R.id.poisoning6);
+        poisoning7 = (TextView) findViewById(R.id.poisoning7);
+
+        spinner_n01 = (Spinner) findViewById(R.id.spinner_n01);
+        spinner_n02 = (Spinner) findViewById(R.id.spinner_n02);
+        spinner_n03 = (Spinner) findViewById(R.id.spinner_n03);
+        spinner_n04 = (Spinner) findViewById(R.id.spinner_n04);
+        spinner_n05 = (Spinner) findViewById(R.id.spinner_n05);
+        spinner_n06 = (Spinner) findViewById(R.id.spinner_n06);
+        spinner_n07 = (Spinner) findViewById(R.id.spinner_n07);
+        spinner_n08 = (Spinner) findViewById(R.id.spinner_n08);
+        spinner_n09 = (Spinner) findViewById(R.id.spinner_n09);
+
+        button_cancel = (Button) findViewById(R.id.button_cancel);
+        button_next = (Button) findViewById(R.id.button_next);
+
+        button_cancel.setOnClickListener(this);
+        button_next.setOnClickListener(this);
+    }
 
     void cleartext() {
 
@@ -180,8 +189,93 @@ public class UnintentionalPoisoningActivity extends AppCompatActivity implements
     public void onClick(View v) {
 
         if (v == button_next) {
-
+            String url = ApplicationData.URL_UNINTENTIONAL_INJURY + person_id;
+            new PutAsync().execute(url, createJsonBody());
         } else if (v == button_cancel) {
+
+        }
+
+    }
+
+    public String putRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
+
+
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+
+        OkHttpClient client = new OkHttpClient();
+        RequestBody body = RequestBody.create(JSON, jsonBody);
+        Request request = new Request.Builder()
+                .url(url)
+                .put(body)
+                .build();
+        Response response = client.newCall(request).execute();
+        Response httpResponse = client.newCall(request).execute();
+        httpResponse.code();
+
+        Log.i("Response data are ", response.body().string());
+        Log.i("Response code are ", "" + response.code());
+        //makeCall(client, request);
+
+        return response.body().string();
+    }
+
+    String createJsonBody() {
+        String jsonData = "{" +
+                "\"n01\":\"" +
+                ApplicationData.spilitStringFirst(spinner_n01.getSelectedItem().toString()) +
+                "\",\"n02\":\"" +
+                ApplicationData.spilitStringFirst(spinner_n02.getSelectedItem().toString()) +
+                "\",\"n03\":\"" +
+                ApplicationData.spilitStringFirst(spinner_n03.getSelectedItem().toString()) +
+                "\",\"n04\":\"" +
+                ApplicationData.spilitStringFirst(spinner_n04.getSelectedItem().toString()) +
+                "\",\"n05\":\"" +
+                ApplicationData.spilitStringFirst(spinner_n05.getSelectedItem().toString()) +
+                "\",\"n06\":\"" +
+                ApplicationData.spilitStringFirst(spinner_n06.getSelectedItem().toString()) +
+                "\",\"n07\":\"" +
+                ApplicationData.spilitStringFirst(spinner_n07.getSelectedItem().toString()) +
+                "\",\"n08\":\"" +
+                ApplicationData.spilitStringFirst(spinner_n08.getSelectedItem().toString()) +
+                "\",\"n09\":\"" +
+                ApplicationData.spilitStringFirst(spinner_n09.getSelectedItem().toString()) +
+                "\"}";
+        return jsonData;
+    }
+
+    private class PutAsync extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String Result = "";
+                Log.i("URL are ", params[0]);
+                Result = putRequestWithHeaderAndBody(params[0], params[1]);
+
+                Log.i("Result Are ", Result);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
+
 
         }
 

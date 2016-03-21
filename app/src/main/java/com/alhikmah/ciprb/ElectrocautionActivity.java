@@ -20,6 +20,7 @@ import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
+
 public class ElectrocautionActivity extends AppCompatActivity implements View.OnClickListener {
     private Spinner sp_electrocution1, sp_electrocution2, sp_electrocution3, sp_electrocution4;
     private TextView electrocution1, electrocution2, electrocution3, electrocution4, textView2, textView4, textView6;
@@ -53,9 +54,6 @@ public class ElectrocautionActivity extends AppCompatActivity implements View.On
 
         }
 
-        textView2 = (TextView) findViewById(R.id.textView2);
-        textView4 = (TextView) findViewById(R.id.textView4);
-        textView6 = (TextView) findViewById(R.id.textView6);
 
         electrocution1 = (TextView) findViewById(R.id.electrocution1);
         electrocution2 = (TextView) findViewById(R.id.electrocution2);

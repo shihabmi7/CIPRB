@@ -51,10 +51,6 @@
         </activity>
         <activity android:name=".FallInjuryActivity">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity android:name=".InjuryBluntActivity">
@@ -64,6 +60,12 @@
 
         </activity>
         <activity android:name=".NearDrowningActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
 
         </activity>
         <activity android:name=".QualityOfLifeActivity">

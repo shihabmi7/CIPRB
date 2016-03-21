@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.alhikmah.ciprb.BurnInjuryActivity"
+    android:layout_height="match_parent">
+
+<LinearLayout
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.alhikmah.ciprb.BurnInjuryActivity">
+    >
 
     <LinearLayout
         android:id="@+id/layout_header"
@@ -64,7 +71,7 @@
 
 
         <Spinner
-            android:id="@+id/sp_Burn1"
+            android:id="@+id/spinner_l01"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -90,7 +97,7 @@
 
 
         <Spinner
-            android:id="@+id/sp_Burn2"
+            android:id="@+id/spinner_l02"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -116,7 +123,7 @@
 
 
         <Spinner
-            android:id="@+id/sp_Burn3"
+            android:id="@+id/spinner_l03"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -142,7 +149,7 @@
 
 
         <Spinner
-            android:id="@+id/sp_Burn4"
+            android:id="@+id/spinner_l04"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -168,7 +175,7 @@
 
 
         <Spinner
-            android:id="@+id/sp_Burn5"
+            android:id="@+id/spinner_l05"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -194,7 +201,7 @@
 
 
         <Spinner
-            android:id="@+id/sp_Burn6"
+            android:id="@+id/spinner_l06"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -221,7 +228,7 @@
 
 
         <Spinner
-            android:id="@+id/sp_Burn7"
+            android:id="@+id/spinner_l07"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -258,3 +265,4 @@
     </LinearLayout>
 
 </LinearLayout>
+</ScrollView>

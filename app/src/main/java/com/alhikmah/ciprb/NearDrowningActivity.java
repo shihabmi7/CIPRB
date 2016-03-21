@@ -3,9 +3,12 @@ package com.alhikmah.ciprb;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -18,9 +21,11 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
+
 import cz.msebera.android.httpclient.Header;
 
-public class NearDrowningActivity extends AppCompatActivity {
+public class NearDrowningActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Spinner sp_Drowning1, sp_Drowning2, sp_Drowning4, sp_Drowning5, sp_Drowning6, sp_Drowning7, sp_Drowning8, sp_Drowning9, sp_Drowning11, sp_Drowning12, sp_Drowning13, sp_Drowning14, sp_Drowning15;
     private TextView Drowning1, Drowning2, Drowning3, Drowning4, Drowning5, Drowning6, Drowning7, Drowning8, Drowning9, Drowning10, Drowning11, Drowning12, Drowning13, Drowning14, Drowning15, textView2, textView4, textView6;
@@ -30,13 +35,15 @@ public class NearDrowningActivity extends AppCompatActivity {
     Activity activity = this;
 
     //String person_id = "101323210";
-    String person_id = "101323210";
+    String person_id = "101323212";
     TextView textView_person_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_near_drowning);
+
+
         try {
             textView_person_id = (TextView) findViewById(R.id.textView_person_id);
             person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
@@ -46,35 +53,16 @@ public class NearDrowningActivity extends AppCompatActivity {
         } catch (Exception e) {
 
         }
-        textView2 = (TextView) findViewById(R.id.textView2);
-        textView4 = (TextView) findViewById(R.id.textView4);
-        textView6 = (TextView) findViewById(R.id.textView6);
-        Drowning1 = (TextView) findViewById(R.id.Drowning1);
-        Drowning2 = (TextView) findViewById(R.id.Drowning2);
-        Drowning3 = (TextView) findViewById(R.id.Drowning3);
-        Drowning4 = (TextView) findViewById(R.id.Drowning4);
-        Drowning5 = (TextView) findViewById(R.id.Drowning5);
-        Drowning6 = (TextView) findViewById(R.id.Drowning6);
-        Drowning7 = (TextView) findViewById(R.id.Drowning7);
-        Drowning8 = (TextView) findViewById(R.id.Drowning8);
-        Drowning9 = (TextView) findViewById(R.id.Drowning9);
-        Drowning10 = (TextView) findViewById(R.id.Drowning10);
-        Drowning11 = (TextView) findViewById(R.id.Drowning11);
-        Drowning12 = (TextView) findViewById(R.id.Drowning12);
-        Drowning13 = (TextView) findViewById(R.id.Drowning13);
-        Drowning14 = (TextView) findViewById(R.id.Drowning14);
-        Drowning15 = (TextView) findViewById(R.id.Drowning15);
+
 
         sp_Drowning1 = (Spinner) findViewById(R.id.sp_Drowning1);
         sp_Drowning2 = (Spinner) findViewById(R.id.sp_Drowning2);
-
         sp_Drowning4 = (Spinner) findViewById(R.id.sp_Drowning4);
         sp_Drowning5 = (Spinner) findViewById(R.id.sp_Drowning5);
         sp_Drowning6 = (Spinner) findViewById(R.id.sp_Drowning6);
         sp_Drowning7 = (Spinner) findViewById(R.id.sp_Drowning7);
         sp_Drowning8 = (Spinner) findViewById(R.id.sp_Drowning8);
         sp_Drowning9 = (Spinner) findViewById(R.id.sp_Drowning9);
-
         sp_Drowning11 = (Spinner) findViewById(R.id.sp_Drowning11);
         sp_Drowning12 = (Spinner) findViewById(R.id.sp_Drowning12);
         sp_Drowning13 = (Spinner) findViewById(R.id.sp_Drowning13);
@@ -87,6 +75,9 @@ public class NearDrowningActivity extends AppCompatActivity {
 
         button_next = (Button) findViewById(R.id.button_next);
         button_cancel = (Button) findViewById(R.id.button_cancel);
+
+        button_cancel.setOnClickListener(this);
+        button_next.setOnClickListener(this);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait...");
@@ -181,4 +172,117 @@ public class NearDrowningActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), value, Toast.LENGTH_LONG).show();
     }
 
+    private class PutAsync extends AsyncTask<String, Void, String> {
+
+        int value;
+        String Result = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+
+                value = ApplicationData.putRequestWithBody(params[0], params[1]);
+
+                Log.i("Result Are ", Result);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
+            if (value == ApplicationData.STATUS_SUCCESS) {
+                //// TODO: 3/22/2016
+                Toast.makeText(activity, "Success", Toast.LENGTH_LONG).show();
+                //ApplicationData.alive_person_List.remove(spinner_person_name.getSelectedItemPosition());
+                cleartext();
+
+            } else {
+                Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
+            }
+
+
+        }
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        if (v == button_next) {
+
+            if (person_id.length() > 0) {
+
+                //putRequestWithHeaderAndBody(ApplicationData.URL_SUICIDE + person_id);
+                String url = ApplicationData.URL_NEAR_DROWN + person_id;
+                //Put
+                Log.i("String are ", createJsonBody());
+                new PutAsync().execute(url, createJsonBody());
+                //Post
+                //new PostAsync().execute("http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity", PostcreateJsonBody());
+
+            } else {
+            }
+
+        } else if (v == button_cancel) {
+
+
+        }
+
+    }
+
+    String createJsonBody() {
+//        Log.i("Test String ", ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString()));
+
+        String rep = "{" +
+                "\"m01\":\"" +
+                ApplicationData.spilitStringFirst(sp_Drowning1.getSelectedItem().toString()) +
+                "\",\"m02\":\"" +
+                ApplicationData.spilitStringFirst(sp_Drowning2.getSelectedItem().toString()) +
+                "\",\"m03\":\"" +
+                et_Drowning3.getText().toString() +
+                "\",\"m04\":\"" +
+                ApplicationData.spilitStringFirst(sp_Drowning4.getSelectedItem().toString()) +
+                "\",\"m05\":\"" +
+                ApplicationData.spilitStringFirst(sp_Drowning5.getSelectedItem().toString()) +
+                "\",\"m06\":\"" +
+                ApplicationData.spilitStringFirst(sp_Drowning6.getSelectedItem().toString()) +
+                "\",\"m07\":\"" +
+                ApplicationData.spilitStringFirst(sp_Drowning7.getSelectedItem().toString()) +
+                "\",\"m08\":\"" +
+                ApplicationData.spilitStringFirst(sp_Drowning8.getSelectedItem().toString()) +
+                "\",\"m09\":\"" +
+                ApplicationData.spilitStringFirst(sp_Drowning9.getSelectedItem().toString()) +
+                "\",\"m10\":\"" +
+                et_Drowning10.getText().toString() +
+                "\",\"m11\":\"" +
+                ApplicationData.spilitStringFirst(sp_Drowning11.getSelectedItem().toString()) +
+                "\",\"m12\":\"" +
+                ApplicationData.spilitStringFirst(sp_Drowning12.getSelectedItem().toString()) +
+                "\",\"m13\":\"" +
+                ApplicationData.spilitStringFirst(sp_Drowning13.getSelectedItem().toString()) +
+                "\",\"m14\":\"" +
+                ApplicationData.spilitStringFirst(sp_Drowning14.getSelectedItem().toString()) +
+                "\",\"m15\":\"" +
+                ApplicationData.spilitStringFirst(sp_Drowning15.getSelectedItem().toString()) +
+                "\"}";
+
+        //return "{\"g03\":\"10\"}";
+        return rep;
+    }
 }

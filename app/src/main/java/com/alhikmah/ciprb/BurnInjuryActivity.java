@@ -3,9 +3,11 @@ package com.alhikmah.ciprb;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -18,18 +20,25 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
+
 import cz.msebera.android.httpclient.Header;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class BurnInjuryActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Spinner sp_Burn1, sp_Burn2, sp_Burn3, sp_Burn4, sp_Burn5, sp_Burn6, sp_Burn7;
+    private Spinner spinner_l01, spinner_l02, spinner_l03, spinner_l04, spinner_l05, spinner_l06, spinner_l07;
     private TextView Burn1, Burn2, Burn3, Burn4, Burn5, Burn6, Burn7, textView2, textView4, textView6;
     private Button button_cancel, button_next;
 
     ProgressDialog progressDialog;
     Activity activity = this;
     //String person_id = "101323210";
-    String person_id = "101323210";
+    String person_id = "101323212";
     TextView textView_person_id;
 
     @Override
@@ -51,28 +60,7 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
 
         }
 
-        textView2 = (TextView) findViewById(R.id.textView2);
-        textView4 = (TextView) findViewById(R.id.textView4);
-        textView6 = (TextView) findViewById(R.id.textView6);
-
-        Burn1 = (TextView) findViewById(R.id.Burn1);
-        Burn2 = (TextView) findViewById(R.id.Burn2);
-        Burn3 = (TextView) findViewById(R.id.Burn3);
-        Burn4 = (TextView) findViewById(R.id.Burn4);
-        Burn5 = (TextView) findViewById(R.id.Burn5);
-        Burn6 = (TextView) findViewById(R.id.Burn6);
-        Burn7 = (TextView) findViewById(R.id.Burn7);
-        sp_Burn1 = (Spinner) findViewById(R.id.sp_Burn1);
-        sp_Burn2 = (Spinner) findViewById(R.id.sp_Burn2);
-        sp_Burn3 = (Spinner) findViewById(R.id.sp_Burn3);
-        sp_Burn4 = (Spinner) findViewById(R.id.sp_Burn4);
-        sp_Burn5 = (Spinner) findViewById(R.id.sp_Burn5);
-        sp_Burn6 = (Spinner) findViewById(R.id.sp_Burn6);
-        sp_Burn7 = (Spinner) findViewById(R.id.sp_Burn7);
-
-
-        button_cancel = (Button) findViewById(R.id.button_cancel);
-        button_next = (Button) findViewById(R.id.button_next);
+        initUI();
 
         button_cancel.setOnClickListener(this);
         button_next.setOnClickListener(this);
@@ -82,6 +70,28 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
         progressDialog.setCancelable(true);
     }
 
+    private void initUI() {
+
+
+        Burn1 = (TextView) findViewById(R.id.Burn1);
+        Burn2 = (TextView) findViewById(R.id.Burn2);
+        Burn3 = (TextView) findViewById(R.id.Burn3);
+        Burn4 = (TextView) findViewById(R.id.Burn4);
+        Burn5 = (TextView) findViewById(R.id.Burn5);
+        Burn6 = (TextView) findViewById(R.id.Burn6);
+        Burn7 = (TextView) findViewById(R.id.Burn7);
+        spinner_l01 = (Spinner) findViewById(R.id.spinner_l01);
+        spinner_l02 = (Spinner) findViewById(R.id.spinner_l02);
+        spinner_l03 = (Spinner) findViewById(R.id.spinner_l03);
+        spinner_l04 = (Spinner) findViewById(R.id.spinner_l04);
+        spinner_l05 = (Spinner) findViewById(R.id.spinner_l05);
+        spinner_l06 = (Spinner) findViewById(R.id.spinner_l06);
+        spinner_l07 = (Spinner) findViewById(R.id.spinner_l07);
+
+
+        button_cancel = (Button) findViewById(R.id.button_cancel);
+        button_next = (Button) findViewById(R.id.button_next);
+    }
 
     void cleartext() {
 
@@ -179,9 +189,91 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
 
 
         if (v == button_next) {
-
+            String url = ApplicationData.URL_BURNINJURY + person_id;
+            new PutAsync().execute(url, createJsonBody());
 
         } else if (v == button_cancel) {
+
+
+        }
+
+    }
+
+
+    public String putRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
+
+
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+
+        OkHttpClient client = new OkHttpClient();
+        RequestBody body = RequestBody.create(JSON, jsonBody);
+        Request request = new Request.Builder()
+                .url(url)
+                .put(body)
+                .build();
+        Response response = client.newCall(request).execute();
+        Response httpResponse = client.newCall(request).execute();
+        httpResponse.code();
+
+        Log.i("Response data are ", response.body().string());
+        Log.i("Response code are ", "" + response.code());
+        //makeCall(client, request);
+
+        return response.body().string();
+    }
+
+    String createJsonBody() {
+        String jsonData = "{" +
+                "\"l01\":\"" +
+                ApplicationData.spilitStringFirst(spinner_l01.getSelectedItem().toString()) +
+                "\",\"l02\":\"" +
+                ApplicationData.spilitStringFirst(spinner_l02.getSelectedItem().toString()) +
+                "\",\"l03\":\"" +
+                ApplicationData.spilitStringFirst(spinner_l03.getSelectedItem().toString()) +
+                "\",\"l04\":\"" +
+                ApplicationData.spilitStringFirst(spinner_l04.getSelectedItem().toString()) +
+                "\",\"l05\":\"" +
+                ApplicationData.spilitStringFirst(spinner_l05.getSelectedItem().toString()) +
+                "\",\"l06\":\"" +
+                ApplicationData.spilitStringFirst(spinner_l06.getSelectedItem().toString()) +
+                "\",\"l07\":\"" +
+                ApplicationData.spilitStringFirst(spinner_l07.getSelectedItem().toString()) +
+                "\"}";
+        return jsonData;
+    }
+
+    private class PutAsync extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String Result = "";
+                Log.i("URL are ", params[0]);
+                Result = putRequestWithHeaderAndBody(params[0], params[1]);
+
+                Log.i("Result Are ", Result);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
 
 
         }

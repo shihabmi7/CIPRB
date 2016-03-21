@@ -51,9 +51,7 @@ public class InsectInjuryActivity extends AppCompatActivity implements View.OnCl
 
 
         }
-        textView2 = (TextView) findViewById(R.id.textView2);
-        textView4 = (TextView) findViewById(R.id.textView4);
-        textView6 = (TextView) findViewById(R.id.textView6);
+
         insect1 = (TextView) findViewById(R.id.insect1);
         insect2 = (TextView) findViewById(R.id.insect2);
         insect3 = (TextView) findViewById(R.id.insect3);

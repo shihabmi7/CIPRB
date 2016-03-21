@@ -68,25 +68,23 @@ public class CutInjuryActivity extends AppCompatActivity implements View.OnClick
         progressDialog.setCancelable(true);
     }
 
-private void initUI(){
-    textView2 = (TextView) findViewById(R.id.textView2);
-    textView4 = (TextView) findViewById(R.id.textView4);
-    textView6 = (TextView) findViewById(R.id.textView6);
+    private void initUI() {
 
-    cut1 = (TextView) findViewById(R.id.cut1);
-    cut2 = (TextView) findViewById(R.id.cut2);
-    cut3 = (TextView) findViewById(R.id.cut3);
+        cut1 = (TextView) findViewById(R.id.cut1);
+        cut2 = (TextView) findViewById(R.id.cut2);
+        cut3 = (TextView) findViewById(R.id.cut3);
 
-    spinner_k01 = (Spinner) findViewById(R.id.spinner_k01);
-    spinner_k02 = (Spinner) findViewById(R.id.spinner_k02);
-    spinner_k03 = (Spinner) findViewById(R.id.spinner_k03);
+        spinner_k01 = (Spinner) findViewById(R.id.spinner_k01);
+        spinner_k02 = (Spinner) findViewById(R.id.spinner_k02);
+        spinner_k03 = (Spinner) findViewById(R.id.spinner_k03);
 
-    button_cancel = (Button) findViewById(R.id.button_cancel);
-    button_next = (Button) findViewById(R.id.button_next);
+        button_cancel = (Button) findViewById(R.id.button_cancel);
+        button_next = (Button) findViewById(R.id.button_next);
 
-    button_cancel.setOnClickListener(this);
-    button_next.setOnClickListener(this);
-}
+        button_cancel.setOnClickListener(this);
+        button_next.setOnClickListener(this);
+    }
+
     void cleartext() {
 
       /*  editText_members_name.getText().clear();
@@ -184,8 +182,8 @@ private void initUI(){
 
 
         if (v == button_next) {
-            String url=ApplicationData.URL_CUTINJURY + person_id;
-            new PutAsync().execute(url,createJsonBody());
+            String url = ApplicationData.URL_CUTINJURY + person_id;
+            new PutAsync().execute(url, createJsonBody());
 
         } else if (v == button_cancel) {
 
@@ -194,7 +192,7 @@ private void initUI(){
 
     }
 
-    public String putRequestWithHeaderAndBody(String url,String jsonBody) throws IOException {
+    public String putRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
 
 
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
@@ -211,13 +209,14 @@ private void initUI(){
         httpResponse.code();
 
         Log.i("Response data are ", response.body().string());
-        Log.i("Response code are ",""+response.code());
+        Log.i("Response code are ", "" + response.code());
         //makeCall(client, request);
 
         return response.body().string();
     }
+
     String createJsonBody() {
-        String jsonData="{" +
+        String jsonData = "{" +
                 "\"k01\":\"" +
                 ApplicationData.spilitStringFirst(spinner_k01.getSelectedItem().toString()) +
                 "\",\"k02\":\"" +
@@ -227,7 +226,10 @@ private void initUI(){
                 "\"}";
         return jsonData;
     }
+
     private class PutAsync extends AsyncTask<String, Void, String> {
+
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -238,11 +240,11 @@ private void initUI(){
         @Override
         protected String doInBackground(String... params) {
             try {
-                String Result="";
+                String Result = "";
                 Log.i("URL are ", params[0]);
-                Result= putRequestWithHeaderAndBody(params[0],params[1]);
+                Result = putRequestWithHeaderAndBody(params[0], params[1]);
 
-                Log.i("Result Are ",Result);
+                Log.i("Result Are ", Result);
 
             } catch (IOException e) {
                 e.printStackTrace();

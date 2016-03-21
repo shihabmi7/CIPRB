@@ -58,9 +58,6 @@ public class SuffocationActivity extends AppCompatActivity implements View.OnCli
 
         etSuffocation = (EditText) findViewById(R.id.etSuffocation);
 
-        textView2 = (TextView) findViewById(R.id.textView2);
-        textView4 = (TextView) findViewById(R.id.textView4);
-        textView6 = (TextView) findViewById(R.id.textView6);
         suffocation1 = (TextView) findViewById(R.id.suffocation1);
         suffocation2 = (TextView) findViewById(R.id.suffocation2);
         sp_suffocation1 = (Spinner) findViewById(R.id.sp_suffocation1);

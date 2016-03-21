@@ -76,7 +76,7 @@
 
 
                 <Spinner
-                    android:id="@+id/sp_poisoning1"
+                    android:id="@+id/spinner_n01"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -102,7 +102,7 @@
 
 
                 <Spinner
-                    android:id="@+id/sp_poisoning2"
+                    android:id="@+id/spinner_n02"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -128,7 +128,7 @@
 
 
                 <Spinner
-                    android:id="@+id/sp_poisoning3"
+                    android:id="@+id/spinner_n03"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -154,7 +154,7 @@
 
 
                 <Spinner
-                    android:id="@+id/sp_poisoning4"
+                    android:id="@+id/spinner_n04"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -180,7 +180,7 @@
 
 
                 <Spinner
-                    android:id="@+id/sp_poisoning5"
+                    android:id="@+id/spinner_n05"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -206,7 +206,7 @@
 
 
                 <Spinner
-                    android:id="@+id/sp_poisoning6"
+                    android:id="@+id/spinner_n06"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -233,7 +233,7 @@
 
 
                 <Spinner
-                    android:id="@+id/sp_poisoning7"
+                    android:id="@+id/spinner_n07"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -259,7 +259,7 @@
 
 
                 <Spinner
-                    android:id="@+id/sp_poisoning8"
+                    android:id="@+id/spinner_n08"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -285,7 +285,7 @@
 
 
                 <Spinner
-                    android:id="@+id/sp_poisoning9"
+                    android:id="@+id/spinner_n09"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"

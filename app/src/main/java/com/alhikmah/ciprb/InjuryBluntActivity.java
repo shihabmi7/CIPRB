@@ -38,9 +38,6 @@ public class InjuryBluntActivity extends AppCompatActivity implements View.OnCli
         blunt1 = (TextView) findViewById(R.id.blunt1);
         blunt2 = (TextView) findViewById(R.id.blunt2);
         blunt3 = (TextView) findViewById(R.id.blunt3);
-        textView2 = (TextView) findViewById(R.id.textView2);
-        textView4 = (TextView) findViewById(R.id.textView4);
-        textView6 = (TextView) findViewById(R.id.textView6);
 
         sp_blunt1 = (Spinner) findViewById(R.id.sp_blunt1);
         sp_blunt2 = (Spinner) findViewById(R.id.sp_blunt2);
