@@ -89,8 +89,8 @@
                     android:id="@+id/editText_interviewer_unique"
                     android:layout_width="145dp"
                     android:layout_height="wrap_content"
-                    android:focusable="true"
                     android:layout_alignParentRight="true"
+                    android:focusable="true"
                     android:gravity="right"
                     android:inputType="number"
                     android:maxLength="2" />

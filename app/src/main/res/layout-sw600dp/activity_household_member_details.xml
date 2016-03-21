@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HouseHoldInformationActivity">
+    tools:context=".HouseHoldMemberDetailsActivity">
 
     <LinearLayout
         android:id="@+id/layout_header"
@@ -508,14 +508,14 @@
                 android:padding="20dp">
 
                 <Button
-                    android:id="@+id/button_cancel"
+                    android:id="@+id/button_can"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="Cancel"></Button>
 
                 <Button
-                    android:id="@+id/button_next"
+                    android:id="@+id/button_go"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"

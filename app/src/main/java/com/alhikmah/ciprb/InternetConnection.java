@@ -53,15 +53,8 @@ public class InternetConnection {
         ConnectivityManager cm = (ConnectivityManager) activity
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-
-            // reloadData();
-
-            return true;
-        } else {
-
-            return false;
-        }
+        // reloadData();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
 
     }
 }

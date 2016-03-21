@@ -59,7 +59,7 @@ public class FormAdapter extends BaseAdapter {
                 holder = (ViewHolder) convertView.getTag();
             }
 
-            Form resObj = (Form) ApplicationData.formList
+            Form resObj = ApplicationData.formList
                     .get(position);
             holder.res_name.setText(resObj.getTitle());
 

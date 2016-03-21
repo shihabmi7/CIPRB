@@ -69,111 +69,117 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_household_member_details);
 
-        try {
-            //prefsValues = new PrefsValues(this);
-            //count = prefsValues.getSerial();
-            formatter = new DecimalFormat("00");
-            house_hold_id = (TextView) findViewById(R.id.house_hold_id);
-            isResonder = (CheckBox) findViewById(R.id.chkb_responder);
+        //try {
+        prefsValues = new PrefsValues(this);
+        //count = prefsValues.getSerial();
 
-            edittext_date_of_birth = (EditText) findViewById(R.id.edittext_date_of_birth);
-            edittext_current_age = (EditText) findViewById(R.id.edittext_current_age);
-            editText_members_name = (EditText) findViewById(R.id.editText_members_name);
-            editText_educatoin_level = (EditText) findViewById(R.id.editText_educatoin_level);
+        formatter = new DecimalFormat("00");
+        house_hold_id = (TextView) findViewById(R.id.house_hold_id);
+        isResonder = (CheckBox) findViewById(R.id.chkb_responder);
 
-            linear_responder = (LinearLayout) findViewById(R.id.linear_responder);
-            spinner_occupasion = (Spinner) findViewById(R.id.spinner_occupasion);
-            spinner_marital_status = (Spinner) findViewById(R.id.spinner_marital_status);
-            spinner_sex = (Spinner) findViewById(R.id.spinner_sex);
-            spinner_realation_with_hh = (Spinner) findViewById(R.id.spinner_realation_with_hh);
+        edittext_date_of_birth = (EditText) findViewById(R.id.edittext_date_of_birth);
+        edittext_current_age = (EditText) findViewById(R.id.edittext_current_age);
+        editText_members_name = (EditText) findViewById(R.id.editText_members_name);
+        editText_educatoin_level = (EditText) findViewById(R.id.editText_educatoin_level);
 
-            spinner_smoking = (Spinner) findViewById(R.id.spinner_smoking);
-            spinner_buttle_nut = (Spinner) findViewById(R.id.spinner_buttle_nut);
-            spinner_swiming = (Spinner) findViewById(R.id.spinner_swiming);
+        linear_responder = (LinearLayout) findViewById(R.id.linear_responder);
+        spinner_occupasion = (Spinner) findViewById(R.id.spinner_occupasion);
+        spinner_marital_status = (Spinner) findViewById(R.id.spinner_marital_status);
+        spinner_sex = (Spinner) findViewById(R.id.spinner_sex);
+        spinner_realation_with_hh = (Spinner) findViewById(R.id.spinner_realation_with_hh);
 
-            spinner_injury_last_six = (Spinner) findViewById(R.id.spinner_injury_last_six);
-            edittext_how_many_injury_last_six = (EditText) findViewById(R.id.edittext_how_many_injury_last_six);
-            spinner_how_injured = (Spinner) findViewById(R.id.spinner_how_injured);
+        spinner_smoking = (Spinner) findViewById(R.id.spinner_smoking);
+        spinner_buttle_nut = (Spinner) findViewById(R.id.spinner_buttle_nut);
+        spinner_swiming = (Spinner) findViewById(R.id.spinner_swiming);
 
-            button_cancel = (Button) findViewById(R.id.button_cancel);
-            button_next = (Button) findViewById(R.id.button_next);
-            button_cancel.setOnClickListener(this);
-            button_next.setOnClickListener(this);
+        spinner_injury_last_six = (Spinner) findViewById(R.id.spinner_injury_last_six);
+        edittext_how_many_injury_last_six = (EditText) findViewById(R.id.edittext_how_many_injury_last_six);
+        spinner_how_injured = (Spinner) findViewById(R.id.spinner_how_injured);
 
-            linerar_how_injury = (RelativeLayout) findViewById(R.id.linerar_how_injury);
-            linerar_how_injury.setVisibility(View.GONE);
+        button_cancel = (Button) findViewById(R.id.button_can);
+        button_next = (Button) findViewById(R.id.button_go);
+
+
+        button_cancel.setOnClickListener(this);
+        button_next.setOnClickListener(this);
+
+        linerar_how_injury = (RelativeLayout) findViewById(R.id.linerar_how_injury);
+        linerar_how_injury.setVisibility(View.GONE);
 
        /* lay_how_injured = (LinearLayout) findViewById(R.id.lay_how_injured);
         lay_how_injured.setVisibility(View.GONE);*/
 
-            spinner_injury_last_six.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        spinner_injury_last_six.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                    if (position == 0) {
+                if (position == 0) {
 
-                        linerar_how_injury.setVisibility(View.VISIBLE);
-                        // lay_how_injured.setVisibility(View.VISIBLE);
+                    linerar_how_injury.setVisibility(View.VISIBLE);
+                    // lay_how_injured.setVisibility(View.VISIBLE);
 
-                    } else {
+                } else {
 
-                        linerar_how_injury.setVisibility(View.GONE);
-                        //lay_how_injured.setVisibility(View.GONE);
-
-                    }
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
+                    linerar_how_injury.setVisibility(View.GONE);
+                    //lay_how_injured.setVisibility(View.GONE);
 
                 }
-            });
-            myCalendar = Calendar.getInstance();
-            date = new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                      int dayOfMonth) {
+            }
 
-                    myCalendar.set(Calendar.YEAR, year);
-                    myCalendar.set(Calendar.MONTH, monthOfYear);
-                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    updateLabel();
-                }
-            };
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
-            edittext_date_of_birth.setOnClickListener(new View.OnClickListener() {
+            }
+        });
+        myCalendar = Calendar.getInstance();
+        date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
 
-                @Override
-                public void onClick(View v) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+        };
 
-                    new DatePickerDialog(HouseHoldMemberDetailsActivity.this, date, myCalendar
-                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-                }
+        edittext_date_of_birth.setOnClickListener(new View.OnClickListener() {
 
-            });
+            @Override
+            public void onClick(View v) {
+
+                new DatePickerDialog(activity, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+
+        });
 
 
-            member_no = prefsValues.getMembersNo();
-            editText_members_name.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        member_no = prefsValues.getMembersNo();
+        editText_members_name.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
 
-            // showTextLong(""+spinner_injury_last_six.getSelectedItem().toString());
-            setheader();
-        } catch (NullPointerException e) {
+        progressDialog = new ProgressDialog(activity);
+        progressDialog.setMessage("Please wait...");
+        progressDialog.setTitle("Loading");
+        progressDialog.setCancelable(true);
 
+
+        // showTextLong(""+spinner_injury_last_six.getSelectedItem().toString());
+        setheader();
+       /* } catch (NullPointerException e) {
             //Toast.makeText(activity,"",Toast.makeText())
-
         } catch (Exception e) {
-
-
-        }
+        }*/
 
     }
 
     void setheader() {
 
         house_hold_id.setText("Total Members: " + member_no + "   Remain Member: " + (member_no - calculate_member));
+
     }
 
     private void updateLabel() {
@@ -267,10 +273,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
     void saveDataToOnline(Person person) {
 
         try {
-            progressDialog = new ProgressDialog(activity);
-            progressDialog.setMessage("Please wait...");
-            progressDialog.setTitle("Loading");
-            progressDialog.setCancelable(true);
+
             progressDialog.show();
 
             AsyncHttpClient client = new AsyncHttpClient();
@@ -334,8 +337,6 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                     }
             );
         } catch (NullPointerException e) {
-
-
         }
 
     }
@@ -386,13 +387,12 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
 
     void showTextLong(String value) {
-
         Toast.makeText(getApplicationContext(), value, Toast.LENGTH_LONG).show();
     }
 
 
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
+        super.onBackPressed();
     }
 }
