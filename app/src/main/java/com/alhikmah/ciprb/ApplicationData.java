@@ -44,6 +44,8 @@ public class ApplicationData {
     public static String KEY_PERSON = "personid";
 
     public static int SERIAL = 1;
+    public static int SERIAL_DEATH = 90;
+
 
     public static void gotToNextActivity(Activity activity, Class actiivty) {
 

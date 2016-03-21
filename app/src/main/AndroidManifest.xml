@@ -19,28 +19,29 @@
             android:name=".HomeActivity"
             android:launchMode="singleInstance">
 
+
+        </activity>
+
+        <activity android:name=".HouseHoldMemberDetailsActivity">
+
+        </activity>
+        <activity android:name=".DeathConfirmationActivity">
+
+
+        </activity>
+        <activity android:name=".InjuryMorbidityActivity"></activity>
+        <activity android:name=".InjuryMortalityActivity"></activity>
+        <activity android:name=".SuicideAttemptActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
         </activity>
-
-
-        <activity android:name=".HouseHoldMemberDetailsActivity">
-
-        </activity>
-        <activity android:name=".DeathConfirmationActivity"></activity>
-        <activity android:name=".InjuryMorbidityActivity"></activity>
-        <activity android:name=".InjuryMortalityActivity"></activity>
-        <activity android:name=".SuicideAttemptActivity">
-
-
-        </activity>
         <activity android:name=".RoadTransportInjuryActivity"></activity>
         <activity android:name=".ViolenceInjuryActivity"></activity>
-        <activity android:name=".BurnInjuryActivity">
-        </activity>
+        <activity android:name=".BurnInjuryActivity"></activity>
         <activity android:name=".CutInjuryActivity">
 
         </activity>
@@ -67,7 +68,11 @@
         </activity>
         <activity android:name=".SuffocationActivity"></activity>
         <activity android:name=".ToolInjuryActivity"></activity>
-        <activity android:name=".UnintentionalPoisoningActivity"></activity>
+        <activity android:name=".UnintentionalPoisoningActivity"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
     </application>
 

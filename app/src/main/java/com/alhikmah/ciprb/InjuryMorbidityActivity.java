@@ -110,7 +110,6 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
             spinner_significant_source_of_income_for_family = (Spinner) findViewById(R.id.spinner_significant_source_of_income_for_family);
             spinner_family_being_coping_loss_income = (Spinner) findViewById(R.id.spinner_family_being_coping_loss_income);
 
-
             spinner_did_receive_first_aid.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -133,8 +132,6 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
                 }
             });
-
-
             spinner_admitted_health_facility.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -157,7 +154,6 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
                 }
             });
-
             spinner_any_surgery_operation_done.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -180,8 +176,6 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
                 }
             });
-
-
             spinner_injured_person_become_disabled.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -325,7 +319,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
     void saveDataToOnline(int pos) {
 
-    //
+        //
         progressDialog.show();
         final Person person = ApplicationData.alive_person_List.get(pos);
         person.setInjury_type(spinner_how_injured.getSelectedItem().toString());

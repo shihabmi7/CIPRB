@@ -18,7 +18,7 @@ public class InjuryMortalityActivity extends AppCompatActivity {
 
     EditText edittext_date_of_injury, edittext_time_of_injury, edittext_death_date_of_person;
     Calendar myCalendar = null;
-    DatePickerDialog.OnDateSetListener date,death_date;
+    DatePickerDialog.OnDateSetListener date, death_date;
     TimePickerDialog.OnTimeSetListener time;
     Activity activity = this;
 
@@ -118,7 +118,9 @@ public class InjuryMortalityActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         edittext_date_of_injury.setText(sdf.format(myCalendar.getTime()));
 
-    }private void updateDeathDateLabel() {
+    }
+
+    private void updateDeathDateLabel() {
 
         String myFormat = "dd/mm/yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
