@@ -46,6 +46,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
     TextView house_hold_id;
     PrefsValues prefsValues;
     ProgressDialog progressDialog = null;
+
     EditText editText_death_date;
     Activity activity = this;
 
