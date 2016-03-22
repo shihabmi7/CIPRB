@@ -18,12 +18,20 @@
             android:name=".HomeActivity"
             android:launchMode="singleInstance">
 
+
         </activity>
 
         <activity android:name=".HouseHoldMemberDetailsActivity">
 
         </activity>
-        <activity android:name=".DeathConfirmationActivity"></activity>
+        <activity android:name=".DeathConfirmationActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".InjuryMorbidityActivity">
 
 
@@ -71,11 +79,6 @@
         <activity android:name=".SuffocationActivity"></activity>
         <activity android:name=".ToolInjuryActivity">
 
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity android:name=".UnintentionalPoisoningActivity"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for

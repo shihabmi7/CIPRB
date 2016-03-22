@@ -40,7 +40,7 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
     ProgressDialog progressDialog;
     Activity activity = this;
     //String person_id = "101323210";
-    String person_id = "101323212";
+    String person_id = "";
     TextView textView_person_id;
 
     @Override
@@ -48,7 +48,6 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tool_injury);
         try {
-
             textView_person_id = (TextView) findViewById(R.id.textView_person_id);
             person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
             textView_person_id.setText("Person Id:" + person_id);
@@ -57,7 +56,6 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
 
 
         } catch (Exception e) {
-
 
         }
         initUI();

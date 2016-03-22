@@ -24,6 +24,9 @@ import okhttp3.Response;
 public class ApplicationData {
 
     public static String URL_HOUSE_HOLD_MEMBERS = "http://saeradesign.com/LumenApi/public/index.php/api/household";
+    public static String URL_DEATH_CONFIRMATION = "http://saeradesign.com/LumenApi/public/index.php/api/household";
+
+
     public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/household/injurymorbidity/";
     public static String URL_SUICIDE = "http://saeradesign.com/LumenApi/public/index.php/api/household/suicideattemptactivity/";
     public static String URL_ROADTRANSPORTINJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/roadtransportinjury/";
@@ -33,7 +36,7 @@ public class ApplicationData {
     public static String URL_NEAR_DROWN = "http://saeradesign.com/LumenApi/public/index.php/api/activity/neardrowing/";
     public static String URL_BURNINJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/burninjury/";
     public static String URL_UNINTENTIONAL_INJURY = "http://saeradesign.com/LumenApi/public/index.php/api/activity/unintentionpoisoning/";
-    public static String URL_DEATH_CONFIRMATION = "http://saeradesign.com/LumenApi/public/index.php/api/household";
+
 
     public static String URL_TOOl_INJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/toolinjury/";
     public static String URL_ELECTROCAUTION = "http://saeradesign.com/LumenApi/public/index.php/api/activity/electrocaution/";
@@ -92,6 +95,29 @@ public class ApplicationData {
 
         return response.body().string();
     }
+
+    public static int postRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
+
+
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+        OkHttpClient client = new OkHttpClient();
+        RequestBody body = RequestBody.create(JSON, jsonBody);
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        Response response = client.newCall(request).execute();
+        //Response httpResponse = client.newCall(request).execute();
+        //  httpResponse.code();
+
+        Log.i("Response data are ", response.body().string());
+        Log.i("Response code are ", "" + response.code());
+        //makeCall(client, request);
+
+        return response.code();
+    }
+
 
     public static int putRequestWithBody(String url, String jsonBody) throws IOException {
 

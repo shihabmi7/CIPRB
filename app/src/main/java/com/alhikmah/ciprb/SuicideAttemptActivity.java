@@ -204,6 +204,7 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
+            progressDialog.dismiss();
             if (value == ApplicationData.STATUS_SUCCESS) {
                 //// TODO: 3/22/2016
                 Toast.makeText(activity, "Success", Toast.LENGTH_LONG).show();
