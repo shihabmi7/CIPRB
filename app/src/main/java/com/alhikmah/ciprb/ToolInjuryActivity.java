@@ -245,7 +245,7 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
 
     private class PutAsync extends AsyncTask<String, Void, String> {
 
-        int value;
+        int value = 0;
         String Result = "";
 
         @Override
@@ -258,13 +258,11 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
         protected String doInBackground(String... params) {
             try {
 
-                String Result = "";
-                Log.i("URL are ", params[0]);
-                //Result = putRequestWithHeaderAndBody(params[0], params[1]);
 
+                Log.i("URL are ", params[0]);
                 value = ApplicationData.putRequestWithBody(params[0], params[1]);
 
-                Log.i("Result Are ", Result);
+
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (Exception e) {
@@ -281,9 +279,8 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
 
             if (value == ApplicationData.STATUS_SUCCESS) {
                 //// TODO: 3/22/2016
-                Toast.makeText(activity, "Success", Toast.LENGTH_LONG).show();
-                //ApplicationData.alive_person_List.remove(spinner_person_name.getSelectedItemPosition());
-                cleartext();
+
+                finishTask();
 
             } else {
                 Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
@@ -292,4 +289,17 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
         }
 
     }
+
+    void finishTask() {
+
+        Toast.makeText(activity, "Successfully Data Saved", Toast.LENGTH_LONG).show();
+        ApplicationData.INJURY_DATA_COLLECT = true;
+        cleartext();
+        //onBackPressed();
+        activity.finish();
+        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+        //activity.finish();
+    }
+
+
 }

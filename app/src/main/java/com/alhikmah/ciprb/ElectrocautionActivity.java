@@ -234,6 +234,9 @@ public class ElectrocautionActivity extends AppCompatActivity implements View.On
     }
 
     private class PutAsync extends AsyncTask<String, Void, String> {
+
+        int value = 0;
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -244,18 +247,16 @@ public class ElectrocautionActivity extends AppCompatActivity implements View.On
         @Override
         protected String doInBackground(String... params) {
             try {
-                String Result = "";
-                Log.i("URL are ", params[0]);
-                Result = putRequestWithHeaderAndBody(params[0], params[1]);
 
-                Log.i("Result Are ", Result);
+
+                Log.i("URL are ", params[0]);
+                value = ApplicationData.putRequestWithBody(params[0], params[1]);
 
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
             return null;
         }
 
@@ -264,9 +265,30 @@ public class ElectrocautionActivity extends AppCompatActivity implements View.On
             super.onPostExecute(result);
 
             progressDialog.dismiss();
+            if (value == ApplicationData.STATUS_SUCCESS) {
+                //// TODO: 3/22/2016
 
+                finishTask();
+
+            } else {
+
+                Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
+
+
+            }
 
         }
 
+    }
+
+    void finishTask() {
+
+        Toast.makeText(activity, "Successfully Data Saved", Toast.LENGTH_LONG).show();
+        ApplicationData.INJURY_DATA_COLLECT = true;
+        cleartext();
+        //onBackPressed();
+        activity.finish();
+        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+        //activity.finish();
     }
 }

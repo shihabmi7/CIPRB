@@ -244,6 +244,9 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
     }
 
     private class PutAsync extends AsyncTask<String, Void, String> {
+
+        int value = 0;
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -254,11 +257,9 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
         @Override
         protected String doInBackground(String... params) {
             try {
-                String Result = "";
-                Log.i("URL are ", params[0]);
-                Result = putRequestWithHeaderAndBody(params[0], params[1]);
 
-                Log.i("Result Are ", Result);
+                Log.i("URL are ", params[0]);
+                value = ApplicationData.putRequestWithBody(params[0], params[1]);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -274,6 +275,14 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
             super.onPostExecute(result);
             progressDialog.dismiss();
 
+            if (value == ApplicationData.STATUS_SUCCESS) {
+                //// TODO: 3/22/2016
+
+                finishTask();
+
+            } else {
+                Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
+            }
 
         }
 

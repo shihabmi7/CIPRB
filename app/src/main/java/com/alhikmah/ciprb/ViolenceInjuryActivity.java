@@ -40,6 +40,7 @@ public class ViolenceInjuryActivity extends AppCompatActivity implements View.On
 
     String person_id = "30202102501";
     TextView textView_person_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,22 +61,24 @@ public class ViolenceInjuryActivity extends AppCompatActivity implements View.On
         progressDialog.setTitle("Loading");
         progressDialog.setCancelable(true);
     }
-      private void initUI(){
-          spinner_i01 = (Spinner) findViewById(R.id.spinner_i01);
-          spinner_i02 = (Spinner) findViewById(R.id.spinner_i02);
-          spinner_i03 = (Spinner) findViewById(R.id.spinner_i03);
-          spinner_i04 = (Spinner) findViewById(R.id.spinner_i04);
 
-          button_next = (Button) findViewById(R.id.button_next);
-          button_cancel = (Button) findViewById(R.id.button_cancel);
+    private void initUI() {
+        spinner_i01 = (Spinner) findViewById(R.id.spinner_i01);
+        spinner_i02 = (Spinner) findViewById(R.id.spinner_i02);
+        spinner_i03 = (Spinner) findViewById(R.id.spinner_i03);
+        spinner_i04 = (Spinner) findViewById(R.id.spinner_i04);
+
+        button_next = (Button) findViewById(R.id.button_next);
+        button_cancel = (Button) findViewById(R.id.button_cancel);
 
 
-          button_cancel = (Button) findViewById(R.id.button_cancel);
-          button_next = (Button) findViewById(R.id.button_next);
+        button_cancel = (Button) findViewById(R.id.button_cancel);
+        button_next = (Button) findViewById(R.id.button_next);
 
-          button_cancel.setOnClickListener(this);
-          button_next.setOnClickListener(this);
-}
+        button_cancel.setOnClickListener(this);
+        button_next.setOnClickListener(this);
+    }
+
     void cleartext() {
 
       /*  editText_members_name.getText().clear();
@@ -173,8 +176,8 @@ public class ViolenceInjuryActivity extends AppCompatActivity implements View.On
 
 
         if (v == button_next) {
-            String url=ApplicationData.URL_VIOLENCEINJURY + person_id;
-            new PutAsync().execute(url,createJsonBody());
+            String url = ApplicationData.URL_VIOLENCEINJURY + person_id;
+            new PutAsync().execute(url, createJsonBody());
 
         } else if (v == button_cancel) {
 
@@ -183,7 +186,7 @@ public class ViolenceInjuryActivity extends AppCompatActivity implements View.On
 
     }
 
-    public String putRequestWithHeaderAndBody(String url,String jsonBody) throws IOException {
+    public String putRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
 
 
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
@@ -200,13 +203,14 @@ public class ViolenceInjuryActivity extends AppCompatActivity implements View.On
         httpResponse.code();
 
         Log.i("Response data are ", response.body().string());
-        Log.i("Response code are ",""+response.code());
+        Log.i("Response code are ", "" + response.code());
         //makeCall(client, request);
 
         return response.body().string();
     }
+
     String createJsonBody() {
-        String jsonData="{" +
+        String jsonData = "{" +
                 "\"i01\":\"" +
                 ApplicationData.spilitStringFirst(spinner_i01.getSelectedItem().toString()) +
                 "\",\"i02\":\"" +
@@ -218,7 +222,10 @@ public class ViolenceInjuryActivity extends AppCompatActivity implements View.On
                 "\"}";
         return jsonData;
     }
+
     private class PutAsync extends AsyncTask<String, Void, String> {
+        int value = 0;
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -229,11 +236,9 @@ public class ViolenceInjuryActivity extends AppCompatActivity implements View.On
         @Override
         protected String doInBackground(String... params) {
             try {
-                String Result="";
-                Log.i("URL are ", params[0]);
-                Result= putRequestWithHeaderAndBody(params[0],params[1]);
 
-                Log.i("Result Are ",Result);
+                Log.i("URL are ", params[0]);
+                value = ApplicationData.putRequestWithBody(params[0], params[1]);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -249,9 +254,30 @@ public class ViolenceInjuryActivity extends AppCompatActivity implements View.On
             super.onPostExecute(result);
 
             progressDialog.dismiss();
+            if (value == ApplicationData.STATUS_SUCCESS) {
+                //// TODO: 3/22/2016
+
+                finishTask();
+
+            } else {
+                Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
+            }
 
 
         }
 
     }
+
+    void finishTask() {
+
+        Toast.makeText(activity, "Successfully Data Saved", Toast.LENGTH_LONG).show();
+        ApplicationData.INJURY_DATA_COLLECT = true;
+        cleartext();
+        //onBackPressed();
+        activity.finish();
+        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+        //activity.finish();
+    }
+
+
 }

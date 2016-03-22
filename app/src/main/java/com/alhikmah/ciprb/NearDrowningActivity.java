@@ -172,7 +172,7 @@ public class NearDrowningActivity extends AppCompatActivity implements View.OnCl
 
     private class PutAsync extends AsyncTask<String, Void, String> {
 
-        int value;
+        int value = 0;
         String Result = "";
 
         @Override
@@ -186,9 +186,9 @@ public class NearDrowningActivity extends AppCompatActivity implements View.OnCl
         protected String doInBackground(String... params) {
             try {
 
-                value = ApplicationData.putRequestWithBody(params[0], params[1]);
 
-                Log.i("Result Are ", Result);
+                Log.i("URL are ", params[0]);
+                value = ApplicationData.putRequestWithBody(params[0], params[1]);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -206,9 +206,8 @@ public class NearDrowningActivity extends AppCompatActivity implements View.OnCl
             progressDialog.dismiss();
             if (value == ApplicationData.STATUS_SUCCESS) {
                 //// TODO: 3/22/2016
-                Toast.makeText(activity, "Success", Toast.LENGTH_LONG).show();
-                //ApplicationData.alive_person_List.remove(spinner_person_name.getSelectedItemPosition());
-                cleartext();
+
+                finishTask();
 
             } else {
                 Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
@@ -218,6 +217,18 @@ public class NearDrowningActivity extends AppCompatActivity implements View.OnCl
         }
 
     }
+
+    void finishTask() {
+
+        Toast.makeText(activity, "Successfully Data Saved", Toast.LENGTH_LONG).show();
+        ApplicationData.INJURY_DATA_COLLECT = true;
+        cleartext();
+        //onBackPressed();
+        activity.finish();
+        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+        //activity.finish();
+    }
+
 
     @Override
     public void onClick(View v) {

@@ -176,10 +176,9 @@ public class FallInjuryActivity extends AppCompatActivity implements View.OnClic
         @Override
         protected String doInBackground(String... params) {
             try {
+
                 String Result = "";
                 Log.i("URL are ", params[0]);
-                //Result = putRequestWithHeaderAndBody(params[0], params[1]);
-
                 value = ApplicationData.putRequestWithBody(params[0], params[1]);
                 Log.i("Result Are ", Result);
 
@@ -198,10 +197,10 @@ public class FallInjuryActivity extends AppCompatActivity implements View.OnClic
 
             progressDialog.dismiss();
             if (value == ApplicationData.STATUS_SUCCESS) {
-                //// TODO: 3/22/2016
+
                 Toast.makeText(activity, "Success", Toast.LENGTH_LONG).show();
                 //ApplicationData.alive_person_List.remove(spinner_person_name.getSelectedItemPosition());
-                cleartext();
+                finishTask();
 
             } else {
                 Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
@@ -211,6 +210,18 @@ public class FallInjuryActivity extends AppCompatActivity implements View.OnClic
         }
 
     }
+
+    void finishTask() {
+
+        Toast.makeText(activity, "Successfully Data Saved", Toast.LENGTH_LONG).show();
+        ApplicationData.INJURY_DATA_COLLECT = true;
+        cleartext();
+        //onBackPressed();
+        activity.finish();
+        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+        //activity.finish();
+    }
+
 
     /**
      * Called when a view has been clicked.
