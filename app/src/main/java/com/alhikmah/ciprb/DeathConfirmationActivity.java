@@ -53,7 +53,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
             editText_members_name, edittext_how_many_injury_last_six;
 
     Spinner spinner_occupasion, spinner_marital_status, spinner_death_sex, spinner_realation_with_hh, spinner_cause_death, spinner_death_place;
-    private String mCURRENT_MEMBER_ID = "125481214";
+    private String mCURRENT_MEMBER_ID = "35457899923232";
     private Person aPerson;
     DecimalFormat formatter;
 
@@ -185,7 +185,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
     void setheader() {
 
-        house_hold_id.setText("Total Members: " + member_no + "   Remain Member: " + (member_no - calculate_member));
+        //house_hold_id.setText("Total Members: " + member_no + "   Remain Member: " + (member_no - calculate_member));
 
     }
 
@@ -308,7 +308,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
     }
 
     void cleartext() {
-        setheader();
+        // setheader();
 
         editText_members_name.getText().clear();
         edittext_date_of_birth.getText().clear();
@@ -425,33 +425,33 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
                     editText_members_name.getText().toString() +
                     "\",\"sex\":\"" +
                     ApplicationData.spilitStringFirst(spinner_death_sex.getSelectedItem().toString()) +
-                    "\"date_of_birth\":\"" +
+                    "\",\"date_of_birth\":\"" +
                     edittext_date_of_birth.getText().toString() +
-                    "\"maritial_status\":\"" +
+                    "\",\"maritial_status\":\"" +
                     ApplicationData.spilitStringFirst(spinner_marital_status.getSelectedItem().toString()) +
-                    "\"education\":\"" +
+                    "\",\"education\":\"" +
                     editText_educatoin_level.getText().toString() +
-                    "\"relation_with_hh\":\"" +
+                    "\",\"relation_with_hh\":\"" +
                     ApplicationData.spilitStringFirst(spinner_realation_with_hh.getSelectedItem().toString()) +
-                    "\"age\":\"" +
+                    "\",\"age\":\"" +
                     edittext_current_age.getText().toString() +
-                    "\"occupasion\":\"" +
+                    "\",\"occupasion\":\"" +
                     ApplicationData.spilitStringFirst(spinner_occupasion.getSelectedItem().toString()) +
-                    "\"interview_time\":\"" +
+                    "\",\"interview_time\":\"" +
                     "" +
-                    "\"d01\":\"" +
+                    "\",\"d01\":\"" +
                     editText_death_date.getText().toString() +
-                    "\"d02\":\"" +
+                    "\",\"d02\":\"" +
                     "" +
-                    "\"d03\":\"" +
+                    "\",\"d03\":\"" +
                     ApplicationData.spilitStringFirst(spinner_death_place.getSelectedItem().toString()) +
-                    "\"d04\":\"" +
+                    "\",\"d04\":\"" +
                     "" +
-                    "\"d05\":\"" +
+                    "\",\"d05\":\"" +
                     "" +
-                    "\"d06\":\"" +
+                    "\",\"d06\":\"" +
                     editText_sicness_time.getText().toString() +
-                    "\"d07\":\"" +
+                    "\",\"d07\":\"" +
                     ApplicationData.spilitStringFirst(spinner_cause_death.getSelectedItem().toString()) +
                     "\"}";
 
