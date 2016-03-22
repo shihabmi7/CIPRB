@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.alhikmah.ciprb.localdb.CiprbDatabase;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -70,10 +71,15 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
     String person_id = "";
     ArrayAdapter<String> dataAdapter;
 
+    CiprbDatabase ciprbDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);/**/
         setContentView(R.layout.activity_injury_morbidity);
+
+        ciprbDatabase=new CiprbDatabase(getApplicationContext());
+        ciprbDatabase.open();
 
 
         try {
@@ -93,7 +99,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
             list = new ArrayList<String>();
             //list = ApplicationData.alive_person_List;
 
-            if (ApplicationData.alive_person_List.size() <= 0) {
+            if (ciprbDatabase.getAlivePersonList().isEmpty()) {
 
                 Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
                 finish();
@@ -294,7 +300,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
         try {
 
-            if (ApplicationData.alive_person_List.size() <= 0) {
+            if (ciprbDatabase.getAlivePersonList().isEmpty()) {
 
                 Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
                 activity.finish();
@@ -304,17 +310,20 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
             if (ApplicationData.INJURY_DATA_COLLECT == true) {
 
                 Toast.makeText(activity, "Adapter Updated....: " + ApplicationData.ALIVE_PERSON_NUMBER, Toast.LENGTH_LONG).show();
-                ApplicationData.alive_person_List.remove(ApplicationData.ALIVE_PERSON_NUMBER);
+                /*ApplicationData.alive_person_List.remove(ApplicationData.ALIVE_PERSON_NUMBER);
 
 
                 Toast.makeText(activity, "Adapter Updated....: " +
                         ApplicationData.ALIVE_PERSON_NUMBER + "List size:" +
                         ApplicationData.alive_person_List.size(), Toast.LENGTH_LONG).show();
 
+                list.remove(ApplicationData.ALIVE_PERSON_NUMBER);*/
                 list.remove(ApplicationData.ALIVE_PERSON_NUMBER);
+                ciprbDatabase.deleteRowByID(person_id);
 
-                dataAdapter.notifyDataSetChanged();
-//                setMemberSpinner(list);
+
+
+
 
                 if (list.size() <= 0) {
 
@@ -351,8 +360,8 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
     private void setMemberSpinner(List<String> list) {
         list.clear();
-        alive_count = ApplicationData.alive_person_List.size();
-        for (Person aPerson : ApplicationData.alive_person_List) {
+        alive_count = ciprbDatabase.getAlivePersonList().size();
+        for (Person aPerson : ciprbDatabase.getAlivePersonList()) {
             list.add(aPerson.getMembers_name() + "." + aPerson.getPerson_id());
         }
         dataAdapter = new ArrayAdapter<String>
@@ -362,6 +371,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                 (android.R.layout.simple_spinner_dropdown_item);
 
         spinner_person_name.setAdapter(dataAdapter);
+        dataAdapter.notifyDataSetChanged();
     }
 
     private void updateLabel() {
@@ -604,7 +614,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                 Toast.makeText(activity, "Success" + type, Toast.LENGTH_LONG).show();
 
                 ApplicationData.ALIVE_PERSON_NUMBER = spinner_person_name.getSelectedItemPosition();
-
+                person_id=ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
                 cleartext();
                 moveToInjurySelectionActivity(type, person_id);
 
@@ -691,6 +701,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                 }*/
 
                 //putRequestWithHeaderAndBody(ApplicationData.URL_SUICIDE + person_id);
+                person_id=ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
                 String url = ApplicationData.URL_INJURY_MORBIDITY + person_id;
                 //Put
                 Log.i("String are ", createJsonBody());

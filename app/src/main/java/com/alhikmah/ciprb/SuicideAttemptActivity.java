@@ -225,7 +225,7 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
         cleartext();
         //onBackPressed();
         activity.finish();
-        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+        //ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
         //activity.finish();
     }
 

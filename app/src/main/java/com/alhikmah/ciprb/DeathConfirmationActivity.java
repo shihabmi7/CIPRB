@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -18,6 +19,8 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.alhikmah.ciprb.localdb.CiprbDatabase;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -51,13 +54,18 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
     private String mCURRENT_MEMBER_ID = "";
     private Person aPerson;
     DecimalFormat formatter;
+    CiprbDatabase ciprbDatabase;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_death_confirmation);
+
+        ciprbDatabase=new CiprbDatabase(getApplicationContext());
+        ciprbDatabase.open();
 
         // get value from radio button
         // RadioGroup rg = (RadioGroup)findViewById(R.id.youradio);
@@ -405,13 +413,13 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
                     int death_type = Integer.parseInt(ApplicationData.spilitStringFirst(spinner_cause_death.getSelectedItem().toString()));
 
                     if (death_type == 1) {
-
-                        ApplicationData.died_person_List.add(aPerson);
+                        ciprbDatabase.insertIntoDeathDB(mCURRENT_MEMBER_ID, editText_members_name.getText().toString());
+                        //ApplicationData.died_person_List.add(aPerson);
                     }
                     calculate_member++;
                     if (calculate_member >= death_member_no) {
 
-                        if (ApplicationData.died_person_List.size() != 0) {
+                        if (!ciprbDatabase.getDeathPersonList().isEmpty()) {
 
                             ApplicationData.gotToNextActivity(activity, InjuryMortalityActivity.class);
                             finish();

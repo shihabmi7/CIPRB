@@ -7,7 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import com.alhikmah.ciprb.localdb.AndroidDatabaseManager;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -17,7 +18,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
     String form[] = {
-
+            "DATABASE",
             "মডিউল-১  ফেস ফর্ম",
             "খানা সদস্যদের ইঞ্জুরী তথ্য",
             "মডিউল- ৩ ইনজুরি জনিত অসুস্থতার ফর্ম",
@@ -43,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
 
     //" Assult",
     Class[] samples =
-            {
+            {       AndroidDatabaseManager.class,
                     HouseHoldInformationActivity.class,
                     HouseHoldMemberDetailsActivity.class,
                     InjuryMorbidityActivity.class,
@@ -78,7 +79,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                if(position==1){
+                /*if(position==1){
                     if(prefsValues.getMembersNo()==0){
                         Toast.makeText(getApplicationContext(),"No Member to input",Toast.LENGTH_LONG).show();
                     }else {
@@ -98,7 +99,11 @@ public class HomeActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(),
                             samples[position]);
                     startActivity(intent);
-                }
+                }*/
+
+                Intent intent = new Intent(getApplicationContext(),
+                        samples[position]);
+                startActivity(intent);
 
             }
         });

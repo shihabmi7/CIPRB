@@ -21,6 +21,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alhikmah.ciprb.localdb.CiprbDatabase;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -64,11 +65,14 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
     LinearLayout lay_how_injured;
     private Person aPerson;
 
+    CiprbDatabase ciprbDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_household_member_details);
-
+        ciprbDatabase=new CiprbDatabase(getApplicationContext());
+        ciprbDatabase.open();
         try {
 
             prefsValues = new PrefsValues(this);
@@ -231,7 +235,8 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                             aPerson.setInjury_number(num);
                             aPerson.setPerson_id(mCURRENT_MEMBER_ID);
                             // if a injury happen
-                            ApplicationData.alive_person_List.add(aPerson);
+                            ciprbDatabase.insertIntoDB(mCURRENT_MEMBER_ID, editText_members_name.getText().toString());
+                            //ApplicationData.alive_person_List.add(aPerson);
 
                         }
 
