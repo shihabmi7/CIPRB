@@ -26,6 +26,7 @@ public class ApplicationData {
     public static String URL_HOUSE_HOLD_MEMBERS = "http://saeradesign.com/LumenApi/public/index.php/api/household";
     public static String URL_DEATH_CONFIRMATION = "http://saeradesign.com/LumenApi/public/index.php/api/household";
 
+    // change just
 
     public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/household/injurymorbidity/";
     public static String URL_SUICIDE = "http://saeradesign.com/LumenApi/public/index.php/api/household/suicideattemptactivity/";
