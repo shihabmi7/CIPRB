@@ -72,7 +72,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
         try {
 
             prefsValues = new PrefsValues(this);
-            //count = prefsValues.getSerial();
+            count = prefsValues.getSerial();
 
             formatter = new DecimalFormat("00");
             house_hold_id = (TextView) findViewById(R.id.house_hold_id);
@@ -184,7 +184,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
     void setheader() {
 
         house_hold_id.setText("Total Members: " + member_no + "   Remain Member: " + (member_no - calculate_member));
-
+        prefsValues.setMembers_no(member_no - calculate_member);
     }
 
     private void updateLabel() {
@@ -222,7 +222,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
                         for (int i = 1; i <= num; i++) {
 
-                            mCURRENT_MEMBER_ID = ApplicationData.HOUSE_HOLD_UNIQE_ID + "" + formatter.format(count);
+                            mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId() + "" + formatter.format(count);
                             count++;
                             //prefsValues.setSerial(count);
                             aPerson = new Person();
@@ -241,7 +241,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                         aPerson.setMembers_name(editText_members_name.getText().toString());
                         aPerson.setSex(spinner_sex.getSelectedItem().toString());
 
-                        mCURRENT_MEMBER_ID = ApplicationData.HOUSE_HOLD_UNIQE_ID + "" + formatter.format(count);
+                        mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId() + "" + formatter.format(count);
                         count++;
                         //prefsValues.setSerial(count);
                         aPerson.setPerson_id(mCURRENT_MEMBER_ID);
@@ -324,6 +324,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                             if (statusCode == ApplicationData.STATUS_SUCCESS) {
                                 progressDialog.dismiss();
                                 showTextLong(" : Data saved Successfully...: " + mCURRENT_MEMBER_ID);
+                                prefsValues.setSerial(count);
                                 if (calculate_member >= member_no) {
                                     finish();
                                     if (ApplicationData.alive_person_List.size() != 0) {

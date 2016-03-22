@@ -72,7 +72,7 @@ public class ApplicationData {
     public static int HOUSE_HOLD_RESPONDER = 02;
     public static String KEY_PERSON = "personid";
 
-    public static int SERIAL = 1;
+    public static int SERIAL = 01;
     public static int SERIAL_DEATH = 90;
     public static int ALIVE_PERSON_NUMBER = 0;
     public static boolean INJURY_DATA_COLLECT = false;

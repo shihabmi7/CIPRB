@@ -15,6 +15,7 @@ public class PrefsValues {
     private String injury_type = "injury_type";
     private String house_hold_no = "house_hold_no";
     private String serial = "serial";
+    private String death_serial = "death_serial";
     Context context = null;
 
 
@@ -25,7 +26,13 @@ public class PrefsValues {
     public void setSerial(int serial_no) {
         mPrefs.edit().putInt(serial, serial_no).commit();
     }
+    public int getDeathSerial() {
+        return mPrefs.getInt(death_serial, ApplicationData.SERIAL_DEATH);
+    }
 
+    public void setDeathSerial(int serial_no) {
+        mPrefs.edit().putInt(death_serial, serial_no).commit();
+    }
 
     public String gethouse_hold_no() {
         return mPrefs.getString(house_hold_no, "");

@@ -67,7 +67,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
             lay_type_of_anesthesia_given, lay_who_gave_first_aid;
     List<String> list;
 
-    String person_id = "101323210";
+    String person_id = "";
     ArrayAdapter<String> dataAdapter;
 
     @Override

@@ -52,6 +52,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
     private Person aPerson;
     DecimalFormat formatter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -66,15 +67,15 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
             prefsValues = new PrefsValues(this);
             formatter = new DecimalFormat("00");
             death_member_no = prefsValues.getMembers_died_no();
-            count = ApplicationData.SERIAL_DEATH;
+            count = prefsValues.getDeathSerial();
 
-            mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId();
-            showTextLong(" : Current HouseHold ID  " + mCURRENT_MEMBER_ID);
+            //mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId();
+            //showTextLong(" : Current HouseHold ID  " + mCURRENT_MEMBER_ID);
 
-            if (death_member_no == 0 || mCURRENT_MEMBER_ID.length() < 9) {
+          /*  if (death_member_no == 0 || mCURRENT_MEMBER_ID.length() < 9) {
                 Toast.makeText(this, "No Death person here", Toast.LENGTH_LONG).show();
                 finish();
-            }
+            }*/
 
             house_hold_id = (TextView) findViewById(R.id.house_hold_id);
             edittext_date_of_birth = (EditText) findViewById(R.id.edittext_date_of_birth);
@@ -154,6 +155,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
             progressDialog.setMessage("Please wait...");
             progressDialog.setTitle("Loading");
             progressDialog.setCancelable(true);
+            setheader();
 
 
         } catch (Exception e) {
@@ -181,7 +183,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
     void setheader() {
 
         house_hold_id.setText("Total Members: " + death_member_no + "   Remain Member: " + (death_member_no - calculate_member));
-
+        prefsValues.setMembers_died_no(death_member_no - calculate_member);
     }
 
     @Override
@@ -193,7 +195,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
                         && !edittext_current_age.getText().toString().isEmpty()) {
 
 
-                    mCURRENT_MEMBER_ID = "" + formatter.format(count);
+                    mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId() + formatter.format(count);
 
                     Log.e("Death Person ID:", mCURRENT_MEMBER_ID);
 
@@ -202,6 +204,8 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
                     //prefsValues.setSerial(count);
 
                     count++;
+
+                    Log.e("Death Person ID:", "" + count);
 
                     // have to find a solution if only one man is there or no injury
                     //showTextLong(mCURRENT_MEMBER_ID);
@@ -422,6 +426,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
                     }
 
                     Toast.makeText(activity, "Success: Death Type" + death_type, Toast.LENGTH_LONG).show();
+                    prefsValues.setDeathSerial(count);
                     cleartext();
 
                     progressDialog.dismiss();
@@ -493,6 +498,11 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         //return "{\"g03\":\"10\"}";
         return rep;
     }
+  /*  void setheader() {
+
+        house_hold_id.setText("Total Members: " + death_member_no + "   Remain Member: " + (death_member_no - calculate_member));
+        prefsValues.setMembers_no(death_member_no - calculate_member);
+    }*/
 }
 
 

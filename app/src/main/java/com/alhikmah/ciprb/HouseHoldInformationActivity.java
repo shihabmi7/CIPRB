@@ -217,6 +217,10 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
         prefsValues.setinterviewer_code(editText_interviewer_code.getText().toString());
         prefsValues.sethouse_hold_no(editText_household_no.getText().toString());
         prefsValues.setHouseUnique_id(value);
+        prefsValues.setSerial(ApplicationData.SERIAL);
+        prefsValues.setDeathSerial(ApplicationData.SERIAL_DEATH);
+
+
     }
 
 
