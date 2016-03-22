@@ -33,7 +33,7 @@
     <string name="household_no">খানার নম্বর</string>
     <string name="village">গ্রাম</string>
     <string name="house_head"> খানা প্রধান</string>
-    <string name="last_24_death_histry">গত ২৪ মাসে খানায় মৃতের সংখ্যা (কেউ মারা না গিয়ে থাকলে ০০ লিখুন):</string>
+    <string name="last_24_death_histry">গত ২৪ মাসে খানায় মৃতের সংখ্যা (কেউ মারা না গিয়ে থাকলে ০ লিখুন):</string>
     <string name="members_number">খানায় সদস্য সংখ্যা</string>
     <string name="hh_details_hd">Household and Socio-Economic Information</string>
 

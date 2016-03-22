@@ -62,7 +62,7 @@
 
 
         <Spinner
-            android:id="@+id/sp_suffocation1"
+            android:id="@+id/spinner_r01"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -90,7 +90,7 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/etSuffocation"
+        android:id="@+id/edt_r02"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/suffocation2"

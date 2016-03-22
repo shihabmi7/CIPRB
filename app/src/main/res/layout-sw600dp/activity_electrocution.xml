@@ -53,7 +53,7 @@
 
 
         <Spinner
-            android:id="@+id/sp_electrocution1"
+            android:id="@+id/spinner_p01"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -79,7 +79,7 @@
 
 
         <Spinner
-            android:id="@+id/sp_electrocution2"
+            android:id="@+id/spinner_p02"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -105,7 +105,7 @@
 
 
         <Spinner
-            android:id="@+id/sp_electrocution3"
+            android:id="@+id/spinner_p03"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -131,7 +131,7 @@
 
 
         <Spinner
-            android:id="@+id/sp_electrocution4"
+            android:id="@+id/spinner_p04"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

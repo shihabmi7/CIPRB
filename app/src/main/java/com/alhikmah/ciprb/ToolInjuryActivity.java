@@ -23,7 +23,8 @@ import cz.msebera.android.httpclient.Header;
 
 public class ToolInjuryActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Spinner sp_machine1, sp_machine2, sp_machine3, sp_machine4;
+    //// TODO: 3/22/2016 current task 
+    private Spinner spinner_o05, spinner_o06, sp_machine1, sp_machine2, sp_machine3, sp_machine4;
     private TextView machine1, machine2, machine3, machine4, textView2, textView4, textView6;
     private Button button_cancel, button_next;
     private RadioButton radioButton;
@@ -57,10 +58,12 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
         button_next = (Button) findViewById(R.id.button_next);
         button_cancel = (Button) findViewById(R.id.button_cancel);
 
-        sp_machine1 = (Spinner) findViewById(R.id.sp_machine1);
-        sp_machine2 = (Spinner) findViewById(R.id.sp_machine2);
-        sp_machine3 = (Spinner) findViewById(R.id.sp_machine3);
-        sp_machine4 = (Spinner) findViewById(R.id.sp_machine4);
+        sp_machine1 = (Spinner) findViewById(R.id.spinner_o01);
+        sp_machine2 = (Spinner) findViewById(R.id.spinner_o02);
+        sp_machine3 = (Spinner) findViewById(R.id.spinner_o03);
+        sp_machine4 = (Spinner) findViewById(R.id.spinner_o04);
+        spinner_o05 = (Spinner) findViewById(R.id.spinner_o05);
+        spinner_o06 = (Spinner) findViewById(R.id.spinner_o06);
 
         machine1 = (TextView) findViewById(R.id.machine1);
         machine2 = (TextView) findViewById(R.id.machine2);
@@ -78,7 +81,6 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
         progressDialog.setTitle("Loading");
         progressDialog.setCancelable(true);
     }
-
 
     void cleartext() {
 
@@ -124,7 +126,6 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
         );
     }
 
-
     public void showAlert(final Activity activity) {
 
         if (InternetConnection.isAvailable(activity)) {
@@ -159,7 +160,6 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
                             }).show();
         }
     }
-
 
     void showTextLong(String value) {
 

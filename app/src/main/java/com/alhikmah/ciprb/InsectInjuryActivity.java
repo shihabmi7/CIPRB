@@ -3,9 +3,11 @@ package com.alhikmah.ciprb;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -18,25 +20,32 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
+
 import cz.msebera.android.httpclient.Header;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class InsectInjuryActivity extends AppCompatActivity implements View.OnClickListener {
     private Button button_cancel, button_next;
     private TextView insect1, insect2, insect3, textView2, textView4, textView6;
-    private Spinner sp_insect1, sp_insect2, sp_insect3;
+    private Spinner spinner_t01, spinner_t02, spinner_t03;
 
 
     ProgressDialog progressDialog;
     Activity activity = this;
+    //String person_id = "101323210";
+    String person_id = "101323212";
+    TextView textView_person_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insect_injury);
 
-        //String person_id = "101323210";
-        String person_id = "101323210";
-        TextView textView_person_id;
 
         try {
 
@@ -51,19 +60,7 @@ public class InsectInjuryActivity extends AppCompatActivity implements View.OnCl
 
 
         }
-
-        insect1 = (TextView) findViewById(R.id.insect1);
-        insect2 = (TextView) findViewById(R.id.insect2);
-        insect3 = (TextView) findViewById(R.id.insect3);
-        sp_insect1 = (Spinner) findViewById(R.id.sp_insect1);
-        sp_insect2 = (Spinner) findViewById(R.id.sp_insect2);
-        sp_insect3 = (Spinner) findViewById(R.id.sp_insect3);
-
-        button_cancel = (Button) findViewById(R.id.button_cancel);
-        button_next = (Button) findViewById(R.id.button_next);
-
-        button_cancel.setOnClickListener(this);
-        button_next.setOnClickListener(this);
+        initUI();
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait...");
@@ -71,6 +68,18 @@ public class InsectInjuryActivity extends AppCompatActivity implements View.OnCl
         progressDialog.setCancelable(true);
     }
 
+    private void initUI() {
+
+        spinner_t01 = (Spinner) findViewById(R.id.spinner_t01);
+        spinner_t02 = (Spinner) findViewById(R.id.spinner_t02);
+        spinner_t03 = (Spinner) findViewById(R.id.spinner_t03);
+
+        button_cancel = (Button) findViewById(R.id.button_cancel);
+        button_next = (Button) findViewById(R.id.button_next);
+
+        button_cancel.setOnClickListener(this);
+        button_next.setOnClickListener(this);
+    }
 
     void cleartext() {
 
@@ -169,9 +178,82 @@ public class InsectInjuryActivity extends AppCompatActivity implements View.OnCl
 
 
         if (v == button_next) {
-
+            String url = ApplicationData.URL_INSECT_INJURY + person_id;
+            new PutAsync().execute(url, createJsonBody());
 
         } else if (v == button_cancel) {
+
+
+        }
+
+    }
+
+    public String putRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
+
+
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+
+        OkHttpClient client = new OkHttpClient();
+        RequestBody body = RequestBody.create(JSON, jsonBody);
+        Request request = new Request.Builder()
+                .url(url)
+                .put(body)
+                .build();
+        Response response = client.newCall(request).execute();
+        Response httpResponse = client.newCall(request).execute();
+        httpResponse.code();
+
+        Log.i("Response data are ", response.body().string());
+        Log.i("Response code are ", "" + response.code());
+        //makeCall(client, request);
+
+        return response.body().string();
+    }
+
+    String createJsonBody() {
+        String jsonData = "{" +
+                "\"t01\":\"" +
+                ApplicationData.spilitStringFirst(spinner_t01.getSelectedItem().toString()) +
+                "\",\"t02\":\"" +
+                ApplicationData.spilitStringFirst(spinner_t02.getSelectedItem().toString()) +
+                "\",\"t03\":\"" +
+                ApplicationData.spilitStringFirst(spinner_t03.getSelectedItem().toString()) +
+                "\"}";
+        return jsonData;
+    }
+
+    private class PutAsync extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String Result = "";
+                Log.i("URL are ", params[0]);
+                Result = putRequestWithHeaderAndBody(params[0], params[1]);
+
+                Log.i("Result Are ", Result);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
 
 
         }

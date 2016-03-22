@@ -3,9 +3,11 @@ package com.alhikmah.ciprb;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,27 +21,33 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
+
 import cz.msebera.android.httpclient.Header;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class SuffocationActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button button_cancel, button_next;
     private TextView suffocation1, suffocation2, textView2, textView4, textView6;
-    private Spinner sp_suffocation1;
-    private EditText etSuffocation;
+    private Spinner spinner_r01;
+    private EditText edt_r02;
 
 
     ProgressDialog progressDialog;
     Activity activity = this;
+    //String person_id = "101323210";
+    String person_id = "101323210";
+    TextView textView_person_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suffocation);
-
-        //String person_id = "101323210";
-        String person_id = "101323210";
-        TextView textView_person_id;
 
         try {
             textView_person_id = (TextView) findViewById(R.id.textView_person_id);
@@ -56,11 +64,11 @@ public class SuffocationActivity extends AppCompatActivity implements View.OnCli
         button_next = (Button) findViewById(R.id.button_next);
         button_cancel = (Button) findViewById(R.id.button_cancel);
 
-        etSuffocation = (EditText) findViewById(R.id.etSuffocation);
+        edt_r02 = (EditText) findViewById(R.id.edt_r02);
 
         suffocation1 = (TextView) findViewById(R.id.suffocation1);
         suffocation2 = (TextView) findViewById(R.id.suffocation2);
-        sp_suffocation1 = (Spinner) findViewById(R.id.sp_suffocation1);
+        spinner_r01 = (Spinner) findViewById(R.id.spinner_r01);
 
 
         button_cancel = (Button) findViewById(R.id.button_cancel);
@@ -172,9 +180,80 @@ public class SuffocationActivity extends AppCompatActivity implements View.OnCli
 
 
         if (v == button_next) {
-
+            String url = ApplicationData.URL_SUFFOGATION + person_id;
+            new PutAsync().execute(url, createJsonBody());
 
         } else if (v == button_cancel) {
+
+
+        }
+
+    }
+
+    public String putRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
+
+
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+
+        OkHttpClient client = new OkHttpClient();
+        RequestBody body = RequestBody.create(JSON, jsonBody);
+        Request request = new Request.Builder()
+                .url(url)
+                .put(body)
+                .build();
+        Response response = client.newCall(request).execute();
+        Response httpResponse = client.newCall(request).execute();
+        httpResponse.code();
+
+        Log.i("Response data are ", response.body().string());
+        Log.i("Response code are ", "" + response.code());
+        //makeCall(client, request);
+
+        return response.body().string();
+    }
+
+    String createJsonBody() {
+        String jsonData = "{" +
+                "\"r01\":\"" +
+                ApplicationData.spilitStringFirst(spinner_r01.getSelectedItem().toString()) +
+                "\",\"r02\":\"" +
+                edt_r02.getText().toString() +
+                "\"}";
+        return jsonData;
+    }
+
+    private class PutAsync extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String Result = "";
+                Log.i("URL are ", params[0]);
+                Result = putRequestWithHeaderAndBody(params[0], params[1]);
+
+                Log.i("Result Are ", Result);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
 
 
         }

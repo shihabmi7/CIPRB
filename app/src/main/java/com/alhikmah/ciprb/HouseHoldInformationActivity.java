@@ -33,7 +33,6 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
 
         prefsValues = new PrefsValues(this);
 
-
         spinner_survey_location = (Spinner) findViewById(R.id.spinner_survey_location);
         spinner_adjust = (Spinner) findViewById(R.id.spinner_adjust);
         spinner_upozila = (Spinner) findViewById(R.id.spinner_upozila);

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -17,10 +18,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONObject;
+
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+
+import cz.msebera.android.httpclient.Header;
 
 public class DeathConfirmationActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,10 +47,10 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
     EditText editText_death_date;
     Activity activity = this;
 
-    EditText editText_educatoin_level, edittext_date_of_birth, edittext_current_age,
+    EditText editText_sicness_time, editText_educatoin_level, edittext_date_of_birth, edittext_current_age,
             editText_members_name, edittext_how_many_injury_last_six;
 
-    Spinner spinner_occupasion, spinner_marital_status, spinner_death_sex, spinner_realation_with_hh;
+    Spinner spinner_occupasion, spinner_marital_status, spinner_death_sex, spinner_realation_with_hh, spinner_cause_death, spinner_death_place;
     String mCURRENT_MEMBER_ID = "";
     private Person aPerson;
     DecimalFormat formatter;
@@ -62,11 +71,11 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         member_no = prefsValues.getMembers_died_no();
         count = ApplicationData.SERIAL_DEATH;
 
-        if (member_no <= 0) {
+        mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId();
 
-            Toast.makeText(this, "No Death", Toast.LENGTH_LONG).show();
+        if (member_no == 0 || mCURRENT_MEMBER_ID.length() < 7) {
+            Toast.makeText(this, "No Death person here", Toast.LENGTH_LONG).show();
             finish();
-
         }
 
         edittext_date_of_birth = (EditText) findViewById(R.id.edittext_date_of_birth);
@@ -77,6 +86,8 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
         editText_members_name.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         editText_educatoin_level = (EditText) findViewById(R.id.editText_educatoin_level);
+
+        editText_sicness_time = (EditText) findViewById(R.id.editText_sicness_time);
 
         myCalendar = Calendar.getInstance();
         date = new DatePickerDialog.OnDateSetListener() {
@@ -132,6 +143,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         spinner_marital_status = (Spinner) findViewById(R.id.spinner_marital_status);
         spinner_death_sex = (Spinner) findViewById(R.id.spinner_death_sex);
         spinner_realation_with_hh = (Spinner) findViewById(R.id.spinner_realation_with_hh);
+        spinner_death_place = (Spinner) findViewById(R.id.spinner_death_place);
 
         //spinner_how_injured = (Spinner) findViewById(R.id.spinner_how_injured);
 
@@ -165,7 +177,6 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
     }
 
-
     void setheader() {
 
         house_hold_id.setText("Total Members: " + member_no + "   Remain Member: " + (member_no - calculate_member));
@@ -177,7 +188,6 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
         if (v == button_next) {
             if (InternetConnection.checkNetworkConnection(this)) {
-
                 if (!editText_members_name.getText().toString().isEmpty()
                         && !edittext_current_age.getText().toString().isEmpty()) {
 
@@ -191,7 +201,6 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
                     count++;
 
                     // have to find a solution if only one man is there or no injury
-
                     // saveDataToOnline(aPerson);
                     showTextLong(mCURRENT_MEMBER_ID);
                     ApplicationData.died_person_List.add(aPerson);
@@ -215,7 +224,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
     void saveDataToOnline(Person person) {
 
-        /*try {
+        try {
 
             progressDialog.show();
 
@@ -230,22 +239,19 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
             params.put("relation_with_hh", ApplicationData.spilitStringFirst(spinner_realation_with_hh.getSelectedItem().toString()));
             params.put("age", edittext_current_age.getText().toString());
             params.put("occupasion", ApplicationData.spilitStringFirst(spinner_occupasion.getSelectedItem().toString()));
-            params.put("smoking", ApplicationData.spilitStringFirst(spinner_smoking.getSelectedItem().toString()));
-            params.put("bettle_nut_chew", ApplicationData.spilitStringFirst(spinner_buttle_nut.getSelectedItem().toString()));
-            params.put("swimming", ApplicationData.spilitStringFirst(spinner_swiming.getSelectedItem().toString()));
-            params.put("responder", isResonder.isPressed());
-            params.put("interviewer_code", prefsValues.getInterviewer_code());
-            params.put("injury_last_six", ApplicationData.spilitStringFirst(spinner_injury_last_six.getSelectedItem().toString()));
             params.put("interview_time", ApplicationData.getCurrentDate());
-            params.put("household_no", prefsValues.gethouse_hold_no());
-            if (linerar_how_injury.getVisibility() == View.VISIBLE) {
+            params.put("d01", editText_death_date.getText().toString());
+            // done sex params.put("d02", ApplicationData.getCurrentDate());
+            params.put("d03", ApplicationData.spilitStringFirst(spinner_death_place.getSelectedItem().toString()));
+            params.put("d04", ApplicationData.getCurrentDate());
+            params.put("d05", ApplicationData.getCurrentDate());
+            params.put("d06", editText_sicness_time.getText().toString());
 
-                params.put("how_many_injury_last_six", person.getInjury_number());
-                //params.put("e02", person.getInjury_type());
+            params.put("d07", ApplicationData.spilitStringFirst(spinner_cause_death.getSelectedItem().toString()));
 
-            }
+            int death_type = Integer.parseInt(ApplicationData.spilitStringFirst(spinner_cause_death.getSelectedItem().toString()));
 
-            client.post(ApplicationData.URL_HOUSE_HOLD_MEMBERS, params,
+            client.post(ApplicationData.URL_DEATH_CONFIRMATION, params,
                     new JsonHttpResponseHandler() {
                         // save to data base ,
                         // check if count > member then go to next activity n save to
@@ -257,7 +263,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
                                 showTextLong(" : Data saved Successfully...: " + mCURRENT_MEMBER_ID);
                                 if (calculate_member >= member_no) {
                                     finish();
-                                    if (ApplicationData.alive_person_List.size() != 0) {
+                                    if (ApplicationData.died_person_List.size() != 0) {
                                         ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
                                     } else {
                                         //  go to home activity n fill up home characteristics
@@ -274,13 +280,12 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
                             progressDialog.dismiss();
                             showTextLong(" : Data not Saved Successfully...: " + statusCode);
                             super.onFailure(statusCode, headers, responseString, throwable);
-
                             Log.e("" + getTitle(), "OnFailure" + statusCode);
                         }
                     }
             );
         } catch (NullPointerException e) {
-        }*/
+        }
 
     }
 
