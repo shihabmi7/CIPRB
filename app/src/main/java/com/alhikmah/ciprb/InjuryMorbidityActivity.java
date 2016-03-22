@@ -68,6 +68,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
     List<String> list;
 
     String person_id = "101323210";
+    ArrayAdapter<String> dataAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +77,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
 
         try {
+
             layout_type_admitted_health_facility = (LinearLayout) findViewById(R.id.layout_type_admitted_health_facility);
             lay_type_of_disability = (LinearLayout) findViewById(R.id.lay_type_of_disability);
             lay_type_of_anesthesia_given = (LinearLayout) findViewById(R.id.lay_type_of_anesthesia_given);
@@ -91,6 +93,16 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
             list = new ArrayList<String>();
             //list = ApplicationData.alive_person_List;
 
+            if (ApplicationData.alive_person_List.size() <= 0) {
+
+                Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
+                finish();
+
+            } else {
+
+                setMemberSpinner(list);
+
+            }
 
             spinner_how_injured = (Spinner) findViewById(R.id.spinner_how_injured);
             spinner_place_of_injury = (Spinner) findViewById(R.id.spinner_place_of_injury);
@@ -274,30 +286,76 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
         }
 
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-       /* if (ApplicationData.alive_person_List.size() <= 0) {
+        try {
 
-            Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
-            finish();
+            if (ApplicationData.alive_person_List.size() <= 0) {
 
-        } else {
+                Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
+                activity.finish();
 
-            setMemberSpinner(list);
-        }*/
+            }
+
+            if (ApplicationData.INJURY_DATA_COLLECT == true) {
+
+                Toast.makeText(activity, "Adapter Updated....: " + ApplicationData.ALIVE_PERSON_NUMBER, Toast.LENGTH_LONG).show();
+                ApplicationData.alive_person_List.remove(ApplicationData.ALIVE_PERSON_NUMBER);
+
+
+                Toast.makeText(activity, "Adapter Updated....: " +
+                        ApplicationData.ALIVE_PERSON_NUMBER + "List size:" +
+                        ApplicationData.alive_person_List.size(), Toast.LENGTH_LONG).show();
+
+                list.remove(ApplicationData.ALIVE_PERSON_NUMBER);
+
+                dataAdapter.notifyDataSetChanged();
+//                setMemberSpinner(list);
+
+                if (list.size() <= 0) {
+
+                    Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
+                    activity.finish();
+
+                }
+
+            }
+
+        } catch (NullPointerException e) {
+
+            Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+
+            Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+
+            Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
+        }
+
+
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        ApplicationData.INJURY_DATA_COLLECT = false;
+        ApplicationData.alive_person_List.clear();
+    }
+
+
     private void setMemberSpinner(List<String> list) {
+        list.clear();
         alive_count = ApplicationData.alive_person_List.size();
         for (Person aPerson : ApplicationData.alive_person_List) {
             list.add(aPerson.getMembers_name() + "." + aPerson.getPerson_id());
         }
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>
+        dataAdapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_item, list);
 
         dataAdapter.setDropDownViewResource
@@ -545,10 +603,12 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                 //showTextLong("Success! Select Type:" + type);
                 Toast.makeText(activity, "Success" + type, Toast.LENGTH_LONG).show();
 
-                //ApplicationData.alive_person_List.remove(spinner_person_name.getSelectedItemPosition());
-                cleartext();
+                ApplicationData.ALIVE_PERSON_NUMBER = spinner_person_name.getSelectedItemPosition();
 
+                cleartext();
                 moveToInjurySelectionActivity(type, person_id);
+
+
             } else {
                 Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
             }

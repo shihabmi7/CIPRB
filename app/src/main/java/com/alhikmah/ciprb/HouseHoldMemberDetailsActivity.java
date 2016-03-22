@@ -69,111 +69,116 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_household_member_details);
 
-        //try {
-        prefsValues = new PrefsValues(this);
-        //count = prefsValues.getSerial();
+        try {
 
-        formatter = new DecimalFormat("00");
-        house_hold_id = (TextView) findViewById(R.id.house_hold_id);
-        isResonder = (CheckBox) findViewById(R.id.chkb_responder);
+            prefsValues = new PrefsValues(this);
+            //count = prefsValues.getSerial();
 
-        edittext_date_of_birth = (EditText) findViewById(R.id.edittext_date_of_birth);
-        edittext_current_age = (EditText) findViewById(R.id.edittext_current_age);
-        editText_members_name = (EditText) findViewById(R.id.editText_members_name);
-        editText_educatoin_level = (EditText) findViewById(R.id.editText_educatoin_level);
+            formatter = new DecimalFormat("00");
+            house_hold_id = (TextView) findViewById(R.id.house_hold_id);
+            isResonder = (CheckBox) findViewById(R.id.chkb_responder);
 
-        linear_responder = (LinearLayout) findViewById(R.id.linear_responder);
-        spinner_occupasion = (Spinner) findViewById(R.id.spinner_occupasion);
-        spinner_marital_status = (Spinner) findViewById(R.id.spinner_marital_status);
-        spinner_sex = (Spinner) findViewById(R.id.spinner_sex);
-        spinner_realation_with_hh = (Spinner) findViewById(R.id.spinner_realation_with_hh);
+            edittext_date_of_birth = (EditText) findViewById(R.id.edittext_date_of_birth);
+            edittext_current_age = (EditText) findViewById(R.id.edittext_current_age);
+            editText_members_name = (EditText) findViewById(R.id.editText_members_name);
+            editText_educatoin_level = (EditText) findViewById(R.id.editText_educatoin_level);
 
-        spinner_smoking = (Spinner) findViewById(R.id.spinner_smoking);
-        spinner_buttle_nut = (Spinner) findViewById(R.id.spinner_buttle_nut);
-        spinner_swiming = (Spinner) findViewById(R.id.spinner_swiming);
+            linear_responder = (LinearLayout) findViewById(R.id.linear_responder);
+            spinner_occupasion = (Spinner) findViewById(R.id.spinner_occupasion);
+            spinner_marital_status = (Spinner) findViewById(R.id.spinner_marital_status);
+            spinner_sex = (Spinner) findViewById(R.id.spinner_sex);
+            spinner_realation_with_hh = (Spinner) findViewById(R.id.spinner_realation_with_hh);
 
-        spinner_injury_last_six = (Spinner) findViewById(R.id.spinner_injury_last_six);
-        edittext_how_many_injury_last_six = (EditText) findViewById(R.id.edittext_how_many_injury_last_six);
-        spinner_how_injured = (Spinner) findViewById(R.id.spinner_how_injured);
+            spinner_smoking = (Spinner) findViewById(R.id.spinner_smoking);
+            spinner_buttle_nut = (Spinner) findViewById(R.id.spinner_buttle_nut);
+            spinner_swiming = (Spinner) findViewById(R.id.spinner_swiming);
 
-        button_cancel = (Button) findViewById(R.id.button_can);
-        button_next = (Button) findViewById(R.id.button_go);
+            spinner_injury_last_six = (Spinner) findViewById(R.id.spinner_injury_last_six);
+            edittext_how_many_injury_last_six = (EditText) findViewById(R.id.edittext_how_many_injury_last_six);
+            spinner_how_injured = (Spinner) findViewById(R.id.spinner_how_injured);
+
+            button_cancel = (Button) findViewById(R.id.button_can);
+            button_next = (Button) findViewById(R.id.button_go);
 
 
-        button_cancel.setOnClickListener(this);
-        button_next.setOnClickListener(this);
+            button_cancel.setOnClickListener(this);
+            button_next.setOnClickListener(this);
 
-        linerar_how_injury = (RelativeLayout) findViewById(R.id.linerar_how_injury);
-        linerar_how_injury.setVisibility(View.GONE);
+            linerar_how_injury = (RelativeLayout) findViewById(R.id.linerar_how_injury);
+            linerar_how_injury.setVisibility(View.GONE);
 
        /* lay_how_injured = (LinearLayout) findViewById(R.id.lay_how_injured);
         lay_how_injured.setVisibility(View.GONE);*/
 
-        spinner_injury_last_six.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            spinner_injury_last_six.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                if (position == 0) {
+                    if (position == 0) {
 
-                    linerar_how_injury.setVisibility(View.VISIBLE);
-                    // lay_how_injured.setVisibility(View.VISIBLE);
+                        linerar_how_injury.setVisibility(View.VISIBLE);
+                        // lay_how_injured.setVisibility(View.VISIBLE);
 
-                } else {
+                    } else {
 
-                    linerar_how_injury.setVisibility(View.GONE);
-                    //lay_how_injured.setVisibility(View.GONE);
+                        linerar_how_injury.setVisibility(View.GONE);
+                        //lay_how_injured.setVisibility(View.GONE);
+
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
 
                 }
-            }
+            });
+            myCalendar = Calendar.getInstance();
+            date = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                      int dayOfMonth) {
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+                    myCalendar.set(Calendar.YEAR, year);
+                    myCalendar.set(Calendar.MONTH, monthOfYear);
+                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    updateLabel();
+                }
+            };
 
-            }
-        });
-        myCalendar = Calendar.getInstance();
-        date = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                  int dayOfMonth) {
+            edittext_date_of_birth.setOnClickListener(new View.OnClickListener() {
 
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, monthOfYear);
-                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateLabel();
-            }
-        };
+                @Override
+                public void onClick(View v) {
 
-        edittext_date_of_birth.setOnClickListener(new View.OnClickListener() {
+                    new DatePickerDialog(activity, date, myCalendar
+                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                }
 
-            @Override
-            public void onClick(View v) {
-
-                new DatePickerDialog(activity, date, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-
-        });
+            });
 
 
-        member_no = prefsValues.getMembersNo();
-        editText_members_name.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+            member_no = prefsValues.getMembersNo();
+            editText_members_name.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
 
-        progressDialog = new ProgressDialog(activity);
-        progressDialog.setMessage("Please wait...");
-        progressDialog.setTitle("Loading");
-        progressDialog.setCancelable(true);
+            progressDialog = new ProgressDialog(activity);
+            progressDialog.setMessage("Please wait...");
+            progressDialog.setTitle("Loading");
+            progressDialog.setCancelable(true);
 
 
-        // showTextLong(""+spinner_injury_last_six.getSelectedItem().toString());
-        setheader();
-       /* } catch (NullPointerException e) {
-            //Toast.makeText(activity,"",Toast.makeText())
+            // showTextLong(""+spinner_injury_last_six.getSelectedItem().toString());
+            setheader();
+
+        } catch (NullPointerException e) {
+
+            Toast.makeText(getApplicationContext(), "" + e.toString(), Toast.LENGTH_LONG).show();
+
         } catch (Exception e) {
-        }*/
 
+            Toast.makeText(getApplicationContext(), "" + e.toString(), Toast.LENGTH_LONG).show();
+        }
     }
 
     void setheader() {
@@ -190,7 +195,6 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -205,17 +209,17 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
     @Override
     public void onClick(View v) {
 
-        if (v == button_next) {
-            if (InternetConnection.checkNetworkConnection(this)) {
+        try {
 
-                if (!editText_members_name.getText().toString().isEmpty()
-                        && !edittext_current_age.getText().toString().isEmpty()) {
+            if (v == button_next && checkFieldStatus()) {
+                if (InternetConnection.checkNetworkConnection(this)) {
 
                     // aPerson.setInjury_type(spinner_how_injured.getSelectedItem().toString());
                     if (linerar_how_injury.getVisibility() == View.VISIBLE
                             && !edittext_how_many_injury_last_six.getText().toString().isEmpty()) {
 
                         int num = Integer.parseInt(edittext_how_many_injury_last_six.getText().toString());
+
                         for (int i = 1; i <= num; i++) {
 
                             mCURRENT_MEMBER_ID = ApplicationData.HOUSE_HOLD_UNIQE_ID + "" + formatter.format(count);
@@ -244,16 +248,24 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                     }
                     // have to find a solution if only one man is there or no injury
                     saveDataToOnline(aPerson);
-                } else {
-                    showTextLong(" empty field not allowed");
-                }
-            } else
-                showAlert(aPerson);
-        } else if (v == button_cancel) {
+                } else
+                    showAlert(aPerson);
 
-            cleartext();
+            } else if (v == button_cancel) {
+                //onBackPressed();
+            }
 
+        } catch (NullPointerException e) {
+
+            Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
+
+        } catch (Exception e)
+
+        {
+
+            Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
         }
+
     }
 
     void cleartext() {
@@ -337,17 +349,19 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                     }
             );
         } catch (NullPointerException e) {
+
+            Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
         }
 
     }
-
 
     public void showAlert(final Person person) {
 
         if (InternetConnection.isAvailable(activity)) {
 
-            if (person != null)
+            if (person != null) {
                 saveDataToOnline(person);
+            }
 
         } else {
 
@@ -385,14 +399,61 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
     }
 
-
     void showTextLong(String value) {
         Toast.makeText(getApplicationContext(), value, Toast.LENGTH_LONG).show();
     }
 
+    private boolean checkFieldStatus() {
+
+        if (!editText_members_name.getText().toString().isEmpty()
+                && !edittext_current_age.getText().toString().isEmpty()) {
+
+            return true;
+
+        } else {
+            Toast.makeText(getApplicationContext(), "Enter All Data Correctly ", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+    }
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+
+        //super.onBackPressed();
+        // correctionDialog();
+
     }
+
+    public void correctionDialog() {
+
+        new AlertDialog.Builder(activity)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Any Correction")
+                .setMessage("")
+                .setPositiveButton("Ok",
+                        new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                                int which) {
+
+                                activity.finish();
+
+                            }
+
+                        })
+                .setNegativeButton("No",
+                        new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                                int which) {
+
+                                // no works
+                            }
+
+                        }).show();
+    }
+
 }

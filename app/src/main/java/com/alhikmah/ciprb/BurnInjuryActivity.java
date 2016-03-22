@@ -272,11 +272,22 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-
             progressDialog.dismiss();
 
 
         }
 
     }
+
+    void finishTask() {
+
+        Toast.makeText(activity, "Successfully Data Saved", Toast.LENGTH_LONG).show();
+        ApplicationData.INJURY_DATA_COLLECT = true;
+        cleartext();
+        //onBackPressed();
+        activity.finish();
+        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+        //activity.finish();
+    }
+
 }

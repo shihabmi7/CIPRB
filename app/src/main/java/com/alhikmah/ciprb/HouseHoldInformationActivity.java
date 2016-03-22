@@ -31,63 +31,65 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house_hold_information);
 
-        prefsValues = new PrefsValues(this);
+        try {
 
-        spinner_survey_location = (Spinner) findViewById(R.id.spinner_survey_location);
-        spinner_adjust = (Spinner) findViewById(R.id.spinner_adjust);
-        spinner_upozila = (Spinner) findViewById(R.id.spinner_upozila);
+            prefsValues = new PrefsValues(this);
 
-        textView_interview_starting_time = (TextView) findViewById(R.id.textView_interview_starting_time);
-        textView_adjustable = (TextView) findViewById(R.id.textView_adjustable);
-        editText_ward = (EditText) findViewById(R.id.editText_ward);
-        editText_moholla = (EditText) findViewById(R.id.editText_moholla);
+            spinner_survey_location = (Spinner) findViewById(R.id.spinner_survey_location);
+            spinner_adjust = (Spinner) findViewById(R.id.spinner_adjust);
+            spinner_upozila = (Spinner) findViewById(R.id.spinner_upozila);
 
-        edittext_death_number = (EditText) findViewById(R.id.edittext_death_number);
-        editText_member_number = (EditText) findViewById(R.id.editText_member_number);
-        editText_interviewer_code = (EditText) findViewById(R.id.editText_interviewer_unique);
-        editText_household_no = (EditText) findViewById(R.id.editText_household_no);
+            textView_interview_starting_time = (TextView) findViewById(R.id.textView_interview_starting_time);
+            textView_adjustable = (TextView) findViewById(R.id.textView_adjustable);
+            editText_ward = (EditText) findViewById(R.id.editText_ward);
+            editText_moholla = (EditText) findViewById(R.id.editText_moholla);
 
-        button_cancel = (Button) findViewById(R.id.button_cancel);
-        button_next = (Button) findViewById(R.id.button_next);
-        button_cancel.setOnClickListener(this);
-        button_next.setOnClickListener(this);
+            edittext_death_number = (EditText) findViewById(R.id.edittext_death_number);
+            editText_member_number = (EditText) findViewById(R.id.editText_member_number);
+            editText_interviewer_code = (EditText) findViewById(R.id.editText_interviewer_unique);
+            editText_household_no = (EditText) findViewById(R.id.editText_household_no);
 
-        //editText_household_unique_code = (EditText) findViewById(R.id.editText_household_unique_code);
-        spinner_survey_location.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            button_cancel = (Button) findViewById(R.id.button_cancel);
+            button_next = (Button) findViewById(R.id.button_next);
+            button_cancel.setOnClickListener(this);
+            button_next.setOnClickListener(this);
 
-                int array_id;
-                switch (position) {
-                    case 0:
-                        array_id = R.array.survey_city_corp;
-                        textView_adjustable.setText(" সিটি কর্পোরেশন");
-                        spinner_upozila.setVisibility(View.GONE);
-                        editText_ward.setVisibility(View.VISIBLE);
-                        setSpinner(array_id);
-                        break;
-                    case 1:
-                        array_id = R.array.survey_district_town;
-                        textView_adjustable.setText("জেলা শহর");
-                        spinner_upozila.setVisibility(View.GONE);
-                        editText_ward.setVisibility(View.VISIBLE);
-                        setSpinner(array_id);
-                        break;
-                    case 2:
-                        array_id = R.array.survey_district_rural;
-                        textView_adjustable.setText("জেলা (গ্রাম)");
-                        spinner_upozila.setVisibility(View.VISIBLE);
-                        editText_ward.setVisibility(View.GONE);
-                        setSpinner(array_id);
-                        break;
+            //editText_household_unique_code = (EditText) findViewById(R.id.editText_household_unique_code);
+            spinner_survey_location.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    int array_id;
+                    switch (position) {
+                        case 0:
+                            array_id = R.array.survey_city_corp;
+                            textView_adjustable.setText(" সিটি কর্পোরেশন");
+                            spinner_upozila.setVisibility(View.GONE);
+                            editText_ward.setVisibility(View.VISIBLE);
+                            setSpinner(array_id);
+                            break;
+                        case 1:
+                            array_id = R.array.survey_district_town;
+                            textView_adjustable.setText("জেলা শহর");
+                            spinner_upozila.setVisibility(View.GONE);
+                            editText_ward.setVisibility(View.VISIBLE);
+                            setSpinner(array_id);
+                            break;
+                        case 2:
+                            array_id = R.array.survey_district_rural;
+                            textView_adjustable.setText("জেলা (গ্রাম)");
+                            spinner_upozila.setVisibility(View.VISIBLE);
+                            editText_ward.setVisibility(View.GONE);
+                            setSpinner(array_id);
+                            break;
+                    }
                 }
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
 
-            }
-        });
+                }
+            });
 
 
         /*death_number_picker = (NumberPicker) findViewById(R.id.numberpicker_death_number);
@@ -108,10 +110,22 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
             }
         });*/
 
-        Calendar c = Calendar.getInstance();
-        SimpleDateFormat dateformat = new SimpleDateFormat("dd-MMM-yyyy hh:mm"); //
-        Datetime = dateformat.format(c.getTime());
-        textView_interview_starting_time.setText("Date: " + ApplicationData.getCurrentDate());
+            Calendar c = Calendar.getInstance();
+            SimpleDateFormat dateformat = new SimpleDateFormat("dd-MMM-yyyy hh:mm"); //
+            Datetime = dateformat.format(c.getTime());
+            textView_interview_starting_time.setText("Date: " + ApplicationData.getCurrentDate());
+
+
+        } catch (NullPointerException e) {
+
+            Toast.makeText(getApplicationContext(), "" + e.toString(), Toast.LENGTH_LONG).show();
+
+        } catch (Exception e) {
+
+            Toast.makeText(getApplicationContext(), "" + e.toString(), Toast.LENGTH_LONG).show();
+        }
+
+
     }
 
 
@@ -132,53 +146,80 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
     @Override
     public void onClick(View v) {
 
-        if (v == button_cancel) {
+        try {
 
-        } else if (v == button_next) {
+            if (v == button_cancel) {
 
-            switch (spinner_survey_location.getSelectedItemPosition()) {
+                finish();
 
-                case 0:
-                case 1:
-                    if (editText_ward.getText().length() == 2 && editText_moholla.getText().length() == 2 && editText_household_no.getText().length() == 2) {
+            } else if (v == button_next && checkFieldStatus()) {
+
+                switch (spinner_survey_location.getSelectedItemPosition()) {
+
+                    case 0:
+                    case 1:
 
                         ApplicationData.HOUSE_HOLD_UNIQE_ID = "" + ApplicationData.spilitStringFirst(spinner_survey_location.getSelectedItem().toString()) +
                                 "" + ApplicationData.spilitStringFirst(spinner_adjust.getSelectedItem().toString()) + "" +
                                 editText_ward.getText().toString() + "" + editText_moholla.getText().toString() + "" + editText_household_no.getText().toString();
 
-                    } else
-                        Toast.makeText(getApplicationContext(), "Give all code correctly", Toast.LENGTH_LONG).show();
-                    break;
+                        saveToPreference(ApplicationData.HOUSE_HOLD_UNIQE_ID);
+                        break;
 
-                case 2:
-
-                    if (editText_moholla.getText().length() == 2) {
+                    case 2:
 
                         ApplicationData.HOUSE_HOLD_UNIQE_ID = "" + ApplicationData.spilitStringFirst(spinner_survey_location.getSelectedItem().toString()) +
                                 "" + ApplicationData.spilitStringFirst(spinner_adjust.getSelectedItem().toString()) + "" +
                                 ApplicationData.spilitStringFirst(spinner_upozila.getSelectedItem().toString()) + ""
                                 + editText_moholla.getText().toString() + "" + editText_household_no.getText().toString();
 
-                        //editText_household_unique_code.setText(ApplicationData.HOUSE_HOLD_UNIQE_ID);
+                        saveToPreference(ApplicationData.HOUSE_HOLD_UNIQE_ID);
+                        break;
+                }
 
-
-                    } else
-                        Toast.makeText(getApplicationContext(), "Give all code correctly", Toast.LENGTH_LONG).show();
-                    break;
-
+                ApplicationData.gotToNextActivity(this, HouseHoldMemberDetailsActivity.class);
             }
 
-            Toast.makeText(getApplicationContext(), ApplicationData.HOUSE_HOLD_UNIQE_ID, Toast.LENGTH_LONG).show();
-            prefsValues.setHouseUnique_id(ApplicationData.HOUSE_HOLD_UNIQE_ID);
-            prefsValues.setMembers_no(Integer.parseInt(editText_member_number.getText().toString()));
-            prefsValues.setMembers_died_no(Integer.parseInt(edittext_death_number.getText().toString()));
-            prefsValues.setinterviewer_code(editText_interviewer_code.getText().toString());
-            prefsValues.sethouse_hold_no(editText_household_no.getText().toString());
+        } catch (NumberFormatException e) {
 
-            ApplicationData.gotToNextActivity(this, HouseHoldMemberDetailsActivity.class);
+            Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
+
+        } catch (NullPointerException e) {
+
+            Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
+
+        } catch (Exception e) {
+
+            Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
         }
 
     }
+
+    private boolean checkFieldStatus() {
+
+        if (editText_member_number.getText().length() > 0 && edittext_death_number.getText().length() > 0
+                && editText_interviewer_code.getText().length() > 0 &&
+                editText_household_no.getText().length() == 2 &&
+                editText_ward.getText().length() == 2 && editText_moholla.getText().length() == 2) {
+
+            return true;
+        } else {
+            Toast.makeText(getApplicationContext(), "Enter All Data Correctly ", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+    }
+
+    private void saveToPreference(String value) {
+        Toast.makeText(getApplicationContext(), ApplicationData.HOUSE_HOLD_UNIQE_ID, Toast.LENGTH_LONG).show();
+        prefsValues.setMembers_no(Integer.parseInt(editText_member_number.getText().toString()));
+        prefsValues.setMembers_died_no(Integer.parseInt(edittext_death_number.getText().toString()));
+        prefsValues.setinterviewer_code(editText_interviewer_code.getText().toString());
+        prefsValues.sethouse_hold_no(editText_household_no.getText().toString());
+        prefsValues.setHouseUnique_id(value);
+    }
+
+
 
 
 }

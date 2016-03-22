@@ -73,6 +73,8 @@ public class ApplicationData {
 
     public static int SERIAL = 1;
     public static int SERIAL_DEATH = 90;
+    public static int ALIVE_PERSON_NUMBER = 0;
+    public static boolean INJURY_DATA_COLLECT = false;
 
     public static String putRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
 

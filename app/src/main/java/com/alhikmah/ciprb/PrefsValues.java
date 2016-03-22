@@ -15,6 +15,7 @@ public class PrefsValues {
     private String injury_type = "injury_type";
     private String house_hold_no = "house_hold_no";
     private String serial = "serial";
+    Context context = null;
 
 
     public int getSerial() {
@@ -52,7 +53,10 @@ public class PrefsValues {
     }
 
     public PrefsValues(Context context) {
-        mPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+
+        this.context = context;
+        mPrefs = PreferenceManager.getDefaultSharedPreferences(this.context);
+
     }
 
     public SharedPreferences getPrefs() {
@@ -102,5 +106,14 @@ public class PrefsValues {
 
     public void setLanguage(String language) {
         mPrefs.edit().putString("language", language).commit();
+    }
+
+    private void clearPreference(String value) {
+
+
+        SharedPreferences settings = context.getSharedPreferences("PreferencesName", Context.MODE_PRIVATE);
+        settings.edit().clear().commit();
+
+//        SharedPreferences.Editor.clear();
     }
 }

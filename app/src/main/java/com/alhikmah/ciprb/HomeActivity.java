@@ -22,6 +22,7 @@ public class HomeActivity extends AppCompatActivity {
             "মডিউল-২ মৃত্যু নিশ্চিত করণ ফর্ম",
             "মডিউল-৪  ইনজুরি জনিত মৃত্যু ফর্ম",
             "বাড়ির তথ্য",
+            "মডিউল-৬ দৈনন্দিন জীবনের মানদণ্ড",
             "এম-১ আত্মহত্যা",
             "এম-২ সড়ক দুর্ঘটনা",
             "এম-৩ সহিংসতার তথ্য",
@@ -34,8 +35,7 @@ public class HomeActivity extends AppCompatActivity {
             "এম-১০ বিদ্যুৎ স্পৃষ্টতা",
             "এম-১১ প্রানি/ কিট পতঙ্গের দ্বারা জখম",
             "এম-১২ ভোতা বস্তু দ্বারা আঘাত",
-            "এম-১৩ শ্বাস রোধ",
-            "মডিউল-৬ দৈনন্দিন জীবনের মানদণ্ড"
+            "এম-১৩ শ্বাস রোধ"
 
     };
 
@@ -48,13 +48,15 @@ public class HomeActivity extends AppCompatActivity {
                     DeathConfirmationActivity.class,
                     InjuryMortalityActivity.class,
                     HouseHoldCharacteristicsActivity.class,
+                    QualityOfLifeActivity.class,
                     SuicideAttemptActivity.class,
                     RoadTransportInjuryActivity.class,
                     ViolenceInjuryActivity.class,
                     FallInjuryActivity.class, CutInjuryActivity.class,
                     BurnInjuryActivity.class, NearDrowningActivity.class,
-                    UnintentionalPoisoningActivity.class, ToolInjuryActivity.class, ElectrocautionActivity.class, InsectInjuryActivity.class,
-                    InjuryBluntActivity.class, SuffocationActivity.class, QualityOfLifeActivity.class
+                    UnintentionalPoisoningActivity.class, ToolInjuryActivity.class,
+                    ElectrocautionActivity.class, InsectInjuryActivity.class,
+                    InjuryBluntActivity.class, SuffocationActivity.class,
             };
     ListView listView;
 
@@ -116,8 +118,10 @@ public class HomeActivity extends AppCompatActivity {
 
     void getFormList() {
 
-        //form.length
-        for (int i = 0; i < form.length; i++) {
+        int live = 7;
+        int test = form.length;
+
+        for (int i = 0; i < live; i++) {
 
             Form formObj = new Form();
             formObj.setTitle(form[i]);

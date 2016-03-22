@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -21,21 +22,23 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class HouseHoldCharacteristicsActivity extends AppCompatActivity implements View.OnClickListener {
-    private static String TAG="HouseHoldCharacteristicsActivity";
+
+    private static String TAG = "HouseHoldCharacteristicsActivity";
     private Context mContext;
     private ProgressDialog progressDialog;
     private Button button_cancel, button_next;
-    private Spinner spinner_c03,spinner_c04,spinner_c05,spinner_c07,spinner_c08,spinner_c10;
+    private Spinner spinner_c03, spinner_c04, spinner_c05, spinner_c07, spinner_c08, spinner_c10;
     EditText edit_c01, edit_c02, edittext_c06, edittext_c11;
 
-    String person_id = "101323211";
+    //String person_id = "101323211";
+    String person_id = "";
     TextView textView_person_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house_characteristics);
-        mContext=this;
+        mContext = this;
         try {
 
             textView_person_id = (TextView) findViewById(R.id.textView_person_id);
@@ -44,28 +47,29 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
 
         } catch (NullPointerException e) {
 
+            Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
 
         } catch (Exception e) {
 
+            Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
 
         }
         initUI();
 
-
     }
-    private void initUI(){
+
+    private void initUI() {
         edit_c01 = (EditText) findViewById(R.id.edit_c01);
         edit_c02 = (EditText) findViewById(R.id.edit_c02);
         edittext_c06 = (EditText) findViewById(R.id.edittext_c06);
         edittext_c11 = (EditText) findViewById(R.id.edittext_c11);
 
-        spinner_c03=(Spinner)findViewById(R.id.spinner_c03);
-        spinner_c04=(Spinner)findViewById(R.id.spinner_c04);
-        spinner_c05=(Spinner)findViewById(R.id.spinner_c05);
-        spinner_c07=(Spinner)findViewById(R.id.spinner_c07);
-        spinner_c08=(Spinner)findViewById(R.id.spinner_c08);
-        spinner_c10=(Spinner)findViewById(R.id.spinner_c10);
-
+        spinner_c03 = (Spinner) findViewById(R.id.spinner_c03);
+        spinner_c04 = (Spinner) findViewById(R.id.spinner_c04);
+        spinner_c05 = (Spinner) findViewById(R.id.spinner_c05);
+        spinner_c07 = (Spinner) findViewById(R.id.spinner_c07);
+        spinner_c08 = (Spinner) findViewById(R.id.spinner_c08);
+        spinner_c10 = (Spinner) findViewById(R.id.spinner_c10);
 
 
         button_next = (Button) findViewById(R.id.button_next);
@@ -88,13 +92,13 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
             this.finish();
 
         } else if (v == button_next) {
-            String url=ApplicationData.URL_CHARACTERISTIC + person_id;
-            new PutAsync().execute(url,createJsonBody());
+            String url = ApplicationData.URL_CHARACTERISTIC + person_id;
+            new PutAsync().execute(url, createJsonBody());
 
         }
     }
 
-    public String putRequestWithHeaderAndBody(String url,String jsonBody) throws IOException {
+    public String putRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
 
 
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
@@ -111,13 +115,14 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
         httpResponse.code();
 
         Log.i("Response data are ", response.body().string());
-        Log.i("Response code are ",""+response.code());
+        Log.i("Response code are ", "" + response.code());
         //makeCall(client, request);
 
         return response.body().string();
     }
+
     String createJsonBody() {
-        String jsonData="{" +
+        String jsonData = "{" +
                 "\"c01\":\"" +
                 edit_c01.getText().toString() +
                 "\",\"c02\":\"" +
@@ -135,7 +140,7 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
                 "\",\"c08\":\"" +
                 ApplicationData.spilitStringFirst(spinner_c08.getSelectedItem().toString()) +
                 "\",\"c09\":\"" +
-                " "+
+                " " +
                 "\",\"c10\":\"" +
                 ApplicationData.spilitStringFirst(spinner_c10.getSelectedItem().toString()) +
                 "\",\"c11\":\"" +
@@ -143,11 +148,12 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
                 "\"}";
         return jsonData;
     }
+
     private class PutAsync extends AsyncTask<String, Void, String> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog=new ProgressDialog(mContext);
+            progressDialog = new ProgressDialog(mContext);
             progressDialog.setIndeterminate(true);
             progressDialog.setMessage("Please wait...");
             progressDialog.show();
@@ -157,11 +163,11 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
         @Override
         protected String doInBackground(String... params) {
             try {
-                String Result="";
+                String Result = "";
                 Log.i("URL are ", params[0]);
-                Result= putRequestWithHeaderAndBody(params[0],params[1]);
+                Result = putRequestWithHeaderAndBody(params[0], params[1]);
 
-                Log.i("Result Are ",Result);
+                Log.i("Result Are ", Result);
 
             } catch (IOException e) {
                 e.printStackTrace();

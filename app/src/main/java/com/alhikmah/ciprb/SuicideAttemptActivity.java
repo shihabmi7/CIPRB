@@ -207,15 +207,31 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
             progressDialog.dismiss();
             if (value == ApplicationData.STATUS_SUCCESS) {
                 //// TODO: 3/22/2016
-                Toast.makeText(activity, "Success", Toast.LENGTH_LONG).show();
-                //ApplicationData.alive_person_List.remove(spinner_person_name.getSelectedItemPosition());
-                cleartext();
+
+                finishTask();
 
             } else {
                 Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
             }
 
         }
+    }
+
+
+    void finishTask() {
+
+        Toast.makeText(activity, "Successfully Data Saved", Toast.LENGTH_LONG).show();
+        ApplicationData.INJURY_DATA_COLLECT = true;
+        cleartext();
+        //onBackPressed();
+        activity.finish();
+        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+        //activity.finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private class PostAsync extends AsyncTask<String, Void, String> {
@@ -398,6 +414,7 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
     void showTextLong(String value) {
 
         Toast.makeText(getApplicationContext(), value, Toast.LENGTH_LONG).show();
+
     }
 
     /**

@@ -10,34 +10,66 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+
         android:theme="@style/AppTheme">
-        <activity android:name=".HouseHoldInformationActivity"></activity>
-        <activity android:name=".SplashActivity"></activity>
+
 
         <activity
-            android:name=".HomeActivity"
-            android:launchMode="singleInstance">
-
-
-        </activity>
-
-        <activity android:name=".HouseHoldMemberDetailsActivity">
-
-        </activity>
-        <activity android:name=".DeathConfirmationActivity">
+            android:name=".SplashActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+
         </activity>
-        <activity android:name=".InjuryMorbidityActivity">
+
+        <activity
+            android:name=".HomeActivity"
+            android:configChanges="orientation"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".HouseHoldInformationActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+
+        <activity
+            android:name=".HouseHoldMemberDetailsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
 
 
         </activity>
-        <activity android:name=".InjuryMortalityActivity"></activity>
-        <activity android:name=".SuicideAttemptActivity">
+        <activity
+            android:name=".DeathConfirmationActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+
+
+        </activity>
+        <activity
+            android:name=".InjuryMorbidityActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+
+
+        </activity>
+        <activity
+            android:name=".InjuryMortalityActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".SuicideAttemptActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
 
             <!-- <intent-filter>
                  <action android:name="android.intent.action.MAIN" />
@@ -46,43 +78,82 @@
 
 
         </activity>
-        <activity android:name=".RoadTransportInjuryActivity"></activity>
-        <activity android:name=".ViolenceInjuryActivity"></activity>
-        <activity android:name=".BurnInjuryActivity"></activity>
-        <activity android:name=".CutInjuryActivity">
+        <activity
+            android:name=".RoadTransportInjuryActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".ViolenceInjuryActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".BurnInjuryActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".CutInjuryActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".ElectrocautionActivity">
+        <activity
+            android:name=".ElectrocautionActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".FallInjuryActivity">
-
-
-        </activity>
-        <activity android:name=".InjuryBluntActivity">
-
-        </activity>
-        <activity android:name=".InsectInjuryActivity">
-
-        </activity>
-        <activity android:name=".NearDrowningActivity">
+        <activity
+            android:name=".FallInjuryActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
 
 
         </activity>
-        <activity android:name=".QualityOfLifeActivity">
+        <activity
+            android:name=".InjuryBluntActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".HouseHoldCharacteristicsActivity">
+        <activity
+            android:name=".InsectInjuryActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".NearDrowningActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
 
 
         </activity>
-        <activity android:name=".SuffocationActivity"></activity>
+        <activity
+            android:name=".QualityOfLifeActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".HouseHoldCharacteristicsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+
+
+        </activity>
+        <activity
+            android:name=".SuffocationActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
         <activity android:name=".ToolInjuryActivity">
 
 
         </activity>
-        <activity android:name=".UnintentionalPoisoningActivity"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <activity
+            android:name=".UnintentionalPoisoningActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

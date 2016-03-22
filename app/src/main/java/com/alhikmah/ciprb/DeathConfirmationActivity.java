@@ -19,19 +19,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-
-import cz.msebera.android.httpclient.Header;
 
 public class DeathConfirmationActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -42,7 +34,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
     int count = 01;
     int calculate_member = 0;
     Button button_cancel, button_next;
-    int member_no;
+    int death_member_no;
     TextView house_hold_id;
     PrefsValues prefsValues;
     ProgressDialog progressDialog = null;
@@ -54,7 +46,9 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
             editText_members_name, edittext_how_many_injury_last_six;
 
     Spinner spinner_occupasion, spinner_marital_status, spinner_death_sex, spinner_realation_with_hh, spinner_cause_death, spinner_death_place;
-    private String mCURRENT_MEMBER_ID = "35457899923232";
+    //private String mCURRENT_MEMBER_ID = "35457899923232";
+
+    private String mCURRENT_MEMBER_ID = "";
     private Person aPerson;
     DecimalFormat formatter;
 
@@ -71,18 +65,18 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         try {
             prefsValues = new PrefsValues(this);
             formatter = new DecimalFormat("00");
-            member_no = prefsValues.getMembers_died_no();
+            death_member_no = prefsValues.getMembers_died_no();
             count = ApplicationData.SERIAL_DEATH;
 
-            //mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId();
-
+            mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId();
             showTextLong(" : Current HouseHold ID  " + mCURRENT_MEMBER_ID);
 
-            /*if (member_no == 0 || mCURRENT_MEMBER_ID.length() < 7) {
+            if (death_member_no == 0 || mCURRENT_MEMBER_ID.length() < 9) {
                 Toast.makeText(this, "No Death person here", Toast.LENGTH_LONG).show();
                 finish();
-            }*/
+            }
 
+            house_hold_id = (TextView) findViewById(R.id.house_hold_id);
             edittext_date_of_birth = (EditText) findViewById(R.id.edittext_date_of_birth);
             editText_death_date = (EditText) findViewById(R.id.editText_death_date);
             edittext_current_age = (EditText) findViewById(R.id.edittext_current_age);
@@ -186,7 +180,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
     void setheader() {
 
-        //house_hold_id.setText("Total Members: " + member_no + "   Remain Member: " + (member_no - calculate_member));
+        house_hold_id.setText("Total Members: " + death_member_no + "   Remain Member: " + (death_member_no - calculate_member));
 
     }
 
@@ -198,27 +192,26 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
                 if (!editText_members_name.getText().toString().isEmpty()
                         && !edittext_current_age.getText().toString().isEmpty()) {
 
-                    aPerson = new Person();
-                    aPerson.setMembers_name(editText_members_name.getText().toString());
-                    aPerson.setSex(spinner_death_sex.getSelectedItem().toString());
 
-                    //  mCURRENT_MEMBER_ID = ApplicationData.HOUSE_HOLD_UNIQE_ID + "" + formatter.format(count);
+                    mCURRENT_MEMBER_ID = "" + formatter.format(count);
+
+                    Log.e("Death Person ID:", mCURRENT_MEMBER_ID);
+
 
                     //  mCURRENT_MEMBER_ID = "" + 1013232 + "" + formatter.format(count);
                     //prefsValues.setSerial(count);
 
-                    Log.e("Death Person ID:", mCURRENT_MEMBER_ID);
-                    aPerson.setPerson_id(mCURRENT_MEMBER_ID);
                     count++;
+
                     // have to find a solution if only one man is there or no injury
                     //showTextLong(mCURRENT_MEMBER_ID);
-                    ///ApplicationData.died_person_List.add(aPerson)
                     //  saveDataToOnline(aPerson);
-
                     new PostAsync().execute(ApplicationData.URL_DEATH_CONFIRMATION, createJsonBody());
 
                 } else
+
                     showTextLong("Fill data correctly");
+
             } else {
 
                 showAlert(aPerson);
@@ -232,7 +225,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         }
     }
 
-    void saveDataToOnline(Person person) {
+   /* void saveDataToOnline(Person person) {
 
         try {
 
@@ -279,7 +272,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
                                 showTextLong(" : Data saved Successfully...: " + mCURRENT_MEMBER_ID);
 
-                                if (calculate_member >= member_no) {
+                                if (calculate_member >= death_member_no) {
                                     finish();
                                     if (ApplicationData.died_person_List.size() != 0) {
                                         ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
@@ -306,10 +299,10 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         } catch (NullPointerException e) {
         }
 
-    }
+    }*/
 
     void cleartext() {
-        // setheader();
+        setheader();
 
         editText_members_name.getText().clear();
         edittext_date_of_birth.getText().clear();
@@ -322,8 +315,6 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
         if (InternetConnection.isAvailable(activity)) {
 
-            if (person != null)
-                saveDataToOnline(person);
 
         } else {
 
@@ -397,15 +388,52 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            progressDialog.dismiss();
-            if (value == ApplicationData.STATUS_SUCCESS) {
-                //// TODO: 3/22/2016
-                Toast.makeText(activity, "Success", Toast.LENGTH_LONG).show();
-                //ApplicationData.alive_person_List.remove(spinner_person_name.getSelectedItemPosition());
-                cleartext();
+            try {
+                if (value == ApplicationData.STATUS_SUCCESS) {
 
-            } else {
-                Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
+                    //// TODO: 3/22/2016
+
+                    aPerson = new Person();
+                    aPerson.setMembers_name(editText_members_name.getText().toString());
+                    aPerson.setSex(spinner_death_sex.getSelectedItem().toString());
+                    aPerson.setPerson_id(mCURRENT_MEMBER_ID);
+
+                    int death_type = Integer.parseInt(ApplicationData.spilitStringFirst(spinner_cause_death.getSelectedItem().toString()));
+
+                    if (death_type == 1) {
+
+                        ApplicationData.died_person_List.add(aPerson);
+                    }
+                    calculate_member++;
+                    if (calculate_member >= death_member_no) {
+
+                        if (ApplicationData.died_person_List.size() != 0) {
+
+                            ApplicationData.gotToNextActivity(activity, InjuryMortalityActivity.class);
+                            finish();
+
+                        } else {
+                            //  go to home activity n fill up home characteristics
+                            ApplicationData.gotToNextActivity(activity, HomeActivity.class);
+                            finish();
+
+                        }
+
+                    }
+
+                    Toast.makeText(activity, "Success: Death Type" + death_type, Toast.LENGTH_LONG).show();
+                    cleartext();
+
+                    progressDialog.dismiss();
+
+                } else {
+                    Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
+                }
+
+            } catch (NullPointerException e) {
+
+            } catch (Exception e) {
+
             }
 
 
