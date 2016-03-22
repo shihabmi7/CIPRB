@@ -3,9 +3,11 @@ package com.alhikmah.ciprb;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -19,28 +21,32 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
+
 import cz.msebera.android.httpclient.Header;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class ToolInjuryActivity extends AppCompatActivity implements View.OnClickListener {
 
-    //// TODO: 3/22/2016 current task 
-    private Spinner spinner_o05, spinner_o06, sp_machine1, sp_machine2, sp_machine3, sp_machine4;
+    private Spinner spinner_o01, spinner_o02, spinner_o03, spinner_o04, spinner_o05, spinner_o06;
     private TextView machine1, machine2, machine3, machine4, textView2, textView4, textView6;
     private Button button_cancel, button_next;
     private RadioButton radioButton;
 
     ProgressDialog progressDialog;
     Activity activity = this;
+    //String person_id = "101323210";
+    String person_id = "101323212";
+    TextView textView_person_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tool_injury);
-
-        //String person_id = "101323210";
-        String person_id = "101323210";
-        TextView textView_person_id;
-
         try {
 
             textView_person_id = (TextView) findViewById(R.id.textView_person_id);
@@ -54,14 +60,21 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
 
 
         }
+        initUI();
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait...");
+        progressDialog.setTitle("Loading");
+        progressDialog.setCancelable(true);
+    }
 
+    private void initUI() {
         button_next = (Button) findViewById(R.id.button_next);
         button_cancel = (Button) findViewById(R.id.button_cancel);
 
-        sp_machine1 = (Spinner) findViewById(R.id.spinner_o01);
-        sp_machine2 = (Spinner) findViewById(R.id.spinner_o02);
-        sp_machine3 = (Spinner) findViewById(R.id.spinner_o03);
-        sp_machine4 = (Spinner) findViewById(R.id.spinner_o04);
+        spinner_o01 = (Spinner) findViewById(R.id.spinner_o01);
+        spinner_o02 = (Spinner) findViewById(R.id.spinner_o02);
+        spinner_o03 = (Spinner) findViewById(R.id.spinner_o03);
+        spinner_o04 = (Spinner) findViewById(R.id.spinner_o04);
         spinner_o05 = (Spinner) findViewById(R.id.spinner_o05);
         spinner_o06 = (Spinner) findViewById(R.id.spinner_o06);
 
@@ -70,16 +83,12 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
         machine3 = (TextView) findViewById(R.id.machine3);
         machine4 = (TextView) findViewById(R.id.machine4);
 
+
         button_cancel = (Button) findViewById(R.id.button_cancel);
         button_next = (Button) findViewById(R.id.button_next);
 
         button_cancel.setOnClickListener(this);
         button_next.setOnClickListener(this);
-
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Please wait...");
-        progressDialog.setTitle("Loading");
-        progressDialog.setCancelable(true);
     }
 
     void cleartext() {
@@ -126,6 +135,7 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
         );
     }
 
+
     public void showAlert(final Activity activity) {
 
         if (InternetConnection.isAvailable(activity)) {
@@ -161,6 +171,7 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
+
     void showTextLong(String value) {
 
         Toast.makeText(getApplicationContext(), value, Toast.LENGTH_LONG).show();
@@ -174,12 +185,111 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View v) {
 
-
         if (v == button_next) {
 
+            if (person_id.length() > 0) {
+
+                //putRequestWithHeaderAndBody(ApplicationData.URL_SUICIDE + person_id);
+                String url = ApplicationData.URL_TOOl_INJURY + person_id;
+                Log.i("String are ", createJsonBody());
+                new PutAsync().execute(url, createJsonBody());
+
+            } else {
+
+            }
 
         } else if (v == button_cancel) {
 
+        }
+
+    }
+
+    public String putRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
+
+
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+
+        OkHttpClient client = new OkHttpClient();
+        RequestBody body = RequestBody.create(JSON, jsonBody);
+        Request request = new Request.Builder()
+                .url(url)
+                .put(body)
+                .build();
+        Response response = client.newCall(request).execute();
+        Response httpResponse = client.newCall(request).execute();
+        httpResponse.code();
+
+        Log.i("Response data are ", response.body().string());
+        Log.i("Response code are ", "" + response.code());
+        //makeCall(client, request);
+
+        return response.body().string();
+    }
+
+    String createJsonBody() {
+        String jsonData = "{" +
+                "\"o01\":\"" +
+                ApplicationData.spilitStringFirst(spinner_o01.getSelectedItem().toString()) +
+                "\",\"o02\":\"" +
+                ApplicationData.spilitStringFirst(spinner_o02.getSelectedItem().toString()) +
+                "\",\"o03\":\"" +
+                ApplicationData.spilitStringFirst(spinner_o03.getSelectedItem().toString()) +
+                "\",\"o04\":\"" +
+                ApplicationData.spilitStringFirst(spinner_o04.getSelectedItem().toString()) +
+                "\",\"o05\":\"" +
+                ApplicationData.spilitStringFirst(spinner_o05.getSelectedItem().toString()) +
+                "\",\"o06\":\"" +
+                ApplicationData.spilitStringFirst(spinner_o06.getSelectedItem().toString()) +
+                "\"}";
+        return jsonData;
+    }
+
+    private class PutAsync extends AsyncTask<String, Void, String> {
+
+        int value;
+        String Result = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+
+                String Result = "";
+                Log.i("URL are ", params[0]);
+                //Result = putRequestWithHeaderAndBody(params[0], params[1]);
+
+                value = ApplicationData.putRequestWithBody(params[0], params[1]);
+
+                Log.i("Result Are ", Result);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
+
+            if (value == ApplicationData.STATUS_SUCCESS) {
+                //// TODO: 3/22/2016
+                Toast.makeText(activity, "Success", Toast.LENGTH_LONG).show();
+                //ApplicationData.alive_person_List.remove(spinner_person_name.getSelectedItemPosition());
+                cleartext();
+
+            } else {
+                Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
+            }
 
         }
 

@@ -34,7 +34,7 @@ public class FallInjuryActivity extends AppCompatActivity implements View.OnClic
     Activity activity = this;
 
     //String person_id = "101323210";
-    String person_id = "";
+    String person_id = "101323210";
     TextView textView_person_id;
 
     @Override
@@ -224,7 +224,6 @@ public class FallInjuryActivity extends AppCompatActivity implements View.OnClic
 
         if (v == button_next) {
 
-
             if (person_id.length() > 0) {
 
                 //putRequestWithHeaderAndBody(ApplicationData.URL_SUICIDE + person_id);
@@ -247,7 +246,6 @@ public class FallInjuryActivity extends AppCompatActivity implements View.OnClic
 
     String createJsonBody() {
 //        Log.i("Test String ", ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString()));
-
 
         String rep = "{" +
                 "\"j01\":\"" +
