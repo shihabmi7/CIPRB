@@ -34,15 +34,14 @@ public class NearDrowningActivity extends AppCompatActivity implements View.OnCl
     ProgressDialog progressDialog;
     Activity activity = this;
 
-    //String person_id = "101323210";
-    String person_id = "101323212";
+    //String person_id = "101323212";
+    String person_id = "";
     TextView textView_person_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_near_drowning);
-
 
         try {
             textView_person_id = (TextView) findViewById(R.id.textView_person_id);
@@ -53,7 +52,6 @@ public class NearDrowningActivity extends AppCompatActivity implements View.OnCl
         } catch (Exception e) {
 
         }
-
 
         sp_Drowning1 = (Spinner) findViewById(R.id.sp_Drowning1);
         sp_Drowning2 = (Spinner) findViewById(R.id.sp_Drowning2);

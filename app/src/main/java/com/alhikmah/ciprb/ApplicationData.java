@@ -30,7 +30,7 @@ public class ApplicationData {
     public static String URL_CUTINJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/cutinjury/";
     public static String URL_VIOLENCEINJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/violenceinjury/";
     public static String URL_FALL = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/fallinjury/";
-    public static String URL_NEAR_DROWN = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/neardrowing/";
+    public static String URL_NEAR_DROWN = "http://saeradesign.com/LumenApi/public/index.php/api/activity/neardrowing/";
     public static String URL_BURNINJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/burninjury/";
     public static String URL_UNINTENTIONAL_INJURY = "http://saeradesign.com/LumenApi/public/index.php/api/activity/unintentionpoisoning/";
     // public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity";
