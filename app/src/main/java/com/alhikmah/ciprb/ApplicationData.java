@@ -103,6 +103,7 @@ public class ApplicationData {
 
         OkHttpClient client = new OkHttpClient();
         RequestBody body = RequestBody.create(JSON, jsonBody);
+        Log.e("Response data are ", jsonBody);
         Request request = new Request.Builder()
                 .url(url)
                 .post(body)
@@ -111,8 +112,8 @@ public class ApplicationData {
         //Response httpResponse = client.newCall(request).execute();
         //  httpResponse.code();
 
-        Log.i("Response data are ", response.body().string());
-        Log.i("Response code are ", "" + response.code());
+        Log.e("Response data are ", response.body().string());
+        Log.e("Response code are ", "" + response.code());
         //makeCall(client, request);
 
         return response.code();
