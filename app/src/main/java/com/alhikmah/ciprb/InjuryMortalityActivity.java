@@ -32,7 +32,7 @@ import java.util.Locale;
 public class InjuryMortalityActivity extends AppCompatActivity implements View.OnClickListener {
 
     Calendar myCalendar = null;
-    DatePickerDialog.OnDateSetListener date, death_date;
+    DatePickerDialog.OnDateSetListener death_date;
     TimePickerDialog.OnTimeSetListener time;
     Activity activity = InjuryMortalityActivity.this;
 
@@ -46,7 +46,8 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
     ProgressDialog progressDialog = null;
     Button button_cancel, button_next;
 
-    EditText edittext_date_of_injury, edittext_injured_parts, edittext_time_of_injury, edittext_death_date_of_person, edittext_time_take_health_facility, edittext_days_take_health_facility;
+    //    edittext_date_of_injury
+    EditText edittext_how_much_cost_reatment, edittext_injured_parts, edittext_time_of_injury, edittext_death_date_of_person, edittext_time_take_health_facility, edittext_days_take_health_facility;
     Spinner spinner_how_injured, spinner_im_post_mortem_done, spinner_im_source_of_income_family, spinner_im_family_coping_loss,
             spinner_place_of_injury,
             spinner_injury_intent,
@@ -57,7 +58,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
             spinner_person_receive_treatment_for_injury, spinner_Who_provided_the_treatment,
             spinner_Where_receive_treatment, spinner_admitted_health_facility, spinner_type_admitted_health_facility,
             spinner_how_admitted_health_facility,
-            spinner_any_surgery_operation_done, spinner_type_of_anesthesia_given, spinner_outcome_of_treatment,
+            spinner_any_surgery_operation_done, spinner_type_of_anesthesia_given,
             spinner_injured_person_become_disabled, spinner_type_of_disability,
             spinner_significant_source_of_income_for_family, spinner_person_name,
             spinner_family_being_coping_loss_income;
@@ -85,7 +86,10 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
             if (ciprbDatabase.getDeathPersonList().isEmpty()) {
 
                 Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
+
                 finish();
+                ciprbDatabase.close();
+
 
             } else {
 
@@ -93,19 +97,6 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
             }
 
-            date = new DatePickerDialog.OnDateSetListener() {
-
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                      int dayOfMonth) {
-
-                    myCalendar.set(Calendar.YEAR, year);
-                    myCalendar.set(Calendar.MONTH, monthOfYear);
-                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    updateLabel();
-                }
-
-            };
 
             death_date = new DatePickerDialog.OnDateSetListener() {
 
@@ -120,19 +111,18 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                 }
 
             };
-
-
-            edittext_date_of_injury.setOnClickListener(new View.OnClickListener() {
+            edittext_death_date_of_person.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
 
-                    new DatePickerDialog(activity, date, myCalendar
+                    new DatePickerDialog(activity, death_date, myCalendar
                             .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                             myCalendar.get(Calendar.DAY_OF_MONTH)).show();
                 }
 
             });
+
 
             time = new TimePickerDialog.OnTimeSetListener() {
 
@@ -156,18 +146,10 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
             });
 
-            edittext_death_date_of_person.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-
-                    new DatePickerDialog(activity, death_date, myCalendar
-                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-                }
-
-            });
-
+            progressDialog = new ProgressDialog(activity);
+            progressDialog.setMessage("Please wait...");
+            progressDialog.setTitle("Loading");
+            progressDialog.setCancelable(true);
 
         } catch (NullPointerException e) {
 
@@ -186,17 +168,19 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
     void init() {
 
         try {
-            //layout_type_admitted_health_facility = (LinearLayout) findViewById(R.id.layout_type_admitted_health_facility);
+
+            layout_type_admitted_health_facility = (LinearLayout) findViewById(R.id.layout_type_admitted_health_facility);
             // lay_type_of_disability = (LinearLayout) findViewById(R.id.lay_type_of_disability);
-            // lay_type_of_anesthesia_given = (LinearLayout) findViewById(R.id.lay_type_of_anesthesia_given);
-            //lay_who_gave_first_aid = (LinearLayout) findViewById(R.id.lay_type_of_anesthesia_given);
-            edittext_date_of_injury = (EditText) findViewById(R.id.edittext_date_of_injury);
+            lay_type_of_anesthesia_given = (LinearLayout) findViewById(R.id.lay_type_of_anesthesia_given);
+            lay_who_gave_first_aid = (LinearLayout) findViewById(R.id.lay_type_of_anesthesia_given);
+
+            edittext_how_much_cost_reatment = (EditText) findViewById(R.id.edittext_how_much_cost_reatment);
             edittext_time_of_injury = (EditText) findViewById(R.id.edittext_time_of_injury);
             edittext_injured_parts = (EditText) findViewById(R.id.edittext_injured_parts);
-
             edittext_death_date_of_person = (EditText) findViewById(R.id.edittext_death_date_of_person);
 
-            edittext_days_take_health_facility = (EditText) findViewById(R.id.edittext_injured_parts);
+
+            edittext_days_take_health_facility = (EditText) findViewById(R.id.edittext_days_take_health_facility);
             edittext_time_take_health_facility = (EditText) findViewById(R.id.edittext_time_take_health_facility);
 
             spinner_im_family_coping_loss = (Spinner) findViewById(R.id.spinner_im_family_coping_loss);
@@ -220,7 +204,8 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
             spinner_how_admitted_health_facility = (Spinner) findViewById(R.id.spinner_how_admitted_health_facility);
             spinner_any_surgery_operation_done = (Spinner) findViewById(R.id.spinner_any_surgery_operation_done);
             spinner_type_of_anesthesia_given = (Spinner) findViewById(R.id.spinner_type_of_anesthesia_given);
-            spinner_outcome_of_treatment = (Spinner) findViewById(R.id.spinner_outcome_of_treatment);
+
+
             //   spinner_injured_person_become_disabled = (Spinner) findViewById(R.id.spinner_injured_person_become_disabled);
 //            spinner_type_of_disability = (Spinner) findViewById(R.id.spinner_type_of_disability);
             // spinner_significant_source_of_income_for_family = (Spinner) findViewById(R.id.spinner_significant_source_of_income_for_family);
@@ -333,17 +318,10 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
     }
 
-    private void updateLabel() {
-
-        String myFormat = "dd/mm/yyyy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-        edittext_date_of_injury.setText(sdf.format(myCalendar.getTime()));
-
-    }
 
     private void updateDeathDateLabel() {
 
-        String myFormat = "dd/mm/yyyy"; //In which you need put here
+        String myFormat = "dd/MM/yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         edittext_death_date_of_person.setText(sdf.format(myCalendar.getTime()));
 
@@ -359,10 +337,12 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
     private void setMemberSpinner(List<String> list) {
         list.clear();
+        // ciprbDatabase.open();
         alive_count = ciprbDatabase.getDeathPersonList().size();
         for (Person aPerson : ciprbDatabase.getDeathPersonList()) {
             list.add(aPerson.getMembers_name() + "." + aPerson.getPerson_id());
         }
+        // ciprbDatabase.close();
         dataAdapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_item, list);
 
@@ -379,10 +359,12 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
         try {
 
+            //ciprbDatabase.open();
             if (ciprbDatabase.getDeathPersonList().isEmpty()) {
 
                 Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
                 activity.finish();
+                ciprbDatabase.close();
 
             }
 
@@ -398,13 +380,14 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
                 list.remove(ApplicationData.ALIVE_PERSON_NUMBER);*/
                 list.remove(ApplicationData.ALIVE_PERSON_NUMBER);
+                //ciprbDatabase.open();
                 ciprbDatabase.deleteRowByIDFromDeath(person_id);
+                //ciprbDatabase.close();
 
                 if (list.size() <= 0) {
 
                     Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
                     activity.finish();
-
                 }
 
             }
@@ -476,37 +459,52 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
     @Override
     public void onClick(View v) {
 
+        try {
 
-        if (v == button_next) {
+            if (v == button_next) {
 
-            if (InternetConnection.checkNetworkConnection(this)) {
+                if (InternetConnection.checkNetworkConnection(activity)) {
 
-                if (!edittext_date_of_injury.getText().toString().isEmpty()
-                        && !edittext_time_of_injury.getText().toString().isEmpty()) {
+                 /*   if (!edittext_death_date_of_person.getText().toString().isEmpty()
+                            && !edittext_time_of_injury.getText().toString().isEmpty()) {*/
 
 
                     person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
-                    String url = ApplicationData.URL_INJURY_MORBIDITY + person_id;
+                    String url = ApplicationData.URL_INJURY_MORTALITY + person_id;
                     //Put
-                    Log.i("String are ", createJsonBody());
+                    Log.e("String are ", createJsonBody());
+                    Log.e("URL", url);
+
                     new PutAsync().execute(url, createJsonBody());
 
+                   /* } else {
 
-                } else {
+                        Toast.makeText(activity, "Fill the form correctly", Toast.LENGTH_LONG).show();
+                    }
+*/
 
-                    Toast.makeText(activity, "Fill the form correctly", Toast.LENGTH_LONG).show();
-                }
+                } else
 
+                    showAlert(this);
 
-            } else
+            } else if (v == button_cancel) {
 
-                showAlert(this);
+                cleartext();
 
-        } else if (v == button_cancel) {
+            }
+        } catch (NullPointerException e) {
 
-            cleartext();
+            //Log.e("" + getTitle(), "OnFailure" + e.toString());
 
+            //Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
+
+        } catch (Exception e) {
+
+            //Log.e("" + getTitle(), "OnFailure" + e.toString());
+            // Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
         }
+
+
     }
 
     private class PutAsync extends AsyncTask<String, Void, String> {
@@ -515,10 +513,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog = new ProgressDialog(activity);
-            progressDialog.setMessage("Please wait...");
-            progressDialog.setTitle("Loading");
-            progressDialog.setCancelable(true);
+
             progressDialog.show();
         }
 
@@ -526,6 +521,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
         protected String doInBackground(String... params) {
             try {
                 String Result = "";
+
                 Log.i("URL are ", params[0]);
                 //Result = ApplicationData.putRequestWithHeaderAndBody(params[0], params[1]);
                 value = ApplicationData.putRequestWithBody(params[0], params[1]);
@@ -566,22 +562,23 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
     String createJsonBody() {
 
-        String e17 = "";
-        String e22 = "";
-        String e26 = "";
-        String e11 = "";
+
+        String f17 = "";
+        String f22 = "";
+        String f26 = "";
+        String f11 = "";
 
         if (layout_type_admitted_health_facility.getVisibility() == View.VISIBLE) {
-            e17 = ApplicationData.spilitStringFirst(spinner_type_admitted_health_facility.getSelectedItem().toString());
+            f17 = ApplicationData.spilitStringFirst(spinner_type_admitted_health_facility.getSelectedItem().toString());
         }
         /*if (lay_type_of_disability.getVisibility() == View.VISIBLE) {
-            e26 = ApplicationData.spilitStringFirst(spinner_type_of_disability.getSelectedItem().toString());
+            f26 = ApplicationData.spilitStringFirst(spinner_type_of_disability.getSelectedItem().toString());
         }*/
         if (lay_type_of_anesthesia_given.getVisibility() == View.VISIBLE) {
-            e22 = ApplicationData.spilitStringFirst(spinner_type_of_anesthesia_given.getSelectedItem().toString());
+            f22 = ApplicationData.spilitStringFirst(spinner_type_of_anesthesia_given.getSelectedItem().toString());
         }
         if (lay_who_gave_first_aid.getVisibility() == View.VISIBLE) {
-            e11 = ApplicationData.spilitStringFirst(spinner_who_gave_first_aid.getSelectedItem().toString());
+            f11 = ApplicationData.spilitStringFirst(spinner_who_gave_first_aid.getSelectedItem().toString());
         }
 
         //Log.i("Test String ", ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString()));
@@ -591,7 +588,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                 "\",\"f02\":\"" +
                 ApplicationData.spilitStringFirst((spinner_how_injured.getSelectedItem().toString()) +
                         "\",\"f03\":\"" +
-                        edittext_date_of_injury.getText().toString() +
+                        edittext_death_date_of_person.getText().toString() +
                         "\",\"f04\":\"" +
                         edittext_time_of_injury.getText().toString().toString() +
                         "\",\"f05\":\"" +
@@ -607,7 +604,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                 "\",\"f10\":\"" +
                 ApplicationData.spilitStringFirst(spinner_did_receive_first_aid.getSelectedItem().toString()) +
                 "\",\"f11\":\"" +
-                e11 +
+                f11 +
                 "\",\"f12\":\"" +
                 ApplicationData.spilitStringFirst(spinner_Was_he_trained_in_first_aid.getSelectedItem().toString()) +
                 "\",\"f13\":\"" +
@@ -619,7 +616,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                 "\",\"f16\":\"" +
                 ApplicationData.spilitStringFirst(spinner_admitted_health_facility.getSelectedItem().toString()) +
                 "\",\"f17\":\"" +
-                e17 +
+                f17 +
                 "\",\"f18\":\"" +
                 ApplicationData.spilitStringFirst(spinner_how_admitted_health_facility.getSelectedItem().toString()) +
                 "\",\"f19\":\"" +
@@ -629,15 +626,15 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                 "\",\"f21\":\"" +
                 ApplicationData.spilitStringFirst(spinner_any_surgery_operation_done.getSelectedItem().toString()) +
                 "\",\"f22\":\"" +
-                e22 +
+                f22 +
                 "\",\"f23\":\"" +
-                ApplicationData.spilitStringFirst(spinner_outcome_of_treatment.getSelectedItem().toString()) +
+                edittext_how_much_cost_reatment.getText().toString() +
                 "\",\"f24\":\"" +
                 "" +
                 "\",\"f25\":\"" +
                 ApplicationData.spilitStringFirst(spinner_injured_person_become_disabled.getSelectedItem().toString()) +
                 "\",\"f26\":\"" +
-                e26 +
+                f26 +
                 "\",\"f27\":\"" +
                 "" +
                 "\",\"f28\":\"" +
@@ -713,6 +710,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
         Toast.makeText(activity, "You have to fill the form carefully", Toast.LENGTH_LONG).show();
         super.onBackPressed();
+
     }
 }
 

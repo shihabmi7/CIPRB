@@ -72,10 +72,19 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_household_member_details);
         ciprbDatabase = new CiprbDatabase(getApplicationContext());
-        ciprbDatabase.open();
+        // i close it now
+        //ciprbDatabase.open();
         try {
 
             prefsValues = new PrefsValues(this);
+            // shihab added code
+
+            if (prefsValues.getMembersNo() == 0) {
+                Toast.makeText(getApplicationContext(), "No Member to input", Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+
             count = prefsValues.getSerial();
 
             formatter = new DecimalFormat("00");
@@ -224,6 +233,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
                         int num = Integer.parseInt(edittext_how_many_injury_last_six.getText().toString());
 
+                        ciprbDatabase.open();
                         for (int i = 1; i <= num; i++) {
 
                             mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId() + "" + formatter.format(count);
@@ -239,6 +249,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                             //ApplicationData.alive_person_List.add(aPerson);
 
                         }
+                        ciprbDatabase.close();
 
                     } else {
 

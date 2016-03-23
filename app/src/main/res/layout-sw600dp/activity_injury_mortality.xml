@@ -333,11 +333,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lay_who_gave_first_aid"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp"
-            android:id="@+id/lay_who_gave_first_aid">
+            android:padding="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -485,11 +485,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/layout_type_admitted_health_facility"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp"
-            android:id="@+id/layout_type_admitted_health_facility">
+            android:padding="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -603,11 +603,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lay_type_of_anesthesia_given"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp"
-            android:id="@+id/lay_type_of_anesthesia_given">
+            android:padding="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -642,19 +642,12 @@
             android:orientation="vertical"
             android:padding="5dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/im_death_date_of_person"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
-
             <EditText
                 android:id="@+id/edittext_how_much_cost_reatment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Click to set the date"></EditText>
+                android:hint="Click to set the cost"
+                android:maxLength="14"></EditText>
         </LinearLayout>
 
         <LinearLayout
