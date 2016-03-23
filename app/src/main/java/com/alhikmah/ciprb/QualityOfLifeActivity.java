@@ -15,15 +15,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-
-import org.json.JSONObject;
-
 import java.io.IOException;
 
-import cz.msebera.android.httpclient.Header;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -33,7 +26,7 @@ import okhttp3.Response;
 public class QualityOfLifeActivity extends AppCompatActivity implements View.OnClickListener {
     private Button button_cancel, button_next;
     private TextView Quality1, Quality2, Quality3, Quality4, Quality5;
-    private Spinner spinner_s1,spinner_s2,spinner_s3,spinner_s4,spinner_s5;
+    private Spinner spinner_s1, spinner_s2, spinner_s3, spinner_s4, spinner_s5;
 
     EditText edt_s6;
 
@@ -41,7 +34,7 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
     Activity activity = this;
 
     //String person_id = "101323210";
-    String person_id = "101323210";
+    String person_id = "";
     TextView textView_person_id;
 
     @Override
@@ -49,18 +42,14 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quality_of_life);
 
-
         try {
-
             textView_person_id = (TextView) findViewById(R.id.textView_person_id);
             person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
             textView_person_id.setText("Person Id:" + person_id);
 
         } catch (NullPointerException e) {
 
-
         } catch (Exception e) {
-
 
         }
         initUI();
@@ -70,29 +59,19 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
         progressDialog.setTitle("Loading");
         progressDialog.setCancelable(true);
     }
-private void initUI(){
-    spinner_s1=(Spinner)findViewById(R.id.spinner_s1);
-    spinner_s2=(Spinner)findViewById(R.id.spinner_s2);
-    spinner_s3=(Spinner)findViewById(R.id.spinner_s3);
-    spinner_s4=(Spinner)findViewById(R.id.spinner_s4);
-    spinner_s5=(Spinner)findViewById(R.id.spinner_s5);
 
-    edt_s6=(EditText)findViewById(R.id.edt_s6);
-
-
-    Quality1 = (TextView) findViewById(R.id.Quality1);
-    Quality2 = (TextView) findViewById(R.id.Quality2);
-    Quality3 = (TextView) findViewById(R.id.Quality3);
-    Quality4 = (TextView) findViewById(R.id.Quality4);
-    Quality5 = (TextView) findViewById(R.id.Quality5);
-
-
-    button_cancel = (Button) findViewById(R.id.button_cancel);
-    button_next = (Button) findViewById(R.id.button_next);
-
-    button_cancel.setOnClickListener(this);
-    button_next.setOnClickListener(this);
-}
+    private void initUI() {
+        spinner_s1 = (Spinner) findViewById(R.id.spinner_s1);
+        spinner_s2 = (Spinner) findViewById(R.id.spinner_s2);
+        spinner_s3 = (Spinner) findViewById(R.id.spinner_s3);
+        spinner_s4 = (Spinner) findViewById(R.id.spinner_s4);
+        spinner_s5 = (Spinner) findViewById(R.id.spinner_s5);
+        edt_s6 = (EditText) findViewById(R.id.edt_s6);
+        button_cancel = (Button) findViewById(R.id.button_cancel);
+        button_next = (Button) findViewById(R.id.button_next);
+        button_cancel.setOnClickListener(this);
+        button_next.setOnClickListener(this);
+    }
 
     void cleartext() {
 
@@ -106,7 +85,7 @@ private void initUI(){
 
     }
 
-    void saveDataToOnline(Person person) {
+    /*void saveDataToOnline(Person person) {
 
         progressDialog.show();
         // post with no parameters
@@ -136,7 +115,7 @@ private void initUI(){
                     }
                 }
         );
-    }
+    }*/
 
 
     public void showAlert(final Activity activity) {
@@ -192,8 +171,8 @@ private void initUI(){
 
         if (v == button_next) {
 
-            String url=ApplicationData.URL_QUALITY_OF_LIFE + person_id;
-            new PutAsync().execute(url,createJsonBody());
+            String url = ApplicationData.URL_QUALITY_OF_LIFE + person_id;
+            new PutAsync().execute(url, createJsonBody());
         } else if (v == button_cancel) {
 
 
@@ -202,7 +181,7 @@ private void initUI(){
     }
 
 
-    public String putRequestWithHeaderAndBody(String url,String jsonBody) throws IOException {
+    public String putRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
 
 
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
@@ -219,13 +198,14 @@ private void initUI(){
         httpResponse.code();
 
         Log.i("Response data are ", response.body().string());
-        Log.i("Response code are ",""+response.code());
+        Log.i("Response code are ", "" + response.code());
         //makeCall(client, request);
 
         return response.body().string();
     }
+
     String createJsonBody() {
-        String jsonData="{" +
+        String jsonData = "{" +
                 "\"s1\":\"" +
                 ApplicationData.spilitStringFirst(spinner_s1.getSelectedItem().toString()) +
                 "\",\"s2\":\"" +
@@ -241,7 +221,11 @@ private void initUI(){
                 "\"}";
         return jsonData;
     }
+
     private class PutAsync extends AsyncTask<String, Void, String> {
+
+        int value = 0;
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -252,11 +236,10 @@ private void initUI(){
         @Override
         protected String doInBackground(String... params) {
             try {
-                String Result="";
-                Log.i("URL are ", params[0]);
-                Result= putRequestWithHeaderAndBody(params[0],params[1]);
 
-                Log.i("Result Are ",Result);
+
+                Log.i("URL are ", params[0]);
+                value = ApplicationData.putRequestWithBody(params[0], params[1]);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -272,9 +255,28 @@ private void initUI(){
             super.onPostExecute(result);
 
             progressDialog.dismiss();
-
+            if (value == ApplicationData.STATUS_SUCCESS) {
+                //// TODO: 3/22/2016
+                finishTask();
+            } else {
+                Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
+            }
 
         }
 
     }
+
+    void finishTask() {
+
+        Toast.makeText(activity, "Successfully Data Saved", Toast.LENGTH_LONG).show();
+        ApplicationData.INJURY_DATA_COLLECT = true;
+        cleartext();
+        //onBackPressed();
+        activity.finish();
+        //ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+
+
+    }
+
+
 }

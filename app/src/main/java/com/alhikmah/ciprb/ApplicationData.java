@@ -29,6 +29,8 @@ public class ApplicationData {
     // change just
 
     public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/household/injurymorbidity/";
+    public static String URL_INJURY_MORTALITY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/";
+
     public static String URL_SUICIDE = "http://saeradesign.com/LumenApi/public/index.php/api/household/suicideattemptactivity/";
     public static String URL_ROADTRANSPORTINJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/roadtransportinjury/";
     public static String URL_CUTINJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/cutinjury/";
@@ -37,8 +39,6 @@ public class ApplicationData {
     public static String URL_NEAR_DROWN = "http://saeradesign.com/LumenApi/public/index.php/api/activity/neardrowing/";
     public static String URL_BURNINJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/burninjury/";
     public static String URL_UNINTENTIONAL_INJURY = "http://saeradesign.com/LumenApi/public/index.php/api/activity/unintentionpoisoning/";
-
-
     public static String URL_TOOl_INJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/toolinjury/";
     public static String URL_ELECTROCAUTION = "http://saeradesign.com/LumenApi/public/index.php/api/activity/electrocaution/";
     public static String URL_INSECT_INJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/insectinjury/";

@@ -292,7 +292,7 @@ public class UnintentionalPoisoningActivity extends AppCompatActivity implements
         cleartext();
         //onBackPressed();
         activity.finish();
-        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+        //ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
         //activity.finish();
     }
 

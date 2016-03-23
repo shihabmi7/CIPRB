@@ -177,7 +177,11 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
                         break;
                 }
 
+
                 ApplicationData.gotToNextActivity(this, HouseHoldMemberDetailsActivity.class);
+
+                finish();
+
             }
 
         } catch (NumberFormatException e) {
@@ -223,8 +227,6 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
 
 
     }
-
-
 
 
 }

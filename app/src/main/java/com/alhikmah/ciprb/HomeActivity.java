@@ -7,18 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
-import com.alhikmah.ciprb.localdb.AndroidDatabaseManager;
+import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private static final int SPLASH_TIME = 1600;
-    private static final String AUDIO_FILE_NAME = "labbaiyk_allah_first";
     PrefsValues prefsValues;
 
-
     String form[] = {
-            "DATABASE",
+            // "DATABASE",
             "মডিউল-১  ফেস ফর্ম",
             "খানা সদস্যদের ইঞ্জুরী তথ্য",
             "মডিউল- ৩ ইনজুরি জনিত অসুস্থতার ফর্ম",
@@ -44,7 +40,9 @@ public class HomeActivity extends AppCompatActivity {
 
     //" Assult",
     Class[] samples =
-            {       AndroidDatabaseManager.class,
+            {
+
+                    // AndroidDatabaseManager.class,
                     HouseHoldInformationActivity.class,
                     HouseHoldMemberDetailsActivity.class,
                     InjuryMorbidityActivity.class,
@@ -68,7 +66,7 @@ public class HomeActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        prefsValues=new PrefsValues(this);
+        prefsValues = new PrefsValues(this);
         listView = (ListView) findViewById(R.id.listView_form_list);
         getFormList();
 
@@ -79,31 +77,31 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                /*if(position==1){
-                    if(prefsValues.getMembersNo()==0){
-                        Toast.makeText(getApplicationContext(),"No Member to input",Toast.LENGTH_LONG).show();
-                    }else {
+                if (position == 1) {
+                    if (prefsValues.getMembersNo() == 0) {
+                        Toast.makeText(getApplicationContext(), "No Member to input", Toast.LENGTH_LONG).show();
+                    } else {
                         Intent intent = new Intent(getApplicationContext(),
                                 samples[position]);
                         startActivity(intent);
                     }
-                }else if(position==3){
-                    if(prefsValues.getMembers_died_no()==0){
-                        Toast.makeText(getApplicationContext(),"No Member to input",Toast.LENGTH_LONG).show();
-                    }else {
+                } else if (position == 3) {
+                    if (prefsValues.getMembers_died_no() == 0) {
+                        Toast.makeText(getApplicationContext(), "No Member to input", Toast.LENGTH_LONG).show();
+                    } else {
                         Intent intent = new Intent(getApplicationContext(),
                                 samples[position]);
                         startActivity(intent);
                     }
-                }else {
+                } else {
                     Intent intent = new Intent(getApplicationContext(),
                             samples[position]);
                     startActivity(intent);
-                }*/
+                }
 
-                Intent intent = new Intent(getApplicationContext(),
+               /* Intent intent = new Intent(getApplicationContext(),
                         samples[position]);
-                startActivity(intent);
+                startActivity(intent);*/
 
             }
         });

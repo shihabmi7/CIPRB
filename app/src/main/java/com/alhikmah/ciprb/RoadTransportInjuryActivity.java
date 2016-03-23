@@ -300,7 +300,7 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
         cleartext();
         //onBackPressed();
         activity.finish();
-        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+        // ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
         //activity.finish();
     }
 

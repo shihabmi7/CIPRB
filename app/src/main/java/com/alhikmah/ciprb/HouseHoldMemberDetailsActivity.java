@@ -71,7 +71,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_household_member_details);
-        ciprbDatabase=new CiprbDatabase(getApplicationContext());
+        ciprbDatabase = new CiprbDatabase(getApplicationContext());
         ciprbDatabase.open();
         try {
 
@@ -426,7 +426,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
     @Override
     public void onBackPressed() {
 
-        //super.onBackPressed();
+        super.onBackPressed();
         // correctionDialog();
 
     }

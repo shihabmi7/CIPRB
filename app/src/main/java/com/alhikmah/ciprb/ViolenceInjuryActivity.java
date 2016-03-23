@@ -38,7 +38,7 @@ public class ViolenceInjuryActivity extends AppCompatActivity implements View.On
     ProgressDialog progressDialog;
     Activity activity = this;
 
-    String person_id = "30202102501";
+    String person_id = "";
     TextView textView_person_id;
 
     @Override
@@ -275,7 +275,7 @@ public class ViolenceInjuryActivity extends AppCompatActivity implements View.On
         cleartext();
         //onBackPressed();
         activity.finish();
-        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+        //ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
         //activity.finish();
     }
 

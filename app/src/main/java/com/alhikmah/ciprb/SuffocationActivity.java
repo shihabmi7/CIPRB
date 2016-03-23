@@ -282,7 +282,7 @@ public class SuffocationActivity extends AppCompatActivity implements View.OnCli
         cleartext();
         //onBackPressed();
         activity.finish();
-        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+//        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
         //activity.finish();
     }
 

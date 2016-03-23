@@ -295,7 +295,7 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
         cleartext();
         //onBackPressed();
         activity.finish();
-        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+        //ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
         //activity.finish();
     }
 
