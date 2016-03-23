@@ -11,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -59,9 +60,8 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
             spinner_Where_receive_treatment, spinner_admitted_health_facility, spinner_type_admitted_health_facility,
             spinner_how_admitted_health_facility,
             spinner_any_surgery_operation_done, spinner_type_of_anesthesia_given,
-            spinner_injured_person_become_disabled, spinner_type_of_disability,
-            spinner_significant_source_of_income_for_family, spinner_person_name,
-            spinner_family_being_coping_loss_income;
+            spinner_injured_person_become_disabled,
+            spinner_person_name;
 
     LinearLayout layout_type_admitted_health_facility, lay_type_of_disability,
             lay_type_of_anesthesia_given, lay_who_gave_first_aid;
@@ -72,6 +72,12 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
         setContentView(R.layout.activity_injury_mortality);
 
         init();
+
+        button_cancel = (Button) findViewById(R.id.button_cancel);
+        button_next = (Button) findViewById(R.id.button_next);
+
+        button_cancel.setOnClickListener(this);
+        button_next.setOnClickListener(this);
 
         myCalendar = Calendar.getInstance();
 
@@ -169,6 +175,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
         try {
 
+
             layout_type_admitted_health_facility = (LinearLayout) findViewById(R.id.layout_type_admitted_health_facility);
             // lay_type_of_disability = (LinearLayout) findViewById(R.id.lay_type_of_disability);
             lay_type_of_anesthesia_given = (LinearLayout) findViewById(R.id.lay_type_of_anesthesia_given);
@@ -205,8 +212,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
             spinner_any_surgery_operation_done = (Spinner) findViewById(R.id.spinner_any_surgery_operation_done);
             spinner_type_of_anesthesia_given = (Spinner) findViewById(R.id.spinner_type_of_anesthesia_given);
 
-
-            //   spinner_injured_person_become_disabled = (Spinner) findViewById(R.id.spinner_injured_person_become_disabled);
+            // spinner_injured_person_become_disabled = (Spinner) findViewById(R.id.spinner_injured_person_become_disabled);
 //            spinner_type_of_disability = (Spinner) findViewById(R.id.spinner_type_of_disability);
             // spinner_significant_source_of_income_for_family = (Spinner) findViewById(R.id.spinner_significant_source_of_income_for_family);
             //   spinner_family_being_coping_loss_income = (Spinner) findViewById(R.id.spinner_family_being_coping_loss_income);
@@ -233,7 +239,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
                 }
             });*/
-            /*spinner_admitted_health_facility.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            spinner_admitted_health_facility.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
@@ -255,6 +261,8 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
                 }
             });
+
+            /*
             spinner_any_surgery_operation_done.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -300,11 +308,6 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                 }
             });*/
 
-            button_cancel = (Button) findViewById(R.id.button_cancel);
-            button_next = (Button) findViewById(R.id.button_next);
-
-            button_cancel.setOnClickListener(this);
-            button_next.setOnClickListener(this);
 
         } catch (NullPointerException e) {
 
@@ -459,23 +462,22 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
     @Override
     public void onClick(View v) {
 
-        try {
 
-            if (v == button_next) {
+        if (v == button_next) {
 
-                if (InternetConnection.checkNetworkConnection(activity)) {
+            if (InternetConnection.checkNetworkConnection(activity)) {
 
                  /*   if (!edittext_death_date_of_person.getText().toString().isEmpty()
                             && !edittext_time_of_injury.getText().toString().isEmpty()) {*/
 
 
-                    person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
-                    String url = ApplicationData.URL_INJURY_MORTALITY + person_id;
-                    //Put
-                    Log.e("String are ", createJsonBody());
-                    Log.e("URL", url);
+                person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
+                String url = ApplicationData.URL_INJURY_MORTALITY + person_id;
+                //Put
+                Log.e("String are ", createJsonBody());
+                Log.e("URL", url);
 
-                    new PutAsync().execute(url, createJsonBody());
+                new PutAsync().execute(url, createJsonBody());
 
                    /* } else {
 
@@ -483,25 +485,14 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                     }
 */
 
-                } else
+            } else
 
-                    showAlert(this);
+                showAlert(this);
 
-            } else if (v == button_cancel) {
+        } else if (v == button_cancel) {
 
-                cleartext();
+            cleartext();
 
-            }
-        } catch (NullPointerException e) {
-
-            //Log.e("" + getTitle(), "OnFailure" + e.toString());
-
-            //Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
-
-        } catch (Exception e) {
-
-            //Log.e("" + getTitle(), "OnFailure" + e.toString());
-            // Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
         }
 
 
@@ -562,11 +553,11 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
     String createJsonBody() {
 
-
+        String f11 = "";
         String f17 = "";
         String f22 = "";
         String f26 = "";
-        String f11 = "";
+
 
         if (layout_type_admitted_health_facility.getVisibility() == View.VISIBLE) {
             f17 = ApplicationData.spilitStringFirst(spinner_type_admitted_health_facility.getSelectedItem().toString());
@@ -628,21 +619,21 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                 "\",\"f22\":\"" +
                 f22 +
                 "\",\"f23\":\"" +
-                edittext_how_much_cost_reatment.getText().toString() +
+                "" +
                 "\",\"f24\":\"" +
                 "" +
                 "\",\"f25\":\"" +
-                ApplicationData.spilitStringFirst(spinner_injured_person_become_disabled.getSelectedItem().toString()) +
+                "" +
                 "\",\"f26\":\"" +
                 f26 +
                 "\",\"f27\":\"" +
                 "" +
                 "\",\"f28\":\"" +
-                ApplicationData.spilitStringFirst(spinner_im_post_mortem_done.getSelectedItem().toString()) +
+                "" +
                 "\",\"f29\":\"" +
-                ApplicationData.spilitStringFirst(spinner_im_source_of_income_family.getSelectedItem().toString()) +
+                "" +
                 "\",\"f30\":\"" +
-                ApplicationData.spilitStringFirst(spinner_im_family_coping_loss.getSelectedItem().toString()) +
+                "" +
                 "\",\"f31\":\"" +
                 "" +
                 "\",\"f32\":\"" +
@@ -652,7 +643,11 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                 "\"}";
         //return "{\"g03\":\"10\"}";
 
+        Log.e("String >>>", "" + rep);
 
+
+        /*String rep = "  \"f01\": \"shihab uddoiasds\",\n" +
+                "    \"f02\": \"ali bin hossain\"";*/
         return rep;
         //return "";
     }

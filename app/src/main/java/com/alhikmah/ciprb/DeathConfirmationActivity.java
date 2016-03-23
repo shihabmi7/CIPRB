@@ -64,7 +64,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_death_confirmation);
 
-        ciprbDatabase=new CiprbDatabase(getApplicationContext());
+        ciprbDatabase = new CiprbDatabase(getApplicationContext());
         ciprbDatabase.open();
 
         // get value from radio button
@@ -400,6 +400,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
+            progressDialog.dismiss();
             try {
                 if (value == ApplicationData.STATUS_SUCCESS) {
 
@@ -428,9 +429,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
                             //  go to home activity n fill up home characteristics
                             ApplicationData.gotToNextActivity(activity, HomeActivity.class);
                             finish();
-
                         }
-
                     }
 
                     Toast.makeText(activity, "Success: Death Type" + death_type, Toast.LENGTH_LONG).show();
