@@ -1,7 +1,10 @@
 package com.alhikmah.ciprb;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -107,12 +110,63 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
     public void onClick(View v) {
 
         if (v == button_cancel) {
+
             this.finish();
 
         } else if (v == button_next) {
-            String url = ApplicationData.URL_CHARACTERISTIC + person_id;
-            new PutAsync().execute(url, createJsonBody());
+
+            if (InternetConnection.checkNetworkConnection(context)) {
+
+                String url = ApplicationData.URL_CHARACTERISTIC + person_id;
+                new PutAsync().execute(url, createJsonBody());
+            } else
+
+            {
+                showAlert(this);
+
+            }
+
         }
+
+    }
+    public void showAlert(final Activity activity) {
+
+        if (InternetConnection.isAvailable(activity)) {
+
+
+        } else {
+
+            new AlertDialog.Builder(activity)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("No Internet Connection")
+                    .setMessage("Please check your connectivity.")
+                    .setPositiveButton("Exit",
+                            new DialogInterface.OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+
+                                    // finish();
+
+                                }
+
+                            })
+                    .setNegativeButton("Retry",
+                            new DialogInterface.OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+
+                                    // Stop the activity
+                                    //showAlert(activity);
+
+                                }
+
+                            }).show();
+        }
+
     }
 
     public String putRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
@@ -167,6 +221,8 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
     }
 
     private class PutAsync extends AsyncTask<String, Void, String> {
+        int value =0;
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -180,11 +236,11 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
         @Override
         protected String doInBackground(String... params) {
             try {
-                String Result = "";
-                Log.i("URL are ", params[0]);
-                Result = putRequestWithHeaderAndBody(params[0], params[1]);
 
-                Log.i("Result Are ", Result);
+                Log.i("URL are ", params[0]);
+                value = ApplicationData.putRequestWithBody(params[0], params[1]);
+
+
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -200,6 +256,17 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
             super.onPostExecute(result);
 
             progressDialog.dismiss();
+
+            if (value == ApplicationData.STATUS_SUCCESS) {
+                //// TODO: 3/22/2016
+
+                Toast.makeText(context, "SuccessFully Saved...", Toast.LENGTH_LONG).show();
+                finish();
+
+            } else {
+                Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
+            }
+
 
 
         }

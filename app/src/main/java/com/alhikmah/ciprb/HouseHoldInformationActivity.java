@@ -49,6 +49,7 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
             editText_interviewer_code = (EditText) findViewById(R.id.editText_interviewer_unique);
             editText_household_no = (EditText) findViewById(R.id.editText_household_no);
             test =(TextView)findViewById(R.id.test);
+            test.setVisibility(View.GONE);
 
             button_cancel = (Button) findViewById(R.id.button_cancel);
             button_next = (Button) findViewById(R.id.button_next);
@@ -185,8 +186,8 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
                             break;
                         }
                 }
-                //ApplicationData.gotToNextActivity(this, HouseHoldMemberDetailsActivity.class);
-                //finish();
+                ApplicationData.gotToNextActivity(this, HouseHoldMemberDetailsActivity.class);
+                finish();
 
             }
 
@@ -225,7 +226,7 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
         if (editText_member_number.getText().length() > 0 && edittext_death_number.getText().length() > 0
                 && editText_interviewer_code.getText().length() > 0 &&
                 editText_household_no.getText().length() == 2 &&
-                editText_ward.getText().length() == 2 ) {
+                editText_moholla.getText().length() == 2 ) {
 
             return true;
 
@@ -238,6 +239,7 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
 
     }
     private void saveToPreference(String value) {
+
         Toast.makeText(getApplicationContext(), ApplicationData.HOUSE_HOLD_UNIQE_ID, Toast.LENGTH_LONG).show();
         prefsValues.setMembers_no(Integer.parseInt(editText_member_number.getText().toString()));
         prefsValues.setMembers_died_no(Integer.parseInt(edittext_death_number.getText().toString()));
@@ -247,7 +249,6 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
         prefsValues.setSerial(ApplicationData.SERIAL);
         prefsValues.setDeathSerial(ApplicationData.SERIAL_DEATH);
         //ddd gfdgfdg
-
 
     }
 

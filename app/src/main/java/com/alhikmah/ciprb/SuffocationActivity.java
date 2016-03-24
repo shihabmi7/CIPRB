@@ -180,6 +180,7 @@ public class SuffocationActivity extends AppCompatActivity implements View.OnCli
 
 
         if (v == button_next) {
+
             String url = ApplicationData.URL_SUFFOGATION + person_id;
             new PutAsync().execute(url, createJsonBody());
 

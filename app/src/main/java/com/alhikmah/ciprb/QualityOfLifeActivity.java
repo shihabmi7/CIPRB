@@ -175,15 +175,25 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
 
         if (v == button_next) {
 
-            person_id = editText_person_id.getText().toString();
+            if (InternetConnection.checkNetworkConnection(activity)) {
 
-            if (person_id.length()==11){
+                person_id = editText_person_id.getText().toString();
 
-                String url = ApplicationData.URL_QUALITY_OF_LIFE + person_id;
-                new PutAsync().execute(url, createJsonBody());
+                if (person_id.length()==11){
 
-            }else
-                Toast.makeText(activity," Set Eleven (11) digit unique code",Toast.LENGTH_LONG).show();
+                    String url = ApplicationData.URL_QUALITY_OF_LIFE + person_id;
+                    new PutAsync().execute(url, createJsonBody());
+
+                }else
+                    Toast.makeText(activity," Set Eleven (11) digit unique code",Toast.LENGTH_LONG).show();
+
+            }
+
+         else
+
+        { showAlert(this);}
+
+
 
         } else if (v == button_cancel) {
 
@@ -282,7 +292,7 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
     void finishTask() {
 
         Toast.makeText(activity, "Successfully Data Saved", Toast.LENGTH_LONG).show();
-        ApplicationData.INJURY_DATA_COLLECT = true;
+        //ApplicationData.INJURY_DATA_COLLECT = true;
         cleartext();
         //onBackPressed();
         activity.finish();
