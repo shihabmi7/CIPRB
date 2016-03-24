@@ -367,6 +367,7 @@
                 android:maxLength="2" />
 
 
+
         </LinearLayout>
 
         <LinearLayout
@@ -374,6 +375,24 @@
             android:layout_width="fill_parent"
             android:layout_height="1dp"
             android:background="@color/heading_bg"></LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="ID: "
+                android:textColor="@android:color/black"
+                android:textSize="22sp" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"

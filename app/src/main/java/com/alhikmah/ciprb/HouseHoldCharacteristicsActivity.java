@@ -24,7 +24,7 @@ import okhttp3.Response;
 public class HouseHoldCharacteristicsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static String TAG = "HouseHoldCharacteristicsActivity";
-    private Context mContext;
+    private Context mContext =this;
     private ProgressDialog progressDialog;
     private Button button_cancel, button_next;
     private Spinner spinner_c03, spinner_c04, spinner_c05, spinner_c07, spinner_c08, spinner_c10;
@@ -34,16 +34,32 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
     String person_id = "";
     TextView textView_person_id;
 
+    PrefsValues prefsValues;
+    Context context =this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house_characteristics);
-        mContext = this;
-        try {
 
-            textView_person_id = (TextView) findViewById(R.id.textView_person_id);
+        try {
+            initUI();
+
+            prefsValues=new PrefsValues(mContext);
+            String value = prefsValues.getHouseUniqueId();
+
+            if (value.length() > 0){
+
+                person_id = value;
+                textView_person_id.setText("House Hold ID: " + value);
+
+            }else
+
+            {    Toast.makeText(context,"Set House ID First", Toast.LENGTH_SHORT).show();
+
+            finish();
+
+            }
             //person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
-            textView_person_id.setText("Person Id:" + person_id);
 
         } catch (NullPointerException e) {
 
@@ -54,11 +70,13 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
             Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
 
         }
-        initUI();
+
 
     }
 
     private void initUI() {
+
+        textView_person_id = (TextView) findViewById(R.id.textView_person_id);
         edit_c01 = (EditText) findViewById(R.id.edit_c01);
         edit_c02 = (EditText) findViewById(R.id.edit_c02);
         edittext_c06 = (EditText) findViewById(R.id.edittext_c06);
@@ -94,7 +112,6 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
         } else if (v == button_next) {
             String url = ApplicationData.URL_CHARACTERISTIC + person_id;
             new PutAsync().execute(url, createJsonBody());
-
         }
     }
 

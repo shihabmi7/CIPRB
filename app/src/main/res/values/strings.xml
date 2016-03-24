@@ -1576,6 +1576,8 @@
     <string name="test"></string>
     <string name="ward">ওয়ার্ড/উপজেলা</string>
     <string name="moholla">মহল্লা/গ্রাম</string>
+
+    <string name="enter_person_id">Enter Person ID</string>
     <string-array name="survey_sample">
         <item></item>
         <item></item>

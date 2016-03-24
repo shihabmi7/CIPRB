@@ -28,7 +28,7 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
     private TextView Quality1, Quality2, Quality3, Quality4, Quality5;
     private Spinner spinner_s1, spinner_s2, spinner_s3, spinner_s4, spinner_s5;
 
-    EditText edt_s6;
+    EditText edt_s6,editText_person_id;
 
     ProgressDialog progressDialog;
     Activity activity = this;
@@ -37,22 +37,24 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
     String person_id = "";
     TextView textView_person_id;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quality_of_life);
 
         try {
-            textView_person_id = (TextView) findViewById(R.id.textView_person_id);
-            person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
-            textView_person_id.setText("Person Id:" + person_id);
+
+            initUI();
+
+           // person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
+            //textView_person_id.setText("Person Id:" + person_id);
 
         } catch (NullPointerException e) {
 
         } catch (Exception e) {
 
         }
-        initUI();
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait...");
@@ -61,6 +63,8 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
     }
 
     private void initUI() {
+        textView_person_id = (TextView) findViewById(R.id.textView_person_id);
+        editText_person_id =(EditText)findViewById(R.id.editText_person_id);
         spinner_s1 = (Spinner) findViewById(R.id.spinner_s1);
         spinner_s2 = (Spinner) findViewById(R.id.spinner_s2);
         spinner_s3 = (Spinner) findViewById(R.id.spinner_s3);
@@ -171,11 +175,20 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
 
         if (v == button_next) {
 
-            String url = ApplicationData.URL_QUALITY_OF_LIFE + person_id;
-            new PutAsync().execute(url, createJsonBody());
+            person_id = editText_person_id.getText().toString();
+
+            if (person_id.length()==11){
+
+                String url = ApplicationData.URL_QUALITY_OF_LIFE + person_id;
+                new PutAsync().execute(url, createJsonBody());
+
+            }else
+                Toast.makeText(activity," Set Eleven (11) digit unique code",Toast.LENGTH_LONG).show();
+
         } else if (v == button_cancel) {
 
 
+            finish();
         }
 
     }

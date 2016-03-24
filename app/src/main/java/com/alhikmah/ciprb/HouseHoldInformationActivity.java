@@ -19,7 +19,7 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
 
     Spinner spinner_location, spinner_city_corp, spinner_survey_location, spinner_upozila,
             spinner_adjust;
-    TextView textView_interview_starting_time, textView_adjustable;
+    TextView textView_interview_starting_time, textView_adjustable,test;
     String Datetime;
     //NumberPicker death_number_picker, member_number_picker;
     Button button_cancel, button_next;
@@ -48,6 +48,7 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
             editText_member_number = (EditText) findViewById(R.id.editText_member_number);
             editText_interviewer_code = (EditText) findViewById(R.id.editText_interviewer_unique);
             editText_household_no = (EditText) findViewById(R.id.editText_household_no);
+            test =(TextView)findViewById(R.id.test);
 
             button_cancel = (Button) findViewById(R.id.button_cancel);
             button_next = (Button) findViewById(R.id.button_next);
@@ -152,35 +153,40 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
 
                 finish();
 
-            } else if (v == button_next && checkFieldStatus()) {
+            } else if (v == button_next) {
 
                 switch (spinner_survey_location.getSelectedItemPosition()) {
 
                     case 0:
                     case 1:
+                        if (checkFieldStatus()) {
 
-                        ApplicationData.HOUSE_HOLD_UNIQE_ID = "" + ApplicationData.spilitStringFirst(spinner_survey_location.getSelectedItem().toString()) +
-                                "" + ApplicationData.spilitStringFirst(spinner_adjust.getSelectedItem().toString()) + "" +
-                                editText_ward.getText().toString() + "" + editText_moholla.getText().toString() + "" + editText_household_no.getText().toString();
+                            ApplicationData.HOUSE_HOLD_UNIQE_ID = "" + ApplicationData.spilitStringFirst(spinner_survey_location.getSelectedItem().toString()) +
+                                    "" + ApplicationData.spilitStringFirst(spinner_adjust.getSelectedItem().toString()) + "" +
+                                    editText_ward.getText().toString() + "" + editText_moholla.getText().toString() + "" + editText_household_no.getText().toString();
 
-                        saveToPreference(ApplicationData.HOUSE_HOLD_UNIQE_ID);
-                        break;
+                            saveToPreference(ApplicationData.HOUSE_HOLD_UNIQE_ID);
 
+                            // jsut added to show the field
+                            test.setText(ApplicationData.HOUSE_HOLD_UNIQE_ID);
+                            break;
+                        }
                     case 2:
+                        if (checkFieldStatusForRural()){
 
-                        ApplicationData.HOUSE_HOLD_UNIQE_ID = "" + ApplicationData.spilitStringFirst(spinner_survey_location.getSelectedItem().toString()) +
+                            ApplicationData.HOUSE_HOLD_UNIQE_ID = "" + ApplicationData.spilitStringFirst(spinner_survey_location.getSelectedItem().toString()) +
                                 "" + ApplicationData.spilitStringFirst(spinner_adjust.getSelectedItem().toString()) + "" +
                                 ApplicationData.spilitStringFirst(spinner_upozila.getSelectedItem().toString()) + ""
                                 + editText_moholla.getText().toString() + "" + editText_household_no.getText().toString();
 
-                        saveToPreference(ApplicationData.HOUSE_HOLD_UNIQE_ID);
-                        break;
+                            saveToPreference(ApplicationData.HOUSE_HOLD_UNIQE_ID);
+                            // jsut added to show the field
+                            test.setText(ApplicationData.HOUSE_HOLD_UNIQE_ID);
+                            break;
+                        }
                 }
-
-
-                ApplicationData.gotToNextActivity(this, HouseHoldMemberDetailsActivity.class);
-
-                finish();
+                //ApplicationData.gotToNextActivity(this, HouseHoldMemberDetailsActivity.class);
+                //finish();
 
             }
 
@@ -214,6 +220,23 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
 
     }
 
+    private boolean checkFieldStatusForRural() {
+
+        if (editText_member_number.getText().length() > 0 && edittext_death_number.getText().length() > 0
+                && editText_interviewer_code.getText().length() > 0 &&
+                editText_household_no.getText().length() == 2 &&
+                editText_ward.getText().length() == 2 ) {
+
+            return true;
+
+        } else {
+
+            Toast.makeText(getApplicationContext(), "Enter All Data Correctly ", Toast.LENGTH_LONG).show();
+            return false;
+
+        }
+
+    }
     private void saveToPreference(String value) {
         Toast.makeText(getApplicationContext(), ApplicationData.HOUSE_HOLD_UNIQE_ID, Toast.LENGTH_LONG).show();
         prefsValues.setMembers_no(Integer.parseInt(editText_member_number.getText().toString()));
