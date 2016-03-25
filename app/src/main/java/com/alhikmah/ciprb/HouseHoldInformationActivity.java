@@ -170,6 +170,7 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
 
                             // jsut added to show the field
                             test.setText(ApplicationData.HOUSE_HOLD_UNIQE_ID);
+                            goToNextActiivty();
                             break;
                         }
                     case 2:
@@ -183,11 +184,11 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
                             saveToPreference(ApplicationData.HOUSE_HOLD_UNIQE_ID);
                             // jsut added to show the field
                             test.setText(ApplicationData.HOUSE_HOLD_UNIQE_ID);
+                            goToNextActiivty();
                             break;
                         }
                 }
-                ApplicationData.gotToNextActivity(this, HouseHoldMemberDetailsActivity.class);
-                finish();
+
 
             }
 
@@ -249,6 +250,12 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
         prefsValues.setSerial(ApplicationData.SERIAL);
         prefsValues.setDeathSerial(ApplicationData.SERIAL_DEATH);
         //ddd gfdgfdg
+    }
+
+    public void goToNextActiivty(){
+
+        ApplicationData.gotToNextActivity(this, HouseHoldMemberDetailsActivity.class);
+        finish();
 
     }
 
