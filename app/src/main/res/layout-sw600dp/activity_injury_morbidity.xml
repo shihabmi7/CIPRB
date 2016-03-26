@@ -1,39 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HouseHoldInformationActivity">
-
-    ///
-
-
-    <LinearLayout
-        android:id="@+id/layout_header"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/heading_bg"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView_heading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="6dp"
-            android:text="Injury Morbidity"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/layout_header">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="fill_parent">
 
 
         <!--// eta first a jabe -->
@@ -43,12 +14,32 @@
             android:layout_margin="8dp"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:id="@+id/layout_header"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/heading_bg"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp"
+                    android:text="Injury Morbidity"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -71,11 +62,17 @@
 
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/lay_how_injured"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
 
@@ -98,12 +95,17 @@
 
             </LinearLayout>
 
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
 
             <!--<LinearLayout-->
             <!--android:layout_width="fill_parent"-->
             <!--android:layout_height="wrap_content"-->
             <!--android:orientation="vertical"-->
-            <!--android:padding="5dp">-->
+            <!--android:padding="20dp">-->
 
             <!--<TextView-->
             <!--android:id="@+id/textView_sex"-->
@@ -129,7 +131,7 @@
             <!--android:layout_width="fill_parent"-->
             <!--android:layout_height="wrap_content"-->
             <!--android:orientation="vertical"-->
-            <!--android:padding="5dp">-->
+            <!--android:padding="20dp">-->
 
             <!--<TextView-->
             <!--android:id="@+id/textView_marrital_status"-->
@@ -156,7 +158,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -175,12 +177,17 @@
                     android:hint="Click to set the date"></EditText>
 
             </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -204,10 +211,15 @@
 
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -233,7 +245,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textView_injury_last6"
@@ -255,12 +267,17 @@
 
 
             </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textView_how_many_injury_last"
@@ -275,6 +292,7 @@
                     android:id="@+id/edittext_injured_parts"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+
                     android:hint="enter following code"></EditText>
 
                 <TextView
@@ -291,10 +309,16 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -321,12 +345,17 @@
                 <!--have to discuss parts -->
 
             </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -347,13 +376,18 @@
 
 
             </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
 
             <LinearLayout
 
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -376,10 +410,16 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -401,11 +441,19 @@
             </LinearLayout>
 
             <LinearLayout
+
+
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/lay_who_gave_first_aid"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -427,10 +475,16 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -452,10 +506,16 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -477,10 +537,16 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -502,10 +568,16 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -526,12 +598,18 @@
 
             </LinearLayout>
 
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
             <!--/////ekan teke suru korte hobe...-->
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -553,11 +631,17 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/layout_type_admitted_health_facility"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -579,10 +663,16 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -603,10 +693,16 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -625,10 +721,16 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -647,10 +749,16 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -670,13 +778,18 @@
                     android:spinnerMode="dropdown" />
             </LinearLayout>
 
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
 
             <LinearLayout
                 android:id="@+id/lay_type_of_anesthesia_given"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -697,10 +810,16 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -721,10 +840,15 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -744,10 +868,16 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -768,11 +898,17 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/lay_type_of_disability"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -793,29 +929,37 @@
             </LinearLayout>
 
             <LinearLayout
+
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="5dp">
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/disability_affects_sides"
-                    android:textColor="@android:color/black"
-                    android:textSize="22sp"  />
+            <!--<LinearLayout-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical"-->
+                <!--android:padding="20dp">-->
 
-                // neeed to be clear
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="@string/disability_affects_sides"-->
+                    <!--android:textColor="@android:color/black"-->
+                    <!--android:textSize="22sp"  />-->
+
+                <!--// neeed to be clear-->
 
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
+
+
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -836,10 +980,16 @@
             </LinearLayout>
 
             <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -859,12 +1009,18 @@
                     android:spinnerMode="dropdown" />
             </LinearLayout>
 
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -883,6 +1039,12 @@
                     android:focusable="false"
                     android:spinnerMode="dropdown" />
             </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/heading_bg"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -910,5 +1072,3 @@
         </LinearLayout>
     </ScrollView>
 
-
-</RelativeLayout>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.alhikmah.ciprb.UnintentionalPoisoningActivity">
+    tools:context="com.ciprb.injury.UnintentionalPoisoningActivity">
 
     <LinearLayout
         android:id="@+id/layout_header"

@@ -227,11 +227,14 @@
 
                 <Spinner
                     android:id="@+id/spinner_sex"
+                    style="@style/Widget.AppCompat.Spinner.DropDown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:entries="@array/survey_sex"
-                    android:focusable="false"
+                    android:focusable="true"
+
+
                     android:spinnerMode="dropdown" />
 
             </LinearLayout>
@@ -246,7 +249,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textView_marrital_status"
@@ -264,6 +267,7 @@
                     android:layout_gravity="center_horizontal"
                     android:entries="@array/survey_marital_status"
                     android:focusable="false"
+
                     android:spinnerMode="dropdown" />
 
 
@@ -310,7 +314,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textView_ocu"
@@ -328,6 +332,7 @@
                     android:layout_gravity="center_horizontal"
                     android:entries="@array/survey_occupation"
                     android:focusable="false"
+                    style="@style/mySpinnerItemStyle"
                     android:spinnerMode="dropdown" />
 
 
@@ -343,7 +348,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -374,7 +379,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -405,7 +410,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -436,7 +441,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textView_injury_last6"
@@ -485,7 +490,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:gravity="right"
-                    android:inputType="numberDecimal"
+                    android:inputType="number"
                     android:maxLength="1" />
 
             </RelativeLayout>

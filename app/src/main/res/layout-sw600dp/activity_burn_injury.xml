@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.alhikmah.ciprb.BurnInjuryActivity"
+    tools:context="com.ciprb.injury.BurnInjuryActivity"
     android:layout_height="match_parent">
 
 <LinearLayout

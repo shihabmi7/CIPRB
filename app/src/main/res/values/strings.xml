@@ -2,7 +2,14 @@
     <string name="app_name">CIPRB</string>
 
     <string name="internet_check_bn">ইন্টারনেট সংযোগ চালু করুন</string>
-    <string name="laoding">ডাটা সংরক্ষিত হচ্ছে...অপেক্ষা করুন</string>
+    <string name="loading_message">ডাটা সংরক্ষিত হচ্ছে..</string>
+    <string name="waiting">অপেক্ষা করুন</string>
+
+    <string name="update">আপডেট করুন</string>
+    <string name="suggestion">প্রতিটি প্রশ্নের উত্তর নিন</string>
+
+
+
 
 
     <!--Form 2-->
@@ -11,9 +18,8 @@
     <string name="date_of_birth">জন্ম তারিখ (দিন/মাস/বছর)</string>
     <string name="current_age">বর্তমানে বয়স</string>
     <string name="death_age">মৃত্যূর  সময় বয়স</string>
-
-
     <string name="sex">লিঙ্গ</string>
+
 
 
     <string name="maritial_satus">বৈবাহিক অবস্থা</string>
@@ -127,6 +133,7 @@
     </string-array>
     <string-array name="survey_relation_to_hh">
 
+        <item>  নির্বাচন করুন</item>
         <item>01. নিজ (খানা প্রধান)</item>
         <item>02. বাবা</item>
         <item>03. মা</item>
@@ -146,13 +153,20 @@
         <item>16.  অন্যান্য</item>
 
     </string-array>
+
+
+
+
+
     <string-array name="survey_sex">
+        <item>  নির্বাচন করুন</item>
         <item>01. পুরুষ</item>
         <item>02. মহিলা</item>
         <item>03. অন্যান্য</item>
     </string-array>
     <string-array name="survey_marital_status">
 
+        <item>  নির্বাচন করুন</item>
         <item>01. বিবাহিত</item>
         <item>02. অবিবাহিত </item>
         <item>03. তালাকপ্রাপ্তা </item>
@@ -162,12 +176,23 @@
     </string-array>
     <string-array name="survey_yes_no">
 
+        <item>  নির্বাচন করুন</item>
         <item>01. হ্যাঁ</item>
         <item>02. না</item>
 
     </string-array>
-    <string-array name="survey_occupation">
 
+    <string-array name="survey_select_please">
+
+        <item>  নির্বাচন করুন</item>
+        <item>01. হ্যাঁ</item>
+        <item>02. না</item>
+
+    </string-array>
+
+
+    <string-array name="survey_occupation">
+        <item>  নির্বাচন করুন</item>
         <item>01. কৃষিকাজ</item>
         <item>02. ব্যবসা</item>
         <item>03. ছাত্র</item>
@@ -188,6 +213,7 @@
     </string-array>
     <string-array name="survey_death_loc">
 
+        <item>  নির্বাচন করুন</item>
         <item>01. নিজ বাড়ি</item>
         <item>02. হাসপাতাল</item>
         <item>03. কর্মক্ষেত্র</item>
@@ -198,6 +224,7 @@
     </string-array>
     <string-array name="survey_death_symptoms">
 
+        <item>  নির্বাচন করুন</item>
         <item>01. নিজ বাড়ি</item>
         <item>02. হাসপাতাল</item>
         <item>03. কর্মক্ষেত্র</item>
@@ -265,12 +292,12 @@
     <string name="injured_parts">ব্যক্তিটির শরীরের কোন কোন অঙ্গে ইনজুরি হয়েছিল?</string>
     <string name="injured_type_of_injury">ব্যক্তিটি কি ধরনের ইনজুরি হয়েছিল?</string>
 
-    <string name="injured_parts_and_type_of_injury_tips">*** ক্ষত অঙ্গ
+    <string name="injured_parts_and_type_of_injury_tips">*** কমা ( , ) দিয়ে লিখুন: ক্ষত অঙ্গ:
 ১. মাথা ,২. মুখমন্ডল,  ৩. চোখ,  ৪. ঘাড়,  ৫. বুক/পিঠ,  ৬. পেট,  ৭. বাহু হাত ব্যতীত , ৮. হাত , ৯.  নিম্নাঙ্গ (পায়ের পাতা ব্যতীত) ,১০.পায়ের পাতা , ১১.কোমর \n \n
 
 </string>
 
-    <string name="injured_parts_and_type_of_injury_tips_2">*** ইনজুরি ধরনের কোড
+    <string name="injured_parts_and_type_of_injury_tips_2">*** কমা ( , ) দিয়ে লিখুন : ইনজুরি ধরনের কোড:
 ০১. হাড় ভাঙ্গা, ০২.মচকে যাওয়া, ০৩. হাড় সরে যাওয়া , ০৪.  কেটে যাওয়া / উন্মুক্ত ক্ষত, ০৫. কামড়,   ০৬.ছিলে/ থেঁতলে যাওয়া,  ০৭.পুড়ে যাওয়া , ০৮.মাথায় আঘাত, ০৯. শরীরের ভিতরের অঙ্গের ক্ষত ,৯৭. অন্যান্য </string>
     >
     <string name="condition_of_victims_after_injury">যখন ইনজুরি ঘটেছিল তখন ব্যক্তিটির অবস্থা কেমন ছিল?</string>
@@ -282,7 +309,7 @@
     <string name="Who_provided_the_treatment">আহত ব্যক্তিকে কে চিকিৎসা দিয়েছিল?</string>
     <string name="Where_receive_treatment">আহত ব্যক্তিটি কোথায় চিকিৎসা নিয়েছিল? </string>
     <string name="admitted_health_facility">ব্যক্তিটি হাসপাতালে/স্বাস্থ্যকেন্দ্রে ভর্তি হয়েছিল কি ?  </string>
-    <string name="type_admitted_health_facility">(উত্তর Ôহ্যাঁÕ হলে)  আহত ব্যক্তিকে যদি হাসপাতাল/স্বাস্থ্যকেন্দ্রে /ক্লিনিকে ভর্তি করা হয়ে থাকে তাহলে কোন ধরনের হাসপাতাল ?</string>
+    <string name="type_admitted_health_facility">(উত্তর হ্যাঁ হলে)  আহত ব্যক্তিকে যদি হাসপাতাল/স্বাস্থ্যকেন্দ্রে /ক্লিনিকে ভর্তি করা হয়ে থাকে তাহলে কোন ধরনের হাসপাতাল ?</string>
     <string name="how_admitted_health_facility">হাসপাতালে/চিকিৎসা প্রদানকারীর নিকট কিভাবে নিয়ে যাওয়াv হয়েছিল ?</string>
     <string name="time_take_health_facility">আঘাত পাওয়ার পর হাসপাতালে /সেবাদানকারীর নিকট পৌছাতে কত সময় লেগেছিল ? (ঘন্টায় লিখুন) যদিএক ঘস্টার কম হয় তবে 000</string>
     <string name="days_take_health_facility">ব্যক্তিটি হাসপাতালে কতদিন ভর্তি ছিল ?</string>
@@ -299,6 +326,8 @@
 
 
     <string-array name="survey_cause_of_injury">
+
+        <item>  নির্বাচন করুন</item>
         <item>1. আত্নহত্যা-</item>
         <item>2. সড়ক দুর্ঘটনা </item>
         <item>3. সহিংসতা</item>
@@ -316,6 +345,8 @@
         <item>99. জানা নেই</item>
     </string-array>
     <string-array name="survey_place_of_injury">
+
+        <item>  নির্বাচন করুন</item>
         <item>01. শোয়ার ঘর</item>
         <item>02. বসার ঘর</item>
         <item>03. রান্না ঘর</item>
@@ -339,6 +370,7 @@
         <item>99. জিানা নেই</item>
     </string-array>
     <string-array name="survey_intent_of_injury">
+        <item>  নির্বাচন করুন</item>
         <item>1. অনিচ্ছাকৃত</item>
         <item>2. ইচ্ছাকৃত নিজের ক্ষতি </item>
         <item>3. সহিংসতা </item>
@@ -347,12 +379,14 @@
     </string-array>
     <string-array name="survey_condition_of_victims_after_injury">
 
+        <item>  নির্বাচন করুন</item>
         <item>1. সজ্ঞান  </item>
         <item>2. সংঙ্গাহীন</item>
         <item>9. জানা নেই</item>
 
     </string-array>
     <string-array name="survey_mobility_condition_after_injury">
+        <item>  নির্বাচন করুন</item>
         <item>1. হাঁটতে পেরেছিল</item>
         <item>2. অন্যের সহযোগীতা্য় হাঁটতে পেরেছিল</item>
         <item>3. হাঁটতে পারছিল না</item>
@@ -369,6 +403,7 @@
 
 
     <string-array name="test72as">
+        <item>  নির্বাচন করুন</item>
         <item>1. মেজেতে</item>
         <item>2. খাট/চৌকির নিচে</item>
         <item>3. তোষক/ পাটির নিচে</item>
@@ -380,6 +415,7 @@
         <item>9. অন্যান্য (উল্লেখ করুন) </item>
     </string-array>
     <string-array name="survey_who_gave_first_aid">
+        <item>  নির্বাচন করুন</item>
         <item>A. মা</item>
         <item>B. বাবা</item>
         <item>C. স্বামী/স্ত্রী</item>
@@ -396,7 +432,7 @@
 
     </string-array>
     <string-array name="survey_Who_provided_the_treatment">
-
+        <item>  নির্বাচন করুন</item>
         <item>A. রেজিষ্টাড© ডাক্তার</item>
         <item>B. মেডিকেল এসিস্ট্যান্ট</item>
         <item>C. স্বাস্থ্য সহকারী /পরিবার কল্যান পরিদর্শিকা /পরিবার কল্যান সহকারী</item>
@@ -408,6 +444,7 @@
     </string-array>
     <string-array name="survey_Where_receive_treatment">
 
+        <item>  নির্বাচন করুন</item>
         <item>A. বিশেষায়িত হাসপাতাল মেডিকেল কলেজ হাসপাতাল, পঙ্গু হাসপাতাল,পি. জি.হাসপাতাল ইত্যাদি)</item>
         <item>B. জেলা হাসপাতাল</item>
         <item>C. উপজেলা স্বাস্থ্য কমপ্লেক্স</item>
@@ -421,6 +458,8 @@
 
     </string-array>
     <string-array name="survey_type_admitted_health_facility">
+
+        <item>  নির্বাচন করুন</item>
         <item>1. বিশেষায়িত হাসপাতাল মেডিকেল কলেজ হাসপাতাল, পঙ্গু হাসপাতাল,পি. জি.হাসপাতাল ইত্যাদি) </item>
         <item>2. জেলা হাসপাতাল </item>
         <item>3. উপজেলা স্বাস্থ্য কমপ্লেক্স </item>
@@ -430,6 +469,7 @@
     </string-array>
     <string-array name="survey_how_admitted_health_facility">
 
+        <item>  নির্বাচন করুন</item>
         <item>A. এ্যাম্বুলেন্স </item>
         <item>B. অন্য কোন মোটর চালিত গাড়ীতে (বাস, জীপ, কার এবং তিন চাকা বিশিষ্টগাড়ি) </item>
         <item>C. মোটরবিহীন  যানবাহন (রিক্স, রিক্সা ভ্যান, ঠেলা গাড়ি)</item>
@@ -441,6 +481,7 @@
     </string-array>
     <string-array name="survey_type_of_anesthesia_given">
 
+        <item>  নির্বাচন করুন</item>
         <item>1. স্থানীয়</item>
         <item>2. সম্পূন© </item>
         <item>3. দেয়া হয় নি</item>
@@ -448,6 +489,8 @@
 
     </string-array>
     <string-array name="survey_outcome_of_treatment">
+
+        <item>  নির্বাচন করুন</item>
         <item>1. সর্ম্পূন সুস্থ্য হয়ে গিয়েছিল</item>
         <item>2. উন্নতি হয়েছিল  </item>
         <item>3. কোন উন্নতি হয়নি </item>
@@ -455,6 +498,9 @@
 
     </string-array>
     <string-array name="survey_type_of_disability">
+
+
+        <item>  নির্বাচন করুন</item>
         <item>A. দৃষ্টি শক্তি নষ্ট হয়ে গেছে</item>
         <item>B. শ্রবন শক্তি নষ্ট হয়ে গেছে </item>
         <item>C. হাঁটার শক্তি নষ্ট হয়ে গেছে</item>
@@ -467,6 +513,7 @@
     </string-array>
     <string-array name="survey_significant_source_of_income_for_family">
 
+        <item>  নির্বাচন করুন</item>
         <item>1. প্রধান </item>
         <item>2. অন্যতম তবে প্রধান নয় </item>
         <item>3. গৌণ</item>
@@ -476,12 +523,14 @@
     </string-array>
     <string-array name="survey_family_being_coping_loss_income">
 
+
+        <item>  নির্বাচন করুন</item>
         <item>A. আত্নীয়/বন্ধু/প্রতিবেশী কাছ থেকে সুদমুক্ত ধার</item>
         <item>B. কোন ব্যক্তি বা সংস্থা থেকে সুদ সহ ধার</item>
         <item>C. স্থাবর-অস্থাবর সম্পদ বিক্রি </item>
         <item>D. খাবারের পরিমান  কমিয়ে </item>
         <item>E. অন্যান্য¨ প্রয়োজনীয় খরচ কমিয়ে (যেমন, কাপড়, আশ্রয়))</item>
-        <item>G. অন্যান্য (উল্লেখ করুন) </item>
+        <item>G. অন্যান্য </item>
         <item>X. জানা নেই</item>
 
     </string-array>
@@ -500,6 +549,8 @@
     <string name="im_family_coping_loss">পরিবারটি এই উপাজ©নের ক্ষতি কিভাবে পুষিয়ে নিয়েছিল ?</string>
 
     <string-array name="survey_where_person_die">
+
+        <item>  নির্বাচন করুন</item>
         <item>1. হাসপাতালে </item>
         <item>2. নিজবাড়ীতে</item>
         <item>3. রাস্তায়</item>
@@ -508,6 +559,9 @@
         <item>9. অন্যান্য (উল্লেখ করুন)</item>
     </string-array>
     <string-array name="survey_im_source_of_income_family">
+
+        <item>  নির্বাচন করুন</item>
+
         <item>1. প্রধান</item>
         <item>2. অন্যতম কিন্ত প্রধান নয়</item>
         <item>3. গৌন  </item>
@@ -516,6 +570,7 @@
 
     </string-array>
     <string-array name="survey_im_cause_of_injury">
+
 
         <item>01. আত্নহত্যা-এম 1</item>
         <item>02. সড়ক দুর্ঘটনা -এম 2 </item>
@@ -544,6 +599,9 @@
     <string name="person_id">Person Id:</string>
 
     <string-array name="survey_suicide_where">
+
+        <item>  নির্বাচন করুন</item>
+
         <item>1. নিজবাড়ী</item>
         <item>2. শ্বশুর বাড়ী </item>
         <item>3. অন্যের বাড়ী </item>
@@ -555,6 +613,7 @@
 
     </string-array>
     <string-array name="survey_suicide_how">
+        <item>  নির্বাচন করুন</item>
         <item>1. বিষপান</item>
         <item>2. ফাঁসি</item>
         <item>3. পানিতে ডুবা </item>
@@ -1578,6 +1637,41 @@
     <string name="moholla">মহল্লা/গ্রাম</string>
 
     <string name="enter_person_id">Enter Person ID</string>
+
+    String form[] = {
+    // "DATABASE",
+
+
+
+
+
+
+
+
+
+    <string-array name="survey_activity_title">
+        <item> ফেস ফর্ম</item>
+        <item>খানা সদস্যদের ইঞ্জুরী তথ্য</item>
+        <item>ইনজুরি জনিত অসুস্থতার ফর্ম</item>
+        <item> মৃত্যু নিশ্চিত করণ ফর্ম</item>
+        <item>ইনজুরি জনিত মৃত্যু ফর্ম</item>
+        <item>  আত্মহত্যা</item>
+        <item> সড়ক দুর্ঘটনা</item>
+        <item>সহিংসতার তথ্য</item>
+        <item> পড়ে যাওয়া</item>
+        <item>ধারালো বস্তুর আঘাত/ কেটে যাওয়া</item>
+        <item>পুড়ে যাওয়া</item>
+        <item>পানিতে দুবে যাওয়া</item>
+        <item>বিদ্যুৎ স্পৃষ্টতা</item>
+        <item>প্রানি/ কিট পতঙ্গের দ্বারা জখম</item>
+        <item>ভোতা বস্তু দ্বারা আঘাত</item>
+        <item>শ্বাস রোধ</item>
+        <item>বাড়ির তথ্য</item>
+        <item>দৈনন্দিন জীবনের মানদণ্ড</item>
+
+
+
+    </string-array>
     <string-array name="survey_sample">
         <item></item>
         <item></item>
