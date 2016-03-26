@@ -61,49 +61,6 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 //    spinner_sex,
 
 
-    boolean checkSpinner() {
-
-
-        if (spinner_how_injured.getSelectedItemPosition() != 0 && spinner_place_of_injury.getSelectedItemPosition() != 0
-                && spinner_injury_intent.getSelectedItemPosition() != 0
-                && spinner_condition_of_victims_after_injury.getSelectedItemPosition() != 0 &&
-                spinner_mobility_condition_after_injury.getSelectedItemPosition() != 0 &&
-
-                spinner_who_gave_first_aid.getSelectedItemPosition() != 0 &&
-
-
-                spinner_outcome_of_treatment.getSelectedItemPosition() != 0 &&
-
-                spinner_Who_provided_the_treatment.getSelectedItemPosition() != 0
-
-                && spinner_admitted_health_facility.getSelectedItemPosition() != 0 &&
-
-
-                spinner_Where_receive_treatment.getSelectedItemPosition() != 0 &&
-
-
-                spinner_type_of_disability.getSelectedItemPosition() != 0 &&
-
-                spinner_significant_source_of_income_for_family.getSelectedItemPosition() != 0 &&
-
-                spinner_family_being_coping_loss_income.getSelectedItemPosition() != 0 &&
-
-                !edittext_date_of_injury.getText().toString().isEmpty()
-
-                && !edittext_time_of_injury.getText().toString().isEmpty()) {
-
-            //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
-
-            return true;
-
-
-        } else {
-
-            Toast.makeText(getApplicationContext(), getString(R.string.suggestion), Toast.LENGTH_LONG).show();
-            return false;
-        }
-
-    }
 
     ProgressDialog progressDialog;
     Button button_cancel, button_next;
@@ -221,6 +178,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
         edittext_days_take_health_facility = (EditText) findViewById(R.id.edittext_days_take_health_facility);
         edittext_time_take_health_facility = (EditText) findViewById(R.id.edittext_time_take_health_facility);
         edittext_injured_parts = (EditText) findViewById(R.id.edittext_injured_parts);
+        edittext_injured_type =(EditText)findViewById(R.id.edittext_injured_type) ;
         spinner_person_name = (Spinner) findViewById(R.id.spinner_person_name);
 
         spinner_how_injured = (Spinner) findViewById(R.id.spinner_how_injured);
@@ -342,6 +300,52 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
         button_next.setOnClickListener(this);
     }
 
+    boolean checkSpinner() {
+
+
+        if (spinner_how_injured.getSelectedItemPosition() != 0 &&
+                spinner_place_of_injury.getSelectedItemPosition() != 0
+                && spinner_injury_intent.getSelectedItemPosition() != 0
+                && spinner_condition_of_victims_after_injury.getSelectedItemPosition() != 0 &&
+                spinner_mobility_condition_after_injury.getSelectedItemPosition() != 0 &&
+                spinner_outcome_of_treatment.getSelectedItemPosition() != 0 &&
+                spinner_Who_provided_the_treatment.getSelectedItemPosition() != 0
+                &&
+                spinner_Where_receive_treatment.getSelectedItemPosition() != 0 &&
+
+                spinner_significant_source_of_income_for_family.getSelectedItemPosition() != 0 &&
+                spinner_family_being_coping_loss_income.getSelectedItemPosition() != 0 &&
+                edittext_date_of_injury.getText().length() > 0
+                && edittext_time_of_injury.getText().length() >0) {
+
+            //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
+
+            return true;
+
+
+        } else {
+
+            Toast.makeText(getApplicationContext(), getString(R.string.suggestion), Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+    }
+
+    void setSpinnerDefaultState(){
+
+        spinner_how_injured.setSelection(0);
+        spinner_injury_intent.setSelection(0);
+        spinner_condition_of_victims_after_injury.setSelection(0);
+        spinner_mobility_condition_after_injury.setSelection(0);
+        spinner_who_gave_first_aid.setSelection(0);
+        spinner_outcome_of_treatment.setSelection(0);
+        spinner_admitted_health_facility.setSelection(0);
+        spinner_Where_receive_treatment.setSelection(0);
+        spinner_type_of_disability.setSelection(0);
+        spinner_significant_source_of_income_for_family.setSelection(0);
+        spinner_family_being_coping_loss_income.setSelection(0);
+
+    }
     @Override
     protected void onResume() {
         super.onResume();
@@ -606,9 +610,9 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                 "\",\"e31\":\"" +
                 ApplicationData.spilitStringFirst(spinner_family_being_coping_loss_income.getSelectedItem().toString()) +
                 "\",\"e32\":\"" +
-                "" +
+                edittext_injured_parts.getText().toString() +
                 "\",\"e33\":\"" +
-                "" +
+                edittext_injured_type.getText().toString()+
                 "\"}";
         //return "{\"g03\":\"10\"}";
         return rep;
@@ -712,6 +716,11 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
     void cleartext() {
 
+        setSpinnerDefaultState();
+
+        edittext_date_of_injury.getText().clear();
+        edittext_time_of_injury.getText().clear();
+
        /* editText_members_name.getText().clear();
         edittext_date_of_birth.getText().clear();
         edittext_current_age.getText().clear();
@@ -729,23 +738,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
             if (InternetConnection.checkNetworkConnection(this)) {
 
-                /*if (!edittext_date_of_injury.getText().toString().isEmpty()
-                        && !edittext_time_of_injury.getText().toString().isEmpty()) {
 
-                    int pos = spinner_person_name.getSelectedItemPosition();
-
-                    //String id = ApplicationData.alive_person_List.get(pos).getPerson_id();
-                    //String type_of_injury = ApplicationData.alive_person_List.get(pos).getInjury_type();
-                    //int val = Integer.parseInt(ApplicationData.spilitStringFirst(type_of_injury));
-
-                    saveDataToOnline(pos);
-
-                } else {
-
-                    showTextLong(" Fill the form correctly");
-                }*/
-
-                //putRequestWithHeaderAndBody(ApplicationData.URL_SUICIDE + person_id);
                 person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
                 String url = ApplicationData.URL_INJURY_MORBIDITY + person_id;
                 //Put
@@ -825,6 +818,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
         Toast.makeText(activity, "You have to fill the form carefully", Toast.LENGTH_LONG).show();
         super.onBackPressed();
+
     }
 }
 

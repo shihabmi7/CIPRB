@@ -15,15 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-
-import org.json.JSONObject;
-
 import java.io.IOException;
-
-import cz.msebera.android.httpclient.Header;
 
 public class NearDrowningActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -43,7 +35,7 @@ public class NearDrowningActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_near_drowning);
 
-        setTitle( getResources().getStringArray(R.array.survey_activity_title)[11]);
+        setTitle(getResources().getStringArray(R.array.survey_activity_title)[13]);
 
         try {
             textView_person_id = (TextView) findViewById(R.id.textView_person_id);
@@ -85,6 +77,36 @@ public class NearDrowningActivity extends AppCompatActivity implements View.OnCl
         progressDialog.setCancelable(true);
     }
 
+    boolean checkSpinner() {
+
+
+        if (sp_Drowning1.getSelectedItemPosition() != 0
+                && sp_Drowning2.getSelectedItemPosition() != 0
+                && sp_Drowning4.getSelectedItemPosition() != 0
+                && sp_Drowning5.getSelectedItemPosition() != 0 &&
+                sp_Drowning6.getSelectedItemPosition() != 0 &&
+                sp_Drowning7.getSelectedItemPosition() != 0 &&
+                sp_Drowning8.getSelectedItemPosition() != 0
+                && sp_Drowning9.getSelectedItemPosition() != 0
+                && sp_Drowning11.getSelectedItemPosition() != 0
+                && sp_Drowning12.getSelectedItemPosition() != 0
+                && sp_Drowning13.getSelectedItemPosition() != 0
+                && sp_Drowning14.getSelectedItemPosition() != 0
+                && sp_Drowning15.getSelectedItemPosition() != 0) {
+
+            //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
+
+            return true;
+
+
+        } else {
+
+            Toast.makeText(getApplicationContext(), getString(R.string.suggestion), Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+    }
+
 
     void cleartext() {
 
@@ -96,38 +118,6 @@ public class NearDrowningActivity extends AppCompatActivity implements View.OnCl
         if (edittext_how_many_injury_last_six != null)
             edittext_how_many_injury_last_six.getText().clear();*/
 
-    }
-
-    void saveDataToOnline(Person person) {
-
-        progressDialog.show();
-        // post with no parameters
-        AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
-
-        params.put("house_member_id", person.getPerson_id());
-        params.put("i01", person.getMembers_name());
-        params.put("i02", person.getPerson_id());
-        params.put("i03", person.getMembers_name());
-        params.put("i04", person.getMembers_name());
-
-
-        client.post(ApplicationData.URL_HOUSE_HOLD_MEMBERS, params,
-                new JsonHttpResponseHandler() {
-                    // Your implementation here
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-
-                        cleartext();
-                        progressDialog.dismiss();
-
-                        showTextLong("finish this input");
-                        //ApplicationData.memberListHashMap.clear();
-                        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
-
-                    }
-                }
-        );
     }
 
 
@@ -235,19 +225,20 @@ public class NearDrowningActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View v) {
 
-        if (v == button_next) {
+        if (v == button_next && checkSpinner()) {
 
-            if (person_id.length() > 0) {
+            if (InternetConnection.checkNetworkConnection(activity)) {
 
                 //putRequestWithHeaderAndBody(ApplicationData.URL_SUICIDE + person_id);
                 String url = ApplicationData.URL_NEAR_DROWN + person_id;
                 //Put
                 Log.i("String are ", createJsonBody());
                 new PutAsync().execute(url, createJsonBody());
-                //Post
-                //new PostAsync().execute("http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity", PostcreateJsonBody());
+
 
             } else {
+
+                showAlert(activity);
             }
 
         } else if (v == button_cancel) {

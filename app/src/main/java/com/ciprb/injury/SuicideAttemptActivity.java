@@ -52,8 +52,8 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_suicide_attempt);
 
         try {
-            setTitle( getResources().getStringArray(R.array.survey_activity_title)[5]);
 
+            setTitle(getResources().getStringArray(R.array.survey_activity_title)[7]);
 
             textView_person_id = (TextView) findViewById(R.id.textView_person_id);
             person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
@@ -67,7 +67,7 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
 
         }
 
-        Toast.makeText(activity, "" + person_id, Toast.LENGTH_LONG).show();
+        // Toast.makeText(activity, "" + person_id, Toast.LENGTH_LONG).show();
      /*   Person aPerson = (Person) getIntent().getSerializableExtra("aPerson");
         Toast.makeText(this, "" + aPerson.getPerson_id() + aPerson.getMembers_name(), Toast.LENGTH_LONG).show();*/
 
@@ -88,6 +88,22 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
 
     }
 
+    boolean checkSpinner() {
+
+        if (spinner_survey_suicide_where.getSelectedItemPosition() != 0
+                && spinner_survey_suicide_how.getSelectedItemPosition() != 0
+                && spinner_survey_suicide_type.getSelectedItemPosition() != 0
+                ) {
+
+            //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
+
+            return true;
+
+        } else {
+            Toast.makeText(getApplicationContext(), getString(R.string.suggestion), Toast.LENGTH_LONG).show();
+            return false;
+        }
+    }
 
     void cleartext() {
 
@@ -428,12 +444,12 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
     public void onClick(View v) {
 
 
-        if (v == button_next) {
+        if (v == button_next && checkSpinner()) {
             // finish();
             //saveDataToOnline();
             try {
 
-                if (person_id.length() > 0) {
+                if (InternetConnection.checkNetworkConnection(activity)) {
 
                     //putRequestWithHeaderAndBody(ApplicationData.URL_SUICIDE + person_id);
                     String url = ApplicationData.URL_SUICIDE + person_id;
@@ -444,10 +460,13 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
                     //new PostAsync().execute("http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity", PostcreateJsonBody());
 
                 } else {
+
+                    showAlert(activity);
                 }
 
             } catch (Exception e) {
-//Log.i("Exception ",e.getMessage());
+
+
 
             }
 
@@ -458,6 +477,7 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
 //
         } else if (v == button_cancel) {
 
+            finish();
         }
 
     }

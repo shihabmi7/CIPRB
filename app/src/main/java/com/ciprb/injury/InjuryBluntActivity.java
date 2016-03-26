@@ -33,7 +33,7 @@ public class InjuryBluntActivity extends AppCompatActivity implements View.OnCli
 
     private Button button_cancel, button_next;
     private TextView blunt1, blunt2, blunt3, textView2, textView4, textView6;
-    private Spinner spinner_q01, spinner_q02;
+    private Spinner sp_blunt1, sp_blunt2;
 
 
     ProgressDialog progressDialog;
@@ -45,6 +45,9 @@ public class InjuryBluntActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_injury_blunt);
+
+        setTitle( getResources().getStringArray(R.array.survey_activity_title)[18]);
+
         try {
             textView_person_id = (TextView) findViewById(R.id.textView_person_id);
             person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
@@ -67,11 +70,32 @@ public class InjuryBluntActivity extends AppCompatActivity implements View.OnCli
         blunt2 = (TextView) findViewById(R.id.blunt2);
         blunt3 = (TextView) findViewById(R.id.blunt3);
 
+        sp_blunt1 = (Spinner) findViewById(R.id.sp_blunt1);
+        sp_blunt2 = (Spinner) findViewById(R.id.sp_blunt2);
+
         button_cancel = (Button) findViewById(R.id.button_cancel);
         button_next = (Button) findViewById(R.id.button_next);
 
         button_cancel.setOnClickListener(this);
         button_next.setOnClickListener(this);
+    }
+
+    boolean checkSpinner() {
+
+
+        if (sp_blunt1.getSelectedItemPosition() != 0 && sp_blunt2.getSelectedItemPosition() != 0) {
+
+            //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
+
+            return true;
+
+
+        } else {
+
+            Toast.makeText(getApplicationContext(), getString(R.string.suggestion), Toast.LENGTH_LONG).show();
+            return false;
+        }
+
     }
 
     void cleartext() {
@@ -170,7 +194,8 @@ public class InjuryBluntActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
 
 
-        if (v == button_next) {
+        if (v == button_next && checkSpinner()) {
+
             String url = ApplicationData.URL_BLUNT_INJURY + person_id;
             new PutAsync().execute(url, createJsonBody());
 
@@ -207,9 +232,9 @@ public class InjuryBluntActivity extends AppCompatActivity implements View.OnCli
     String createJsonBody() {
         String jsonData = "{" +
                 "\"q01\":\"" +
-                ApplicationData.spilitStringFirst(spinner_q01.getSelectedItem().toString()) +
+                ApplicationData.spilitStringFirst(sp_blunt1.getSelectedItem().toString()) +
                 "\",\"q02\":\"" +
-                ApplicationData.spilitStringFirst(spinner_q02.getSelectedItem().toString()) +
+                ApplicationData.spilitStringFirst(sp_blunt2.getSelectedItem().toString()) +
                 "\"}";
         return jsonData;
     }

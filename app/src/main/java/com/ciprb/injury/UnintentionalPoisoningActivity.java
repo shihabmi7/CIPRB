@@ -38,7 +38,7 @@ public class UnintentionalPoisoningActivity extends AppCompatActivity implements
     ProgressDialog progressDialog;
     Activity activity = this;
     //String person_id = "101323210";
-    String person_id = "101323212";
+    String person_id = "";
     TextView textView_person_id;
 
     @Override
@@ -47,6 +47,9 @@ public class UnintentionalPoisoningActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_unintentional_poisoning);
 
         try {
+
+            setTitle( getResources().getStringArray(R.array.survey_activity_title)[14]);
+
             textView_person_id = (TextView) findViewById(R.id.textView_person_id);
             person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
             textView_person_id.setText("Person Id:" + person_id);
@@ -92,6 +95,33 @@ public class UnintentionalPoisoningActivity extends AppCompatActivity implements
         button_cancel.setOnClickListener(this);
         button_next.setOnClickListener(this);
     }
+
+
+    boolean checkSpinner() {
+
+        if (spinner_n01.getSelectedItemPosition() != 0 &&
+                spinner_n02.getSelectedItemPosition() != 0
+                && spinner_n03.getSelectedItemPosition() != 0
+                && spinner_n04.getSelectedItemPosition() != 0
+                && spinner_n05.getSelectedItemPosition() != 0
+                && spinner_n06.getSelectedItemPosition() != 0
+                && spinner_n07.getSelectedItemPosition() != 0
+                && spinner_n08.getSelectedItemPosition() != 0
+                && spinner_n09.getSelectedItemPosition() != 0
+
+                ) {
+
+            //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
+
+            return true;
+
+        } else {
+            Toast.makeText(getApplicationContext(), getString(R.string.suggestion), Toast.LENGTH_LONG).show();
+            return false;
+        }
+    }
+
+
 
     void cleartext() {
 
@@ -188,7 +218,7 @@ public class UnintentionalPoisoningActivity extends AppCompatActivity implements
     @Override
     public void onClick(View v) {
 
-        if (v == button_next) {
+        if (v == button_next && checkSpinner()) {
             String url = ApplicationData.URL_UNINTENTIONAL_INJURY + person_id;
             new PutAsync().execute(url, createJsonBody());
         } else if (v == button_cancel) {

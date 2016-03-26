@@ -44,9 +44,9 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house_characteristics);
 
-        setTitle( getResources().getStringArray(R.array.survey_activity_title)[18]);
-
         try {
+
+            setTitle( getResources().getStringArray(R.array.survey_activity_title)[5]);
             initUI();
 
             prefsValues=new PrefsValues(mContext);
@@ -64,6 +64,8 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
             finish();
 
             }
+
+
             //person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
 
         } catch (NullPointerException e) {

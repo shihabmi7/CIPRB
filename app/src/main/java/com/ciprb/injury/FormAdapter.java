@@ -61,7 +61,7 @@ public class FormAdapter extends BaseAdapter {
 
             Form resObj = ApplicationData.formList
                     .get(position);
-            holder.res_name.setText(resObj.getTitle());
+            holder.res_name.setText(resObj.getTitle()+"");
 
             return convertView;
         }

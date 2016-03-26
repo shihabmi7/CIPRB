@@ -15,20 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-
-import org.json.JSONObject;
-
 import java.io.IOException;
-
-import cz.msebera.android.httpclient.Header;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class SuffocationActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -51,7 +38,8 @@ public class SuffocationActivity extends AppCompatActivity implements View.OnCli
 
         try {
 
-            setTitle( getResources().getStringArray(R.array.survey_activity_title)[17]);
+
+            setTitle( getResources().getStringArray(R.array.survey_activity_title)[19]);
 
             textView_person_id = (TextView) findViewById(R.id.textView_person_id);
             person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
@@ -87,6 +75,22 @@ public class SuffocationActivity extends AppCompatActivity implements View.OnCli
     }
 
 
+    boolean checkSpinner() {
+
+        if (spinner_r01.getSelectedItemPosition() != 0 && edt_r02.getText().length() > 0
+
+                ) {
+
+            //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
+
+            return true;
+
+        } else {
+            Toast.makeText(getApplicationContext(), getString(R.string.suggestion), Toast.LENGTH_LONG).show();
+            return false;
+        }
+    }
+
     void cleartext() {
 
       /*  editText_members_name.getText().clear();
@@ -97,38 +101,6 @@ public class SuffocationActivity extends AppCompatActivity implements View.OnCli
         if (edittext_how_many_injury_last_six != null)
             edittext_how_many_injury_last_six.getText().clear();*/
 
-    }
-
-    void saveDataToOnline(Person person) {
-
-        progressDialog.show();
-        // post with no parameters
-        AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
-
-        params.put("house_member_id", person.getPerson_id());
-        params.put("i01", person.getMembers_name());
-        params.put("i02", person.getPerson_id());
-        params.put("i03", person.getMembers_name());
-        params.put("i04", person.getMembers_name());
-
-
-        client.post(ApplicationData.URL_HOUSE_HOLD_MEMBERS, params,
-                new JsonHttpResponseHandler() {
-                    // Your implementation here
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-
-                        cleartext();
-                        progressDialog.dismiss();
-
-                        showTextLong("finish this input");
-                        //ApplicationData.memberListHashMap.clear();
-                        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
-
-                    }
-                }
-        );
     }
 
 
@@ -182,41 +154,19 @@ public class SuffocationActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
 
-
-        if (v == button_next) {
+        if (v == button_next && checkSpinner()) {
 
             String url = ApplicationData.URL_SUFFOGATION + person_id;
             new PutAsync().execute(url, createJsonBody());
 
         } else if (v == button_cancel) {
 
+            finish();
 
         }
 
     }
 
-    public String putRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
-
-
-        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-
-
-        OkHttpClient client = new OkHttpClient();
-        RequestBody body = RequestBody.create(JSON, jsonBody);
-        Request request = new Request.Builder()
-                .url(url)
-                .put(body)
-                .build();
-        Response response = client.newCall(request).execute();
-        Response httpResponse = client.newCall(request).execute();
-        httpResponse.code();
-
-        Log.i("Response data are ", response.body().string());
-        Log.i("Response code are ", "" + response.code());
-        //makeCall(client, request);
-
-        return response.body().string();
-    }
 
     String createJsonBody() {
         String jsonData = "{" +

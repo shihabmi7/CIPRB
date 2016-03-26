@@ -28,7 +28,7 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
     private TextView Quality1, Quality2, Quality3, Quality4, Quality5;
     private Spinner spinner_s1, spinner_s2, spinner_s3, spinner_s4, spinner_s5;
 
-    EditText edt_s6,editText_person_id;
+    EditText edt_s6, editText_person_id;
 
     ProgressDialog progressDialog;
     Activity activity = this;
@@ -43,13 +43,12 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quality_of_life);
 
-        setTitle( getResources().getStringArray(R.array.survey_activity_title)[19]);
 
         try {
-
+            setTitle(getResources().getStringArray(R.array.survey_activity_title)[6]);
             initUI();
 
-           // person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
+            // person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
             //textView_person_id.setText("Person Id:" + person_id);
 
         } catch (NullPointerException e) {
@@ -66,7 +65,7 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
 
     private void initUI() {
         textView_person_id = (TextView) findViewById(R.id.textView_person_id);
-        editText_person_id =(EditText)findViewById(R.id.editText_person_id);
+        editText_person_id = (EditText) findViewById(R.id.editText_person_id);
         spinner_s1 = (Spinner) findViewById(R.id.spinner_s1);
         spinner_s2 = (Spinner) findViewById(R.id.spinner_s2);
         spinner_s3 = (Spinner) findViewById(R.id.spinner_s3);
@@ -77,6 +76,24 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
         button_next = (Button) findViewById(R.id.button_next);
         button_cancel.setOnClickListener(this);
         button_next.setOnClickListener(this);
+    }
+
+    boolean checkSpinner() {
+
+        if (spinner_s1.getSelectedItemPosition() != 0
+                && spinner_s2.getSelectedItemPosition() != 0
+                && spinner_s3.getSelectedItemPosition() != 0
+                && spinner_s4.getSelectedItemPosition() != 0 && spinner_s5.getSelectedItemPosition() != 0
+                ) {
+
+            //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
+
+            return true;
+
+        } else {
+            Toast.makeText(getApplicationContext(), getString(R.string.suggestion), Toast.LENGTH_LONG).show();
+            return false;
+        }
     }
 
     void cleartext() {
@@ -175,26 +192,25 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
     public void onClick(View v) {
 
 
-        if (v == button_next) {
+        if (v == button_next && checkSpinner()) {
 
             if (InternetConnection.checkNetworkConnection(activity)) {
 
                 person_id = editText_person_id.getText().toString();
 
-                if (person_id.length()==11){
+                if (person_id.length() == 11) {
 
                     String url = ApplicationData.URL_QUALITY_OF_LIFE + person_id;
                     new PutAsync().execute(url, createJsonBody());
 
-                }else
-                    Toast.makeText(activity," Set Eleven (11) digit unique code",Toast.LENGTH_LONG).show();
+                } else
+                    Toast.makeText(activity, " Set Eleven (11) digit unique code", Toast.LENGTH_LONG).show();
 
+            } else
+
+            {
+                showAlert(this);
             }
-
-         else
-
-        { showAlert(this);}
-
 
 
         } else if (v == button_cancel) {

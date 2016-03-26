@@ -42,7 +42,7 @@ public class FallInjuryActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fall_injury);
 
-        setTitle( getResources().getStringArray(R.array.survey_activity_title)[8]);
+        setTitle( getResources().getStringArray(R.array.survey_activity_title)[10]);
 
         try {
 
@@ -76,6 +76,27 @@ public class FallInjuryActivity extends AppCompatActivity implements View.OnClic
         progressDialog.setCancelable(true);
     }
 
+    boolean checkSpinner(){
+
+
+        if (sp_fall1.getSelectedItemPosition() != 0 && sp_fall2.getSelectedItemPosition() != 0
+                && sp_fall3.getSelectedItemPosition() != 0
+                && sp_fall4.getSelectedItemPosition() != 0 &&
+                sp_fall5.getSelectedItemPosition() != 0 &&
+                sp_fall06.getSelectedItemPosition() != 0){
+
+            //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
+
+            return  true;
+
+
+        }else {
+
+            Toast.makeText(getApplicationContext(),getString(R.string.suggestion),Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+    }
 
     void cleartext() {
 
@@ -235,7 +256,7 @@ public class FallInjuryActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
 
 
-        if (v == button_next) {
+        if (v == button_next && checkSpinner()) {
 
             if (person_id.length() > 0) {
 
@@ -244,14 +265,13 @@ public class FallInjuryActivity extends AppCompatActivity implements View.OnClic
                 //Put
                 Log.i("String are ", createJsonBody());
                 new PutAsync().execute(url, createJsonBody());
-                //Post
-                //new PostAsync().execute("http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity", PostcreateJsonBody());
 
             } else {
             }
 
         } else if (v == button_cancel) {
 
+            finish();
 
         }
 

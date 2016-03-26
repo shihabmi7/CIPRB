@@ -46,7 +46,7 @@ public class InsectInjuryActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insect_injury);
 
-        setTitle( getResources().getStringArray(R.array.survey_activity_title)[15]);
+        setTitle(getResources().getStringArray(R.array.survey_activity_title)[17]);
 
         try {
 
@@ -80,6 +80,26 @@ public class InsectInjuryActivity extends AppCompatActivity implements View.OnCl
 
         button_cancel.setOnClickListener(this);
         button_next.setOnClickListener(this);
+    }
+
+    boolean checkSpinner() {
+
+
+        if (spinner_t01.getSelectedItemPosition() != 0 && spinner_t02.getSelectedItemPosition() != 0
+                && spinner_t03.getSelectedItemPosition() != 0
+                ) {
+
+            //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
+
+            return true;
+
+
+        } else {
+
+            Toast.makeText(getApplicationContext(), getString(R.string.suggestion), Toast.LENGTH_LONG).show();
+            return false;
+        }
+
     }
 
     void cleartext() {
@@ -178,9 +198,17 @@ public class InsectInjuryActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View v) {
 
 
-        if (v == button_next) {
-            String url = ApplicationData.URL_INSECT_INJURY + person_id;
-            new PutAsync().execute(url, createJsonBody());
+        if (v == button_next && checkSpinner()) {
+
+            if (InternetConnection.checkNetworkConnection(activity)) {
+                String url = ApplicationData.URL_INSECT_INJURY + person_id;
+                new PutAsync().execute(url, createJsonBody());
+            } else {
+
+                showAlert(activity);
+
+            }
+
 
         } else if (v == button_cancel) {
 

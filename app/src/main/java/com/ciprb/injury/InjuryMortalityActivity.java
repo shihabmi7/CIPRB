@@ -354,6 +354,20 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
         }
 
     }
+
+    void setSpinnerDefaultState(){
+
+        spinner_how_injured.setSelection(0);
+        spinner_injury_intent.setSelection(0);
+        spinner_condition_of_victims_after_injury.setSelection(0);
+        spinner_mobility_condition_after_injury.setSelection(0);
+        spinner_who_gave_first_aid.setSelection(0);
+        spinner_admitted_health_facility.setSelection(0);
+        spinner_Where_receive_treatment.setSelection(0);
+
+
+    }
+
     private void updateDeathDateLabel() {
 
         String myFormat = "dd/MM/yyyy"; //In which you need put here
@@ -481,6 +495,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
     void cleartext() {
 
+        setSpinnerDefaultState();
        /* editText_members_name.getText().clear();
         edittext_date_of_birth.getText().clear();
         edittext_current_age.getText().clear();
@@ -495,12 +510,9 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
     public void onClick(View v) {
 
 
-        if (v == button_next) {
+        if (v == button_next && checkSpinner()) {
 
             if (InternetConnection.checkNetworkConnection(activity)) {
-
-                 /*   if (!edittext_death_date_of_person.getText().toString().isEmpty()
-                            && !edittext_time_of_injury.getText().toString().isEmpty()) {*/
 
 
                 person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
@@ -511,11 +523,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
                 new PutAsync().execute(url, createJsonBody());
 
-                   /* } else {
 
-                        Toast.makeText(activity, "Fill the form correctly", Toast.LENGTH_LONG).show();
-                    }
-*/
 
             } else
 

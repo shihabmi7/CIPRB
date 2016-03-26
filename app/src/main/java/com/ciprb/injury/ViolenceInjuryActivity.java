@@ -46,6 +46,9 @@ public class ViolenceInjuryActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voilence_injury);
         try {
+
+            setTitle( getResources().getStringArray(R.array.survey_activity_title)[9]);
+
             textView_person_id = (TextView) findViewById(R.id.textView_person_id);
             person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
             textView_person_id.setText("Person Id:" + person_id);
@@ -72,11 +75,27 @@ public class ViolenceInjuryActivity extends AppCompatActivity implements View.On
         button_cancel = (Button) findViewById(R.id.button_cancel);
 
 
-        button_cancel = (Button) findViewById(R.id.button_cancel);
-        button_next = (Button) findViewById(R.id.button_next);
-
         button_cancel.setOnClickListener(this);
         button_next.setOnClickListener(this);
+    }
+    boolean checkSpinner() {
+
+        if (spinner_i01.getSelectedItemPosition() != 0 &&
+                spinner_i02.getSelectedItemPosition() != 0
+                && spinner_i03.getSelectedItemPosition() != 0
+                && spinner_i04.getSelectedItemPosition() != 0
+
+
+                ) {
+
+            //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
+
+            return true;
+
+        } else {
+            Toast.makeText(getApplicationContext(), getString(R.string.suggestion), Toast.LENGTH_LONG).show();
+            return false;
+        }
     }
 
     void cleartext() {

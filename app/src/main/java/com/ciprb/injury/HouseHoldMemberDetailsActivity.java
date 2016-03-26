@@ -17,6 +17,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,6 +67,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
     private Person aPerson;
 
     CiprbDatabase ciprbDatabase;
+    ScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +96,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
             count = prefsValues.getSerial();
 
             formatter = new DecimalFormat("00");
+            scrollView =(ScrollView) findViewById(R.id.scrollView) ;
             house_hold_id = (TextView) findViewById(R.id.house_hold_id);
             isResonder = (CheckBox) findViewById(R.id.chkb_responder);
 
@@ -205,7 +208,8 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
     boolean checkSpinner(){
 
 
-        if (spinner_sex.getSelectedItemPosition() != 0 && spinner_marital_status.getSelectedItemPosition() != 0
+        if (spinner_sex.getSelectedItemPosition() != 0
+                && spinner_marital_status.getSelectedItemPosition() != 0
                 && spinner_occupasion.getSelectedItemPosition() != 0
                 && spinner_smoking.getSelectedItemPosition() != 0 &&
                 spinner_buttle_nut.getSelectedItemPosition() != 0 &&
@@ -221,6 +225,19 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
             Toast.makeText(getApplicationContext(),getString(R.string.suggestion),Toast.LENGTH_LONG).show();
             return false;
         }
+
+    }
+
+
+    void setSpinnerDefaultState(){
+
+        spinner_sex.setSelection(0);
+        spinner_marital_status.setSelection(0);
+        spinner_occupasion.setSelection(0);
+        spinner_smoking.setSelection(0);
+        spinner_buttle_nut.setSelection(0);
+        spinner_swiming.setSelection(0);
+        spinner_injury_last_six.setSelection(0);
 
     }
 
@@ -279,7 +296,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                             //ApplicationData.alive_person_List.add(aPerson);
 
                         }
-                        ciprbDatabase.close();
+                       // ciprbDatabase.close();
 
                     } else {
 
@@ -316,6 +333,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
     void cleartext() {
         setheader();
+        setSpinnerDefaultState();
 
         editText_members_name.getText().clear();
         edittext_date_of_birth.getText().clear();
@@ -372,6 +390,8 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                                 showTextLong(" : Data saved Successfully...: " + mCURRENT_MEMBER_ID);
                                 prefsValues.setSerial(count);
                                 if (calculate_member >= member_no) {
+
+                                    ciprbDatabase.close();
                                     finish();
                                     if (ApplicationData.alive_person_List.size() != 0) {
                                         ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
@@ -379,6 +399,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                                         //  go to home activity n fill up home characteristics
                                         ApplicationData.gotToNextActivity(activity, HomeActivity.class);
                                     }
+
                                 }
                                 cleartext();
                             }
@@ -503,4 +524,10 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                         }).show();
     }
 
+    @Override
+    protected void onDestroy() {
+
+        super.onDestroy();
+
+    }
 }

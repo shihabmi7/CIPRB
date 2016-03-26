@@ -176,12 +176,10 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
     boolean checkSpinner(){
 
-
         if (spinner_occupasion.getSelectedItemPosition() != 0
-
                 && spinner_occupasion.getSelectedItemPosition() != 0
                 && spinner_marital_status.getSelectedItemPosition() != 0 &&
-                spinner_death_place.getSelectedItemPosition() != 0 &&
+
                 spinner_death_place.getSelectedItemPosition() != 0 && !editText_members_name.getText().toString().isEmpty()
                 && !edittext_current_age.getText().toString().isEmpty()){
 
@@ -197,6 +195,16 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         }
 
     }
+
+    void setSpinnerDefaultState(){
+
+        spinner_occupasion.setSelection(0);
+        spinner_occupasion.setSelection(0);
+        spinner_marital_status.setSelection(0);
+        spinner_death_place.setSelection(0);
+
+    }
+
 
     private void updateBirthLabel() {
 
@@ -226,26 +234,17 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         if (v == button_next && checkSpinner()) {
             if (InternetConnection.checkNetworkConnection(this)) {
 
-
-
                     mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId() + formatter.format(count);
-
                     Log.e("Death Person ID:", mCURRENT_MEMBER_ID);
-
 
                     //  mCURRENT_MEMBER_ID = "" + 1013232 + "" + formatter.format(count);
                     //prefsValues.setSerial(count);
-
                     count++;
-
                     Log.e("Death Person ID:", "" + count);
-
                     // have to find a solution if only one man is there or no injury
                     //showTextLong(mCURRENT_MEMBER_ID);
                     //  saveDataToOnline(aPerson);
                     new PostAsync().execute(ApplicationData.URL_DEATH_CONFIRMATION, createJsonBody());
-
-
 
             } else {
 
@@ -338,6 +337,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
     void cleartext() {
         setheader();
+        setSpinnerDefaultState();
 
         editText_members_name.getText().clear();
         edittext_date_of_birth.getText().clear();

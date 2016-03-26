@@ -5,10 +5,13 @@
     <string name="loading_message">ডাটা সংরক্ষিত হচ্ছে..</string>
     <string name="waiting">অপেক্ষা করুন</string>
 
+
+
     <string name="update">আপডেট করুন</string>
     <string name="suggestion">প্রতিটি প্রশ্নের উত্তর নিন</string>
-
-
+    <string name="no_live_member">কোন জীবিত সদস্য নেই</string>
+    <string name="no_died_member">কোন মৃত সদস্য নেই</string>
+    <string name="finish_current_house_hold">এই বাড়ির জীবিত ও মৃত সদস্যদের ডাটা সংগ্রহ শেষ করুন</string>
 
 
 
@@ -19,7 +22,6 @@
     <string name="current_age">বর্তমানে বয়স</string>
     <string name="death_age">মৃত্যূর  সময় বয়স</string>
     <string name="sex">লিঙ্গ</string>
-
 
 
     <string name="maritial_satus">বৈবাহিক অবস্থা</string>
@@ -153,9 +155,6 @@
         <item>16.  অন্যান্য</item>
 
     </string-array>
-
-
-
 
 
     <string-array name="survey_sex">
@@ -415,7 +414,7 @@
         <item>9. অন্যান্য (উল্লেখ করুন) </item>
     </string-array>
     <string-array name="survey_who_gave_first_aid">
-        <item>  নির্বাচন করুন</item>
+
         <item>A. মা</item>
         <item>B. বাবা</item>
         <item>C. স্বামী/স্ত্রী</item>
@@ -500,7 +499,7 @@
     <string-array name="survey_type_of_disability">
 
 
-        <item>  নির্বাচন করুন</item>
+
         <item>A. দৃষ্টি শক্তি নষ্ট হয়ে গেছে</item>
         <item>B. শ্রবন শক্তি নষ্ট হয়ে গেছে </item>
         <item>C. হাঁটার শক্তি নষ্ট হয়ে গেছে</item>
@@ -571,7 +570,7 @@
     </string-array>
     <string-array name="survey_im_cause_of_injury">
 
-
+        <item>  নির্বাচন করুন</item>
         <item>01. আত্নহত্যা-এম 1</item>
         <item>02. সড়ক দুর্ঘটনা -এম 2 </item>
         <item>03. সহিংসতা-এম 3</item>
@@ -601,7 +600,6 @@
     <string-array name="survey_suicide_where">
 
         <item>  নির্বাচন করুন</item>
-
         <item>1. নিজবাড়ী</item>
         <item>2. শ্বশুর বাড়ী </item>
         <item>3. অন্যের বাড়ী </item>
@@ -627,6 +625,7 @@
     </string-array>
     <string-array name="survey_suicide_type">
 
+        <item>  নির্বাচন করুন</item>
         <item>1. কীটনাশক </item>
         <item>2. মশা, মাছি, তেলাপোকা ইত্যাদি ধ্বংসকারী </item>
         <item>3. ইদুঁর মারা বিষ </item>
@@ -653,6 +652,7 @@
 
     <string-array name="survey_violence_event_occur">
 
+        <item>  নির্বাচন করুন</item>
         <item>1. ঝগড়া/মারামারি  </item>
         <item>2. ডাকাতি/ছিনতাই </item>
         <item>3.  সংগবদ্ধ সহিংসতা/সন্ত্রাস </item>
@@ -661,6 +661,7 @@
 
     </string-array>
     <string-array name="survey_violence_relation">
+        <item>  নির্বাচন করুন</item>
         <item>1. স্বামী/স্ত্রী  </item>
         <item>2. বাবা </item>
         <item>3. মা </item>
@@ -676,6 +677,7 @@
         <item>99. জানা নেই </item>
     </string-array>
     <string-array name="survey_violence_sex">
+        <item>  নির্বাচন করুন</item>
         <item>1. হাসপাতালে </item>
         <item>2. নিজবাড়ীতে</item>
         <item>3. রাস্তায়</item>
@@ -684,6 +686,7 @@
         <item>9. অন্যান্য (উল্লেখ করুন)</item>
     </string-array>
     <string-array name="survey_violence_object">
+        <item>  নির্বাচন করুন</item>
         <item>1. লাঠি </item>
         <item>2. ছুরি /ধারালো অস্ত্র </item>
         <item>3. আগুন</item>
@@ -710,6 +713,7 @@
 
 
     <string-array name="survey_transport_travel">
+        <item>  নির্বাচন করুন</item>
         <item>01. পায়ে হেঁটে </item>
         <item>02. সাইকেল   </item>
         <item>03. রিক্সা/ভ্যান  </item>
@@ -730,6 +734,7 @@
         <item>99. জানা নেই    </item>
     </string-array>
     <string-array name="survey_transport_street_doing_what">
+        <item>  নির্বাচন করুন</item>
         <item>1. হাঁটছিল</item>
         <item>2. গাড়ি চালাচ্ছিল</item>
         <item>3. সা্কেল চালাচ্ছিল </item>
@@ -743,6 +748,7 @@
     </string-array>
     <string-array name="survey_transport_collide_partile">
 
+        <item>  নির্বাচন করুন</item>
         <item>01. কোন সংঘস© হয় নি </item>
         <item>02. সা্কেল</item>
         <item>03. রিক্স/ভ্যান  </item>
@@ -764,6 +770,7 @@
     </string-array>
     <string-array name="survey_transport_why_victim_on_road">
 
+        <item>  নির্বাচন করুন</item>
         <item>01. স্কুলে যাচ্ছিল/ফিরছিল </item>
         <item>02. কম©স্থলে যাচ্ছিলেন/ফিরছিলেন</item>
         <item>03. বাহনটি চালাচ্ছিলেন </item>
@@ -777,6 +784,7 @@
     </string-array>
     <string-array name="survey_transport_if_yes_safety_device">
 
+        <item>  নির্বাচন করুন</item>
         <item>01. বেল্ট</item>
         <item>02. হ্যালমেট</item>
         <item>03. লাইফ জ্যাকেট </item>
@@ -786,7 +794,7 @@
     </string-array>
     <string-array name="survey_transport_condition_of_road">
 
-
+        <item>  নির্বাচন করুন</item>
         <item>01. ভাল অবস্থা</item>
         <item>02. ত্রুটিপূণ ©রাস্তায় নক্সা</item>
         <item>03. ভাঙ্গাচোরা রাস্তা </item>
@@ -810,6 +818,8 @@
     <string name="fall8">আক্রান্ত ব্যক্তির ব্যক্তিগত ইউনিক কোড/আইডি : </string>
 
     <string-array name="fall1">
+
+        <item>  নির্বাচন করুন</item>
         <item>1. একই স্তর থেকে </item>
         <item>2. উচুঁ স্তর থেকে</item>
         <item>3. সমতল থেকে নিচে</item>
@@ -819,6 +829,8 @@
 
 
     <string-array name="fall2">
+
+        <item>  নির্বাচন করুন</item>
         <item>1. হোঁচট খেয়ে </item>
         <item>2. পিছলে বা কোন কিছুতে পা আটকে গিয়ে </item>
         <item>3. অন্য কারো ধাক্কা খেয়ে  </item>
@@ -828,6 +840,7 @@
     </string-array>
 
     <string-array name="fall06">
+        <item>  নির্বাচন করুন</item>
         <item>1. মাটির গর্তে</item>
         <item>2. জলাশয়ে</item>
         <item>3. নদী /খালের পার হতে </item>
@@ -837,6 +850,8 @@
     </string-array>
 
     <string-array name="fall3">
+
+        <item>  নির্বাচন করুন</item>
         <item>1.গোসল খানা /পায়খানা </item>
         <item>2.শোয়ার ঘর</item>
         <item>3.রান্না ঘর </item>
@@ -851,6 +866,7 @@
 
     <string-array name="fall4">
 
+        <item>  নির্বাচন করুন</item>
         <item>1. দুর্ঘটনাক্রমে পড়ে গিয়ে</item>
         <item>2. লাফ দিয়ে </item>
         <item>3. অন্য কারো সাথে ধাক্কা খেয়ে </item>
@@ -860,6 +876,7 @@
     </string-array>
 
     <string-array name="fall5">
+        <item>  নির্বাচন করুন</item>
         <item>1.সিঁড়ি</item>
         <item>2.গাছ</item>
         <item>3.বাড়ীর ছাদ</item>
@@ -878,7 +895,7 @@
 
 
     <string-array name="cut1">
-
+        <item>  নির্বাচন করুন</item>
         <item>1.ছুরি </item>
         <item>2.দা/বটি </item>
         <item>3.কাস্তে</item>
@@ -896,6 +913,7 @@
     </string-array>
 
     <string-array name="cut2">
+        <item>  নির্বাচন করুন</item>
         <item>1. কৃষিকাজ/কৃষি যন্ত্র দিয়ে কাজ করার সময়</item>
         <item>2. গৃহস্থালি </item>
         <item>3. অন্যের দ্বারা</item>
@@ -907,6 +925,7 @@
 
 
     <string-array name="cut3">
+        <item>  নির্বাচন করুন</item>
         <item>1.রান্নাঘর </item>
         <item>2.শোয়ার ঘর </item>
         <item>3.খাওয়ার ঘর </item>
@@ -930,6 +949,7 @@
     <string-array name="Burn1">
 
 
+        <item>  নির্বাচন করুন</item>
         <item>1.অগ্নিশিখা </item>
         <item>2.উত্তপ্ত তরল </item>
         <item>3.উত্তপ্ত বস্তু</item>
@@ -942,7 +962,7 @@
 
     <string-array name="Burn2">
 
-
+        <item>  নির্বাচন করুন</item>
         <item>1. রান্নার আগুন (গ্যাস ব্যাতিত)</item>
         <item>2. গ্যাসের আগুন</item>
         <item>3. আগুনে পোহানো</item>
@@ -956,6 +976,7 @@
 
     </string-array>
     <string-array name="Burn3">
+        <item>  নির্বাচন করুন</item>
         <item>01.রান্নার পানি</item>
         <item>02.গোসলের পানি</item>
         <item>03.ধোয়া ধুয়ির পানি</item>
@@ -970,6 +991,7 @@
 
     </string-array>
     <string-array name="Burn4">
+        <item>  নির্বাচন করুন</item>
         <item>1.রান্নার তৈজষ পত্র</item>
         <item>2.কয়লা </item>
         <item>3.ইস্ত্রি </item>
@@ -982,6 +1004,7 @@
 
     </string-array>
     <string-array name="Burn5">
+        <item>  নির্বাচন করুন</item>
         <item>1.আতশ বাজি</item>
         <item>2.নিমা©ণ কাজে </item>
         <item>3.সন্ত্রাসী কায© কলাপে</item>
@@ -989,12 +1012,14 @@
 
     </string-array>
     <string-array name="Burn6">
+        <item>  নির্বাচন করুন</item>
         <item>1.এসিড</item>
         <item>2.চুন</item>
         <item>9.অন্যান্য (উল্লেখ করুন)</item>
 
     </string-array>
     <string-array name="Burn7">
+        <item>  নির্বাচন করুন</item>
         <item>1.কম©স্থলে কাজে ছিল</item>
         <item>2.বাড়ীতে রান্না করছিল </item>
         <item>3.রান্না ছাড়া অন্যান্য গৃহস্থালীর কাজ</item>
@@ -1020,6 +1045,7 @@
 
     <string-array name="Drowning1">
 
+        <item>  নির্বাচন করুন</item>
         <item>01. কক্ষের মধ্যে বালতি</item>
         <item>02. কক্ষের মধ্যে ড্রাম</item>
         <item>03. কক্ষের মধ্যে চারি </item>
@@ -1037,6 +1063,8 @@
 
     </string-array>
     <string-array name="Drowning2">
+
+        <item>  নির্বাচন করুন</item>
         <item>1.গোসল খানা/পায়খানা</item>
         <item>2.রান্নাঘরে</item>
         <item>3.এক কক্ষ বিশিষ্ট ঘরে</item>
@@ -1049,6 +1077,7 @@
 
 
     <string-array name="Drowning4">
+        <item>  নির্বাচন করুন</item>
         <item>1.ঢাকা ছিল না </item>
         <item>2.আংশিক ঢাকা ছিল</item>
         <item>3.সম্পূন© ঢাকা ছিল</item>
@@ -1058,6 +1087,7 @@
     </string-array>
 
     <string-array name="Drowning5">
+        <item>  নির্বাচন করুন</item>
         <item>A.গোসল ধোয়াধুয়ি করা</item>
         <item>B.রান্না ও পান করার পানি সংগ্রহ করা </item>
         <item>C.মাছ চাষ </item>
@@ -1068,6 +1098,7 @@
     </string-array>
 
     <string-array name="Drowning6">
+        <item>  নির্বাচন করুন</item>
         <item>1.হ্যাঁ</item>
         <item>2.না</item>
         <item>9.জানা নেই</item>
@@ -1075,6 +1106,7 @@
 
     </string-array>
     <string-array name="Drowning7">
+        <item>  নির্বাচন করুন</item>
         <item>01.জলা শয়ে খেলা  করছিল </item>
         <item>02.জলাশয়ে গোসল/অযু/সাঁতার কাটছিল</item>
         <item>03.ধোয়াধুয়ি করছিল</item>
@@ -1089,12 +1121,14 @@
 
     </string-array>
     <string-array name="Drowning8">
+        <item>  নির্বাচন করুন</item>
         <item>1.হ্যাঁ </item>
         <item>2.না</item>
         <item>3.প্রযোজ্য নয় (যদি শিশুর বয়স  বছরের কম হয়)</item>
         <item>9.জানা নেই </item>
     </string-array>
     <string-array name="Drowning9">
+        <item>  নির্বাচন করুন</item>
         <item>A.মা</item>
         <item>B.বাবা</item>
         <item>C.পরিচযা©কারী</item>
@@ -1109,6 +1143,7 @@
 
     </string-array>
     <string-array name="Drowning11">
+        <item>  নির্বাচন করুন</item>
         <item>1.গৃহকম© করছিলেন </item>
         <item>2.অন্যদের সঙ্গে গল্প করছিলেন</item>
         <item>3.ঘুমাচ্ছিলেন </item>
@@ -1122,6 +1157,7 @@
 
     </string-array>
     <string-array name="Drowning12">
+        <item>  নির্বাচন করুন</item>
         <item>1.হ্যাঁ </item>
         <item>2.না </item>
         <item>9.জানা নেই</item>
@@ -1129,6 +1165,7 @@
 
     </string-array>
     <string-array name="Drowning13">
+        <item>  নির্বাচন করুন</item>
         <item>1.মা</item>
         <item>2.বাবা</item>
         <item>3.প্রাপ্ত বয়স্ত পরিচযা©কারী </item>
@@ -1142,18 +1179,20 @@
     </string-array>
 
     <string-array name="Drowning14">
-        <item>মাথায় তুলে ঘুরানো হয়েছিল</item>
-        <item>পেটে চাপ দিয়ে বমি করানো হয়ে ছিল</item>
-        <item>শরীরে তৈল মালিশ করেছিল</item>
-        <item>শরীরে ছাই মেখেছিল</item>
-        <item>মুখে শ্বাস ও বুকে চাপ দিয়েছিল </item>
-        <item>দ্রুত ডাক্তারের কাছে নেয়া হয়েছিল</item>
 
+        <item>  নির্বাচন করুন</item>
+        <item>1.মাথায় তুলে ঘুরানো হয়েছিল</item>
+        <item>2.পেটে চাপ দিয়ে বমি করানো হয়ে ছিল</item>
+        <item>3.শরীরে তৈল মালিশ করেছিল</item>
+        <item>4.শরীরে ছাই মেখেছিল</item>
+        <item>5.মুখে শ্বাস ও বুকে চাপ দিয়েছিল </item>
+        <item>6.দ্রুত ডাক্তারের কাছে নেয়া হয়েছিল</item>
 
     </string-array>
 
 
     <string-array name="Drowning15">
+        <item>  নির্বাচন করুন</item>
         <item>A.সাব©ক্ষনিক দেখাশুনা করা </item>
         <item>B.সাব©ক্ষনিক খেয়াল রাখার বিশেষ ব্যবস্থা করা (যেমন পায়ে/কোমরে ঘুঁঙুঁর বাঁধা, ইত্যাদি)</item>
         <item>C.শিশুটিকে পানিতে যেতে না দেওয়া (পুকুর ঘেরা,বেবী কট, প্লেপেন)</item>
@@ -1180,6 +1219,7 @@
 
 
     <string-array name="poisoning1">
+        <item>  নির্বাচন করুন</item>
         <item>01.কীটনাশক</item>
         <item>02.মশা, মাছি, তেলাপোকা ইত্যাদি ধ্বংসকারী</item>
         <item>03.ইদুর মারার বিষ</item>
@@ -1195,6 +1235,7 @@
     </string-array>
 
     <string-array name="poisoning2">
+        <item>  নির্বাচন করুন</item>
         <item>1.বোতল </item>
         <item>2.কৌটা</item>
         <item>3.প্যাকেট</item>
@@ -1205,6 +1246,7 @@
     </string-array>
 
     <string-array name="poisoning3">
+        <item>  নির্বাচন করুন</item>
         <item>1.বিষের প্রকৃত বোতল</item>
         <item>2.অন্যান্য বোতলে (পেপসি/কোক/মজো ইত্যাদি)</item>
 
@@ -1212,18 +1254,23 @@
     </string-array>
 
     <string-array name="poisoning4">
+        <item>  নির্বাচন করুন</item>
         <item>1.লেবেল করা</item>
         <item>2.লেবেল বিহীন</item>
 
 
     </string-array>
     <string-array name="poisoning5">
+        <item>  নির্বাচন করুন</item>
         <item>1.হ্যাঁ </item>
         <item>2.না </item>
         <item>9.জানা নেই</item>
     </string-array>
 
     <string-array name="poisoning6">
+
+
+        <item>  নির্বাচন করুন</item>
         <item>1.মেজেতে </item>
         <item>2.খাট/চৌকির নিচে</item>
         <item>3.তোষক/ পাটির নিচে</item>
@@ -1238,11 +1285,16 @@
     </string-array>
 
     <string-array name="poisoning7">
+
+        <item>  নির্বাচন করুন</item>
         <item>1.খোলা অবস্থা</item>
         <item>2.তালা বদ্ধ অবস্থায় </item>
+
     </string-array>
 
     <string-array name="poisoning8">
+
+        <item>  নির্বাচন করুন</item>
         <item>1. ঘরের ভিতর</item>
         <item>2. উঠানে     </item>
         <item>3. শস্য ক্ষেতে   </item>
@@ -1251,6 +1303,7 @@
 
 
     <string-array name="poisoning9">
+        <item>  নির্বাচন করুন</item>
         <item>1. মুখে দেয়ারমাধ্যমে   </item>
         <item>2. খাবারএরমাধ্যমে      </item>
         <item>3. শ্বাস প্রশ্বাস এর মাধ্যমে      </item>
@@ -1268,6 +1321,8 @@
 
 
     <string-array name="machine1">
+
+        <item>  নির্বাচন করুন</item>
         <item>1. কৃষি কাজে ব্যবহৃত মেশিন </item>
         <item>2. শিল্প/কারখানায় ব্যবহৃত মেশিন</item>
 
@@ -1280,6 +1335,7 @@
     </string-array>
 
     <string-array name="machine2">
+        <item>  নির্বাচন করুন</item>
         <item>1.শ্রালো মেশিন ও অন্যান্য পাম্প</item>
         <item>2.ট্রাক্টর </item>
         <item>3.ধান মাড়াই এর কল</item>
@@ -1289,6 +1345,7 @@
     </string-array>
 
     <string-array name="machine3">
+        <item>  নির্বাচন করুন</item>
         <item>1.রাইস মিল</item>
         <item>2.প্রেস/ছাপা খানা</item>
         <item>3.ছিদ্র করার যন্ত্র/ড্রিল মেশিন</item>
@@ -1304,6 +1361,8 @@
     </string-array>
 
     <string-array name="machine4">
+
+        <item>  নির্বাচন করুন</item>
         <item>1. মিক্সচার মেশিন </item>
         <item>2. ভাইব্রেটর </item>
         <item>3. মোজাইক/টাইলস কাটার</item>
@@ -1315,6 +1374,7 @@
 
     <string-array name="machine5">
 
+        <item>  নির্বাচন করুন</item>
         <item>1. যানবাহনের ইঞ্জিন</item>
         <item>2. নসিমন/ ভটভটির  ইঞ্জিন </item>
 
@@ -1322,6 +1382,7 @@
 
     <string-array name="machine6">
 
+        <item>  নির্বাচন করুন</item>
         <item>1. মেশিনটি চালু করছিল </item>
         <item>2. মেশিন দিয়ে কাজ করছিল </item>
         <item>3. মেশিনের কাছে অবস্থান করছিল</item>
@@ -1336,6 +1397,8 @@
     <string name="electrocution4">04. কিভাবে বিদ্যুতায়িত হছিল?</string>
 
     <string-array name="electrocution1">
+
+        <item>  নির্বাচন করুন</item>
         <item>1.বজ্রপাত</item>
         <item>2.বাড়ীতে ব্যবহৃত বিদ্যু</item>
         <item>3.বাড়ীর বাহিরে ব্যবহৃত বিদ্যু</item>
@@ -1344,6 +1407,7 @@
     </string-array>
 
     <string-array name="electrocution2">
+        <item>  নির্বাচন করুন</item>
         <item>1.রান্না ঘর</item>
         <item>2.বসার ঘর</item>
         <item>3.শোয়ার ঘর </item>
@@ -1355,10 +1419,11 @@
     </string-array>
 
     <string-array name="electrocution3">
+        <item>  নির্বাচন করুন</item>
         <item>1.রাস্তায়</item>
         <item>2.মাঠে </item>
         <item>3.অফিসে </item>
-        <item>4.শিল্প প্রতিষ্ঠানে </item>
+        <item>4.শিল্প প্রতিষ্ঠানে </item>survey_suicide_where
         <item>5.হাট/বাজার</item>
         <item>6.জলাশয়ে</item>
         <item>7. গাছ তলায়</item>
@@ -1367,6 +1432,7 @@
 
 
     <string-array name="electrocution4">
+        <item>  নির্বাচন করুন</item>
         <item>1.  বিদ্যুতের তার/ সুইচে ছোঁয়ার মাধ্যমে</item>
         <item>2.  বিদ্যুতের তার ছিঁড়ে পড়ে</item>
         <item>3.  বজ্রপাতের মাধ্যমে</item>
@@ -1379,6 +1445,7 @@
 
 
     <string-array name="insect1">
+        <item>  নির্বাচন করুন</item>
         <item>01. পোষা কুকুর</item>
         <item>02.  কুকুর</item>
         <item>03. পোষা বিড়াল</item>
@@ -1395,6 +1462,7 @@
     </string-array>
 
     <string-array name="insect2">
+        <item>  নির্বাচন করুন</item>
         <item>1. কামড়/আঁচড়</item>
         <item>2. হুল ফুটানো </item>
         <item>3. লাথি</item>
@@ -1405,6 +1473,7 @@
     </string-array>
 
     <string-array name="insect3">
+        <item>  নির্বাচন করুন</item>
         <item>1.খেলা/বিরক্ত করার কারনে </item>
         <item>2.খাওয়ানো</item>
         <item>3.কাজে ব্যবহার করা হচ্ছিল</item>
@@ -1418,11 +1487,13 @@
 
 
     <string-array name="blunt1">
+        <item>  নির্বাচন করুন</item>
         <item>1.চলন্ত বস্তু(নাম লিখুন)</item>
         <item>2.স্থির বস্তু (নাম লিখুন)</item>
         <item>9.অন্যান্য (উল্লেখ করুন)</item>
     </string-array>
     <string-array name="blunt2">
+        <item>  নির্বাচন করুন</item>
         <item>1.চাষাবাদ/খামারের কাজে </item>
         <item>2.গৃহস্থলীর কাজে </item>
         <item>3.কল-কারখানার কাজে</item>
@@ -1437,6 +1508,8 @@
     <string name="suffocation2">02.ঘটনার সংক্ষিপ্ত (সর্বোচ্চ তিনটি ব্যাক্য) বিবরণ </string>
 
     <string-array name="suffocation1">
+
+        <item>  নির্বাচন করুন</item>
         <item>01.কাব©ন মনোক্সাইড</item>
         <item>02.অন্য গ্যাস (উল্লেখ করুন)</item>
         <item>03.তরল (উল্লেখ করুন)</item>
@@ -1579,6 +1652,7 @@
 </string>
 
     <string-array name="q_1">
+        <item>  নির্বাচন করুন</item>
         <item> 1. আমার হাঁটতে কোন সমস্যা নেই</item>
         <item>2. আমার হাঁটতে কিছু সমস্যা হয়</item>
         <item>3. আমি আকদম বিছানাই শোয়া</item>
@@ -1586,6 +1660,7 @@
 
 
     <string-array name="q_2">
+        <item>  নির্বাচন করুন</item>
         <item> 1. আমি নিজেই নিজের কাজ করতে পারি  </item>
         <item>2. আমার গোসল বা কাপড় পরতে একটু  সমস্যা হয়</item>
         <item>3. 2. আমার গোসল বা কাপড় পরতে একটু  সমস্যা হয় </item>
@@ -1593,6 +1668,7 @@
 
 
     <string-array name="q_3">
+        <item>  নির্বাচন করুন</item>
         <item> 1. আমার দৈনন্দিন কার্যকলাপ করতে সমস্যা হয় না </item>
         <item> 2. আমার দৈনন্দিন কার্যকলাপ করতে অল্প সমস্যা হয়়</item>
         <item> 3. আমি দৈনন্দিন কার্যকলাপ করতে আকেবারেই পারিনাা</item>
@@ -1600,6 +1676,7 @@
 
 
     <string-array name="q_4">
+        <item>  নির্বাচন করুন</item>
         <item> 1. আমার শরিরে কোন ব্যাথা বা অসস্থি নেই </item>
         <item> 2. আমার শরিরে মাঝারী  ব্যাথা বা অসস্থি বোধ করি</item>
         <item> 3. আমার শরিরে প্রচণ্ড ব্যাথা বা অসস্থি বোধ করি</item>
@@ -1607,6 +1684,7 @@
 
 
     <string-array name="q_5">
+        <item>  নির্বাচন করুন</item>
         <item> 1. আমি বিচলিত বা  চিন্তিত নই</item>
         <item> 2. আমি অল্প অল্প বিচলিত বা  চিন্তিত</item>
         <item> 3. আমি খুবই বিচলিত বা  চিন্তিত</item>
@@ -1638,16 +1716,6 @@
 
     <string name="enter_person_id">Enter Person ID</string>
 
-    String form[] = {
-    // "DATABASE",
-
-
-
-
-
-
-
-
 
     <string-array name="survey_activity_title">
         <item> ফেস ফর্ম</item>
@@ -1655,6 +1723,8 @@
         <item>ইনজুরি জনিত অসুস্থতার ফর্ম</item>
         <item> মৃত্যু নিশ্চিত করণ ফর্ম</item>
         <item>ইনজুরি জনিত মৃত্যু ফর্ম</item>
+        <item>বাড়ির তথ্য</item>
+        <item>দৈনন্দিন জীবনের মানদণ্ড</item>
         <item>  আত্মহত্যা</item>
         <item> সড়ক দুর্ঘটনা</item>
         <item>সহিংসতার তথ্য</item>
@@ -1662,12 +1732,12 @@
         <item>ধারালো বস্তুর আঘাত/ কেটে যাওয়া</item>
         <item>পুড়ে যাওয়া</item>
         <item>পানিতে দুবে যাওয়া</item>
+        <item>দুর্ঘটনা জনিত বিষক্রিয়া</item>
+        <item>মেশিন/ যন্ত্রপাতির দারা আঘাত</item>
         <item>বিদ্যুৎ স্পৃষ্টতা</item>
         <item>প্রানি/ কিট পতঙ্গের দ্বারা জখম</item>
         <item>ভোতা বস্তু দ্বারা আঘাত</item>
         <item>শ্বাস রোধ</item>
-        <item>বাড়ির তথ্য</item>
-        <item>দৈনন্দিন জীবনের মানদণ্ড</item>
 
 
 

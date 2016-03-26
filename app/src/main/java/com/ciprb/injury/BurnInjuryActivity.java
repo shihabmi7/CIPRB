@@ -36,7 +36,7 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
     private Button button_cancel, button_next;
 
     ProgressDialog progressDialog;
-    Activity activity = this;
+    BurnInjuryActivity activity = this;
     //String person_id = "101323210";
     String person_id = "101323212";
     TextView textView_person_id;
@@ -46,7 +46,7 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_burn_injury);
 
-        setTitle( getResources().getStringArray(R.array.survey_activity_title)[10]);
+        setTitle( getResources().getStringArray(R.array.survey_activity_title)[12]);
 
         try {
 
@@ -95,6 +95,43 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
         button_next = (Button) findViewById(R.id.button_next);
     }
 
+    boolean checkSpinner(){
+
+
+        if (spinner_l01.getSelectedItemPosition() != 0 && spinner_l02.getSelectedItemPosition() != 0
+                && spinner_l03.getSelectedItemPosition() != 0
+                && spinner_l04.getSelectedItemPosition() != 0 &&
+                spinner_l05.getSelectedItemPosition() != 0 &&
+                spinner_l06.getSelectedItemPosition() != 0 && spinner_l07.getSelectedItemPosition() != 0){
+
+            //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
+
+            return  true;
+
+
+        }else {
+
+            Toast.makeText(getApplicationContext(),getString(R.string.suggestion),Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+    }
+
+
+    void setSpinnerDefaultState(){
+
+        spinner_l01.setSelection(0);
+        spinner_l02.setSelection(0);
+        spinner_l03.setSelection(0);
+        spinner_l04.setSelection(0);
+        spinner_l05.setSelection(0);
+        spinner_l06.setSelection(0);
+        spinner_l07.setSelection(0);
+
+    }
+
+
+
     void cleartext() {
 
       /*  editText_members_name.getText().clear();
@@ -140,7 +177,7 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
     }
 
 
-    public void showAlert(final Activity activity) {
+    public void showAlert() {
 
         if (InternetConnection.isAvailable(activity)) {
 
@@ -190,15 +227,57 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
 
 
-        if (v == button_next) {
-            String url = ApplicationData.URL_BURNINJURY + person_id;
-            new PutAsync().execute(url, createJsonBody());
+        if (v == button_next && checkSpinner()) {
+
+            if (InternetConnection.checkNetworkConnection(this)) {
+                String url = ApplicationData.URL_BURNINJURY + person_id;
+                new PutAsync().execute(url, createJsonBody());
+            }else
+            {
+                showAlert(activity);
+            }
+
 
         } else if (v == button_cancel) {
 
 
         }
 
+    }
+
+    public void showAlert(final Activity activity) {
+
+        if (InternetConnection.isAvailable(activity)) {
+
+
+        } else {
+
+            new AlertDialog.Builder(activity)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("No Internet Connection")
+                    .setMessage(getString(R.string.internet_check_bn))
+                    .setPositiveButton("Exit",
+                            new DialogInterface.OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+
+                                    finish();
+
+                                }
+
+                            })
+                    .setNegativeButton("Retry",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    // Stop the activity
+                                    showAlert(activity);
+                                }
+                            }).show();
+        }
     }
 
 
@@ -295,10 +374,12 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
         Toast.makeText(activity, "Successfully Data Saved", Toast.LENGTH_LONG).show();
         ApplicationData.INJURY_DATA_COLLECT = true;
         cleartext();
+        setSpinnerDefaultState();
         //onBackPressed();
         activity.finish();
         //ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
         //activity.finish();
     }
+
 
 }

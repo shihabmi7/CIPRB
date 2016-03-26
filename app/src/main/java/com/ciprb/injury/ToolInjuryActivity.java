@@ -49,7 +49,7 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_tool_injury);
         try {
 
-            setTitle( getResources().getStringArray(R.array.survey_activity_title)[13]);
+            setTitle(getResources().getStringArray(R.array.survey_activity_title)[15]);
 
             textView_person_id = (TextView) findViewById(R.id.textView_person_id);
             person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
@@ -90,6 +90,26 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
 
         button_cancel.setOnClickListener(this);
         button_next.setOnClickListener(this);
+    }
+
+    boolean checkSpinner() {
+
+        if (spinner_o01.getSelectedItemPosition() != 0 &&
+                spinner_o02.getSelectedItemPosition() != 0
+                && spinner_o03.getSelectedItemPosition() != 0
+                && spinner_o04.getSelectedItemPosition() != 0
+                && spinner_o05.getSelectedItemPosition() != 0
+                && spinner_o06.getSelectedItemPosition() != 0
+                ) {
+
+            //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
+
+            return true;
+
+        } else {
+            Toast.makeText(getApplicationContext(), getString(R.string.suggestion), Toast.LENGTH_LONG).show();
+            return false;
+        }
     }
 
     void cleartext() {
@@ -186,9 +206,9 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View v) {
 
-        if (v == button_next) {
+        if (v == button_next && checkSpinner()) {
 
-            if (person_id.length() > 0) {
+            if (InternetConnection.checkNetworkConnection(activity)) {
 
                 //putRequestWithHeaderAndBody(ApplicationData.URL_SUICIDE + person_id);
                 String url = ApplicationData.URL_TOOl_INJURY + person_id;
@@ -197,6 +217,7 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
 
             } else {
 
+                showAlert(activity);
             }
 
         } else if (v == button_cancel) {

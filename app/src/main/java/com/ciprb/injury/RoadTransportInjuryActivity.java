@@ -14,15 +14,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-
-import org.json.JSONObject;
-
 import java.io.IOException;
 
-import cz.msebera.android.httpclient.Header;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -37,7 +30,7 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
     Spinner spinner_talking_over_mobile;
     Button button_next, button_cancel;
     private ProgressDialog progressDialog;
-    Activity activity = this;
+    RoadTransportInjuryActivity activity = this;
 
     private Spinner spinner_h01, spinner_h02, spinner_h03,
             spinner_h04, spinner_h05, spinner_h06, spinner_h07,
@@ -54,9 +47,10 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transport_injury);
         //String person_id = "101323210";
+
         try {
 
-            setTitle( getResources().getStringArray(R.array.survey_activity_title)[6]);
+            setTitle( getResources().getStringArray(R.array.survey_activity_title)[8]);
 
             textView_person_id = (TextView) findViewById(R.id.textView_person_id);
             person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
@@ -90,6 +84,29 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
         button_next.setOnClickListener(this);
     }
 
+    boolean checkSpinner() {
+
+        if (spinner_h01.getSelectedItemPosition() != 0
+                && spinner_h02.getSelectedItemPosition() != 0
+                && spinner_h03.getSelectedItemPosition() != 0
+                && spinner_h04.getSelectedItemPosition() != 0 &&
+                spinner_h05.getSelectedItemPosition() != 0 &&
+                spinner_h06.getSelectedItemPosition() != 0 &&
+                spinner_h07.getSelectedItemPosition() != 0
+                && spinner_h08.getSelectedItemPosition() != 0
+                && spinner_h09.getSelectedItemPosition() != 0
+             ) {
+
+            //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
+
+            return true;
+
+        } else {
+            Toast.makeText(getApplicationContext(), getString(R.string.suggestion), Toast.LENGTH_LONG).show();
+            return false;
+        }
+    }
+
     void cleartext() {
 
       /*  editText_members_name.getText().clear();
@@ -100,44 +117,8 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
         if (edittext_how_many_injury_last_six != null)
             edittext_how_many_injury_last_six.getText().clear();*/
 
+
     }
-
-    void saveDataToOnline(Person person) {
-        // Activity activity = this;
-        // progressDialog.show();
-        // post with no parameters
-        AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
-
-        params.put("house_member_id", person.getPerson_id());
-        params.put("h01", person.getMembers_name());
-        params.put("h02", person.getPerson_id());
-        params.put("h03", person.getMembers_name());
-        params.put("h04", person.getMembers_name());
-        params.put("h05", person.getPerson_id());
-        params.put("h06", person.getMembers_name());
-        params.put("h07", person.getMembers_name());
-        params.put("h09", person.getPerson_id());
-
-
-        client.post(ApplicationData.URL_HOUSE_HOLD_MEMBERS, params,
-                new JsonHttpResponseHandler() {
-                    // Your implementation here
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-
-                        cleartext();
-
-                        showTextLong("finish this input");
-                        //ApplicationData.memberListHashMap.clear();
-                        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
-
-                    }
-                }
-        );
-    }
-
-
     public void showAlert(final Activity activity) {
 
         if (InternetConnection.isAvailable(activity)) {
@@ -188,13 +169,12 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
     public void onClick(View v) {
 
 
-        if (v == button_next) {
+        if (v == button_next && checkSpinner()) {
             String url = ApplicationData.URL_ROADTRANSPORTINJURY + person_id;
             new PutAsync().execute(url, createJsonBody());
 
         } else if (v == button_cancel) {
             this.finish();
-
         }
 
     }

@@ -84,7 +84,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 if (position == 0) {
                     if (prefsValues.getMembersNo() > 0 && prefsValues.getMembers_died_no() > 0) {
-                        Toast.makeText(getApplicationContext(), "Please Input Existing Data", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.finish_current_house_hold), Toast.LENGTH_LONG).show();
                     } else {
                         Intent intent = new Intent(getApplicationContext(),
                                 samples[position]);
@@ -92,7 +92,7 @@ public class HomeActivity extends AppCompatActivity {
                     }
                 } else if (position == 1) {
                     if (prefsValues.getMembersNo() == 0) {
-                        Toast.makeText(getApplicationContext(), "No Member to input", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.no_live_member), Toast.LENGTH_LONG).show();
                     } else {
                         Intent intent = new Intent(getApplicationContext(),
                                 samples[position]);
@@ -100,7 +100,7 @@ public class HomeActivity extends AppCompatActivity {
                     }
                 } else if (position == 3) {
                     if (prefsValues.getMembers_died_no() == 0) {
-                        Toast.makeText(getApplicationContext(), "No Member to input", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.no_died_member), Toast.LENGTH_LONG).show();
                     } else {
                         Intent intent = new Intent(getApplicationContext(),
                                 samples[position]);

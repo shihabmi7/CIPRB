@@ -47,7 +47,7 @@ public class ElectrocautionActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_electrocution);
 
-        setTitle( getResources().getStringArray(R.array.survey_activity_title)[14]);
+        setTitle( getResources().getStringArray(R.array.survey_activity_title)[16]);
 
         try {
 
@@ -90,6 +90,25 @@ public class ElectrocautionActivity extends AppCompatActivity implements View.On
         button_next.setOnClickListener(this);
     }
 
+    boolean checkSpinner(){
+
+
+        if (spinner_p01.getSelectedItemPosition() != 0 && spinner_p02.getSelectedItemPosition() != 0
+                && spinner_p03.getSelectedItemPosition() != 0
+                && spinner_p04.getSelectedItemPosition() != 0 ){
+
+            //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
+
+            return  true;
+
+
+        }else {
+
+            Toast.makeText(getApplicationContext(),getString(R.string.suggestion),Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+    }
     void cleartext() {
 
       /*  editText_members_name.getText().clear();
@@ -134,7 +153,6 @@ public class ElectrocautionActivity extends AppCompatActivity implements View.On
         );
     }
 
-
     public void showAlert(final Activity activity) {
 
         if (InternetConnection.isAvailable(activity)) {
@@ -170,7 +188,6 @@ public class ElectrocautionActivity extends AppCompatActivity implements View.On
         }
     }
 
-
     void showTextLong(String value) {
 
         Toast.makeText(getApplicationContext(), value, Toast.LENGTH_LONG).show();
@@ -186,7 +203,7 @@ public class ElectrocautionActivity extends AppCompatActivity implements View.On
     public void onClick(View v) {
 
 
-        if (v == button_next) {
+        if (v == button_next && checkSpinner()) {
             String url = ApplicationData.URL_ELECTROCAUTION + person_id;
             new PutAsync().execute(url, createJsonBody());
 
