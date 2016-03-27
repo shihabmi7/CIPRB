@@ -40,6 +40,8 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
     EditText edittext_date_of_injury, edittext_time_of_injury, edittext_how_much_cost_reatment, edittext_injured_parts, edittext_injured_type,
             edittext_number_of_days_work_loss, edittext_days_take_health_facility, edittext_time_take_health_facility;
+
+
     Calendar myCalendar = null;
     DatePickerDialog.OnDateSetListener date;
     TimePickerDialog.OnTimeSetListener time;
@@ -56,10 +58,9 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
             spinner_how_admitted_health_facility,
             spinner_any_surgery_operation_done, spinner_type_of_anesthesia_given, spinner_outcome_of_treatment,
             spinner_injured_person_become_disabled, spinner_type_of_disability,
-            spinner_significant_source_of_income_for_family, spinner_person_name,
+            spinner_significant_source_of_income_for_family, spinner_person_name, spinner_disability_affects_sides,
             spinner_family_being_coping_loss_income;
 //    spinner_sex,
-
 
 
     ProgressDialog progressDialog;
@@ -67,7 +68,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
     int alive_count = 0;
 
     LinearLayout layout_type_admitted_health_facility, lay_type_of_disability,
-            lay_type_of_anesthesia_given, lay_who_gave_first_aid;
+            lay_type_of_anesthesia_given, lay_who_gave_first_aid, layout_disability_sides;
     List<String> list;
     String person_id = "";
     ArrayAdapter<String> dataAdapter;
@@ -78,7 +79,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);/**/
         setContentView(R.layout.activity_injury_morbidity);
 
-        setTitle( getResources().getStringArray(R.array.survey_activity_title)[2]);
+        setTitle(getResources().getStringArray(R.array.survey_activity_title)[2]);
 
         ciprbDatabase = new CiprbDatabase(getApplicationContext());
         ciprbDatabase.open();
@@ -172,15 +173,20 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
         lay_type_of_disability = (LinearLayout) findViewById(R.id.lay_type_of_disability);
         lay_type_of_anesthesia_given = (LinearLayout) findViewById(R.id.lay_type_of_anesthesia_given);
         lay_who_gave_first_aid = (LinearLayout) findViewById(R.id.lay_who_gave_first_aid);
+
+        layout_disability_sides = (LinearLayout) findViewById(R.id.layout_disability_sides);
+
         edittext_date_of_injury = (EditText) findViewById(R.id.edittext_date_of_injury);
         edittext_time_of_injury = (EditText) findViewById(R.id.edittext_time_of_injury);
         edittext_number_of_days_work_loss = (EditText) findViewById(R.id.edittext_number_of_days_work_loss);
         edittext_days_take_health_facility = (EditText) findViewById(R.id.edittext_days_take_health_facility);
         edittext_time_take_health_facility = (EditText) findViewById(R.id.edittext_time_take_health_facility);
         edittext_injured_parts = (EditText) findViewById(R.id.edittext_injured_parts);
-        edittext_injured_type =(EditText)findViewById(R.id.edittext_injured_type) ;
+        edittext_injured_type = (EditText) findViewById(R.id.edittext_injured_type);
         spinner_person_name = (Spinner) findViewById(R.id.spinner_person_name);
 
+
+        spinner_disability_affects_sides = (Spinner) findViewById(R.id.spinner_disability_affects_sides);
         spinner_how_injured = (Spinner) findViewById(R.id.spinner_how_injured);
         spinner_place_of_injury = (Spinner) findViewById(R.id.spinner_place_of_injury);
         spinner_injury_intent = (Spinner) findViewById(R.id.spinner_injury_intent);
@@ -277,11 +283,15 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                 if (position == 0) {
 
                     lay_type_of_disability.setVisibility(View.VISIBLE);
+
+                    layout_disability_sides.setVisibility(View.VISIBLE);
                     // lay_how_injured.setVisibility(View.VISIBLE);
 
                 } else {
 
                     lay_type_of_disability.setVisibility(View.GONE);
+                    layout_disability_sides.setVisibility(View.GONE);
+
                     //lay_how_injured.setVisibility(View.GONE);
 
                 }
@@ -316,7 +326,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                 spinner_significant_source_of_income_for_family.getSelectedItemPosition() != 0 &&
                 spinner_family_being_coping_loss_income.getSelectedItemPosition() != 0 &&
                 edittext_date_of_injury.getText().length() > 0
-                && edittext_time_of_injury.getText().length() >0) {
+                && edittext_time_of_injury.getText().length() > 0) {
 
             //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
 
@@ -331,7 +341,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
     }
 
-    void setSpinnerDefaultState(){
+    void setSpinnerDefaultState() {
 
         spinner_how_injured.setSelection(0);
         spinner_injury_intent.setSelection(0);
@@ -346,6 +356,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
         spinner_family_being_coping_loss_income.setSelection(0);
 
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -532,11 +543,13 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
         String e22 = "";
         String e26 = "";
         String e11 = "";
+        String e27 = "";
         if (layout_type_admitted_health_facility.getVisibility() == View.VISIBLE) {
             e17 = ApplicationData.spilitStringFirst(spinner_type_admitted_health_facility.getSelectedItem().toString());
         }
         if (lay_type_of_disability.getVisibility() == View.VISIBLE) {
             e26 = ApplicationData.spilitStringFirst(spinner_type_of_disability.getSelectedItem().toString());
+            e27 = ApplicationData.spilitStringFirst(spinner_disability_affects_sides.getSelectedItem().toString());
         }
         if (lay_type_of_anesthesia_given.getVisibility() == View.VISIBLE) {
             e22 = ApplicationData.spilitStringFirst(spinner_type_of_anesthesia_given.getSelectedItem().toString());
@@ -600,7 +613,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                 "\",\"e26\":\"" +
                 e26 +
                 "\",\"e27\":\"" +
-                "" +
+                e27 +
                 "\",\"e28\":\"" +
                 ApplicationData.spilitStringFirst(spinner_significant_source_of_income_for_family.getSelectedItem().toString()) +
                 "\",\"e29\":\"" +
@@ -612,7 +625,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                 "\",\"e32\":\"" +
                 edittext_injured_parts.getText().toString() +
                 "\",\"e33\":\"" +
-                edittext_injured_type.getText().toString()+
+                edittext_injured_type.getText().toString() +
                 "\"}";
         //return "{\"g03\":\"10\"}";
         return rep;
@@ -744,6 +757,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                 //Put
                 Log.i("String are ", createJsonBody());
                 new PutAsync().execute(url, createJsonBody());
+
                 //Post
                 //new PostAsync().execute("http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity", PostcreateJsonBody());
 

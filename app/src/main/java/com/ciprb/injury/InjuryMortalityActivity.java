@@ -65,7 +65,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
             spinner_person_name;
 
     LinearLayout layout_type_admitted_health_facility, lay_type_of_disability,
-            lay_type_of_anesthesia_given, lay_who_gave_first_aid;
+            lay_type_of_anesthesia_given, lay_who_gave_first_aid, layout_Was_he_trained_in_first_aid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -182,7 +182,8 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
             layout_type_admitted_health_facility = (LinearLayout) findViewById(R.id.layout_type_admitted_health_facility);
             // lay_type_of_disability = (LinearLayout) findViewById(R.id.lay_type_of_disability);
             lay_type_of_anesthesia_given = (LinearLayout) findViewById(R.id.lay_type_of_anesthesia_given);
-            lay_who_gave_first_aid = (LinearLayout) findViewById(R.id.lay_type_of_anesthesia_given);
+            lay_who_gave_first_aid = (LinearLayout) findViewById(R.id.lay_who_gave_first_aid);
+            layout_Was_he_trained_in_first_aid = (LinearLayout) findViewById(R.id.layout_Was_he_trained_in_first_aid);
 
             edittext_how_much_cost_reatment = (EditText) findViewById(R.id.edittext_how_much_cost_reatment);
             edittext_time_of_injury = (EditText) findViewById(R.id.edittext_time_of_injury);
@@ -222,18 +223,22 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
             // spinner_significant_source_of_income_for_family = (Spinner) findViewById(R.id.spinner_significant_source_of_income_for_family);
             //   spinner_family_being_coping_loss_income = (Spinner) findViewById(R.id.spinner_family_being_coping_loss_income);
 
-            /*spinner_did_receive_first_aid.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            spinner_did_receive_first_aid.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                     if (position == 0) {
 
                         lay_who_gave_first_aid.setVisibility(View.VISIBLE);
+                        layout_Was_he_trained_in_first_aid.setVisibility(View.VISIBLE);
+
                         // lay_how_injured.setVisibility(View.VISIBLE);
 
                     } else {
 
                         lay_who_gave_first_aid.setVisibility(View.GONE);
+                        layout_Was_he_trained_in_first_aid.setVisibility(View.GONE);
+
                         //lay_how_injured.setVisibility(View.GONE);
 
                     }
@@ -243,7 +248,9 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                 public void onNothingSelected(AdapterView<?> parent) {
 
                 }
-            });*/
+            });
+
+
             spinner_admitted_health_facility.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -267,7 +274,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                 }
             });
 
-            /*
+
             spinner_any_surgery_operation_done.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -290,6 +297,8 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
                 }
             });
+
+            /*
             spinner_injured_person_become_disabled.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -597,10 +606,13 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
         String f17 = "";
         String f22 = "";
         String f26 = "";
+        String f12 = "";
 
 
         if (layout_type_admitted_health_facility.getVisibility() == View.VISIBLE) {
             f17 = ApplicationData.spilitStringFirst(spinner_type_admitted_health_facility.getSelectedItem().toString());
+
+
         }
         /*if (lay_type_of_disability.getVisibility() == View.VISIBLE) {
             f26 = ApplicationData.spilitStringFirst(spinner_type_of_disability.getSelectedItem().toString());
@@ -609,7 +621,9 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
             f22 = ApplicationData.spilitStringFirst(spinner_type_of_anesthesia_given.getSelectedItem().toString());
         }
         if (lay_who_gave_first_aid.getVisibility() == View.VISIBLE) {
+
             f11 = ApplicationData.spilitStringFirst(spinner_who_gave_first_aid.getSelectedItem().toString());
+            f12 = ApplicationData.spilitStringFirst(spinner_Was_he_trained_in_first_aid.getSelectedItem().toString());
         }
 
         //Log.i("Test String ", ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString()));
@@ -637,7 +651,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                 "\",\"f11\":\"" +
                 f11 +
                 "\",\"f12\":\"" +
-                ApplicationData.spilitStringFirst(spinner_Was_he_trained_in_first_aid.getSelectedItem().toString()) +
+                f12 +
                 "\",\"f13\":\"" +
                 ApplicationData.spilitStringFirst(spinner_person_receive_treatment_for_injury.getSelectedItem().toString()) +
                 "\",\"f14\":\"" +

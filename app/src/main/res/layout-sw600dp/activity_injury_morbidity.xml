@@ -944,25 +944,38 @@
             android:layout_height="1dp"
             android:background="@color/heading_bg"></LinearLayout>
 
-        <!--<LinearLayout-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="vertical"-->
-        <!--android:padding="20dp">-->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:id="@+id/layout_disability_sides">
 
-        <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:gravity="center"-->
-        <!--android:text="@string/disability_affects_sides"-->
-        <!--android:textColor="@android:color/black"-->
-        <!--android:textSize="22sp"  />-->
-
-        <!--// neeed to be clear-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/disability_affects_sides"
+                android:textColor="@android:color/black"
+                android:textSize="22sp" />
 
 
-        <!--</LinearLayout>-->
+            <Spinner
+                android:id="@+id/spinner_disability_affects_sides"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:entries="@array/survey_disability_affect_one_or_both_side"
+                android:focusable="false"
+                android:spinnerMode="dropdown" />
 
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"

@@ -182,7 +182,7 @@ public class HomeActivity extends AppCompatActivity {
         int live = 7;
         int test = form.length;
 
-        for (int i = 0; i < live; i++) {
+        for (int i = 0; i < test; i++) {
 
             Form formObj = new Form();
             formObj.setTitle(form[i]);

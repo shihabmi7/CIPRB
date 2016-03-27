@@ -22,7 +22,7 @@ public class PrefsValues {
     Context context = null;
 
     public boolean getHouse_characteristics() {
-        return mPrefs.getBoolean(this.house_characteristics, false);
+        return mPrefs.getBoolean(this.house_characteristics, true);
     }
 
     public void setHouse_characteristics(Boolean house_characteristics) {

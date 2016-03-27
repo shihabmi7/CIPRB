@@ -61,6 +61,13 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -88,6 +95,12 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -110,6 +123,12 @@
 
 
         </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -138,6 +157,12 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -163,6 +188,13 @@
 
 
         </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -200,6 +232,12 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -233,6 +271,12 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -251,12 +295,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:entries="@array/survey_intent_of_injury"
+                android:entries="@array/survey_condition_of_victims_after_injury"
                 android:focusable="false"
                 android:spinnerMode="dropdown" />
 
 
         </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -285,6 +335,12 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -308,6 +364,12 @@
                 android:spinnerMode="dropdown" />
 
         </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
 
         <LinearLayout
             android:id="@+id/lay_who_gave_first_aid"
@@ -336,6 +398,13 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_Was_he_trained_in_first_aid"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -359,6 +428,12 @@
                 android:spinnerMode="dropdown" />
 
         </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -386,6 +461,12 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -411,6 +492,12 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -434,6 +521,12 @@
                 android:spinnerMode="dropdown" />
 
         </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
 
         <!--/////ekan teke suru korte hobe...-->
         <LinearLayout
@@ -462,6 +555,12 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
             android:id="@+id/layout_type_admitted_health_facility"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -488,6 +587,12 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -512,6 +617,12 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -532,6 +643,12 @@
                 android:hint="enter time in hours"
                 android:inputType="number"></EditText>
         </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -556,6 +673,12 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -578,7 +701,11 @@
                 android:focusable="false"
                 android:spinnerMode="dropdown" />
         </LinearLayout>
+        <LinearLayout
 
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
         <LinearLayout
             android:id="@+id/lay_type_of_anesthesia_given"
             android:layout_width="fill_parent"
@@ -604,7 +731,11 @@
                 android:spinnerMode="dropdown" />
         </LinearLayout>
 
+        <LinearLayout
 
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
 
         <!--// have to work with it-->
         <LinearLayout
@@ -631,12 +762,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp">
 
-        </LinearLayout>
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -663,6 +792,13 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -685,6 +821,12 @@
                 android:focusable="false"
                 android:spinnerMode="dropdown" />
         </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -711,19 +853,25 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
-            android:weightSum="1"
-             android:padding="20dp">
+            android:padding="20dp"
+            android:weightSum="1">
 
             <Button
                 android:id="@+id/button_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:gravity="center"
                 android:layout_weight=".5"
+                android:gravity="center"
                 android:text="Cancel">
 
             </Button>

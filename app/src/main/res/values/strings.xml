@@ -387,6 +387,7 @@
 
     </string-array>
     <string-array name="survey_mobility_condition_after_injury">
+
         <item>  নির্বাচন করুন</item>
         <item>1. হাঁটতে পেরেছিল</item>
         <item>2. অন্যের সহযোগীতা্য় হাঁটতে পেরেছিল</item>
@@ -510,8 +511,25 @@
         <item>F. বৃদ্ধিশক্তি নষ্ট হয়ে গেছে</item>
         <item>X. অন্যান্য</item>
 
+    </string-array>
+
+    <string-array name="survey_disability_affect_one_or_both_side">
+
+        <item>A. এক দিকে দৃষ্টি শক্তি নষ্ট হয়ে গেছে</item>
+        <item>B. দু্ই দিকে দৃষ্টি শক্তি নষ্ট হয়ে গেছে</item>
+        <item>C. এক দিকে শ্রবন শক্তি নষ্ট হয়ে গেছে</item>
+        <item>D. দু্ই দিকে শ্রবন শক্তি নষ্ট হয়ে গেছে</item>
+        <item>E. এক দিকে হাঁটার শক্তি নষ্ট হয়ে গেছে</item>
+        <item>F. দু্ই দিকে হাঁটার শক্তি নষ্ট হয়ে গেছে</item>
+        <item>G. এক দিকে হাত দিয়ে কাজ করার শক্তি নষ্ট হয়ে গেছে</item>
+        <item>H. দু্ই দিকে হাত দিয়ে কাজ করার শক্তি নষ্ট হয়ে গেছে</item>
 
     </string-array>
+
+
+
+
+
     <string-array name="survey_significant_source_of_income_for_family">
 
         <item>  নির্বাচন করুন</item>
@@ -1544,6 +1562,8 @@
     <string name="socio11">11.প্রতি মাসের আয়</string>
 
     <string-array name="survey_c03">
+
+        <item>  নির্বাচন করুন</item>
         <item>11.ছাদ নেই</item>
         <item>12.খড়/ছন/তাল পাতা</item>
         <item>21.বাঁশ</item>
@@ -1560,6 +1580,7 @@
 
     <string-array name="survey_c04">
 
+        <item>  নির্বাচন করুন</item>
         <item>11.মাটি/বালু</item>
         <item>21.কাঠের তক্তা</item>
         <item>22.তালগাছ/বাঁশা</item>
@@ -1571,6 +1592,7 @@
 
     </string-array>
     <string-array name="survey_c05">
+        <item>  নির্বাচন করুন</item>
         <item>11.দেয়াল নাই </item>
         <item>12.পাটকাঠি/বেত/তালগাছ/গাছের গুড়ি</item>
         <item>13.মাটি</item>
@@ -1586,6 +1608,7 @@
         <item>97.অন্যান্য </item>
     </string-array>
     <string-array name="survey_c07">
+        <item>  নির্বাচন করুন</item>
         <item>11.বাড়ীর ভিতরে ট্যাপের (পাইপের)পানি  </item>
         <item>12.বাড়ীর বাহিরে/উঠানে ট্যাপের ট্যাপের (পাইপের)পানি </item>
         <item>13.ট্যাপের (পাইপের)পানি </item>
@@ -1603,6 +1626,7 @@
     </string-array>
 
     <string-array name="survey_c08">
+        <item>  নির্বাচন করুন</item>
         <item>11.ফ্ল্যাশ করে পাইপের মাধ্যমে অপসারন </item>
         <item>12.ফ্ল্যাশ করে সেপটিক ট্যাঙ্ক এ ধারন</item>
         <item>13.ফ্ল্যাশ করে গর্তে ধারন</item>

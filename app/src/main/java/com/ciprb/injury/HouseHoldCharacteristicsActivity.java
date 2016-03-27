@@ -27,7 +27,7 @@ import okhttp3.Response;
 public class HouseHoldCharacteristicsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static String TAG = "HouseHoldCharacteristicsActivity";
-    private Context mContext =this;
+    private Context mContext = this;
     private ProgressDialog progressDialog;
     private Button button_cancel, button_next;
     private Spinner spinner_c03, spinner_c04, spinner_c05, spinner_c07, spinner_c08, spinner_c10;
@@ -38,7 +38,8 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
     TextView textView_person_id;
 
     PrefsValues prefsValues;
-    Context context =this;
+    Context context = this;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,22 +47,23 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
 
         try {
 
-            setTitle( getResources().getStringArray(R.array.survey_activity_title)[5]);
+            setTitle(getResources().getStringArray(R.array.survey_activity_title)[5]);
             initUI();
 
-            prefsValues=new PrefsValues(mContext);
+            prefsValues = new PrefsValues(mContext);
             String value = prefsValues.getHouseUniqueId();
 
-            if (value.length() > 0){
+            if (value.length() > 0) {
 
                 person_id = value;
                 textView_person_id.setText("House Hold ID: " + value);
 
-            }else
+            } else
 
-            {    Toast.makeText(context,"Set House ID First", Toast.LENGTH_SHORT).show();
+            {
+                Toast.makeText(context, "Set House ID First", Toast.LENGTH_SHORT).show();
 
-            finish();
+                finish();
 
             }
 
@@ -104,6 +106,32 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
         button_next.setOnClickListener(this);
     }
 
+    boolean checkSpinner() {
+
+
+        if (spinner_c03.getSelectedItemPosition() != 0
+                && spinner_c04.getSelectedItemPosition() != 0
+                && spinner_c05.getSelectedItemPosition() != 0
+                && spinner_c07.getSelectedItemPosition() != 0 &&
+                spinner_c08.getSelectedItemPosition() != 0 &&
+                spinner_c10.getSelectedItemPosition() != 0 &&
+                edit_c01.getText().length() > 0 &&
+                edit_c02.getText().length() > 0 &&
+                edittext_c06.getText().length() > 0 &&
+                edittext_c11.getText().length() > 0) {
+
+            //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
+
+            return true;
+
+
+        } else {
+
+            Toast.makeText(getApplicationContext(), getString(R.string.suggestion), Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+    }
 
     /**
      * Called when a view has been clicked.
@@ -117,7 +145,7 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
 
             this.finish();
 
-        } else if (v == button_next) {
+        } else if (v == button_next && checkSpinner()) {
 
             if (InternetConnection.checkNetworkConnection(context)) {
 
@@ -133,6 +161,7 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
         }
 
     }
+
     public void showAlert(final Activity activity) {
 
         if (InternetConnection.isAvailable(activity)) {
@@ -225,7 +254,7 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
     }
 
     private class PutAsync extends AsyncTask<String, Void, String> {
-        int value =0;
+        int value = 0;
 
         @Override
         protected void onPreExecute() {
@@ -243,7 +272,6 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
 
                 Log.i("URL are ", params[0]);
                 value = ApplicationData.putRequestWithBody(params[0], params[1]);
-
 
 
             } catch (IOException e) {
@@ -272,7 +300,6 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
             } else {
                 Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
             }
-
 
 
         }
