@@ -493,7 +493,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="20dp"
+            android:id="@+id/layout_was_hetrained_in_first_aid">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -555,7 +556,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="20dp"
+            android:id="@+id/layout_who_provided_the_treatment">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -586,7 +588,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="20dp"
+            android:id="@+id/layout_where_recieve_treatment">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -681,7 +684,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="20dp"
+            android:id="@+id/layout_how_admitted_health_facility">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -711,7 +715,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="20dp"
+            android:id="@+id/layout_time_take_health_facility">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -739,7 +744,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="20dp"
+            android:id="@+id/layout_days_take_health_facility">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -968,6 +974,40 @@
                 android:entries="@array/survey_disability_affect_one_or_both_side"
                 android:focusable="false"
                 android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/number_of_days_assistance_for_daily_living"
+                android:textColor="@android:color/black"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/edittext_number_of_days_assistance_for_daily_leaving"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="days"
+                android:inputType="number"
+                android:maxLength="4"></EditText>
 
         </LinearLayout>
 

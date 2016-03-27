@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -67,9 +68,6 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
         setTitle(getResources().getStringArray(R.array.survey_activity_title)[3]);
 
-        // get value from radio button
-        // RadioGroup rg = (RadioGroup)findViewById(R.id.youradio);
-        //  String radiovalue = ((RadioButton)findViewById(rg.getCheckedRadioButtonId())).getText().toString();
 
         try {
             prefsValues = new PrefsValues(this);
@@ -173,6 +171,15 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
 
         }
+    }
+
+    String getRadioData(){
+
+        // get value from radio button
+         RadioGroup rg = (RadioGroup)findViewById(R.id.rg_fever);
+        //  String radiovalue = ((RadioButton)findViewById(rg.getCheckedRadioButtonId())).getText().toString();
+
+        return "";
     }
 
     boolean checkSpinner() {

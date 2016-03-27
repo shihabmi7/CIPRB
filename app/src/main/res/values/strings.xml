@@ -321,7 +321,13 @@
     <string name="Did_the_injured_person_become_disabled">ইনজুরির ফলে কোন পঙ্গুত্ব হয়েছিল কি?</string>
     <string name="type_of_disability">উত্তর হ্যাঁ হলে, তা কি ধরনের পঙ্গুত্ব?</string>
     <string name="disability_affects_sides">এই ইনজুরি কী শরীরের কোন অঙ্গের এক/উভয় দিককই পিঙ্গু করেছিল ?</string>
+
+    <string name="number_of_days_assistance_for_daily_living">অসুস্থ্যতার কারনে কতদিন স্বাভাবিক কাজকর্মে অন্যের সাহায্য গ্রহন করতে হয়েছিল?
+
+(দিনে লিখুন)</string>
     <string name="Number_of_days_work_loss">অসুস্থ্যতার কারণে কতদিন স্কুলে বা আঁচলে অনুপস্থিত ছিল বা স্বাভাবিক কাজ কর্ম করতে পারেনি? </string>
+
+
     <string name="significant_source_of_income_for_family">ব্যক্তিটি কি আপনাদের পরিবারের একজন উল্লেখযোগ্য আয় উপাজ©নকারী ?</string>
     <string name="family_being_coping_loss_income">পরিবারটি উপার্জনর ক্ষতি কি ভাবে পুষিয়ে নিয়েছিল ?</string>
 
