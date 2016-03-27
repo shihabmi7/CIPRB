@@ -63,7 +63,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/suicide_where_did"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_survey_suicide_where"
@@ -87,7 +87,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/suicide_how"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_survey_suicide_how"
@@ -112,7 +112,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/suicide_types"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_survey_suicide_type"

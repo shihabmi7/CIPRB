@@ -677,7 +677,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                 "\",\"e22\":\"" +
                 e22 +
                 "\",\"e23\":\"" +
-                ApplicationData.spilitStringFirst(edittext_how_much_cost_reatment.getText().toString()) +
+                ApplicationData.spilitStringFirst(spinner_outcome_of_treatment.getSelectedItem().toString()) +
                 "\",\"e24\":\"" +
                 edittext_how_much_cost_reatment.getText().toString() +
                 "\",\"e25\":\"" +

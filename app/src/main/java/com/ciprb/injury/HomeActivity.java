@@ -95,23 +95,23 @@ public class HomeActivity extends AppCompatActivity {
 //
 //                    }
 
-                    if (!prefsValues.getHouse_characteristics()){
+//                    if (!prefsValues.getHouse_characteristics()){
+//
+//                        Toast.makeText(getApplicationContext(),
+//                                getString(R.string.finish_current_house_hold_house_characteristics),
+//                                Toast.LENGTH_LONG).show();
+//
+//                    }else
+                    //  {
 
-                        Toast.makeText(getApplicationContext(),
-                                getString(R.string.finish_current_house_hold_house_characteristics),
-                                Toast.LENGTH_LONG).show();
 
-                    }else{
+                    Intent intent = new Intent(getApplicationContext(),
+                            samples[position]);
+                    startActivity(intent);
 
-
-                        Intent intent = new Intent(getApplicationContext(),
-                                samples[position]);
-                        startActivity(intent);
-
-                    }
+                    // }
 
                     //
-
 
 
                 } else if (position == 1) {
@@ -182,7 +182,7 @@ public class HomeActivity extends AppCompatActivity {
         int live = 7;
         int test = form.length;
 
-        for (int i = 0; i < test; i++) {
+        for (int i = 0; i < live; i++) {
 
             Form formObj = new Form();
             formObj.setTitle(form[i]);

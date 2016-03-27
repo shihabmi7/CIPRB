@@ -55,7 +55,7 @@
                 android:layout_centerVertical="true"
                 android:text="@string/machine1"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="22sp" />
 
 
             <Spinner
@@ -81,7 +81,7 @@
                 android:layout_centerVertical="true"
                 android:text="@string/machine2"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="22sp" />
 
 
             <Spinner
@@ -92,6 +92,7 @@
                 android:entries="@array/machine2"
                 android:focusable="false"
                 android:spinnerMode="dropdown" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -107,7 +108,7 @@
                 android:layout_centerVertical="true"
                 android:text="@string/machine3"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="22sp" />
 
 
             <Spinner
@@ -133,7 +134,7 @@
                 android:layout_centerVertical="true"
                 android:text="@string/machine4"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="22sp" />
 
 
             <Spinner
@@ -159,7 +160,7 @@
                 android:layout_centerVertical="true"
                 android:text="@string/machine5"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="22sp" />
 
 
             <Spinner
@@ -185,7 +186,7 @@
                 android:layout_centerVertical="true"
                 android:text="@string/machine6"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="22sp" />
 
 
             <Spinner

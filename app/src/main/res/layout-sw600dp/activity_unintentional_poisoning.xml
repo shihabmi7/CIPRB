@@ -52,7 +52,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
 
@@ -89,7 +89,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/poisoning2"
@@ -115,7 +115,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/poisoning3"
@@ -141,7 +141,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/poisoning4"
@@ -167,7 +167,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/poisoning5"
@@ -193,7 +193,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/poisoning6"
@@ -220,7 +220,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/poisoning7"
@@ -246,7 +246,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/poisoning8"
@@ -272,7 +272,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/poisoning9"

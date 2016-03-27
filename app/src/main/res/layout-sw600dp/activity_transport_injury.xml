@@ -54,7 +54,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/transport_travel"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_h01"
@@ -78,7 +78,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/transport_street_doing_what"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_h02"
@@ -103,7 +103,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/transport_collide_partile"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_h03"
@@ -127,7 +127,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/transport_why_victim_on_road"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_h04"
@@ -151,7 +151,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/transport_any_safety_device"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_h05"
@@ -175,7 +175,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/transport_if_yes_safety_device"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_h06"
@@ -199,7 +199,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/transport_condition_of_road"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_h07"
@@ -223,7 +223,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/transport_alcohol_mood_altering_substance"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_h08"
@@ -247,7 +247,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/talking_over_mobile"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_h09"

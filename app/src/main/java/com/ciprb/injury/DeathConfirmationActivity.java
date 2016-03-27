@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -30,7 +31,7 @@ import java.util.Locale;
 
 public class DeathConfirmationActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Calendar myCalendar,myDeathCalender;
+    Calendar myCalendar, myDeathCalender;
     DatePickerDialog.OnDateSetListener date, deathdate;
 
     RelativeLayout linerar_how_injury;
@@ -117,7 +118,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
             });
 
-            myDeathCalender =Calendar.getInstance();
+            myDeathCalender = Calendar.getInstance();
             deathdate = new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -148,12 +149,11 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
             spinner_death_sex = (Spinner) findViewById(R.id.spinner_death_sex);
             spinner_realation_with_hh = (Spinner) findViewById(R.id.spinner_realation_with_hh);
             spinner_death_place = (Spinner) findViewById(R.id.spinner_death_place);
-            spinner_cause_death = (Spinner) findViewById(R.id.spinner_death_place);
+            spinner_cause_death = (Spinner) findViewById(R.id.spinner_cause_death);
             //spinner_how_injured = (Spinner) findViewById(R.id.spinner_how_injured);
 
             button_cancel = (Button) findViewById(R.id.button_cancel);
             button_next = (Button) findViewById(R.id.button_next);
-
 
             button_cancel.setOnClickListener(this);
             button_next.setOnClickListener(this);
@@ -173,13 +173,13 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         }
     }
 
-    String getRadioData(){
+    String getRadioData() {
 
         // get value from radio button
-         RadioGroup rg = (RadioGroup)findViewById(R.id.rg_fever);
-        //  String radiovalue = ((RadioButton)findViewById(rg.getCheckedRadioButtonId())).getText().toString();
+        RadioGroup rg = (RadioGroup) findViewById(R.id.rg_fever);
+        String radiovalue = ((RadioButton)findViewById(rg.getCheckedRadioButtonId())).getText().toString();
 
-        return "";
+        return radiovalue;
     }
 
     boolean checkSpinner() {
@@ -289,7 +289,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
             params.put("age", edittext_current_age.getText().toString());
             params.put("occupasion", ApplicationData.spilitStringFirst(spinner_occupasion.getSelectedItem().toString()));
             params.put("interview_time", ApplicationData.getCurrentDate());
-            params.put("d01", editText_death_date.getText().toString());
+            params.put("d01", editText_injury_date.getText().toString());
             // done sex params.put("d02", ApplicationData.getCurrentDate());
             params.put("d03", ApplicationData.spilitStringFirst(spinner_death_place.getSelectedItem().toString()));
             params.put("d04", ApplicationData.getCurrentDate());
@@ -452,12 +452,13 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
                         ciprbDatabase.insertIntoDeathDB(mCURRENT_MEMBER_ID, editText_members_name.getText().toString());
 
+                        Toast.makeText(activity, "Success: Saved In Device Database " + death_type, Toast.LENGTH_LONG).show();
 
                     }
 
                     // starts from zero & increment here
                     calculate_member++;
-                    Toast.makeText(activity, "Success: Death Type" + death_type, Toast.LENGTH_LONG).show();
+                    // Toast.makeText(activity, "Success: Death Type" + death_type, Toast.LENGTH_LONG).show();
                     prefsValues.setDeathSerial(count);
                     cleartext();
 
@@ -467,13 +468,10 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
                         if (!ciprbDatabase.getDeathPersonList().isEmpty()) {
 
 
-                            Toast.makeText(activity, "Success: Enter Mortality Form Now" + death_type, Toast.LENGTH_LONG).show();
                             ApplicationData.gotToNextActivity(activity, InjuryMortalityActivity.class);
                             finish();
 
-                        }
-
-                        else {
+                        } else {
                             //  go to home activity n fill up home characteristics
 
                             ApplicationData.gotToNextActivity(activity, HomeActivity.class);
@@ -482,7 +480,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
                         }
 
 
-                    }else{
+                    } else {
 
                         Toast.makeText(activity, "Success: Enter Another Died Person Data" + death_type, Toast.LENGTH_LONG).show();
 

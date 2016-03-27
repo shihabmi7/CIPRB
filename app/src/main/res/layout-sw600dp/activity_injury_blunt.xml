@@ -48,7 +48,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/blunt1"
@@ -57,7 +57,7 @@
             android:layout_centerVertical="true"
             android:text="@string/blunt1"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="22sp" />
 
 
         <Spinner
@@ -74,7 +74,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/blunt2"
@@ -83,7 +83,7 @@
             android:layout_centerVertical="true"
             android:text="@string/blunt2"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="22sp" />
 
 
         <Spinner
@@ -103,7 +103,7 @@
         android:layout_centerVertical="true"
         android:text="Blunt object like: লাঠি, হাতুড়ি,খেলার ব্যাট-এর কোন ভোঁতা প্রান্ত দ্বারা আহত হওয়া,দড়জা বা জানালার চাপা পড়ে আহত হওয়া "
         android:textColor="@android:color/black"
-        android:textSize="18sp" />
+        android:textSize="22sp" />
 
     <LinearLayout
         android:layout_width="fill_parent"

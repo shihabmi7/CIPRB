@@ -23,35 +23,33 @@ import okhttp3.Response;
  */
 public class ApplicationData {
 
-    public static String URL_HOUSE_HOLD_MEMBERS = "http://saeradesign.com/LumenApi/public/index.php/api/household";
-    public static String URL_DEATH_CONFIRMATION = "http://saeradesign.com/LumenApi/public/index.php/api/household";
-
-    // change just
-
-    public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/household/injurymorbidity/";
-    public static String URL_INJURY_MORTALITY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/";
-
-    public static String URL_SUICIDE = "http://saeradesign.com/LumenApi/public/index.php/api/household/suicideattemptactivity/";
-    public static String URL_ROADTRANSPORTINJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/roadtransportinjury/";
-    public static String URL_CUTINJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/cutinjury/";
-    public static String URL_VIOLENCEINJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/violenceinjury/";
-    public static String URL_FALL = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/fallinjury/";
-    public static String URL_NEAR_DROWN = "http://saeradesign.com/LumenApi/public/index.php/api/activity/neardrowing/";
-    public static String URL_BURNINJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/burninjury/";
-    public static String URL_UNINTENTIONAL_INJURY = "http://saeradesign.com/LumenApi/public/index.php/api/activity/unintentionpoisoning/";
-    public static String URL_TOOl_INJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/toolinjury/";
-    public static String URL_ELECTROCAUTION = "http://saeradesign.com/LumenApi/public/index.php/api/activity/electrocaution/";
-    public static String URL_INSECT_INJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/insectinjury/";
-    public static String URL_BLUNT_INJURY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity/injuryblunt/";
-    public static String URL_SUFFOGATION = "http://saeradesign.com/LumenApi/public/index.php/api/activity/suffocation/";
-    public static String URL_QUALITY_OF_LIFE = "http://saeradesign.com/LumenApi/public/index.php/api/activity/qualityoflife/";
 
 
-    // public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity";
-    // public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity";
-    // public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity";
-    // public static String URL_INJURY_MORBIDITY = "http://saeradesign.com/LumenApi/public/index.php/api/injuryactivity";
-    public static String URL_CHARACTERISTIC = "http://saeradesign.com/LumenApi/public/index.php/api/household/characteristics/";
+
+    public static String URL_BASE = "http://saeradesign.com/";
+
+    public static String URL_HOUSE_HOLD_MEMBERS =  URL_BASE + "LumenApi/public/index.php/api/household";
+    public static String URL_DEATH_CONFIRMATION =  URL_BASE + "LumenApi/public/index.php/api/household";
+
+    public static String URL_INJURY_MORBIDITY =  URL_BASE + "LumenApi/public/index.php/api/household/injurymorbidity/";
+    public static String URL_INJURY_MORTALITY =  URL_BASE + "LumenApi/public/index.php/api/injuryactivity/";
+    public static String URL_SUICIDE =  URL_BASE + "LumenApi/public/index.php/api/household/suicideattemptactivity/";
+    public static String URL_ROADTRANSPORTINJURY =  URL_BASE + "LumenApi/public/index.php/api/injuryactivity/roadtransportinjury/";
+    public static String URL_CUTINJURY =   URL_BASE + "LumenApi/public/index.php/api/injuryactivity/cutinjury/";
+    public static String URL_VIOLENCEINJURY =  URL_BASE + "LumenApi/public/index.php/api/injuryactivity/violenceinjury/";
+    public static String URL_FALL =  URL_BASE + "LumenApi/public/index.php/api/injuryactivity/fallinjury/";
+    public static String URL_NEAR_DROWN =  URL_BASE + "LumenApi/public/index.php/api/activity/neardrowing/";
+    public static String URL_BURNINJURY =  URL_BASE + "LumenApi/public/index.php/api/injuryactivity/burninjury/";
+    public static String URL_UNINTENTIONAL_INJURY =  URL_BASE + "LumenApi/public/index.php/api/activity/unintentionpoisoning/";
+    public static String URL_TOOl_INJURY =   URL_BASE + "LumenApi/public/index.php/api/injuryactivity/toolinjury/";
+    public static String URL_ELECTROCAUTION =  URL_BASE + "LumenApi/public/index.php/api/activity/electrocaution/";
+    public static String URL_INSECT_INJURY =   URL_BASE + "LumenApi/public/index.php/api/injuryactivity/insectinjury/";
+    public static String URL_BLUNT_INJURY =  URL_BASE + "LumenApi/public/index.php/api/injuryactivity/injuryblunt/";
+    public static String URL_SUFFOGATION =  URL_BASE + "LumenApi/public/index.php/api/activity/suffocation/";
+
+
+    public static String URL_QUALITY_OF_LIFE =  URL_BASE + "LumenApi/public/index.php/api/activity/qualityoflife/";
+    public static String URL_CHARACTERISTIC =  URL_BASE + "LumenApi/public/index.php/api/household/characteristics/";
 
 
     public static int STATUS_SUCCESS = 200;

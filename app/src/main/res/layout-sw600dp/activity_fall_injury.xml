@@ -58,7 +58,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/fall1"
@@ -67,7 +67,7 @@
             android:layout_centerVertical="true"
             android:text="@string/fall1"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="22sp" />
 
 
         <Spinner
@@ -84,7 +84,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/fall2"
@@ -93,7 +93,7 @@
             android:layout_centerVertical="true"
             android:text="@string/fall2"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="22sp" />
 
 
         <Spinner
@@ -110,7 +110,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/fall3"
@@ -119,7 +119,7 @@
             android:layout_centerVertical="true"
             android:text="@string/fall3"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="22sp" />
 
 
         <Spinner
@@ -136,7 +136,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/fall4"
@@ -145,7 +145,7 @@
             android:layout_centerVertical="true"
             android:text="@string/fall4"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="22sp" />
 
 
         <Spinner
@@ -162,7 +162,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/fall5"
@@ -171,7 +171,7 @@
             android:layout_centerVertical="true"
             android:text="@string/fall5"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="22sp" />
 
 
         <Spinner
@@ -188,7 +188,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="20dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -196,7 +196,7 @@
             android:layout_centerVertical="true"
             android:text="@string/fall06"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="22sp" />
 
 
         <Spinner

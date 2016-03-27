@@ -49,7 +49,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/suffocation1"
@@ -58,7 +58,7 @@
             android:layout_centerVertical="true"
             android:text="@string/suffocation1"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:padding="22dp" />
 
 
         <Spinner
@@ -75,7 +75,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/suffocation2"
@@ -84,7 +84,7 @@
             android:layout_centerVertical="true"
             android:text="@string/suffocation2"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:padding="22dp" />
 
 
     </LinearLayout>

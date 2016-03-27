@@ -53,7 +53,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
 
                 <TextView
@@ -62,7 +62,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/violence_event_occur"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_i01"
@@ -78,7 +78,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -86,7 +86,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/violence_relation"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_i02"
@@ -103,7 +103,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -111,7 +111,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/violence_sex"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_i03"
@@ -127,7 +127,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -135,7 +135,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/violence_object"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_i04"

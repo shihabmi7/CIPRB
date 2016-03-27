@@ -100,6 +100,31 @@
             android:layout_height="1dp"
             android:background="@color/heading_bg"></LinearLayout>
 
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/textView_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/death_date"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editText_death_date"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false" />
+
+
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -467,6 +492,7 @@
             android:background="@color/heading_bg"></LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lay_spinner_Who_provided_the_treatment"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -498,6 +524,7 @@
             android:background="@color/heading_bg"></LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lay_spinner_Where_receive_treatment"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -593,6 +620,7 @@
             android:background="@color/heading_bg"></LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lay_spinner_how_admitted_health_facility"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -623,6 +651,7 @@
             android:background="@color/heading_bg"></LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lay_edittext_time_take_health_facility"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -651,6 +680,7 @@
             android:background="@color/heading_bg"></LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lay_edittext_days_take_health_facility"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -701,11 +731,13 @@
                 android:focusable="false"
                 android:spinnerMode="dropdown" />
         </LinearLayout>
+
         <LinearLayout
 
             android:layout_width="fill_parent"
             android:layout_height="1dp"
             android:background="@color/heading_bg"></LinearLayout>
+
         <LinearLayout
             android:id="@+id/lay_type_of_anesthesia_given"
             android:layout_width="fill_parent"

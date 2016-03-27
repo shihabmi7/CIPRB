@@ -52,9 +52,9 @@
     <string name="death_conf_hd"> Death Confirmation</string>
     <string name="death_date">মৃত্যূর তারিখ</string>
     <string name="death_location">মৃত্যূর স্থান</string>
-    <string name="death_symptoms">শেষ অসুস্থতার সময়ের লক্ষণ ও উপসর্গ (আঘাত/ইনজুরি ব্যতীত মৃত্যূর ক্ষেত্রে)
+    <string name="death_symptoms">শেষ অসুস্থতার সময়ের লক্ষণ ও উপসর্গ (আঘাত /ইনজুরি ব্যতীত মৃত্যূর ক্ষেত্রে)
     (প্রতিটি প্রশ্ন জিজ্ঞাসা করুন)</string>
-    <string name="death_chronic_deseases">মৃত ব্যক্তির উল্লেখিতঅসুস্থতাগুলোর কোনটি ছিল কিনা জিজ্ঞাসা করুন
+    <string name="death_chronic_deseases">মৃত ব্যক্তির উল্লেখিত অসুস্থতাগুলোর কোনটি ছিল কিনা জিজ্ঞাসা করুন
     (প্রতিটি প্রশ্ন জিজ্ঞাসা করুন)</string>
     <string name="weakness_time">মৃত্যূর পূর্বে কতদিন অসুস্থ ছিল?</string>
     <string name="death_cause"> কি কারনে মৃত্যূ হয়েছিল?</string>

@@ -114,7 +114,6 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
                 && spinner_c05.getSelectedItemPosition() != 0
                 && spinner_c07.getSelectedItemPosition() != 0 &&
                 spinner_c08.getSelectedItemPosition() != 0 &&
-                spinner_c10.getSelectedItemPosition() != 0 &&
                 edit_c01.getText().length() > 0 &&
                 edit_c02.getText().length() > 0 &&
                 edittext_c06.getText().length() > 0 &&
@@ -124,10 +123,10 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
 
             return true;
 
-
         } else {
 
             Toast.makeText(getApplicationContext(), getString(R.string.suggestion), Toast.LENGTH_LONG).show();
+
             return false;
         }
 
