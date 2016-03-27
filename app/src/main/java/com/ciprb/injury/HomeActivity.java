@@ -17,7 +17,6 @@ import android.widget.Toast;
 public class HomeActivity extends AppCompatActivity {
 
     PrefsValues prefsValues;
-
     String form[] = {
 
             // "DATABASE",
