@@ -264,6 +264,8 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
             if (value == ApplicationData.STATUS_SUCCESS) {
                 //// TODO: 3/22/2016
 
+                prefsValues.setHouse_characteristics(true);
+
                 Toast.makeText(context, "SuccessFully Saved...", Toast.LENGTH_LONG).show();
                 finish();
 

@@ -24,7 +24,7 @@ public class CutInjuryActivity extends AppCompatActivity implements View.OnClick
 
     Activity activity = this;
     ProgressDialog progressDialog;
-    String person_id = "101323210";
+    String person_id = "";
     TextView textView_person_id;
 
 

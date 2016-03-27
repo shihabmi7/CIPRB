@@ -23,11 +23,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 import cz.msebera.android.httpclient.Header;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class InjuryBluntActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,7 +33,7 @@ public class InjuryBluntActivity extends AppCompatActivity implements View.OnCli
 
     ProgressDialog progressDialog;
     Activity activity = this;
-    String person_id = "101323212";
+    String person_id = "";
     TextView textView_person_id;
 
     @Override
@@ -206,28 +201,6 @@ public class InjuryBluntActivity extends AppCompatActivity implements View.OnCli
 
     }
 
-    public String putRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
-
-
-        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-
-
-        OkHttpClient client = new OkHttpClient();
-        RequestBody body = RequestBody.create(JSON, jsonBody);
-        Request request = new Request.Builder()
-                .url(url)
-                .put(body)
-                .build();
-        Response response = client.newCall(request).execute();
-        Response httpResponse = client.newCall(request).execute();
-        httpResponse.code();
-
-        Log.i("Response data are ", response.body().string());
-        Log.i("Response code are ", "" + response.code());
-        //makeCall(client, request);
-
-        return response.body().string();
-    }
 
     String createJsonBody() {
         String jsonData = "{" +

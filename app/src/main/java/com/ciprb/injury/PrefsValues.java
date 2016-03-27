@@ -16,7 +16,18 @@ public class PrefsValues {
     private String house_hold_no = "house_hold_no";
     private String serial = "serial";
     private String death_serial = "death_serial";
+
+    private String house_characteristics = "house_characteristics";
+
     Context context = null;
+
+    public boolean getHouse_characteristics() {
+        return mPrefs.getBoolean(this.house_characteristics, false);
+    }
+
+    public void setHouse_characteristics(Boolean house_characteristics) {
+        mPrefs.edit().putBoolean(this.house_characteristics, house_characteristics).commit();
+    }
 
 
     public int getSerial() {

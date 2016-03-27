@@ -95,11 +95,23 @@ public class HomeActivity extends AppCompatActivity {
 //
 //                    }
 
+                    if (!prefsValues.getHouse_characteristics()){
+
+                        Toast.makeText(getApplicationContext(),
+                                getString(R.string.finish_current_house_hold_house_characteristics),
+                                Toast.LENGTH_LONG).show();
+
+                    }else{
+
+
+                        Intent intent = new Intent(getApplicationContext(),
+                                samples[position]);
+                        startActivity(intent);
+
+                    }
+
                     //
 
-                    Intent intent = new Intent(getApplicationContext(),
-                            samples[position]);
-                    startActivity(intent);
 
 
                 } else if (position == 1) {

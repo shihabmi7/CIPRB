@@ -23,11 +23,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 import cz.msebera.android.httpclient.Header;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class ElectrocautionActivity extends AppCompatActivity implements View.OnClickListener {
     private Spinner spinner_p01, spinner_p02, spinner_p03, spinner_p04;
@@ -204,8 +199,16 @@ public class ElectrocautionActivity extends AppCompatActivity implements View.On
 
 
         if (v == button_next && checkSpinner()) {
-            String url = ApplicationData.URL_ELECTROCAUTION + person_id;
-            new PutAsync().execute(url, createJsonBody());
+            if (InternetConnection.checkNetworkConnection(activity)){
+
+                String url = ApplicationData.URL_ELECTROCAUTION + person_id;
+                new PutAsync().execute(url, createJsonBody());
+
+            }else{
+
+                showAlert(activity);
+            }
+
 
         } else if (v == button_cancel) {
 
@@ -214,28 +217,7 @@ public class ElectrocautionActivity extends AppCompatActivity implements View.On
 
     }
 
-    public String putRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
 
-
-        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-
-
-        OkHttpClient client = new OkHttpClient();
-        RequestBody body = RequestBody.create(JSON, jsonBody);
-        Request request = new Request.Builder()
-                .url(url)
-                .put(body)
-                .build();
-        Response response = client.newCall(request).execute();
-        Response httpResponse = client.newCall(request).execute();
-        httpResponse.code();
-
-        Log.i("Response data are ", response.body().string());
-        Log.i("Response code are ", "" + response.code());
-        //makeCall(client, request);
-
-        return response.body().string();
-    }
 
     String createJsonBody() {
         String jsonData = "{" +

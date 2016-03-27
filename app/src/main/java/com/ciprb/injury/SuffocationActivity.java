@@ -28,7 +28,7 @@ public class SuffocationActivity extends AppCompatActivity implements View.OnCli
     ProgressDialog progressDialog;
     Activity activity = this;
     //String person_id = "101323210";
-    String person_id = "101323210";
+    String person_id = "";
     TextView textView_person_id;
 
     @Override

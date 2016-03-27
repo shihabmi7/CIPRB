@@ -251,6 +251,7 @@ public class HouseHoldInformationActivity extends AppCompatActivity implements V
         prefsValues.setHouseUnique_id(value);
         prefsValues.setSerial(ApplicationData.SERIAL);
         prefsValues.setDeathSerial(ApplicationData.SERIAL_DEATH);
+        prefsValues.setHouse_characteristics(false);
         //ddd gfdgfdg
     }
 

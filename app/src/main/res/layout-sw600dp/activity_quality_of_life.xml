@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
 
                 <TextView
@@ -84,7 +84,7 @@
                     android:gravity="center"
                     android:text="@string/Quality1"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_s1"
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
 
                 <TextView
@@ -113,7 +113,7 @@
                     android:gravity="center"
                     android:text="@string/Quality2"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <Spinner
                     android:id="@+id/spinner_s2"
@@ -132,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
 
                 <TextView
@@ -142,7 +142,7 @@
                     android:gravity="center"
                     android:text="@string/Quality3"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
 
                 <Spinner
@@ -162,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
 
                 <TextView
@@ -172,7 +172,7 @@
                     android:gravity="center"
                     android:text="@string/Quality4"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
 
                 <Spinner
@@ -192,7 +192,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
 
                 <TextView
@@ -202,7 +202,7 @@
                     android:gravity="center"
                     android:text="@string/Quality5"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
 
                 <Spinner
@@ -222,7 +222,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="20dp">
 
 
                 <TextView
@@ -231,7 +231,7 @@
                     android:gravity="center"
                     android:text="@string/Quality6"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
 
                 <EditText
@@ -251,11 +251,13 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
+                android:weightSum="1"
                 android:padding="20dp">
 
                 <Button
                     android:id="@+id/button_cancel"
                     android:layout_width="wrap_content"
+                    android:layout_weight=".5"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="Cancel">
@@ -267,6 +269,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    
                     android:text="Next">
 
                 </Button>
