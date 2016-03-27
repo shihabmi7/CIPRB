@@ -658,7 +658,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
             if (value == ApplicationData.STATUS_SUCCESS) {
                 //// TODO: 3/22/2016
 
-                int type = spinner_how_injured.getSelectedItemPosition() + 1;
+                int type = spinner_how_injured.getSelectedItemPosition();
                 //showTextLong("Success! Select Type:" + type);
                 Toast.makeText(activity, "Success" + type, Toast.LENGTH_LONG).show();
 

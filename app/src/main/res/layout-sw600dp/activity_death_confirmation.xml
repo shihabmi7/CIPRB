@@ -43,6 +43,11 @@
 
         </LinearLayout>
 
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -67,6 +72,12 @@
 
 
         </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -94,6 +105,12 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -116,12 +133,17 @@
 
         </LinearLayout>
 
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/textView_name"
@@ -130,7 +152,7 @@
                 android:layout_centerVertical="true"
                 android:text="@string/death_date"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/editText_death_date"
@@ -142,10 +164,16 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/death_person_sex"
@@ -154,7 +182,7 @@
                 android:layout_centerVertical="true"
                 android:text="@string/sex"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
 
             <Spinner
@@ -168,10 +196,16 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/textView_dob"
@@ -180,7 +214,7 @@
                 android:gravity="center"
                 android:text="@string/death_location"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <Spinner
                 android:id="@+id/spinner_death_place"
@@ -192,6 +226,12 @@
                 android:spinnerMode="dropdown" />
 
         </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -218,10 +258,16 @@
         </RelativeLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/textView_marrital_status"
@@ -275,6 +321,7 @@
                 android:maxLength="2" />
         </RelativeLayout>
 
+
         <LinearLayout
 
             android:layout_width="fill_parent"
@@ -285,7 +332,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/textView_ocu"
@@ -308,23 +355,27 @@
 
         </LinearLayout>
 
+        <LinearLayout
 
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
 
         <TextView
-            android:id="@+id/textView_current_age"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/death_symptoms"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/textView_jor"
@@ -333,7 +384,7 @@
                 android:gravity="center"
                 android:text="@string/fever"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_fever"
@@ -365,7 +416,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -373,7 +424,7 @@
                 android:gravity="center"
                 android:text="@string/rash"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_rash"
@@ -405,7 +456,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -413,7 +464,7 @@
                 android:gravity="center"
                 android:text="@string/growth"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_growth"
@@ -445,7 +496,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -453,7 +504,7 @@
                 android:gravity="center"
                 android:text="@string/jaundice"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_jaundice"
@@ -485,7 +536,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -493,7 +544,7 @@
                 android:gravity="center"
                 android:text="@string/cough"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rd_cough"
@@ -525,7 +576,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -533,7 +584,7 @@
                 android:gravity="center"
                 android:text="@string/diarrhoea"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_diarea"
@@ -565,7 +616,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -573,7 +624,7 @@
                 android:gravity="center"
                 android:text="@string/vomiting"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_vomitting"
@@ -605,7 +656,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -613,7 +664,7 @@
                 android:gravity="center"
                 android:text="@string/abdominal_pain"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_abdominal_pain"
@@ -645,7 +696,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -653,7 +704,7 @@
                 android:gravity="center"
                 android:text="@string/abdominal_distension"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_abdominal_distension"
@@ -685,7 +736,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -693,7 +744,7 @@
                 android:gravity="center"
                 android:text="@string/weight_loss"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_weight_loss"
@@ -725,7 +776,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -733,7 +784,7 @@
                 android:gravity="center"
                 android:text="@string/mass"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_mass"
@@ -765,7 +816,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -773,7 +824,7 @@
                 android:gravity="center"
                 android:text="@string/headache"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_headache"
@@ -805,7 +856,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -813,7 +864,7 @@
                 android:gravity="center"
                 android:text="@string/stiff_neck"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_stiff_neck"
@@ -845,7 +896,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -853,7 +904,7 @@
                 android:gravity="center"
                 android:text="@string/convulsion"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_convulsion"
@@ -885,7 +936,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -893,7 +944,7 @@
                 android:gravity="center"
                 android:text="@string/fits_unconsciousness"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_fits_unconsciousness"
@@ -925,7 +976,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -933,7 +984,7 @@
                 android:gravity="center"
                 android:text="@string/paralysis"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_paralysis"
@@ -966,7 +1017,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -974,7 +1025,7 @@
                 android:gravity="center"
                 android:text="@string/urine_colour"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_urine_colour"
@@ -1006,7 +1057,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -1014,7 +1065,7 @@
                 android:gravity="center"
                 android:text="@string/surgery_operation"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_surgery_operation"
@@ -1047,7 +1098,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -1055,7 +1106,7 @@
                 android:gravity="center"
                 android:text="@string/Others_specify"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_Others_specify"
@@ -1091,14 +1142,14 @@
             android:gravity="center"
             android:text="@string/death_chronic_deseases"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -1106,7 +1157,7 @@
                 android:gravity="center"
                 android:text="@string/deaseases_hypertension"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_deaseases_hypertension"
@@ -1138,7 +1189,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -1146,7 +1197,7 @@
                 android:gravity="center"
                 android:text="@string/deaseases_diabatic"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_deaseases_diabatic"
@@ -1178,7 +1229,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -1186,7 +1237,7 @@
                 android:gravity="center"
                 android:text="@string/deaseases_cancer"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rg_deaseases_cancer"
@@ -1214,10 +1265,16 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -1225,7 +1282,7 @@
                 android:gravity="center"
                 android:text="@string/sickness_time"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/editText_sicness_time"
@@ -1238,10 +1295,17 @@
 
 
         <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -1249,7 +1313,7 @@
                 android:gravity="center"
                 android:text="@string/cause_of_death"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
 
             <Spinner
@@ -1262,25 +1326,41 @@
                 android:spinnerMode="dropdown" />
         </LinearLayout>
 
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:padding="20dp"
             android:text="@string/interviewer_notes_death_confirmation"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+
+            android:textSize="20sp" />
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
-            android:padding="20dp">
+            android:padding="20dp"
+            android:weightSum="1">
 
             <Button
                 android:id="@+id/button_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_weight=".5"
                 android:gravity="center"
                 android:text="Cancel"></Button>
 
@@ -1288,6 +1368,7 @@
                 android:id="@+id/button_next"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_weight=".5"
                 android:gravity="center"
                 android:text="Next"></Button>
 

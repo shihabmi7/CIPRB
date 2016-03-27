@@ -29,7 +29,7 @@ import java.util.Locale;
 
 public class DeathConfirmationActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Calendar myCalendar;
+    Calendar myCalendar,myDeathCalender;
     DatePickerDialog.OnDateSetListener date, deathdate;
 
     RelativeLayout linerar_how_injury;
@@ -65,7 +65,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         ciprbDatabase = new CiprbDatabase(getApplicationContext());
         ciprbDatabase.open();
 
-        setTitle( getResources().getStringArray(R.array.survey_activity_title)[3]);
+        setTitle(getResources().getStringArray(R.array.survey_activity_title)[3]);
 
         // get value from radio button
         // RadioGroup rg = (RadioGroup)findViewById(R.id.youradio);
@@ -119,14 +119,15 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
             });
 
+            myDeathCalender =Calendar.getInstance();
             deathdate = new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear,
                                       int dayOfMonth) {
 
-                    myCalendar.set(Calendar.YEAR, year);
-                    myCalendar.set(Calendar.MONTH, monthOfYear);
-                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    myDeathCalender.set(Calendar.YEAR, year);
+                    myDeathCalender.set(Calendar.MONTH, monthOfYear);
+                    myDeathCalender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                     updateDeathLabel();
                 }
             };
@@ -136,7 +137,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
                 @Override
                 public void onClick(View v) {
 
-                    new DatePickerDialog(activity, deathdate, myCalendar
+                    new DatePickerDialog(activity, deathdate, myDeathCalender
                             .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                             myCalendar.get(Calendar.DAY_OF_MONTH)).show();
                 }
@@ -174,29 +175,29 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         }
     }
 
-    boolean checkSpinner(){
+    boolean checkSpinner() {
 
         if (spinner_occupasion.getSelectedItemPosition() != 0
                 && spinner_occupasion.getSelectedItemPosition() != 0
                 && spinner_marital_status.getSelectedItemPosition() != 0 &&
 
                 spinner_death_place.getSelectedItemPosition() != 0 && !editText_members_name.getText().toString().isEmpty()
-                && !edittext_current_age.getText().toString().isEmpty()){
+                && !edittext_current_age.getText().toString().isEmpty()) {
 
             //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
 
-            return  true;
+            return true;
 
 
-        }else {
+        } else {
 
-            Toast.makeText(getApplicationContext(),getString(R.string.suggestion),Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.suggestion), Toast.LENGTH_LONG).show();
             return false;
         }
 
     }
 
-    void setSpinnerDefaultState(){
+    void setSpinnerDefaultState() {
 
         spinner_occupasion.setSelection(0);
         spinner_occupasion.setSelection(0);
@@ -206,20 +207,22 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
     }
 
 
-    private void updateBirthLabel() {
+    private String updateBirthLabel() {
 
         String myFormat = "dd/MM/yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         edittext_date_of_birth.setText(sdf.format(myCalendar.getTime()));
 
+        return sdf.format(myCalendar.getTime());
     }
 
-    private void updateDeathLabel() {
+    private String updateDeathLabel() {
 
         String myFormat = "dd/MM/yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-        editText_death_date.setText(sdf.format(myCalendar.getTime()));
+        editText_death_date.setText(sdf.format(myDeathCalender.getTime()));
 
+        return sdf.format(myDeathCalender.getTime());
     }
 
     void setheader() {
@@ -234,17 +237,17 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         if (v == button_next && checkSpinner()) {
             if (InternetConnection.checkNetworkConnection(this)) {
 
-                    mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId() + formatter.format(count);
-                    Log.e("Death Person ID:", mCURRENT_MEMBER_ID);
+                mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId() + formatter.format(count);
+                Log.e("Death Person ID:", mCURRENT_MEMBER_ID);
 
-                    //  mCURRENT_MEMBER_ID = "" + 1013232 + "" + formatter.format(count);
-                    //prefsValues.setSerial(count);
-                    count++;
-                    Log.e("Death Person ID:", "" + count);
-                    // have to find a solution if only one man is there or no injury
-                    //showTextLong(mCURRENT_MEMBER_ID);
-                    //  saveDataToOnline(aPerson);
-                    new PostAsync().execute(ApplicationData.URL_DEATH_CONFIRMATION, createJsonBody());
+                //  mCURRENT_MEMBER_ID = "" + 1013232 + "" + formatter.format(count);
+                //prefsValues.setSerial(count);
+                count++;
+                Log.e("Death Person ID:", "" + count);
+                // have to find a solution if only one man is there or no injury
+                //showTextLong(mCURRENT_MEMBER_ID);
+                //  saveDataToOnline(aPerson);
+                new PostAsync().execute(ApplicationData.URL_DEATH_CONFIRMATION, createJsonBody());
 
             } else {
 
@@ -341,6 +344,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
         editText_members_name.getText().clear();
         edittext_date_of_birth.getText().clear();
+        editText_death_date.getText().clear();
         edittext_current_age.getText().clear();
         editText_educatoin_level.getText().clear();
 
@@ -429,35 +433,54 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
                     //// TODO: 3/22/2016
 
-                    aPerson = new Person();
-                    aPerson.setMembers_name(editText_members_name.getText().toString());
-                    aPerson.setSex(spinner_death_sex.getSelectedItem().toString());
-                    aPerson.setPerson_id(mCURRENT_MEMBER_ID);
+//                    aPerson = new Person();
+//                    aPerson.setMembers_name(editText_members_name.getText().toString());
+//                    aPerson.setSex(spinner_death_sex.getSelectedItem().toString());
+//                    aPerson.setPerson_id(mCURRENT_MEMBER_ID);
 
                     int death_type = Integer.parseInt(ApplicationData.spilitStringFirst(spinner_cause_death.getSelectedItem().toString()));
 
+                    // if death is caused by injury 1 0r 2
                     if (death_type == 1) {
+
                         ciprbDatabase.insertIntoDeathDB(mCURRENT_MEMBER_ID, editText_members_name.getText().toString());
-                        //ApplicationData.died_person_List.add(aPerson);
+
+
                     }
+
+                    // starts from zero & increment here
                     calculate_member++;
+                    Toast.makeText(activity, "Success: Death Type" + death_type, Toast.LENGTH_LONG).show();
+                    prefsValues.setDeathSerial(count);
+                    cleartext();
+
+
                     if (calculate_member >= death_member_no) {
 
                         if (!ciprbDatabase.getDeathPersonList().isEmpty()) {
 
+
+                            Toast.makeText(activity, "Success: Enter Mortality Form Now" + death_type, Toast.LENGTH_LONG).show();
                             ApplicationData.gotToNextActivity(activity, InjuryMortalityActivity.class);
                             finish();
 
-                        } else {
+                        }
+
+                        else {
                             //  go to home activity n fill up home characteristics
+
                             ApplicationData.gotToNextActivity(activity, HomeActivity.class);
                             finish();
+
                         }
+
+
+                    }else{
+
+                        Toast.makeText(activity, "Success: Enter Another Died Person Data" + death_type, Toast.LENGTH_LONG).show();
+
                     }
 
-                    Toast.makeText(activity, "Success: Death Type" + death_type, Toast.LENGTH_LONG).show();
-                    prefsValues.setDeathSerial(count);
-                    cleartext();
 
                     progressDialog.dismiss();
 
@@ -502,7 +525,9 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
                     "\",\"occupasion\":\"" +
                     ApplicationData.spilitStringFirst(spinner_occupasion.getSelectedItem().toString()) +
                     "\",\"interview_time\":\"" +
-                    "" +
+                    ApplicationData.getCurrentDate() +
+                    "\",\"interviewer_code\":\"" +
+                    prefsValues.getInterviewer_code() +
                     "\",\"d01\":\"" +
                     editText_death_date.getText().toString() +
                     "\",\"d02\":\"" +
@@ -528,11 +553,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         //return "{\"g03\":\"10\"}";
         return rep;
     }
-  /*  void setheader() {
 
-        house_hold_id.setText("Total Members: " + death_member_no + "   Remain Member: " + (death_member_no - calculate_member));
-        prefsValues.setMembers_no(death_member_no - calculate_member);
-    }*/
 }
 
 

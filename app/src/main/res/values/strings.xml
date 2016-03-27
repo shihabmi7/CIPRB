@@ -11,7 +11,9 @@
     <string name="suggestion">প্রতিটি প্রশ্নের উত্তর নিন</string>
     <string name="no_live_member">কোন জীবিত সদস্য নেই</string>
     <string name="no_died_member">কোন মৃত সদস্য নেই</string>
-    <string name="finish_current_house_hold">এই বাড়ির জীবিত ও মৃত সদস্যদের ডাটা সংগ্রহ শেষ করুন</string>
+    <string name="finish_current_house_hold_alive">বর্তমান বাড়ির জীবিত সদস্যদের ডাটা সংগ্রহ শেষ করুন</string>
+
+    <string name="finish_current_house_hold_died">বর্তমান বাড়ির মৃত সদস্যদের ডাটা সংগ্রহ শেষ করুন</string>
 
 
 
@@ -340,7 +342,7 @@
         <item>11. প্রাণী ও কীট পতঙ্গের কামড় /আঘাত</item>
         <item>12. ভোঁতা বস্তুর আঘাত</item>
         <item>13. দুর্ঘটনা জনিত শ্বাসর</item>
-        <item>97. অন্যান্য (উল্লেখ করুন)</item>
+        <item>97. অন্যান্য</item>
         <item>99. জানা নেই</item>
     </string-array>
     <string-array name="survey_place_of_injury">
@@ -365,7 +367,7 @@
         <item>17. হাট/বাজার</item>
         <item>18. অফিস</item>
         <item>19. নির্মান এলাকা</item>
-        <item>97. অন্যান্য (উল্লেখ করুন)</item>
+        <item>97. অন্যান্য</item>
         <item>99. জিানা নেই</item>
     </string-array>
     <string-array name="survey_intent_of_injury">
@@ -411,7 +413,7 @@
         <item>6. সেলফ এর উপরে (1 মিটারের নীচে )</item>
         <item>7. সিলিং এ ঝুলন্ত অবস্থায়</item>
         <item>8. মাচায় ঝুলন্ত অবস্থায়</item>
-        <item>9. অন্যান্য (উল্লেখ করুন) </item>
+        <item>9. অন্যান্য </item>
     </string-array>
     <string-array name="survey_who_gave_first_aid">
 
@@ -427,7 +429,7 @@
         <item>J. কমিউনিটির স্বেচ্ছাসেব</item>
         <item>K. প্রতিবেশী</item>
         <item>L. নিজই</item>
-        <item>X. অন্যান্য (উল্লেখ করুন)</item>
+        <item>X. অন্যান্য</item>
 
     </string-array>
     <string-array name="survey_Who_provided_the_treatment">
@@ -464,7 +466,7 @@
         <item>3. উপজেলা স্বাস্থ্য কমপ্লেক্স </item>
         <item>4. প্রাইভেট ক্লিনিক </item>
         <item>5. এন.জি.ও ক্লিনিক </item>
-        <item>9. অন্যান্য (উল্লেখ করুন) </item>
+        <item>9. অন্যান্য </item>
     </string-array>
     <string-array name="survey_how_admitted_health_facility">
 
@@ -474,7 +476,7 @@
         <item>C. মোটরবিহীন  যানবাহন (রিক্স, রিক্সা ভ্যান, ঠেলা গাড়ি)</item>
         <item>D. নৌকা</item>
         <item>E. ফেরী /লঞ্চ /স্টীমার </item>
-        <item>F. অন্যান্য (উল্লেখ করুন)</item>
+        <item>F. অন্যান্য</item>
         <item>X. জানা নেই </item>
 
     </string-array>
@@ -506,7 +508,7 @@
         <item>D. হাতদিয়ে কাজ করার শক্তি নষ্ট হয়ে গেছে</item>
         <item>E. বাক শক্তি নষ্ট হয়ে গেছে</item>
         <item>F. বৃদ্ধিশক্তি নষ্ট হয়ে গেছে</item>
-        <item>X. অন্যান্য (উল্লেখ করুন)</item>
+        <item>X. অন্যান্য</item>
 
 
     </string-array>
@@ -555,7 +557,7 @@
         <item>3. রাস্তায়</item>
         <item>4. বাড়ীতে নেওয়ার পথে </item>
         <item>5. হাসপাতালে নেওয়ার পথে</item>
-        <item>9. অন্যান্য (উল্লেখ করুন)</item>
+        <item>9. অন্যান্য</item>
     </string-array>
     <string-array name="survey_im_source_of_income_family">
 
@@ -584,7 +586,7 @@
         <item>11. প্রাণী ও কীট পতঙ্গের কামড় /আঘাত-এম 11 </item>
         <item>12. ভোঁতা বস্তুর আঘাত -এম 12</item>
         <item>13. দুর্ঘটনা জনিত শ্বাসরোধ-এম 13 </item>
-        <item>97. অন্যান্য  (উল্লেখ করুন) </item>
+        <item>97. অন্যান্য  </item>
         <item>99. জানা নেই </item>
 
     </string-array>
@@ -638,7 +640,7 @@
         <item>10. ব্লিচিং পাউডার </item>
         <item>11. চুন </item>
         <item>12. এসিড </item>
-        <item>97. অন্যান্য (উল্লেখ করুন)  /  </item>
+        <item>97. অন্যান্য  /  </item>
         <item>99.  জানা নেই  /  </item>
 
     </string-array>
@@ -683,7 +685,7 @@
         <item>3. রাস্তায়</item>
         <item>4. বাড়ীতে নেওয়ার পথে </item>
         <item>5. হাসপাতালে নেওয়ার পথে</item>
-        <item>9. অন্যান্য (উল্লেখ করুন)</item>
+        <item>9. অন্যান্য</item>
     </string-array>
     <string-array name="survey_violence_object">
         <item>  নির্বাচন করুন</item>
@@ -743,7 +745,7 @@
         <item>6. যাত্রী   </item>
         <item>7. রাস্তায় কাজ করছিল  </item>
         <item>8. রাস্তায় খেলা   </item>
-        <item>97. অন্যান্য (উল্লেখ করুন)  </item>
+        <item>97. অন্যান্য  </item>
         <item>99. জানা নেই </item>
     </string-array>
     <string-array name="survey_transport_collide_partile">
@@ -764,7 +766,7 @@
         <item>13.  স্টীমার/লঞ্চ </item>
         <item>14.  পতচারী  </item>
         <item>15.  স্থির বস্তু (দেয়াল, গাছ, খুঁটি ইত্যাদি) </item>
-        <item>97.   অন্যান্য (উল্লেখ করুন) </item>
+        <item>97.   অন্যান্য </item>
         <item>99.  জানা নেই  </item>
 
     </string-array>
@@ -778,7 +780,7 @@
         <item>05. চালককে সহযোগিতা করছিল</item>
         <item>06. বেড়াতে বেড়িয়েছিল </item>
         <item>07. রাস্তায় কাজ করছিল</item>
-        <item>08. অন্যান্য (উল্লেখ করুন)</item>
+        <item>08. অন্যান্য</item>
         <item>09. জানা নেই</item>
 
     </string-array>
@@ -788,7 +790,7 @@
         <item>01. বেল্ট</item>
         <item>02. হ্যালমেট</item>
         <item>03. লাইফ জ্যাকেট </item>
-        <item>97. অন্যান্য (উল্লেখ করুন)</item>
+        <item>97. অন্যান্য</item>
         <item>99. জানা নেই</item>
 
     </string-array>
@@ -799,7 +801,7 @@
         <item>02. ত্রুটিপূণ ©রাস্তায় নক্সা</item>
         <item>03. ভাঙ্গাচোরা রাস্তা </item>
         <item>04. দেখার অসুবিধা (ঝড়-বৃষ্টি,কুয়াশা, কম আলো - ভোর বা সন্ধা, কোন কিছুর বাধা </item>
-        <item>97. অন্যান্য (উল্লেখ করুন) </item>
+        <item>97. অন্যান্য </item>
         <item>99. জানা নেই</item>
 
     </string-array>
@@ -834,7 +836,7 @@
         <item>1. হোঁচট খেয়ে </item>
         <item>2. পিছলে বা কোন কিছুতে পা আটকে গিয়ে </item>
         <item>3. অন্য কারো ধাক্কা খেয়ে  </item>
-        <item>4. অন্যান্য (উল্লেখ করুন) </item>
+        <item>4. অন্যান্য </item>
         <item>9. জানা নেই </item>
 
     </string-array>
@@ -859,7 +861,7 @@
         <item>5.রাস্তা </item>
         <item>6.কর্মস্থল</item>
         <item>7.খেলাধুলার মাঠ</item>
-        <item>97.অন্যান্য (উল্লেখ করুন)</item>
+        <item>97.অন্যান্য</item>
         <item>99.জানা নেই</item>
 
     </string-array>
@@ -870,7 +872,7 @@
         <item>1. দুর্ঘটনাক্রমে পড়ে গিয়ে</item>
         <item>2. লাফ দিয়ে </item>
         <item>3. অন্য কারো সাথে ধাক্কা খেয়ে </item>
-        <item>97. অন্যান্য (উল্লেখ করুন)</item>
+        <item>97. অন্যান্য</item>
         <item>99. জানা নেই</item>
 
     </string-array>
@@ -883,7 +885,7 @@
         <item>4.আসবাব পত্র</item>
         <item>5.মই</item>
         <item>6.কোন প্রানীর পিঠ</item>
-        <item>7.অন্যান্য (উল্লেখ করুন)</item>
+        <item>7.অন্যান্য</item>
         <item>9.জানা নেই </item>
 
 
@@ -909,7 +911,7 @@
         <item>11.  ব্লেড</item>
         <item>12. গাছের কাটা</item>
         <item>13.কাঁচভাঙ্গা </item>
-        <item>97.অন্যান্য (উল্লেখ করুন)</item>
+        <item>97.অন্যান্য</item>
     </string-array>
 
     <string-array name="cut2">
@@ -920,7 +922,7 @@
         <item>4. খেলা </item>
         <item>5. অন্য কোন কাজ করার সময় </item>
         <item>6. বস্তুটির ওপরে পড়ে গিয়েছিল </item>
-        <item>97. অন্যান্য (উল্লেখ করুন) </item>
+        <item>97. অন্যান্য </item>
     </string-array>
 
 
@@ -935,7 +937,7 @@
         <item>7.এক কক্ষ বিশিষ্ট ঘর</item>
         <item>8.বারান্দা</item>
         <item>9.ঘরের বাহিরে</item>
-        <item>9.অন্যান্য (উল্লেখ করুন) </item>
+        <item>9.অন্যান্য </item>
 
     </string-array>
 
@@ -955,7 +957,7 @@
         <item>3.উত্তপ্ত বস্তু</item>
         <item>4.বিষ্ফোরক </item>
         <item>5.রাসায়নিকপদাথ</item>
-        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+        <item>9.অন্যান্য</item>
 
 
     </string-array>
@@ -971,7 +973,7 @@
         <item>6. কুপি/হারিকেন</item>
         <item>7. বিদ্যু</item>
         <item>8. মোমের আগুন</item>
-        <item>9. অন্যান্য (উল্লেখ করুন)</item>
+        <item>9. অন্যান্য</item>
 
 
     </string-array>
@@ -987,7 +989,7 @@
         <item>08.রাইসি মিলের গড়ম পানি</item>
         <item>10.বাড়ীতেধান সিদ্ধেরগড়ম পানি</item>
         <item>97.শিল্প কারখানার তরল</item>
-        <item>09.অন্যান্য (উল্লেখ করুন)</item>
+        <item>09.অন্যান্য</item>
 
     </string-array>
     <string-array name="Burn4">
@@ -995,11 +997,11 @@
         <item>1.রান্নার তৈজষ পত্র</item>
         <item>2.কয়লা </item>
         <item>3.ইস্ত্রি </item>
-        <item>4.</item>
-        <item>5.ইঞ্জিনের অংশ </item>
-        <item>6.হিটার</item>
-        <item>7.কর্মংস্থলের উত্তপ্ত বস্তু </item>
-        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+
+        <item>4.ইঞ্জিনের অংশ </item>
+        <item>5.হিটার</item>
+        <item>6.কর্মংস্থলের উত্তপ্ত বস্তু </item>
+        <item>9.অন্যান্য</item>
 
 
     </string-array>
@@ -1008,14 +1010,14 @@
         <item>1.আতশ বাজি</item>
         <item>2.নিমা©ণ কাজে </item>
         <item>3.সন্ত্রাসী কায© কলাপে</item>
-        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+        <item>9.অন্যান্য</item>
 
     </string-array>
     <string-array name="Burn6">
         <item>  নির্বাচন করুন</item>
         <item>1.এসিড</item>
         <item>2.চুন</item>
-        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+        <item>9.অন্যান্য</item>
 
     </string-array>
     <string-array name="Burn7">
@@ -1024,7 +1026,7 @@
         <item>2.বাড়ীতে রান্না করছিল </item>
         <item>3.রান্না ছাড়া অন্যান্য গৃহস্থালীর কাজ</item>
         <item>4.বাড়ীতে ধান সিদ্ধ করছিল</item>
-        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+        <item>9.অন্যান্য</item>
     </string-array>
 
     <string name="Drowning1">01.ব্যক্তিটি (নাম উল্লেখ করুন) কোতায় ডুবে গিয়েছিল? </string>
@@ -1070,7 +1072,7 @@
         <item>3.এক কক্ষ বিশিষ্ট ঘরে</item>
         <item>4.বাড়ীর ছাদ </item>
         <item>5.মাটির নিচে </item>
-        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+        <item>9.অন্যান্য</item>
 
 
     </string-array>
@@ -1092,7 +1094,7 @@
         <item>B.রান্না ও পান করার পানি সংগ্রহ করা </item>
         <item>C.মাছ চাষ </item>
         <item>D.তেমন কোন ব্যবহার নেই</item>
-        <item>X.অন্যান্য (উল্লেখ করুন)</item>
+        <item>X.অন্যান্য</item>
 
 
     </string-array>
@@ -1115,7 +1117,7 @@
         <item>06.জলধারের পাড় দিয়ে হাঁটার সময় পা পিছলে পড়ে গিয়েছিল</item>
         <item>07.মাছ ধরছিল</item>
         <item>08.যাত্রী (নৌকা/ফেরী/লঞ্চ)</item>
-        <item>97.অন্যান্য (উল্লেখ করুন)</item>
+        <item>97.অন্যান্য</item>
         <item>99.জানা নেই</item>
 
 
@@ -1138,7 +1140,7 @@
         <item>G.বন্ধু /সমবয়সী শিশু </item>
         <item>H.সহকমী</item>
         <item>J.কেউ নয় </item>
-        <item>K.অন্যান্য (উল্লেখ করুন)</item>
+        <item>K.অন্যান্য</item>
         <item>X.জানা নেই</item>
 
     </string-array>
@@ -1152,7 +1154,7 @@
         <item>6.খাচ্ছিলেন</item>
         <item>7.অন্যশিশুর পরিচর্যা করছিলেন</item>
         <item>8.প্রতিবেশীর বাড়ী বেড়াতে গিয়েছিলেন</item>
-        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+        <item>9.অন্যান্য</item>
 
 
     </string-array>
@@ -1172,7 +1174,7 @@
         <item>4.বড় ভাইবোন </item>
         <item>5.বন্ধু / সমবয়সী শিশু </item>
         <item>6.প্রতিবেশী </item>
-        <item>7.অন্যান্য (উল্লেখ করুন)</item>
+        <item>7.অন্যান্য</item>
         <item>9.জানা নেই</item>
 
 
@@ -1201,7 +1203,7 @@
         <item>F.পানি থেকে উদ্ধার করার সাথে সাথে সঠিক প্রাথমিক চিকিৎসা ও পরবতী© ব্যবস্থাপনা</item>
         <item>G.পানিতেডুবে মৃত্যুর বিষয়ে জনসেচেতনাবৃদ্ধি করা</item>
         <item>H.কোন ধরনের ধারনা নেই</item>
-        <item>X.অন্যান্য (উল্লেখ করুন)</item>
+        <item>X.অন্যান্য</item>
 
 
     </string-array>
@@ -1229,7 +1231,7 @@
         <item>07.কোরোসিন </item>
         <item>08.স্যাভলন / ডেটল </item>
         <item>09.হারপিক</item>
-        <item>97.অন্যান্য (উল্লেখ করুন)</item>
+        <item>97.অন্যান্য</item>
         <item>99.জানা নেই</item>
 
     </string-array>
@@ -1240,7 +1242,7 @@
         <item>2.কৌটা</item>
         <item>3.প্যাকেট</item>
         <item>4.স্ট্রিপ</item>
-        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+        <item>9.অন্যান্য</item>
 
 
     </string-array>
@@ -1279,7 +1281,7 @@
         <item>6.সেলফ এর উপরে (1 মিটারের নীচে )</item>
         <item>7.সিলিং এ ঝুলন্ত অবস্থায়</item>
         <item>8.মাচায় ঝুলন্ত অবস্থায় </item>
-        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+        <item>9.অন্যান্য</item>
 
 
     </string-array>
@@ -1329,7 +1331,7 @@
         <item>3. নিমা©ণ কাজেব্যবহৃত মেশিন</item>
         <item>4. যানবাহনের ইঞ্জিন/ মেশিন</item>
 
-        <item>97. অন্যান্য (উল্লেখ করুন)</item>
+        <item>97. অন্যান্য</item>
 
 
     </string-array>
@@ -1355,7 +1357,7 @@
         <item>7.পিশন যন্ত্র</item>
         <item>8.সেলাই মেশিন</item>
         <item>তাঁত যন্ত্র</item>
-        <item>অন্যান্য (উল্লেখ করুন)</item>
+        <item>অন্যান্য</item>
 
 
     </string-array>
@@ -1368,7 +1370,7 @@
         <item>3. মোজাইক/টাইলস কাটার</item>
         <item>4. নির্মান সামগ্রী উপরে তোলার যন্ত্র   </item>
         <item>5. মাটি কাটার যন্ত্র</item>
-        <item>97. অন্যান্য (উল্লেখ করুন)</item>
+        <item>97. অন্যান্য</item>
 
     </string-array>
 
@@ -1386,7 +1388,7 @@
         <item>1. মেশিনটি চালু করছিল </item>
         <item>2. মেশিন দিয়ে কাজ করছিল </item>
         <item>3. মেশিনের কাছে অবস্থান করছিল</item>
-        <item>97. অন্যান্য (উল্লেখ করুন)  </item>
+        <item>97. অন্যান্য  </item>
 
     </string-array>
 
@@ -1414,7 +1416,7 @@
         <item>4.এক কক্ষ বিশিষ্ট ঘর</item>
         <item>5.গোসল খানা/পায়খানা </item>
         <item>6.বারান্ধা </item>
-        <item>7.অন্যান্য (উল্লেখ করুন)</item>
+        <item>7.অন্যান্য</item>
 
     </string-array>
 
@@ -1490,7 +1492,7 @@
         <item>  নির্বাচন করুন</item>
         <item>1.চলন্ত বস্তু(নাম লিখুন)</item>
         <item>2.স্থির বস্তু (নাম লিখুন)</item>
-        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+        <item>9.অন্যান্য</item>
     </string-array>
     <string-array name="blunt2">
         <item>  নির্বাচন করুন</item>
@@ -1501,7 +1503,7 @@
         <item>5.নিমা©ন কাজে </item>
         <item>6.অফিস আদালতে </item>
         <item>7.খেলাধুলায়</item>
-        <item>9.অন্যান্য (উল্লেখ করুন)</item>
+        <item>9.অন্যান্য</item>
     </string-array>
 
     <string name="suffocation1">01.শ্বাসরোধের কারণ?</string>
@@ -1511,8 +1513,8 @@
 
         <item>  নির্বাচন করুন</item>
         <item>01.কাব©ন মনোক্সাইড</item>
-        <item>02.অন্য গ্যাস (উল্লেখ করুন)</item>
-        <item>03.তরল (উল্লেখ করুন)</item>
+        <item>02.অন্য গ্যাস</item>
+        <item>03.তরল</item>
         <item>04.মাছের কাঁটা </item>
         <item>05.অন্য কাদ্য বস্তু(উল্লেখ করুন)</item>
         <item>06.ধাতব মুদ্রা(পয়সা/টাকা)</item>
@@ -1524,7 +1526,7 @@
         <item>11.মাটি চাপা পড়ায়</item>
         <item>12.পানির ট্যাংক / সেফ্টি ট্যা্কং বা কুয়াতে নামার ফলে</item>
 
-        <item>97.অন্যান্য (উল্লেখ করুন)</item>
+        <item>97.অন্যান্য</item>
     </string-array>
 
     <string name="socio1">01.এই খানার অধীনে বসতবিটায় (পুকুর ও ডোবা সহ)কি পরিমান জমি (ডেসিমাল-এ)আছে? </string>

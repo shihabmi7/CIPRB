@@ -19,6 +19,7 @@ public class HomeActivity extends AppCompatActivity {
     PrefsValues prefsValues;
 
     String form[] = {
+
             // "DATABASE",
             "মডিউল-১  ফেস ফর্ম",
             "খানা সদস্যদের ইঞ্জুরী তথ্য",
@@ -83,13 +84,25 @@ public class HomeActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 if (position == 0) {
-                    if (prefsValues.getMembersNo() > 0 && prefsValues.getMembers_died_no() > 0) {
-                        Toast.makeText(getApplicationContext(), getString(R.string.finish_current_house_hold), Toast.LENGTH_LONG).show();
-                    } else {
-                        Intent intent = new Intent(getApplicationContext(),
-                                samples[position]);
-                        startActivity(intent);
-                    }
+
+//                    if (prefsValues.getMembersNo() > 0) {
+//
+//                        Toast.makeText(getApplicationContext(), getString(R.string.finish_current_house_hold_alive), Toast.LENGTH_LONG).show();
+//
+//                    } else if (prefsValues.getMembers_died_no() > 0) {
+//
+//                        Toast.makeText(getApplicationContext(), getString(R.string.finish_current_house_hold_died), Toast.LENGTH_LONG).show();
+//
+//
+//                    }
+
+                    //
+
+                    Intent intent = new Intent(getApplicationContext(),
+                            samples[position]);
+                    startActivity(intent);
+
+
                 } else if (position == 1) {
                     if (prefsValues.getMembersNo() == 0) {
                         Toast.makeText(getApplicationContext(), getString(R.string.no_live_member), Toast.LENGTH_LONG).show();
@@ -99,7 +112,9 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 } else if (position == 3) {
+
                     if (prefsValues.getMembers_died_no() == 0) {
+
                         Toast.makeText(getApplicationContext(), getString(R.string.no_died_member), Toast.LENGTH_LONG).show();
                     } else {
                         Intent intent = new Intent(getApplicationContext(),
@@ -170,8 +185,8 @@ public class HomeActivity extends AppCompatActivity {
 
 //        com.ciprb.injury
 
-       Uri uri = Uri.parse("market://details?id=" + getPackageName());
-       Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+        Uri uri = Uri.parse("market://details?id=" + getPackageName());
+        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
         try {
             startActivity(goToMarket);
         } catch (ActivityNotFoundException e) {
@@ -194,7 +209,7 @@ public class HomeActivity extends AppCompatActivity {
 
         super.onOptionsItemSelected(item);
 
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.update:
                 //Toast.makeText(getBaseContext(), "You selected Phone", Toast.LENGTH_SHORT).show();
 

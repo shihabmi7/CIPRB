@@ -14,15 +14,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-
-import org.json.JSONObject;
-
 import java.io.IOException;
 
-import cz.msebera.android.httpclient.Header;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -135,37 +128,37 @@ public class UnintentionalPoisoningActivity extends AppCompatActivity implements
 
     }
 
-    void saveDataToOnline(Person person) {
-
-        progressDialog.show();
-        // post with no parameters
-        AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
-
-        params.put("house_member_id", person.getPerson_id());
-        params.put("i01", person.getMembers_name());
-        params.put("i02", person.getPerson_id());
-        params.put("i03", person.getMembers_name());
-        params.put("i04", person.getMembers_name());
-
-
-        client.post(ApplicationData.URL_HOUSE_HOLD_MEMBERS, params,
-                new JsonHttpResponseHandler() {
-                    // Your implementation here
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-
-                        cleartext();
-                        progressDialog.dismiss();
-
-                        showTextLong("finish this input");
-                        //ApplicationData.memberListHashMap.clear();
-                        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
-
-                    }
-                }
-        );
-    }
+//    void saveDataToOnline(Person person) {
+//
+//        progressDialog.show();
+//        // post with no parameters
+//        AsyncHttpClient client = new AsyncHttpClient();
+//        RequestParams params = new RequestParams();
+//
+//        params.put("house_member_id", person.getPerson_id());
+//        params.put("i01", person.getMembers_name());
+//        params.put("i02", person.getPerson_id());
+//        params.put("i03", person.getMembers_name());
+//        params.put("i04", person.getMembers_name());
+//
+//
+//        client.post(ApplicationData.URL_HOUSE_HOLD_MEMBERS, params,
+//                new JsonHttpResponseHandler() {
+//                    // Your implementation here
+//                    @Override
+//                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//
+//                        cleartext();
+//                        progressDialog.dismiss();
+//
+//                        showTextLong("finish this input");
+//                        //ApplicationData.memberListHashMap.clear();
+//                        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+//
+//                    }
+//                }
+//        );
+//    }
 
 
     public void showAlert(final Activity activity) {
@@ -219,8 +212,20 @@ public class UnintentionalPoisoningActivity extends AppCompatActivity implements
     public void onClick(View v) {
 
         if (v == button_next && checkSpinner()) {
-            String url = ApplicationData.URL_UNINTENTIONAL_INJURY + person_id;
-            new PutAsync().execute(url, createJsonBody());
+
+            if (InternetConnection.checkNetworkConnection(activity)){
+
+                String url = ApplicationData.URL_UNINTENTIONAL_INJURY + person_id;
+                new PutAsync().execute(url, createJsonBody());
+
+            }else{
+
+                showAlert(activity);
+
+            }
+
+
+
         } else if (v == button_cancel) {
 
         }
@@ -287,7 +292,7 @@ public class UnintentionalPoisoningActivity extends AppCompatActivity implements
         @Override
         protected String doInBackground(String... params) {
             try {
-                int value = 0;
+
                 Log.i("URL are ", params[0]);
                 value = ApplicationData.putRequestWithBody(params[0], params[1]);
 

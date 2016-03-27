@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -48,7 +47,9 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
     Button button_cancel, button_next;
 
     //    edittext_date_of_injury
-    EditText edittext_how_much_cost_reatment, edittext_injured_parts, edittext_time_of_injury, edittext_death_date_of_person, edittext_time_take_health_facility, edittext_days_take_health_facility;
+    EditText edittext_how_much_cost_reatment, edittext_injured_parts, edittext_injured_type,
+            edittext_time_of_injury,
+            edittext_time_take_health_facility, edittext_days_take_health_facility;
     Spinner spinner_how_injured, spinner_im_post_mortem_done, spinner_im_source_of_income_family, spinner_im_family_coping_loss,
             spinner_place_of_injury,
             spinner_injury_intent,
@@ -71,7 +72,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_injury_mortality);
 
-        setTitle( getResources().getStringArray(R.array.survey_activity_title)[4]);
+        setTitle(getResources().getStringArray(R.array.survey_activity_title)[4]);
 
         init();
 
@@ -106,30 +107,30 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
             }
 
 
-            death_date = new DatePickerDialog.OnDateSetListener() {
-
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                      int dayOfMonth) {
-
-                    myCalendar.set(Calendar.YEAR, year);
-                    myCalendar.set(Calendar.MONTH, monthOfYear);
-                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    updateDeathDateLabel();
-                }
-
-            };
-            edittext_death_date_of_person.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-
-                    new DatePickerDialog(activity, death_date, myCalendar
-                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-                }
-
-            });
+//            death_date = new DatePickerDialog.OnDateSetListener() {
+//
+//                @Override
+//                public void onDateSet(DatePicker view, int year, int monthOfYear,
+//                                      int dayOfMonth) {
+//
+//                    myCalendar.set(Calendar.YEAR, year);
+//                    myCalendar.set(Calendar.MONTH, monthOfYear);
+//                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+//                    updateDeathDateLabel();
+//                }
+//
+//            };
+//            edittext_death_date_of_person.setOnClickListener(new View.OnClickListener() {
+//
+//                @Override
+//                public void onClick(View v) {
+//
+//                    new DatePickerDialog(activity, death_date, myCalendar
+//                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+//                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+//                }
+//
+//            });
 
 
             time = new TimePickerDialog.OnTimeSetListener() {
@@ -186,12 +187,14 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
             edittext_how_much_cost_reatment = (EditText) findViewById(R.id.edittext_how_much_cost_reatment);
             edittext_time_of_injury = (EditText) findViewById(R.id.edittext_time_of_injury);
             edittext_injured_parts = (EditText) findViewById(R.id.edittext_injured_parts);
-            edittext_death_date_of_person = (EditText) findViewById(R.id.edittext_death_date_of_person);
+            edittext_injured_type = (EditText) findViewById(R.id.edittext_injured_type);
+            // edittext_death_date_of_person = (EditText) findViewById(R.id.edittext_death_date_of_person);
 
 
             edittext_days_take_health_facility = (EditText) findViewById(R.id.edittext_days_take_health_facility);
             edittext_time_take_health_facility = (EditText) findViewById(R.id.edittext_time_take_health_facility);
 
+            spinner_im_source_of_income_family =(Spinner)findViewById(R.id.spinner_im_source_of_income_family);
             spinner_im_family_coping_loss = (Spinner) findViewById(R.id.spinner_im_family_coping_loss);
             spinner_im_post_mortem_done = (Spinner) findViewById(R.id.spinner_im_post_mortem_done);
 
@@ -330,13 +333,10 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                 && spinner_injury_intent.getSelectedItemPosition() != 0
                 && spinner_condition_of_victims_after_injury.getSelectedItemPosition() != 0 &&
                 spinner_mobility_condition_after_injury.getSelectedItemPosition() != 0 &&
-
                 spinner_who_gave_first_aid.getSelectedItemPosition() != 0 &&
-
-
                 spinner_Who_provided_the_treatment.getSelectedItemPosition() != 0
 
-                && spinner_admitted_health_facility.getSelectedItemPosition() != 0 &&
+                &&
 
                 spinner_Where_receive_treatment.getSelectedItemPosition() != 0
 
@@ -355,7 +355,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
     }
 
-    void setSpinnerDefaultState(){
+    void setSpinnerDefaultState() {
 
         spinner_how_injured.setSelection(0);
         spinner_injury_intent.setSelection(0);
@@ -372,7 +372,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
         String myFormat = "dd/MM/yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-        edittext_death_date_of_person.setText(sdf.format(myCalendar.getTime()));
+        // edittext_death_date_of_person.setText(sdf.format(myCalendar.getTime()));
 
     }
 
@@ -510,7 +510,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
     public void onClick(View v) {
 
 
-        if (v == button_next && checkSpinner()) {
+        if (v == button_next) {
 
             if (InternetConnection.checkNetworkConnection(activity)) {
 
@@ -522,7 +522,6 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                 Log.e("URL", url);
 
                 new PutAsync().execute(url, createJsonBody());
-
 
 
             } else
@@ -537,6 +536,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
 
     }
+
 
     private class PutAsync extends AsyncTask<String, Void, String> {
         int value;
@@ -619,7 +619,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                 "\",\"f02\":\"" +
                 ApplicationData.spilitStringFirst((spinner_how_injured.getSelectedItem().toString()) +
                         "\",\"f03\":\"" +
-                        edittext_death_date_of_person.getText().toString() +
+                        "" +
                         "\",\"f04\":\"" +
                         edittext_time_of_injury.getText().toString().toString() +
                         "\",\"f05\":\"" +
@@ -659,7 +659,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                 "\",\"f22\":\"" +
                 f22 +
                 "\",\"f23\":\"" +
-                "" +
+                edittext_how_much_cost_reatment.getText().toString() +
                 "\",\"f24\":\"" +
                 "" +
                 "\",\"f25\":\"" +
@@ -669,17 +669,17 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                 "\",\"f27\":\"" +
                 "" +
                 "\",\"f28\":\"" +
-                "" +
+                ApplicationData.spilitStringFirst(spinner_im_post_mortem_done.getSelectedItem().toString()) +
                 "\",\"f29\":\"" +
-                "" +
+                ApplicationData.spilitStringFirst(spinner_im_source_of_income_family.getSelectedItem().toString()) +
                 "\",\"f30\":\"" +
-                "" +
+                ApplicationData.spilitStringFirst(spinner_im_family_coping_loss.getSelectedItem().toString()) +
                 "\",\"f31\":\"" +
                 "" +
                 "\",\"f32\":\"" +
-                "" +
+                edittext_injured_parts.getText().toString() +
                 "\",\"f33\":\"" +
-                "" +
+                edittext_injured_type.getText().toString() +
                 "\"}";
         //return "{\"g03\":\"10\"}";
 

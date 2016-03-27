@@ -38,7 +38,7 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
     ProgressDialog progressDialog;
     BurnInjuryActivity activity = this;
     //String person_id = "101323210";
-    String person_id = "101323212";
+    String person_id = "";
     TextView textView_person_id;
 
     @Override
@@ -46,7 +46,7 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_burn_injury);
 
-        setTitle( getResources().getStringArray(R.array.survey_activity_title)[12]);
+        setTitle(getResources().getStringArray(R.array.survey_activity_title)[12]);
 
         try {
 
@@ -95,30 +95,30 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
         button_next = (Button) findViewById(R.id.button_next);
     }
 
-    boolean checkSpinner(){
+    boolean checkSpinner() {
 
 
         if (spinner_l01.getSelectedItemPosition() != 0 && spinner_l02.getSelectedItemPosition() != 0
                 && spinner_l03.getSelectedItemPosition() != 0
                 && spinner_l04.getSelectedItemPosition() != 0 &&
                 spinner_l05.getSelectedItemPosition() != 0 &&
-                spinner_l06.getSelectedItemPosition() != 0 && spinner_l07.getSelectedItemPosition() != 0){
+                spinner_l06.getSelectedItemPosition() != 0 && spinner_l07.getSelectedItemPosition() != 0) {
 
             //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
 
-            return  true;
+            return true;
 
 
-        }else {
+        } else {
 
-            Toast.makeText(getApplicationContext(),getString(R.string.suggestion),Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.suggestion), Toast.LENGTH_LONG).show();
             return false;
         }
 
     }
 
 
-    void setSpinnerDefaultState(){
+    void setSpinnerDefaultState() {
 
         spinner_l01.setSelection(0);
         spinner_l02.setSelection(0);
@@ -129,7 +129,6 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
         spinner_l07.setSelection(0);
 
     }
-
 
 
     void cleartext() {
@@ -232,8 +231,7 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
             if (InternetConnection.checkNetworkConnection(this)) {
                 String url = ApplicationData.URL_BURNINJURY + person_id;
                 new PutAsync().execute(url, createJsonBody());
-            }else
-            {
+            } else {
                 showAlert(activity);
             }
 
