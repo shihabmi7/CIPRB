@@ -53,16 +53,18 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
             prefsValues = new PrefsValues(mContext);
             String value = prefsValues.getHouseUniqueId();
 
+            int member = prefsValues.getMembersNo();
+
             if (value.length() > 0) {
 
-                person_id = value;
+                person_id = value + "01";
                 textView_person_id.setText("House Hold ID: " + value);
 
             } else
 
             {
-                Toast.makeText(context, "Set House ID First", Toast.LENGTH_SHORT).show();
 
+                Toast.makeText(context, "Set House ID First && save a alive person data first", Toast.LENGTH_SHORT).show();
                 finish();
 
             }

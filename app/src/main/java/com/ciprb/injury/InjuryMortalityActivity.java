@@ -32,7 +32,7 @@ import java.util.Locale;
 
 public class InjuryMortalityActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Calendar myCalendar , myInjuryCalendar;
+    Calendar myCalendar, myInjuryCalendar;
     DatePickerDialog.OnDateSetListener death_date;
     TimePickerDialog.OnTimeSetListener time;
     Activity activity = InjuryMortalityActivity.this;
@@ -67,7 +67,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
     LinearLayout layout_type_admitted_health_facility, lay_spinner_Who_provided_the_treatment,
             lay_spinner_Where_receive_treatment, lay_type_of_disability,
-            lay_type_of_anesthesia_given, lay_edittext_time_take_health_facility,lay_edittext_days_take_health_facility,lay_who_gave_first_aid, layout_Was_he_trained_in_first_aid,lay_spinner_how_admitted_health_facility;
+            lay_type_of_anesthesia_given, lay_edittext_time_take_health_facility, lay_edittext_days_take_health_facility, lay_who_gave_first_aid, layout_Was_he_trained_in_first_aid, lay_spinner_how_admitted_health_facility;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +85,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
         button_next.setOnClickListener(this);
 
         myCalendar = Calendar.getInstance();
-        myInjuryCalendar =Calendar.getInstance();
+        myInjuryCalendar = Calendar.getInstance();
 
         try {
             ciprbDatabase = new CiprbDatabase(getApplicationContext());
@@ -184,8 +184,8 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
             layout_type_admitted_health_facility = (LinearLayout) findViewById(R.id.layout_type_admitted_health_facility);
             lay_spinner_how_admitted_health_facility = (LinearLayout) findViewById(R.id.lay_spinner_how_admitted_health_facility);
-            lay_edittext_time_take_health_facility =(LinearLayout) findViewById(R.id.lay_edittext_time_take_health_facility);
-            lay_edittext_days_take_health_facility =(LinearLayout) findViewById(R.id.lay_edittext_days_take_health_facility);
+            lay_edittext_time_take_health_facility = (LinearLayout) findViewById(R.id.lay_edittext_time_take_health_facility);
+            lay_edittext_days_take_health_facility = (LinearLayout) findViewById(R.id.lay_edittext_days_take_health_facility);
 
 
             lay_spinner_Who_provided_the_treatment = (LinearLayout) findViewById(R.id.lay_spinner_Who_provided_the_treatment);
@@ -201,7 +201,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
             edittext_time_of_injury = (EditText) findViewById(R.id.edittext_time_of_injury);
             edittext_injured_parts = (EditText) findViewById(R.id.edittext_injured_parts);
             edittext_injured_type = (EditText) findViewById(R.id.edittext_injured_type);
-            editText_injury_date = (EditText) findViewById(R.id.editText_death_date);
+            editText_injury_date = (EditText) findViewById(R.id.editText_injury_date);
 
 
             edittext_days_take_health_facility = (EditText) findViewById(R.id.edittext_days_take_health_facility);
@@ -361,18 +361,15 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
     boolean checkSpinner() {
 
 
-        if (spinner_how_injured.getSelectedItemPosition() != 0 && spinner_place_of_injury.getSelectedItemPosition() != 0
+        if (spinner_how_injured.getSelectedItemPosition() != 0
+                && spinner_place_of_injury.getSelectedItemPosition() != 0
                 && spinner_injury_intent.getSelectedItemPosition() != 0
-                && spinner_condition_of_victims_after_injury.getSelectedItemPosition() != 0 &&
-                spinner_mobility_condition_after_injury.getSelectedItemPosition() != 0 &&
-                spinner_who_gave_first_aid.getSelectedItemPosition() != 0 &&
-                spinner_Who_provided_the_treatment.getSelectedItemPosition() != 0
+                && spinner_condition_of_victims_after_injury.getSelectedItemPosition() != 0
 
-                &&
+                && spinner_Who_provided_the_treatment.getSelectedItemPosition() != 0
 
-                spinner_Where_receive_treatment.getSelectedItemPosition() != 0
-
-                && !edittext_time_of_injury.getText().toString().isEmpty()) {
+                && !edittext_time_of_injury.getText().toString().isEmpty()
+                && !editText_injury_date.getText().toString().isEmpty()) {
 
             //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
 
@@ -542,7 +539,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
     public void onClick(View v) {
 
 
-        if (v == button_next) {
+        if (v == button_next && checkSpinner()) {
 
             if (InternetConnection.checkNetworkConnection(activity)) {
 
@@ -669,13 +666,13 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                 "\"f01\":\"" +
                 "" +
                 "\",\"f02\":\"" +
-                ApplicationData.spilitStringFirst((spinner_how_injured.getSelectedItem().toString()) +
-                        "\",\"f03\":\"" +
-                        editText_injury_date.getText().toString() +
-                        "\",\"f04\":\"" +
-                        edittext_time_of_injury.getText().toString() +
-                        "\",\"f05\":\"" +
-                        ApplicationData.spilitStringFirst(spinner_place_of_injury.getSelectedItem().toString())) +
+                ApplicationData.spilitStringFirst(spinner_how_injured.getSelectedItem().toString()) +
+                "\",\"f03\":\"" +
+                editText_injury_date.getText().toString() +
+                "\",\"f04\":\"" +
+                edittext_time_of_injury.getText().toString() +
+                "\",\"f05\":\"" +
+                ApplicationData.spilitStringFirst(spinner_place_of_injury.getSelectedItem().toString()) +
                 "\",\"f06\":\"" +
                 ApplicationData.spilitStringFirst(spinner_injury_intent.getSelectedItem().toString()) +
                 "\",\"f07\":\"" +

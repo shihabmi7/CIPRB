@@ -432,7 +432,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
         if (v == button_next && checkSpinner()) {
 
-            getRadioButtonGroupData();
+            // getRadioButtonGroupData();
             if (InternetConnection.checkNetworkConnection(this)) {
 
                 mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId() + formatter.format(count);

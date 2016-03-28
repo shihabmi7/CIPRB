@@ -21,11 +21,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.ciprb.injury.localdb.CiprbDatabase;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -33,8 +28,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
-
-import cz.msebera.android.httpclient.Header;
 
 public class InjuryMorbidityActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -501,92 +494,92 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
     }
 
-    void saveDataToOnline(int pos) {
-
-        progressDialog.show();
-        final Person person = ApplicationData.alive_person_List.get(pos);
-        person.setInjury_type(spinner_how_injured.getSelectedItem().toString());
-        // post with no parameters
-        AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
-
-        //ApplicationData.spilitStringFirst(getSelectedItem().toString())
-        params.put("household_unique_code", person.getPerson_id());
-//        params.put("e01", ApplicationData.spilitStringFirst(spinner_sex.getSelectedItem().toString()));
-        params.put("e02", ApplicationData.spilitStringFirst(spinner_how_injured.getSelectedItem().toString()));
-        params.put("e03", edittext_date_of_injury.getText().toString());
-        params.put("e04", edittext_time_of_injury.getText().toString());
-        params.put("e05", ApplicationData.spilitStringFirst(spinner_place_of_injury.getSelectedItem().toString()));
-        params.put("e06", ApplicationData.spilitStringFirst(spinner_injury_intent.getSelectedItem().toString()));
-        //params.put("e07",  );
-        params.put("e08", ApplicationData.spilitStringFirst(spinner_condition_of_victims_after_injury.getSelectedItem().toString()));
-        params.put("e09", ApplicationData.spilitStringFirst(spinner_mobility_condition_after_injury.getSelectedItem().toString()));
-        params.put("e10", ApplicationData.spilitStringFirst(spinner_did_receive_first_aid.getSelectedItem().toString()));
-        //params.put("e11", ApplicationData.spilitStringFirst(spinner_who_gave_first_aid.getSelectedItem().toString()));
-        params.put("e12", ApplicationData.spilitStringFirst(spinner_Was_he_trained_in_first_aid.getSelectedItem().toString()));
-        params.put("e13", ApplicationData.spilitStringFirst(spinner_person_receive_treatment_for_injury.getSelectedItem().toString()));
-        params.put("e14", ApplicationData.spilitStringFirst(spinner_Who_provided_the_treatment.getSelectedItem().toString()));
-        params.put("e15", ApplicationData.spilitStringFirst(spinner_Where_receive_treatment.getSelectedItem().toString()));
-        params.put("e16", ApplicationData.spilitStringFirst(spinner_admitted_health_facility.getSelectedItem().toString()));
-        // params.put("e17", ApplicationData.spilitStringFirst(spinner_type_admitted_health_facility.getSelectedItem().toString()));
-        params.put("e18", ApplicationData.spilitStringFirst(spinner_how_admitted_health_facility.getSelectedItem().toString()));
-        params.put("e19", edittext_time_take_health_facility.getText().toString());
-        params.put("e20", edittext_days_take_health_facility.getText().toString());
-        params.put("e21", ApplicationData.spilitStringFirst(spinner_any_surgery_operation_done.getSelectedItem().toString()));
-        //params.put("e22", ApplicationData.spilitStringFirst(spinner_type_of_anesthesia_given.getSelectedItem().toString()));
-        params.put("e23", ApplicationData.spilitStringFirst(spinner_outcome_of_treatment.getSelectedItem().toString()));
-        //params.put("e24", );
-        params.put("e25", ApplicationData.spilitStringFirst(spinner_injured_person_become_disabled.getSelectedItem().toString()));
-        //params.put("e26", ApplicationData.spilitStringFirst(spinner_type_of_disability.getSelectedItem().toString()));
-        //params.put("e27", ApplicationData.spilitStringFirst(spinner_outcome_of_treatment.getSelectedItem().toString()));
-        //params.put("e28", ApplicationData.spilitStringFirst(spinner_outcome_of_treatment.getSelectedItem().toString()));
-        params.put("e29", edittext_number_of_days_work_loss.getText().toString());
-        params.put("e30", ApplicationData.spilitStringFirst(spinner_significant_source_of_income_for_family.getSelectedItem().toString()));
-        params.put("e31", ApplicationData.spilitStringFirst(spinner_family_being_coping_loss_income.getSelectedItem().toString()));
-
-
-        if (layout_type_admitted_health_facility.getVisibility() == View.VISIBLE) {
-            params.put("e17", ApplicationData.spilitStringFirst(spinner_type_admitted_health_facility.getSelectedItem().toString()));
-            //params.put("e02", person.getInjury_type());
-        }
-
-        if (lay_type_of_disability.getVisibility() == View.VISIBLE) {
-            params.put("e26", ApplicationData.spilitStringFirst(spinner_type_of_disability.getSelectedItem().toString()));
-            //params.put("e02", person.getInjury_type());
-        }
-
-        if (lay_type_of_anesthesia_given.getVisibility() == View.VISIBLE) {
-            params.put("e22", ApplicationData.spilitStringFirst(spinner_type_of_anesthesia_given.getSelectedItem().toString()));
-            //params.put("e02", person.getInjury_type());
-        }
-        if (lay_who_gave_first_aid.getVisibility() == View.VISIBLE) {
-            params.put("e11", ApplicationData.spilitStringFirst(spinner_who_gave_first_aid.getSelectedItem().toString()));
-            //params.put("e02", person.getInjury_type());
-        }
-
-        client.put(ApplicationData.URL_INJURY_MORBIDITY, params,
-                new JsonHttpResponseHandler() {
-                    // Your implementation here
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        progressDialog.dismiss();
-                        int type = spinner_how_injured.getSelectedItemPosition();
-                        showTextLong("Success! Select Type:" + type);
-                        ApplicationData.alive_person_List.remove(spinner_person_name.getSelectedItemPosition());
-                        cleartext();
-
-                        moveToInjurySelectionActivity(type, person.getPerson_id());
-                        // go to next activity > module
-                    }
-
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                        showTextLong("Failed...");
-                        super.onFailure(statusCode, headers, responseString, throwable);
-                    }
-                }
-        );
-    }
+//    void saveDataToOnline(int pos) {
+//
+//        progressDialog.show();
+//        final Person person = ApplicationData.alive_person_List.get(pos);
+//        person.setInjury_type(spinner_how_injured.getSelectedItem().toString());
+//        // post with no parameters
+//        AsyncHttpClient client = new AsyncHttpClient();
+//        RequestParams params = new RequestParams();
+//
+//        //ApplicationData.spilitStringFirst(getSelectedItem().toString())
+//        params.put("household_unique_code", person.getPerson_id());
+////        params.put("e01", ApplicationData.spilitStringFirst(spinner_sex.getSelectedItem().toString()));
+//        params.put("e02", ApplicationData.spilitStringFirst(spinner_how_injured.getSelectedItem().toString()));
+//        params.put("e03", edittext_date_of_injury.getText().toString());
+//        params.put("e04", edittext_time_of_injury.getText().toString());
+//        params.put("e05", ApplicationData.spilitStringFirst(spinner_place_of_injury.getSelectedItem().toString()));
+//        params.put("e06", ApplicationData.spilitStringFirst(spinner_injury_intent.getSelectedItem().toString()));
+//        //params.put("e07",  );
+//        params.put("e08", ApplicationData.spilitStringFirst(spinner_condition_of_victims_after_injury.getSelectedItem().toString()));
+//        params.put("e09", ApplicationData.spilitStringFirst(spinner_mobility_condition_after_injury.getSelectedItem().toString()));
+//        params.put("e10", ApplicationData.spilitStringFirst(spinner_did_receive_first_aid.getSelectedItem().toString()));
+//        //params.put("e11", ApplicationData.spilitStringFirst(spinner_who_gave_first_aid.getSelectedItem().toString()));
+//        params.put("e12", ApplicationData.spilitStringFirst(spinner_Was_he_trained_in_first_aid.getSelectedItem().toString()));
+//        params.put("e13", ApplicationData.spilitStringFirst(spinner_person_receive_treatment_for_injury.getSelectedItem().toString()));
+//        params.put("e14", ApplicationData.spilitStringFirst(spinner_Who_provided_the_treatment.getSelectedItem().toString()));
+//        params.put("e15", ApplicationData.spilitStringFirst(spinner_Where_receive_treatment.getSelectedItem().toString()));
+//        params.put("e16", ApplicationData.spilitStringFirst(spinner_admitted_health_facility.getSelectedItem().toString()));
+//        // params.put("e17", ApplicationData.spilitStringFirst(spinner_type_admitted_health_facility.getSelectedItem().toString()));
+//        params.put("e18", ApplicationData.spilitStringFirst(spinner_how_admitted_health_facility.getSelectedItem().toString()));
+//        params.put("e19", edittext_time_take_health_facility.getText().toString());
+//        params.put("e20", edittext_days_take_health_facility.getText().toString());
+//        params.put("e21", ApplicationData.spilitStringFirst(spinner_any_surgery_operation_done.getSelectedItem().toString()));
+//        //params.put("e22", ApplicationData.spilitStringFirst(spinner_type_of_anesthesia_given.getSelectedItem().toString()));
+//        params.put("e23", ApplicationData.spilitStringFirst(spinner_outcome_of_treatment.getSelectedItem().toString()));
+//        //params.put("e24", );
+//        params.put("e25", ApplicationData.spilitStringFirst(spinner_injured_person_become_disabled.getSelectedItem().toString()));
+//        //params.put("e26", ApplicationData.spilitStringFirst(spinner_type_of_disability.getSelectedItem().toString()));
+//        //params.put("e27", ApplicationData.spilitStringFirst(spinner_outcome_of_treatment.getSelectedItem().toString()));
+//        //params.put("e28", ApplicationData.spilitStringFirst(spinner_outcome_of_treatment.getSelectedItem().toString()));
+//        params.put("e29", edittext_number_of_days_work_loss.getText().toString());
+//        params.put("e30", ApplicationData.spilitStringFirst(spinner_significant_source_of_income_for_family.getSelectedItem().toString()));
+//        params.put("e31", ApplicationData.spilitStringFirst(spinner_family_being_coping_loss_income.getSelectedItem().toString()));
+//
+//
+//        if (layout_type_admitted_health_facility.getVisibility() == View.VISIBLE) {
+//            params.put("e17", ApplicationData.spilitStringFirst(spinner_type_admitted_health_facility.getSelectedItem().toString()));
+//            //params.put("e02", person.getInjury_type());
+//        }
+//
+//        if (lay_type_of_disability.getVisibility() == View.VISIBLE) {
+//            params.put("e26", ApplicationData.spilitStringFirst(spinner_type_of_disability.getSelectedItem().toString()));
+//            //params.put("e02", person.getInjury_type());
+//        }
+//
+//        if (lay_type_of_anesthesia_given.getVisibility() == View.VISIBLE) {
+//            params.put("e22", ApplicationData.spilitStringFirst(spinner_type_of_anesthesia_given.getSelectedItem().toString()));
+//            //params.put("e02", person.getInjury_type());
+//        }
+//        if (lay_who_gave_first_aid.getVisibility() == View.VISIBLE) {
+//            params.put("e11", ApplicationData.spilitStringFirst(spinner_who_gave_first_aid.getSelectedItem().toString()));
+//            //params.put("e02", person.getInjury_type());
+//        }
+//
+//        client.put(ApplicationData.URL_INJURY_MORBIDITY, params,
+//                new JsonHttpResponseHandler() {
+//                    // Your implementation here
+//                    @Override
+//                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                        progressDialog.dismiss();
+//                        int type = spinner_how_injured.getSelectedItemPosition();
+//                        showTextLong("Success! Select Type:" + type);
+//                        ApplicationData.alive_person_List.remove(spinner_person_name.getSelectedItemPosition());
+//                        cleartext();
+//
+//                        moveToInjurySelectionActivity(type, person.getPerson_id());
+//                        // go to next activity > module
+//                    }
+//
+//                    @Override
+//                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+//                        showTextLong("Failed...");
+//                        super.onFailure(statusCode, headers, responseString, throwable);
+//                    }
+//                }
+//        );
+//    }
 
     String createJsonBody() {
 
@@ -635,13 +628,13 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                 "\"e01\":\"" +
                 "" +
                 "\",\"e02\":\"" +
-                ApplicationData.spilitStringFirst((spinner_how_injured.getSelectedItem().toString()) +
+                ApplicationData.spilitStringFirst(spinner_how_injured.getSelectedItem().toString()) +
                         "\",\"e03\":\"" +
                         edittext_date_of_injury.getText().toString() +
                         "\",\"e04\":\"" +
                         edittext_time_of_injury.getText().toString().toString() +
                         "\",\"e05\":\"" +
-                        ApplicationData.spilitStringFirst(spinner_place_of_injury.getSelectedItem().toString())) +
+                        ApplicationData.spilitStringFirst(spinner_place_of_injury.getSelectedItem().toString()) +
                 "\",\"e06\":\"" +
                 ApplicationData.spilitStringFirst(spinner_injury_intent.getSelectedItem().toString()) +
                 "\",\"e07\":\"" +
@@ -827,7 +820,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                 person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
                 String url = ApplicationData.URL_INJURY_MORBIDITY + person_id;
                 //Put
-                Log.i("String are ", createJsonBody());
+                Log.e("String are ", createJsonBody());
                 new PutAsync().execute(url, createJsonBody());
 
                 //Post

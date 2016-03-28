@@ -390,7 +390,6 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                                 showTextLong(" : Data saved Successfully...: " + mCURRENT_MEMBER_ID);
                                 prefsValues.setSerial(count);
                                 if (calculate_member >= member_no) {
-
                                     ciprbDatabase.close();
                                     finish();
                                     if (ApplicationData.alive_person_List.size() != 0) {
@@ -399,7 +398,6 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                                         //  go to home activity n fill up home characteristics
                                         ApplicationData.gotToNextActivity(activity, HomeActivity.class);
                                     }
-
                                 }
                                 cleartext();
                             }
