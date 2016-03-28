@@ -50,6 +50,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
     PrefsValues prefsValues;
     RelativeLayout linerar_how_injury;
     int count = 01;
+    int injury_count=01;
     int calculate_member = 0;
     Button button_cancel, button_next;
     int member_no;
@@ -77,7 +78,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
         // i close it now
         //ciprbDatabase.open();
 
-        setTitle( getResources().getStringArray(R.array.survey_activity_title)[1]);
+        setTitle(getResources().getStringArray(R.array.survey_activity_title)[1]);
         // no need now
         // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -96,7 +97,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
             count = prefsValues.getSerial();
 
             formatter = new DecimalFormat("00");
-            scrollView =(ScrollView) findViewById(R.id.scrollView) ;
+            scrollView = (ScrollView) findViewById(R.id.scrollView);
             house_hold_id = (TextView) findViewById(R.id.house_hold_id);
             isResonder = (CheckBox) findViewById(R.id.chkb_responder);
 
@@ -118,7 +119,6 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
             spinner_injury_last_six = (Spinner) findViewById(R.id.spinner_injury_last_six);
             edittext_how_many_injury_last_six = (EditText) findViewById(R.id.edittext_how_many_injury_last_six);
             spinner_how_injured = (Spinner) findViewById(R.id.spinner_how_injured);
-
 
 
             button_cancel = (Button) findViewById(R.id.button_can);
@@ -205,7 +205,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
         }
     }
 
-    boolean checkSpinner(){
+    boolean checkSpinner() {
 
 
         if (spinner_sex.getSelectedItemPosition() != 0
@@ -213,23 +213,22 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                 && spinner_occupasion.getSelectedItemPosition() != 0
                 && spinner_smoking.getSelectedItemPosition() != 0 &&
                 spinner_buttle_nut.getSelectedItemPosition() != 0 &&
-                spinner_swiming.getSelectedItemPosition() != 0 ){
+                spinner_swiming.getSelectedItemPosition() != 0) {
 
             //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
 
-            return  true;
+            return true;
 
 
-        }else {
+        } else {
 
-            Toast.makeText(getApplicationContext(),getString(R.string.suggestion),Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.suggestion), Toast.LENGTH_LONG).show();
             return false;
         }
 
     }
 
-
-    void setSpinnerDefaultState(){
+    void setSpinnerDefaultState() {
 
         spinner_sex.setSelection(0);
         spinner_marital_status.setSelection(0);
@@ -261,6 +260,18 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
         //count = 1;
     }
 
+
+    String responderStatus() {
+
+        if (isResonder.isChecked()) {
+            return "yes";
+
+        } else {
+
+            return "no";
+        }
+    }
+
     /**
      * Called when a view has been clicked.
      *
@@ -270,35 +281,45 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
     public void onClick(View v) {
 
         try {
-
+            // set check must
+//
             if (v == button_next && checkFieldStatus() && checkSpinner()) {
+
+                // Toast.makeText(activity, responderStatus(), Toast.LENGTH_LONG).show();
+
                 if (InternetConnection.checkNetworkConnection(this)) {
 
-                    // aPerson.setInjury_type(spinner_how_injured.getSelectedItem().toString());
+
+                    // if a injury happen
+
                     if (linerar_how_injury.getVisibility() == View.VISIBLE
                             && !edittext_how_many_injury_last_six.getText().toString().isEmpty()) {
 
                         int num = Integer.parseInt(edittext_how_many_injury_last_six.getText().toString());
-
                         ciprbDatabase.open();
                         for (int i = 1; i <= num; i++) {
 
-                            mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId() + "" + formatter.format(count);
-                            count++;
+                            mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId() + "" + formatter.format(count)+""+ formatter.format(injury_count);
+                            //count++; //
                             //prefsValues.setSerial(count);
                             aPerson = new Person();
                             aPerson.setMembers_name(editText_members_name.getText().toString());
                             aPerson.setSex(spinner_sex.getSelectedItem().toString());
                             aPerson.setInjury_number(num);
                             aPerson.setPerson_id(mCURRENT_MEMBER_ID);
-                            // if a injury happen
+
                             ciprbDatabase.insertIntoDB(mCURRENT_MEMBER_ID, editText_members_name.getText().toString());
                             //ApplicationData.alive_person_List.add(aPerson);
-
+                            saveDataToOnline(aPerson);
+                            injury_count++; // added newly
                         }
-                       // ciprbDatabase.close();
+                        count++;
+                        injury_count=01; // added newly
+                        // ciprbDatabase.close();
 
-                    } else {
+                    }
+                    // if no injury happen
+                    else {
 
                         aPerson = new Person();
                         aPerson.setMembers_name(editText_members_name.getText().toString());
@@ -308,9 +329,11 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                         count++;
                         //prefsValues.setSerial(count);
                         aPerson.setPerson_id(mCURRENT_MEMBER_ID);
+                        saveDataToOnline(aPerson);
+
                     }
                     // have to find a solution if only one man is there or no injury
-                    saveDataToOnline(aPerson);
+
                 } else
                     showAlert(aPerson);
 
@@ -346,6 +369,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
     }
 
+
     void saveDataToOnline(Person person) {
 
         try {
@@ -366,7 +390,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
             params.put("smoking", ApplicationData.spilitStringFirst(spinner_smoking.getSelectedItem().toString()));
             params.put("bettle_nut_chew", ApplicationData.spilitStringFirst(spinner_buttle_nut.getSelectedItem().toString()));
             params.put("swimming", ApplicationData.spilitStringFirst(spinner_swiming.getSelectedItem().toString()));
-            params.put("responder", isResonder.isPressed());
+            params.put("responder", responderStatus());
             params.put("interviewer_code", prefsValues.getInterviewer_code());
             params.put("injury_last_six", ApplicationData.spilitStringFirst(spinner_injury_last_six.getSelectedItem().toString()));
             params.put("interview_time", ApplicationData.getCurrentDate());

@@ -170,7 +170,13 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
 
 
         if (v == button_next && checkSpinner()) {
+
             String url = ApplicationData.URL_ROADTRANSPORTINJURY + person_id;
+
+            Log.e("URL",url);
+
+
+            Log.e("Json Body",createJsonBody());
             new PutAsync().execute(url, createJsonBody());
 
         } else if (v == button_cancel) {

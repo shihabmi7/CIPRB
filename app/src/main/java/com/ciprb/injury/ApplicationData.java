@@ -23,9 +23,6 @@ import okhttp3.Response;
  */
 public class ApplicationData {
 
-
-
-
     public static String URL_BASE = "http://saeradesign.com/";
 
     public static String URL_HOUSE_HOLD_MEMBERS =  URL_BASE + "LumenApi/public/index.php/api/household";
