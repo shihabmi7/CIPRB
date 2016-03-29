@@ -90,11 +90,9 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
                 && spinner_h02.getSelectedItemPosition() != 0
                 && spinner_h03.getSelectedItemPosition() != 0
                 && spinner_h04.getSelectedItemPosition() != 0 &&
-                spinner_h05.getSelectedItemPosition() != 0 &&
                 spinner_h06.getSelectedItemPosition() != 0 &&
                 spinner_h07.getSelectedItemPosition() != 0
-                && spinner_h08.getSelectedItemPosition() != 0
-                && spinner_h09.getSelectedItemPosition() != 0
+
              ) {
 
             //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();

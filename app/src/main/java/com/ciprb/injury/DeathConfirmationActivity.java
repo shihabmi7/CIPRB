@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -166,13 +165,30 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
             setheader();
 
-           // getRadioButtonGroupData();
+            // getRadioButtonGroupData();
 
 
         } catch (Exception e) {
 
 
         }
+    }
+
+    String getRadioButtonSerial() {
+
+        String result = "";
+
+        RadioGroup rg_fever = (RadioGroup) findViewById(R.id.rg_fever);
+
+        int index = rg_fever.indexOfChild(findViewById(rg_fever.getCheckedRadioButtonId()));
+
+        if (rg_fever.getCheckedRadioButtonId() == -1) {
+            // no radio buttons are checked
+        } else {
+            result += "fever:" + index;
+        }
+
+        return result;
     }
 
     String getRadioButtonGroupData() {
@@ -209,110 +225,110 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
             if (rg_fever.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += "fever:" + ((RadioButton) findViewById(rg_fever.getCheckedRadioButtonId())).getText().toString();
+                result += "fever:" + rg_fever.indexOfChild(findViewById(rg_fever.getCheckedRadioButtonId()));
             }
             if (rg_rash.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",rash:" + ((RadioButton) findViewById(rg_rash.getCheckedRadioButtonId())).getText().toString();
+                result += ",rash:" + rg_rash.indexOfChild(findViewById(rg_rash.getCheckedRadioButtonId()));
             }
             if (rg_growth.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",growth:" + ((RadioButton) findViewById(rg_growth.getCheckedRadioButtonId())).getText().toString();
+                result += ",growth:" + rg_growth.indexOfChild(findViewById(rg_growth.getCheckedRadioButtonId()));
             }
             if (rg_jaundice.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",jaundice:" + ((RadioButton) findViewById(rg_jaundice.getCheckedRadioButtonId())).getText().toString();
+                result += ",jaundice:" + rg_jaundice.indexOfChild(findViewById(rg_jaundice.getCheckedRadioButtonId()));
             }
             if (rg_cough.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",cough:" + ((RadioButton) findViewById(rg_cough.getCheckedRadioButtonId())).getText().toString();
+                result += ",cough:" + rg_cough.indexOfChild(findViewById(rg_cough.getCheckedRadioButtonId()));
             }
             if (rg_respiratory.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",respiratory:" + ((RadioButton) findViewById(rg_respiratory.getCheckedRadioButtonId())).getText().toString();
+                result += ",respiratory:" + rg_respiratory.indexOfChild(findViewById(rg_respiratory.getCheckedRadioButtonId()));
             }
             if (rg_diarea.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",diarrohea:" + ((RadioButton) findViewById(rg_diarea.getCheckedRadioButtonId())).getText().toString();
+                result += ",diarrohea:" + rg_diarea.indexOfChild(findViewById(rg_diarea.getCheckedRadioButtonId()));
             }
             if (rg_vomitting.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",vomitting:" + ((RadioButton) findViewById(rg_vomitting.getCheckedRadioButtonId())).getText().toString();
+                result += ",vomitting:" + rg_vomitting.indexOfChild(findViewById(rg_vomitting.getCheckedRadioButtonId()));
             }
             if (rg_abdominal_pain.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",abdominal pain:" + ((RadioButton) findViewById(rg_abdominal_pain.getCheckedRadioButtonId())).getText().toString();
+                result += ",abdominal pain:" + rg_abdominal_pain.indexOfChild(findViewById(rg_abdominal_pain.getCheckedRadioButtonId()));
             }
             if (rg_abdominal_distension.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",abdominal distension:" + ((RadioButton) findViewById(rg_abdominal_distension.getCheckedRadioButtonId())).getText().toString();
+                result += ",abdominal distension:" + rg_abdominal_distension.indexOfChild(findViewById(rg_abdominal_distension.getCheckedRadioButtonId()));
             }
             if (rg_weight_loss.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",weight loss:" + ((RadioButton) findViewById(rg_weight_loss.getCheckedRadioButtonId())).getText().toString();
+                result += ",weight loss:" + rg_weight_loss.indexOfChild(findViewById(rg_weight_loss.getCheckedRadioButtonId()));
             }
             if (rg_chest_pain.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",chest pain:" + ((RadioButton) findViewById(rg_chest_pain.getCheckedRadioButtonId())).getText().toString();
+                result += ",chest pain:" + rg_chest_pain.indexOfChild(findViewById(rg_chest_pain.getCheckedRadioButtonId()));
             }
             if (rg_mass.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",mass:" + ((RadioButton) findViewById(rg_mass.getCheckedRadioButtonId())).getText().toString();
+                result += ",mass:" + rg_mass.indexOfChild(findViewById(rg_mass.getCheckedRadioButtonId()));
             }
             if (rg_stiff_neck.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",stiff neck:" + ((RadioButton) findViewById(rg_stiff_neck.getCheckedRadioButtonId())).getText().toString();
+                result += ",stiff neck:" + rg_stiff_neck.indexOfChild(findViewById(rg_stiff_neck.getCheckedRadioButtonId()));
             }
             if (rg_headache.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",headache:" + ((RadioButton) findViewById(rg_headache.getCheckedRadioButtonId())).getText().toString();
+                result += ",headache:" + rg_headache.indexOfChild(findViewById(rg_headache.getCheckedRadioButtonId()));
             }
             if (rg_convulsion.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",convulsion:" + ((RadioButton) findViewById(rg_convulsion.getCheckedRadioButtonId())).getText().toString();
+                result += ",convulsion:" + rg_convulsion.indexOfChild(findViewById(rg_convulsion.getCheckedRadioButtonId()));
             }
             if (rg_fits_unconsciousness.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",fits unconsciousness:" + ((RadioButton) findViewById(rg_fits_unconsciousness.getCheckedRadioButtonId())).getText().toString();
+                result += ",fits unconsciousness:" + rg_fits_unconsciousness.indexOfChild(findViewById(rg_fits_unconsciousness.getCheckedRadioButtonId()));
             }
             if (rg_paralysis.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",paralysis:" + ((RadioButton) findViewById(rg_paralysis.getCheckedRadioButtonId())).getText().toString();
+                result += ",paralysis:" + rg_paralysis.indexOfChild(findViewById(rg_paralysis.getCheckedRadioButtonId()));
             }
             if (rg_urine_colour.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",urine colour:" + ((RadioButton) findViewById(rg_urine_colour.getCheckedRadioButtonId())).getText().toString();
+                result += ",urine colour:" + rg_urine_colour.indexOfChild(findViewById(rg_urine_colour.getCheckedRadioButtonId()));
             }
             if (rg_surgery_operation.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",surgery operation:" + ((RadioButton) findViewById(rg_surgery_operation.getCheckedRadioButtonId())).getText().toString();
+                result += ",surgery operation:" + rg_surgery_operation.indexOfChild(findViewById(rg_surgery_operation.getCheckedRadioButtonId()));
             }
             if (rg_Others_specify.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",Others:" + ((RadioButton) findViewById(rg_Others_specify.getCheckedRadioButtonId())).getText().toString();
+                result += ",Others:" + rg_Others_specify.indexOfChild(findViewById(rg_Others_specify.getCheckedRadioButtonId()));
             }
 
-          //  Toast.makeText(activity, result, Toast.LENGTH_LONG).show();
+            //  Toast.makeText(activity, result, Toast.LENGTH_LONG).show();
 
         } catch (NullPointerException e) {
 
@@ -337,26 +353,25 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
             RadioGroup rg_deaseases_diabatic = (RadioGroup) findViewById(R.id.rg_deaseases_diabatic);
 
 
-
             if (rg_deaseases_heart.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += "heart:" + ((RadioButton) findViewById(rg_deaseases_heart.getCheckedRadioButtonId())).getText().toString();
+                result += "heart:" + rg_deaseases_heart.indexOfChild(findViewById(rg_deaseases_heart.getCheckedRadioButtonId()));
             }
             if (rg_deaseases_hypertension.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",hypertension:" + ((RadioButton) findViewById(rg_deaseases_hypertension.getCheckedRadioButtonId())).getText().toString();
+                result += ",hypertension:" + rg_deaseases_hypertension.indexOfChild(findViewById(rg_deaseases_hypertension.getCheckedRadioButtonId()));
             }
             if (rg_deaseases_cancer.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",cancer:" + ((RadioButton) findViewById(rg_deaseases_cancer.getCheckedRadioButtonId())).getText().toString();
+                result += ",cancer:" + rg_deaseases_cancer.indexOfChild(findViewById(rg_deaseases_cancer.getCheckedRadioButtonId()));
             }
             if (rg_deaseases_diabatic.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
             } else {
-                result += ",diabatics:" + ((RadioButton) findViewById(rg_deaseases_diabatic.getCheckedRadioButtonId())).getText().toString();
+                result += ",diabatics:" + rg_deaseases_diabatic.indexOfChild(findViewById(rg_deaseases_diabatic.getCheckedRadioButtonId()));
             }
 
             //Toast.makeText(activity, result, Toast.LENGTH_LONG).show();
@@ -430,9 +445,14 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
     @Override
     public void onClick(View v) {
 
-        if (v == button_next && checkSpinner()) {
+
+
+        if (v == button_next  && checkSpinner()) {
 
             // getRadioButtonGroupData();
+           // getRadioButtonSerial();
+          //  Toast.makeText(activity, getRadioButtonSerial(), Toast.LENGTH_LONG).show();
+
             if (InternetConnection.checkNetworkConnection(this)) {
 
                 mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId() + formatter.format(count);
