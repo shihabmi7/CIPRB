@@ -59,6 +59,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 //    spinner_sex,
 
 
+
     ProgressDialog progressDialog;
     Button button_cancel, button_next;
     int alive_count = 0;
@@ -804,6 +805,9 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
             edittext_number_of_days_assistance_for_daily_leaving.setText("");
             edittext_how_much_cost_reatment.setText("");
             edittext_number_of_days_work_loss.setText("");
+            edittext_time_take_health_facility.setText("");
+            edittext_days_take_health_facility.setText("");
+
 
         }catch (Exception e){
 
