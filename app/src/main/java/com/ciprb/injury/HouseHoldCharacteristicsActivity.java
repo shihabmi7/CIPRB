@@ -12,17 +12,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
-
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class HouseHoldCharacteristicsActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -40,6 +35,10 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
     PrefsValues prefsValues;
     Context context = this;
 
+    RadioGroup rg_radio, rg_television, rg_disher_line, rg_mobile, rg_telephone, rg_refregarator, rg_bicycle,
+            rg_motorcycle, rg_vcd, rg_electric_fan, rg_car_microbus, rg_boat, rg_water_pump, rg_almari, rg_table, rg_chair, rg_computer, rg_bed,
+            rg_sofa;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +55,7 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
             int member = prefsValues.getMembersNo();
 
             if (value.length() > 0) {
+
 
                 person_id = value + "01";
                 textView_person_id.setText("House Hold ID: " + value);
@@ -100,6 +100,26 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
         spinner_c08 = (Spinner) findViewById(R.id.spinner_c08);
         spinner_c10 = (Spinner) findViewById(R.id.spinner_c10);
 
+        rg_radio = (RadioGroup) findViewById(R.id.rg_radio);
+        rg_television = (RadioGroup) findViewById(R.id.rg_television);
+        rg_disher_line = (RadioGroup) findViewById(R.id.rg_disher_line);
+        rg_mobile = (RadioGroup) findViewById(R.id.rg_mobile);
+        rg_telephone = (RadioGroup) findViewById(R.id.rg_telephone);
+        rg_refregarator = (RadioGroup) findViewById(R.id.rg_refregarator);
+        rg_bicycle = (RadioGroup) findViewById(R.id.rg_bicycle);
+        rg_motorcycle = (RadioGroup) findViewById(R.id.rg_motorcycle);
+        rg_vcd = (RadioGroup) findViewById(R.id.rg_vcd);
+        rg_electric_fan = (RadioGroup) findViewById(R.id.rg_electric_fan);
+        rg_car_microbus = (RadioGroup) findViewById(R.id.rg_car_microbus);
+        rg_boat = (RadioGroup) findViewById(R.id.rg_boat);
+        rg_water_pump = (RadioGroup) findViewById(R.id.rg_water_pump);
+        rg_almari = (RadioGroup) findViewById(R.id.rg_almari);
+        rg_table = (RadioGroup) findViewById(R.id.rg_table);
+        rg_chair = (RadioGroup) findViewById(R.id.rg_chair);
+        rg_computer = (RadioGroup) findViewById(R.id.rg_computer);
+        rg_bed = (RadioGroup) findViewById(R.id.rg_bed);
+        rg_sofa = (RadioGroup) findViewById(R.id.rg_sofa);
+
 
         button_next = (Button) findViewById(R.id.button_next);
         button_cancel = (Button) findViewById(R.id.button_cancel);
@@ -107,6 +127,147 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
         button_cancel.setOnClickListener(this);
         button_next.setOnClickListener(this);
     }
+
+    void resetRadio() {
+
+
+        rg_radio.clearCheck();
+        rg_television.clearCheck();
+        rg_disher_line.clearCheck();
+        rg_mobile.clearCheck();
+        rg_telephone.clearCheck();
+        rg_refregarator.clearCheck();
+        rg_bicycle.clearCheck();
+        rg_motorcycle.clearCheck();
+        rg_vcd.clearCheck();
+        rg_electric_fan.clearCheck();
+        rg_car_microbus.clearCheck();
+        rg_boat.clearCheck();
+        rg_water_pump.clearCheck();
+        rg_almari.clearCheck();
+        rg_table.clearCheck();
+        rg_chair.clearCheck();
+        rg_computer.clearCheck();
+        rg_bed.clearCheck();
+        rg_sofa.clearCheck();
+    }
+
+    String getRadioButtonGroupData() {
+
+
+        String result = "";
+        try {
+
+            // get value from radio button
+
+            if (rg_radio.getCheckedRadioButtonId() == -1) {
+                // no radio buttons are checked
+            } else {
+                result += "radio:" + rg_radio.indexOfChild(findViewById(rg_radio.getCheckedRadioButtonId()));
+            }
+            if (rg_television.getCheckedRadioButtonId() == -1) {
+                // no radio buttons are checked
+            } else {
+                result += ",television:" + rg_television.indexOfChild(findViewById(rg_television.getCheckedRadioButtonId()));
+            }
+            if (rg_disher_line.getCheckedRadioButtonId() == -1) {
+                // no radio buttons are checked
+            } else {
+                result += ",disher line:" + rg_disher_line.indexOfChild(findViewById(rg_disher_line.getCheckedRadioButtonId()));
+            }
+            if (rg_mobile.getCheckedRadioButtonId() == -1) {
+                // no radio buttons are checked
+            } else {
+                result += ",mobile:" + rg_mobile.indexOfChild(findViewById(rg_mobile.getCheckedRadioButtonId()));
+            }
+            if (rg_telephone.getCheckedRadioButtonId() == -1) {
+                // no radio buttons are checked
+            } else {
+                result += ",telephone:" + rg_telephone.indexOfChild(findViewById(rg_telephone.getCheckedRadioButtonId()));
+            }
+            if (rg_refregarator.getCheckedRadioButtonId() == -1) {
+                // no radio buttons are checked
+            } else {
+                result += ",fridge:" + rg_refregarator.indexOfChild(findViewById(rg_refregarator.getCheckedRadioButtonId()));
+            }
+            if (rg_bicycle.getCheckedRadioButtonId() == -1) {
+                // no radio buttons are checked
+            } else {
+                result += ",bicycle:" + rg_bicycle.indexOfChild(findViewById(rg_bicycle.getCheckedRadioButtonId()));
+            }
+            if (rg_motorcycle.getCheckedRadioButtonId() == -1) {
+                // no radio buttons are checked
+            } else {
+                result += ",motorcycle:" + rg_motorcycle.indexOfChild(findViewById(rg_motorcycle.getCheckedRadioButtonId()));
+            }
+            if (rg_vcd.getCheckedRadioButtonId() == -1) {
+                // no radio buttons are checked
+            } else {
+                result += ",vcd:" + rg_vcd.indexOfChild(findViewById(rg_vcd.getCheckedRadioButtonId()));
+            }
+            if (rg_electric_fan.getCheckedRadioButtonId() == -1) {
+                // no radio buttons are checked
+            } else {
+                result += ",electric fan:" + rg_electric_fan.indexOfChild(findViewById(rg_electric_fan.getCheckedRadioButtonId()));
+            }
+            if (rg_car_microbus.getCheckedRadioButtonId() == -1) {
+                // no radio buttons are checked
+            } else {
+                result += ",car:" + rg_car_microbus.indexOfChild(findViewById(rg_car_microbus.getCheckedRadioButtonId()));
+            }
+            if (rg_boat.getCheckedRadioButtonId() == -1) {
+                // no radio buttons are checked
+            } else {
+                result += ",boat:" + rg_boat.indexOfChild(findViewById(rg_boat.getCheckedRadioButtonId()));
+            }
+            if (rg_water_pump.getCheckedRadioButtonId() == -1) {
+                // no radio buttons are checked
+            } else {
+                result += ",water pump:" + rg_water_pump.indexOfChild(findViewById(rg_water_pump.getCheckedRadioButtonId()));
+            }
+            if (rg_almari.getCheckedRadioButtonId() == -1) {
+                // no radio buttons are checked
+            } else {
+                result += ",almari:" + rg_almari.indexOfChild(findViewById(rg_almari.getCheckedRadioButtonId()));
+            }
+            if (rg_table.getCheckedRadioButtonId() == -1) {
+                // no radio buttons are checked
+            } else {
+                result += ",table:" + rg_table.indexOfChild(findViewById(rg_table.getCheckedRadioButtonId()));
+            }
+            if (rg_chair.getCheckedRadioButtonId() == -1) {
+                // no radio buttons are checked
+            } else {
+                result += ",chair:" + rg_chair.indexOfChild(findViewById(rg_chair.getCheckedRadioButtonId()));
+            }
+            if (rg_computer.getCheckedRadioButtonId() == -1) {
+                // no radio buttons are checked
+            } else {
+                result += ",computer:" + rg_computer.indexOfChild(findViewById(rg_computer.getCheckedRadioButtonId()));
+            }
+            if (rg_bed.getCheckedRadioButtonId() == -1) {
+                // no radio buttons are checked
+            } else {
+                result += ",bed:" + rg_bed.indexOfChild(findViewById(rg_bed.getCheckedRadioButtonId()));
+            }
+            if (rg_sofa.getCheckedRadioButtonId() == -1) {
+                // no radio buttons are checked
+            } else {
+                result += ",sofa:" + rg_sofa.indexOfChild(findViewById(rg_sofa.getCheckedRadioButtonId()));
+            }
+
+            //  Toast.makeText(activity, result, Toast.LENGTH_LONG).show();
+
+        } catch (NullPointerException e) {
+
+            Toast.makeText(getApplicationContext(), "" + e.toString(), Toast.LENGTH_LONG).show();
+
+        }
+
+
+        return result.toString();
+    }
+
 
     boolean checkSpinner() {
 
@@ -150,8 +311,13 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
 
             if (InternetConnection.checkNetworkConnection(context)) {
 
+
+
                 String url = ApplicationData.URL_CHARACTERISTIC + person_id;
                 new PutAsync().execute(url, createJsonBody());
+
+                Log.e("JSOn BOdy ", createJsonBody());
+                Log.e("URL are ", url);
             } else
 
             {
@@ -203,28 +369,6 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
 
     }
 
-    public String putRequestWithHeaderAndBody(String url, String jsonBody) throws IOException {
-
-
-        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-
-
-        OkHttpClient client = new OkHttpClient();
-        RequestBody body = RequestBody.create(JSON, jsonBody);
-        Request request = new Request.Builder()
-                .url(url)
-                .put(body)
-                .build();
-        Response response = client.newCall(request).execute();
-        Response httpResponse = client.newCall(request).execute();
-        httpResponse.code();
-
-        Log.i("Response data are ", response.body().string());
-        Log.i("Response code are ", "" + response.code());
-        //makeCall(client, request);
-
-        return response.body().string();
-    }
 
     String createJsonBody() {
         String jsonData = "{" +
@@ -245,7 +389,7 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
                 "\",\"c08\":\"" +
                 ApplicationData.spilitStringFirst(spinner_c08.getSelectedItem().toString()) +
                 "\",\"c09\":\"" +
-                " " +
+                getRadioButtonGroupData() +
                 "\",\"c10\":\"" +
                 ApplicationData.spilitStringFirst(spinner_c10.getSelectedItem().toString()) +
                 "\",\"c11\":\"" +
@@ -271,7 +415,8 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
         protected String doInBackground(String... params) {
             try {
 
-                Log.i("URL are ", params[0]);
+                Log.e("URL are ", params[0]);
+                Log.e("URL are ", createJsonBody());
                 value = ApplicationData.putRequestWithBody(params[0], params[1]);
 
 

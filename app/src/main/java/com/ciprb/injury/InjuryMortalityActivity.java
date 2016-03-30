@@ -18,7 +18,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.ciprb.injury.localdb.CiprbDatabase;
@@ -137,27 +136,27 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
             });
 
 
-            time = new TimePickerDialog.OnTimeSetListener() {
-
-                @Override
-                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-
-                    myCalendar.set(Calendar.HOUR, hourOfDay);
-                    myCalendar.set(Calendar.MINUTE, minute);
-
-                    updateTime();
-                }
-            };
-
-            edittext_time_of_injury.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-
-                    new TimePickerDialog(activity, time, myCalendar.get(Calendar.HOUR), myCalendar.get(Calendar.HOUR), false).show();
-                }
-
-            });
+//            time = new TimePickerDialog.OnTimeSetListener() {
+//
+//                @Override
+//                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+//
+//                    myCalendar.set(Calendar.HOUR, hourOfDay);
+//                    myCalendar.set(Calendar.MINUTE, minute);
+//
+//                    updateTime();
+//                }
+//            };
+//
+//            edittext_time_of_injury.setOnClickListener(new View.OnClickListener() {
+//
+//                @Override
+//                public void onClick(View v) {
+//
+//                    new TimePickerDialog(activity, time, myCalendar.get(Calendar.HOUR), myCalendar.get(Calendar.HOUR), false).show();
+//                }
+//
+//            });
 
             progressDialog = new ProgressDialog(activity);
             progressDialog.setMessage(getString(R.string.loading_message));
@@ -365,11 +364,12 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                 && spinner_place_of_injury.getSelectedItemPosition() != 0
                 && spinner_injury_intent.getSelectedItemPosition() != 0
                 && spinner_condition_of_victims_after_injury.getSelectedItemPosition() != 0
-
-                && spinner_Who_provided_the_treatment.getSelectedItemPosition() != 0
-
                 && !edittext_time_of_injury.getText().toString().isEmpty()
-                && !editText_injury_date.getText().toString().isEmpty()) {
+                && spinner_mobility_condition_after_injury.getSelectedItemPosition() != 0 &&
+                spinner_did_receive_first_aid.getSelectedItemPosition() != 0
+                && !editText_injury_date.getText().toString().isEmpty() &&
+                spinner_im_source_of_income_family.getSelectedItemPosition() != 0 &&
+                spinner_im_family_coping_loss.getSelectedItemPosition() != 0) {
 
             //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
 
@@ -387,12 +387,16 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
     void setSpinnerDefaultState() {
 
         spinner_how_injured.setSelection(0);
+        spinner_place_of_injury.setSelection(0);
         spinner_injury_intent.setSelection(0);
         spinner_condition_of_victims_after_injury.setSelection(0);
         spinner_mobility_condition_after_injury.setSelection(0);
         spinner_who_gave_first_aid.setSelection(0);
         spinner_admitted_health_facility.setSelection(0);
         spinner_Where_receive_treatment.setSelection(0);
+        spinner_im_source_of_income_family.setSelection(0);
+        spinner_im_family_coping_loss.setSelection(0);
+        spinner_did_receive_first_aid.setSelection(0);
 
 
     }
@@ -458,6 +462,8 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
                 list.remove(ApplicationData.ALIVE_PERSON_NUMBER);*/
                 list.remove(ApplicationData.ALIVE_PERSON_NUMBER);
+
+                dataAdapter.notifyDataSetChanged(); //added 30 march
                 //ciprbDatabase.open();
                 ciprbDatabase.deleteRowByIDFromDeath(person_id);
                 //ciprbDatabase.close();
@@ -525,13 +531,13 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
     void cleartext() {
 
         setSpinnerDefaultState();
-       /* editText_members_name.getText().clear();
-        edittext_date_of_birth.getText().clear();
-        edittext_current_age.getText().clear();
-        editText_educatoin_level.getText().clear();
+        edittext_how_much_cost_reatment.getText().clear();
+        editText_injury_date.getText().clear();
+        edittext_time_of_injury.getText().clear();
+        edittext_injured_parts.getText().clear();
+        edittext_injured_type.getText().clear();
 
-        if (edittext_how_many_injury_last_six != null)
-            edittext_how_many_injury_last_six.getText().clear();*/
+
 
     }
 
@@ -560,6 +566,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
         } else if (v == button_cancel) {
 
             cleartext();
+            finish();
 
         }
 

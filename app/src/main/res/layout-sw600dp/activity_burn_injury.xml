@@ -44,7 +44,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
 
@@ -82,7 +82,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/Burn2"
@@ -108,7 +108,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/Burn3"
@@ -134,7 +134,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/Burn4"
@@ -160,7 +160,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/Burn5"
@@ -186,7 +186,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/Burn6"
@@ -213,7 +213,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/Burn7"
@@ -239,6 +239,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:weightSum="1"
             android:orientation="horizontal"
             android:padding="20dp">
 
@@ -247,6 +248,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:layout_weight=".5"
                 android:text="Cancel">
 
             </Button>
@@ -256,6 +258,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:layout_weight=".5"
                 android:text="Next">
 
             </Button>

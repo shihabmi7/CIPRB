@@ -374,7 +374,7 @@
         <item>18. অফিস</item>
         <item>19. নির্মান এলাকা</item>
         <item>97. অন্যান্য</item>
-        <item>99. জিানা নেই</item>
+        <item>99.  জানা নেই</item>
     </string-array>
     <string-array name="survey_intent_of_injury">
         <item>  নির্বাচন করুন</item>
@@ -408,6 +408,19 @@
         <item>9.  জানা নেই</item>
 
     </string-array>
+
+
+
+    <string-array name="survey_with_select_yes_no_dk">
+
+        <item>  নির্বাচন করুন</item>
+        <item>1.  হ্যাঁ </item>
+        <item>2.  না</item>
+        <item>9.  জানা নেই</item>
+
+    </string-array>
+
+
 
 
     <string-array name="test72as">
@@ -634,6 +647,7 @@
         <item>6. গাছ </item>
         <item>7. রেল লাইন </item>
         <item>9. অন্যান্য </item>
+        <item>99.  জানা নেই</item>
 
     </string-array>
     <string-array name="survey_suicide_how">
@@ -710,6 +724,7 @@
         <item>4. বাড়ীতে নেওয়ার পথে </item>
         <item>5. হাসপাতালে নেওয়ার পথে</item>
         <item>9. অন্যান্য</item>
+        <item>99.  জানা নেই</item>
     </string-array>
     <string-array name="survey_violence_object">
         <item>  নির্বাচন করুন</item>
@@ -722,6 +737,7 @@
         <item>7. বল্লম/টেটা</item>
         <item>97. অন্যান্য </item>
         <item>97. জানা নেই </item>
+        <item>99.  জানা নেই</item>
     </string-array>
 
 
@@ -1366,7 +1382,7 @@
         <item>2.ট্রাক্টর </item>
         <item>3.ধান মাড়াই এর কল</item>
         <item>4.অন্যান্য যন্ত্রচালিত মেমিন</item>
-
+        <item>99.  জানা নেই</item>
 
     </string-array>
 
@@ -1382,7 +1398,7 @@
         <item>8.সেলাই মেশিন</item>
         <item>তাঁত যন্ত্র</item>
         <item>অন্যান্য</item>
-
+        <item>99.  জানা নেই</item>
 
     </string-array>
 
@@ -1395,6 +1411,7 @@
         <item>4. নির্মান সামগ্রী উপরে তোলার যন্ত্র   </item>
         <item>5. মাটি কাটার যন্ত্র</item>
         <item>97. অন্যান্য</item>
+        <item>99.  জানা নেই</item>
 
     </string-array>
 
@@ -1403,6 +1420,7 @@
         <item>  নির্বাচন করুন</item>
         <item>1. যানবাহনের ইঞ্জিন</item>
         <item>2. নসিমন/ ভটভটির  ইঞ্জিন </item>
+        <item>99.  জানা নেই</item>
 
     </string-array>
 
@@ -1413,6 +1431,7 @@
         <item>2. মেশিন দিয়ে কাজ করছিল </item>
         <item>3. মেশিনের কাছে অবস্থান করছিল</item>
         <item>97. অন্যান্য  </item>
+        <item>99.  জানা নেই</item>
 
     </string-array>
 
@@ -1430,6 +1449,7 @@
         <item>3.বাড়ীর বাহিরে ব্যবহৃত বিদ্যু</item>
         <item>4.কারখানায় ব্যবহৃত বিদ্যু</item>
         <item>5.বাড়ি বা কারখানা ব্যতিত বিল্ডিংএ ব্যবহৃত বিদ্যু</item>
+        <item>99.  জানা নেই</item>
     </string-array>
 
     <string-array name="electrocution2">
@@ -1441,6 +1461,7 @@
         <item>5.গোসল খানা/পায়খানা </item>
         <item>6.বারান্ধা </item>
         <item>7.অন্যান্য</item>
+        <item>99.  জানা নেই</item>
 
     </string-array>
 
@@ -1454,6 +1475,7 @@
         <item>6.জলাশয়ে</item>
         <item>7. গাছ তলায়</item>
         <item>97.অন্যান্য</item>
+        <item>99.  জানা নেই</item>
     </string-array>
 
 
@@ -1462,6 +1484,7 @@
         <item>1.  বিদ্যুতের তার/ সুইচে ছোঁয়ার মাধ্যমে</item>
         <item>2.  বিদ্যুতের তার ছিঁড়ে পড়ে</item>
         <item>3.  বজ্রপাতের মাধ্যমে</item>
+        <item>99.  জানা নেই</item>
     </string-array>
 
 
@@ -1484,6 +1507,7 @@
         <item>10. বোলতা</item>
         <item>11. মৌমাছি</item>
         <item>97. অন্যান্য   </item>
+        <item>99.  জানা নেই</item>
 
     </string-array>
 
@@ -1495,6 +1519,7 @@
         <item>4. পায়ের তলায় পড়া</item>
         <item>5. শিং বা মাথা দিয়ে আঘাত</item>
         <item>97. অন্যান্য </item>
+        <item>99.  জানা নেই</item>
 
     </string-array>
 
@@ -1505,6 +1530,7 @@
         <item>3.কাজে ব্যবহার করা হচ্ছিল</item>
         <item>4.বিরক্ত করা ছাড়াই</item>
         <item>97.অন্যান্য</item>
+        <item>99.  জানা নেই</item>
     </string-array>
 
 
@@ -1517,6 +1543,7 @@
         <item>1.চলন্ত বস্তু(নাম লিখুন)</item>
         <item>2.স্থির বস্তু (নাম লিখুন)</item>
         <item>9.অন্যান্য</item>
+        <item>99.  জানা নেই</item>
     </string-array>
     <string-array name="blunt2">
         <item>  নির্বাচন করুন</item>
@@ -1528,6 +1555,7 @@
         <item>6.অফিস আদালতে </item>
         <item>7.খেলাধুলায়</item>
         <item>9.অন্যান্য</item>
+        <item>99.  জানা নেই</item>
     </string-array>
 
     <string name="suffocation1">01.শ্বাসরোধের কারণ?</string>
@@ -1551,6 +1579,7 @@
         <item>12.পানির ট্যাংক / সেফ্টি ট্যা্কং বা কুয়াতে নামার ফলে</item>
 
         <item>97.অন্যান্য</item>
+        <item>99.  জানা নেই</item>
     </string-array>
 
     <string name="socio1">01.এই খানার অধীনে বসতবিটায় (পুকুর ও ডোবা সহ)কি পরিমান জমি (ডেসিমাল-এ)আছে? </string>
@@ -1582,6 +1611,7 @@
         <item>35.টালি</item>
         <item>36.কাষ্ট খন্ড (টালি/শ্লেট)</item>
         <item>97.37.অন্যান্য</item>
+        <item>99.  জানা নেই</item>
     </string-array>
 
     <string-array name="survey_c04">
@@ -1595,7 +1625,7 @@
         <item>33.সিরামিক টাইলস/মোজাইক</item>
         <item>34.কার্পেট</item>
         <item>97.অন্যান্য </item>
-
+        <item>99.  জানা নেই</item>
     </string-array>
     <string-array name="survey_c05">
         <item>  নির্বাচন করুন</item>
@@ -1612,6 +1642,7 @@
         <item>34.ইট (প্লাষ্টার ছাড়া)</item>
         <item>35.উন্নত মানের কাঠের তক্তা</item>
         <item>97.অন্যান্য </item>
+        <item>99.  জানা নেই</item>
     </string-array>
     <string-array name="survey_c07">
         <item>  নির্বাচন করুন</item>
@@ -1629,6 +1660,7 @@
         <item>81.পুকুর/খাল/বদ্ধ জলাশয়/হ্রদ/দিধী/বিল/হাওর </item>
         <item>91.বোতলের পানি</item>
         <item>97.অন্যান্য</item>
+        <item>99.  জানা নেই</item>
     </string-array>
 
     <string-array name="survey_c08">
@@ -1644,9 +1676,10 @@
         <item>51.খোলা/ঝুলন্ত ল্যাট্রিন </item>
         <item>61.ল্রাট্রি নাই/ঝোপ ঝাড়/মাঠ</item>
         <item>97.অন্যান্য</item>
-
+        <item>99.  জানা নেই</item>
     </string-array>
 
+    <string name="socio00">আপনাদের খানায় এই জিনিসগুলো আছে কি? [প্রত্যেকটি জিনিসির কথাই জিজ্ঞেস করুন]</string>
 
     <string name="socio91">রেডিও</string>
     <string name="socio92">টেলিভিশন </string>
@@ -1663,6 +1696,16 @@
     <string name="socio104">আলমিরা</string>
     <string name="socio105">টেবিল</string>
     <string name="socio106">চেয়ার</string>
+
+    <string name="socio107">ডিশের লাইন</string>
+    <string name="socio108">কম্পিউটার</string>
+    <string name="socio109">বেড</string>
+    <string name="socio110">সোফা</string>
+
+
+
+
+
 
 
     <string-array name="socio10">
@@ -1688,6 +1731,7 @@
         <item> 1. আমার হাঁটতে কোন সমস্যা নেই</item>
         <item>2. আমার হাঁটতে কিছু সমস্যা হয়</item>
         <item>3. আমি আকদম বিছানাই শোয়া</item>
+
     </string-array>
 
 
@@ -1695,7 +1739,7 @@
         <item>  নির্বাচন করুন</item>
         <item> 1. আমি নিজেই নিজের কাজ করতে পারি  </item>
         <item>2. আমার গোসল বা কাপড় পরতে একটু  সমস্যা হয়</item>
-        <item>3. 2. আমার গোসল বা কাপড় পরতে একটু  সমস্যা হয় </item>
+        <item>3. আমার গোসল বা কাপড় পরতে একটু  সমস্যা হয় </item>
     </string-array>
 
 

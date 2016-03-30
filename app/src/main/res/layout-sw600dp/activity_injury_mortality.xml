@@ -144,7 +144,8 @@
                 android:id="@+id/edittext_time_of_injury"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:focusable="false"
+                android:maxLength="2"
+                android:focusable="true"
                 android:hint="Click to set the time"></EditText>
 
 
@@ -385,7 +386,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:entries="@array/survey_yes_no_dk"
+                android:entries="@array/survey_with_select_yes_no_dk"
                 android:focusable="false"
                 android:spinnerMode="dropdown" />
 

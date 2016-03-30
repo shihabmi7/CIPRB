@@ -333,7 +333,7 @@
                 android:layout_alignParentRight="true"
                 android:gravity="right"
                 android:inputType="number"
-                android:maxLength="1" />
+                android:maxLength="2" />
 
         </LinearLayout>
 
@@ -399,12 +399,14 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
+            android:weightSum="1"
             android:padding="20dp">
 
             <Button
                 android:id="@+id/button_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_weight=".5"
                 android:gravity="center"
                 android:text="Cancel"></Button>
 
@@ -413,6 +415,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:layout_weight=".5"
                 android:text="Next"></Button>
 
         </LinearLayout>

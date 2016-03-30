@@ -213,7 +213,8 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                 && spinner_occupasion.getSelectedItemPosition() != 0
                 && spinner_smoking.getSelectedItemPosition() != 0 &&
                 spinner_buttle_nut.getSelectedItemPosition() != 0 &&
-                spinner_swiming.getSelectedItemPosition() != 0) {
+                spinner_swiming.getSelectedItemPosition() != 0 &&
+                spinner_injury_last_six.getSelectedItemPosition()!=0) {
 
             //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
 
@@ -237,6 +238,9 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
         spinner_buttle_nut.setSelection(0);
         spinner_swiming.setSelection(0);
         spinner_injury_last_six.setSelection(0);
+        edittext_date_of_birth.getText().clear();;
+        edittext_current_age.setText("");
+        edittext_how_many_injury_last_six.setText("");
 
     }
 
@@ -310,13 +314,13 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
                             ciprbDatabase.insertIntoDB(mCURRENT_MEMBER_ID, editText_members_name.getText().toString());
                             //ApplicationData.alive_person_List.add(aPerson);
-                            saveDataToOnline(aPerson);
+                            saveDataToOnlineForInjuredPerson(aPerson);
                             injury_count++; // added newly
                         }
                         count++;
-                        injury_count=01; // added newly
+                        injury_count=01;
+                        calculate_member++;; // added newly
                         // ciprbDatabase.close();
-
                     }
                     // if no injury happen
                     else {
@@ -354,18 +358,82 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
     }
 
-    void cleartext() {
-        setheader();
-        setSpinnerDefaultState();
+    void saveDataToOnlineForInjuredPerson(Person person) {
 
-        editText_members_name.getText().clear();
-        edittext_date_of_birth.getText().clear();
-        edittext_current_age.getText().clear();
-        editText_educatoin_level.getText().clear();
-        isResonder.setChecked(false);
+        try {
 
-        if (edittext_how_many_injury_last_six != null)
-            edittext_how_many_injury_last_six.getText().clear();
+            progressDialog.show();
+
+            AsyncHttpClient client = new AsyncHttpClient();
+            RequestParams params = new RequestParams();
+            params.put("household_unique_code", person.getPerson_id());
+            params.put("name", person.getMembers_name());
+            params.put("sex", ApplicationData.spilitStringFirst(person.getSex()));
+            params.put("date_of_birth", edittext_date_of_birth.getText().toString());
+            params.put("maritial_status", ApplicationData.spilitStringFirst(spinner_marital_status.getSelectedItem().toString()));
+            params.put("education", editText_educatoin_level.getText().toString());
+            params.put("relation_with_hh", ApplicationData.spilitStringFirst(spinner_realation_with_hh.getSelectedItem().toString()));
+            params.put("age", edittext_current_age.getText().toString());
+            params.put("occupasion", ApplicationData.spilitStringFirst(spinner_occupasion.getSelectedItem().toString()));
+            params.put("smoking", ApplicationData.spilitStringFirst(spinner_smoking.getSelectedItem().toString()));
+            params.put("bettle_nut_chew", ApplicationData.spilitStringFirst(spinner_buttle_nut.getSelectedItem().toString()));
+            params.put("swimming", ApplicationData.spilitStringFirst(spinner_swiming.getSelectedItem().toString()));
+            params.put("responder", responderStatus());
+            params.put("interviewer_code", prefsValues.getInterviewer_code());
+            params.put("injury_last_six", ApplicationData.spilitStringFirst(spinner_injury_last_six.getSelectedItem().toString()));
+            params.put("interview_time", ApplicationData.getCurrentDate());
+            params.put("household_no", prefsValues.gethouse_hold_no());
+            if (linerar_how_injury.getVisibility() == View.VISIBLE) {
+
+                params.put("how_many_injury_last_six", person.getInjury_number());
+                //params.put("e02", person.getInjury_type());
+
+            }
+
+            client.post(ApplicationData.URL_HOUSE_HOLD_MEMBERS, params,
+                    new JsonHttpResponseHandler() {
+                        // save to data base ,
+                        // check if count > member then go to next activity n save to
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+                            if (statusCode == ApplicationData.STATUS_SUCCESS) {
+                                progressDialog.dismiss();
+                                showTextLong(" : Data saved Successfully...: " + mCURRENT_MEMBER_ID);
+                                prefsValues.setSerial(count);
+                                scrollView.setY(0);
+                                if (calculate_member >= member_no) {
+
+                                    if (ciprbDatabase.getAlivePersonList().size() != 0) {
+
+                                        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+                                        ciprbDatabase.close();
+                                        finish();
+                                    } else {
+                                        //  go to home activity n fill up home characteristics
+                                        ApplicationData.gotToNextActivity(activity, HomeActivity.class);
+                                        finish();
+                                    }
+                                }
+                                cleartext();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+
+                            progressDialog.dismiss();
+                            showTextLong(" : Data not Saved Successfully...: " + statusCode);
+                            super.onFailure(statusCode, headers, responseString, throwable);
+
+                            Log.e("" + getTitle(), "OnFailure" + statusCode);
+                        }
+                    }
+            );
+        } catch (NullPointerException e) {
+
+            Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
+        }
 
     }
 
@@ -413,14 +481,17 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                                 progressDialog.dismiss();
                                 showTextLong(" : Data saved Successfully...: " + mCURRENT_MEMBER_ID);
                                 prefsValues.setSerial(count);
+                                scrollView.setY(0);
                                 if (calculate_member >= member_no) {
-                                    ciprbDatabase.close();
-                                    finish();
-                                    if (ApplicationData.alive_person_List.size() != 0) {
+
+                                    if (ciprbDatabase.getAlivePersonList().size() != 0) {
                                         ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+                                        ciprbDatabase.close();
+                                        finish();
                                     } else {
                                         //  go to home activity n fill up home characteristics
                                         ApplicationData.gotToNextActivity(activity, HomeActivity.class);
+                                        finish();
                                     }
                                 }
                                 cleartext();
@@ -552,4 +623,19 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
         super.onDestroy();
 
     }
+    void cleartext() {
+        setheader();
+        setSpinnerDefaultState();
+
+        editText_members_name.setText("");
+        edittext_date_of_birth.setText("");
+        edittext_current_age.setText("");
+        editText_educatoin_level.setText("");
+        isResonder.setChecked(false);
+
+        if (edittext_how_many_injury_last_six != null)
+            edittext_how_many_injury_last_six.getText().clear();
+
+    }
+
 }

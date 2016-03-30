@@ -51,11 +51,16 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
     Spinner spinner_occupasion, spinner_marital_status, spinner_death_sex, spinner_realation_with_hh, spinner_cause_death, spinner_death_place;
     //private String mCURRENT_MEMBER_ID = "35457899923232";
 
+    RadioGroup rg_fever, rg_rash, rg_growth, rg_jaundice, rg_cough, rg_respiratory, rg_diarea, rg_vomitting, rg_abdominal_pain,
+            rg_abdominal_distension, rg_weight_loss, rg_chest_pain, rg_mass, rg_stiff_neck, rg_headache, rg_convulsion,
+            rg_fits_unconsciousness,
+            rg_deaseases_heart,rg_deaseases_hypertension,rg_deaseases_cancer,rg_deaseases_diabatic,
+            rg_paralysis, rg_urine_colour, rg_surgery_operation, rg_Others_specify;
+
     private String mCURRENT_MEMBER_ID = "";
     private Person aPerson;
     DecimalFormat formatter;
     CiprbDatabase ciprbDatabase;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +74,14 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         setTitle(getResources().getStringArray(R.array.survey_activity_title)[3]);
 
 
+
         try {
             prefsValues = new PrefsValues(this);
             formatter = new DecimalFormat("00");
             death_member_no = prefsValues.getMembers_died_no();
             count = prefsValues.getDeathSerial();
+
+            initializeUI();
 
             //mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId();
             //showTextLong(" : Current HouseHold ID  " + mCURRENT_MEMBER_ID);
@@ -83,87 +91,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
                 finish();
             }*/
 
-            house_hold_id = (TextView) findViewById(R.id.house_hold_id);
-            edittext_date_of_birth = (EditText) findViewById(R.id.edittext_date_of_birth);
-            editText_death_date = (EditText) findViewById(R.id.editText_death_date);
-            edittext_current_age = (EditText) findViewById(R.id.edittext_current_age);
-            editText_members_name = (EditText) findViewById(R.id.editText_members_name);
-            editText_members_name.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
-            editText_educatoin_level = (EditText) findViewById(R.id.editText_educatoin_level);
-            editText_sicness_time = (EditText) findViewById(R.id.editText_sicness_time);
 
-            myCalendar = Calendar.getInstance();
-            date = new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                      int dayOfMonth) {
-
-                    myCalendar.set(Calendar.YEAR, year);
-                    myCalendar.set(Calendar.MONTH, monthOfYear);
-                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    updateBirthLabel();
-                }
-            };
-
-            edittext_date_of_birth.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-
-                    new DatePickerDialog(activity, date, myCalendar
-                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-                }
-
-            });
-
-            myDeathCalender = Calendar.getInstance();
-            deathdate = new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                      int dayOfMonth) {
-
-                    myDeathCalender.set(Calendar.YEAR, year);
-                    myDeathCalender.set(Calendar.MONTH, monthOfYear);
-                    myDeathCalender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    updateDeathLabel();
-                }
-            };
-
-            editText_death_date.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-
-                    new DatePickerDialog(activity, deathdate, myDeathCalender
-                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-                }
-
-            });
-
-
-            spinner_occupasion = (Spinner) findViewById(R.id.spinner_occupasion);
-            spinner_marital_status = (Spinner) findViewById(R.id.spinner_marital_status);
-            spinner_death_sex = (Spinner) findViewById(R.id.spinner_death_sex);
-            spinner_realation_with_hh = (Spinner) findViewById(R.id.spinner_realation_with_hh);
-            spinner_death_place = (Spinner) findViewById(R.id.spinner_death_place);
-            spinner_cause_death = (Spinner) findViewById(R.id.spinner_cause_death);
-            //spinner_how_injured = (Spinner) findViewById(R.id.spinner_how_injured);
-
-            button_cancel = (Button) findViewById(R.id.button_cancel);
-            button_next = (Button) findViewById(R.id.button_next);
-
-            button_cancel.setOnClickListener(this);
-            button_next.setOnClickListener(this);
-
-            progressDialog = new ProgressDialog(activity);
-            progressDialog.setMessage(getString(R.string.loading_message));
-            progressDialog.setTitle(getString(R.string.waiting));
-            progressDialog.setCancelable(true);
-
-
-            setheader();
 
             // getRadioButtonGroupData();
 
@@ -174,6 +102,154 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         }
     }
 
+    void initializeUI() {
+
+        house_hold_id = (TextView) findViewById(R.id.house_hold_id);
+        edittext_date_of_birth = (EditText) findViewById(R.id.edittext_date_of_birth);
+        editText_death_date = (EditText) findViewById(R.id.editText_death_date);
+        edittext_current_age = (EditText) findViewById(R.id.edittext_current_age);
+        editText_members_name = (EditText) findViewById(R.id.editText_members_name);
+        editText_members_name.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        editText_educatoin_level = (EditText) findViewById(R.id.editText_educatoin_level);
+        editText_sicness_time = (EditText) findViewById(R.id.editText_sicness_time);
+
+        spinner_occupasion = (Spinner) findViewById(R.id.spinner_occupasion);
+        spinner_marital_status = (Spinner) findViewById(R.id.spinner_marital_status);
+        spinner_death_sex = (Spinner) findViewById(R.id.spinner_death_sex);
+        spinner_realation_with_hh = (Spinner) findViewById(R.id.spinner_realation_with_hh);
+        spinner_death_place = (Spinner) findViewById(R.id.spinner_death_place);
+        spinner_cause_death = (Spinner) findViewById(R.id.spinner_cause_death);
+        //spinner_how_injured = (Spinner) findViewById(R.id.spinner_how_injured);
+
+        button_cancel = (Button) findViewById(R.id.button_cancel);
+        button_next = (Button) findViewById(R.id.button_next);
+
+        button_cancel.setOnClickListener(this);
+        button_next.setOnClickListener(this);
+
+        rg_fever = (RadioGroup) findViewById(R.id.rg_fever);
+        rg_rash = (RadioGroup) findViewById(R.id.rg_rash);
+        rg_growth = (RadioGroup) findViewById(R.id.rg_growth);
+        rg_jaundice = (RadioGroup) findViewById(R.id.rg_jaundice);
+        rg_cough = (RadioGroup) findViewById(R.id.rg_cough);
+        rg_respiratory = (RadioGroup) findViewById(R.id.rg_respiratory);
+        rg_diarea = (RadioGroup) findViewById(R.id.rg_diarea);
+        rg_vomitting = (RadioGroup) findViewById(R.id.rg_vomitting);
+        rg_abdominal_pain = (RadioGroup) findViewById(R.id.rg_abdominal_pain);
+        rg_abdominal_distension = (RadioGroup) findViewById(R.id.rg_abdominal_distension);
+        rg_weight_loss = (RadioGroup) findViewById(R.id.rg_weight_loss);
+        rg_chest_pain = (RadioGroup) findViewById(R.id.rg_chest_pain);
+        rg_mass = (RadioGroup) findViewById(R.id.rg_mass);
+        rg_stiff_neck = (RadioGroup) findViewById(R.id.rg_stiff_neck);
+        rg_headache = (RadioGroup) findViewById(R.id.rg_headache);
+        rg_convulsion = (RadioGroup) findViewById(R.id.rg_convulsion);
+        rg_fits_unconsciousness = (RadioGroup) findViewById(R.id.rg_fits_unconsciousness);
+        rg_paralysis = (RadioGroup) findViewById(R.id.rg_paralysis);
+        rg_urine_colour = (RadioGroup) findViewById(R.id.rg_urine_colour);
+        rg_surgery_operation = (RadioGroup) findViewById(R.id.rg_surgery_operation);
+        rg_Others_specify = (RadioGroup) findViewById(R.id.rg_Others_specify);
+
+        // get value from radio button
+          rg_deaseases_heart = (RadioGroup) findViewById(R.id.rg_deaseases_heart);
+          rg_deaseases_hypertension = (RadioGroup) findViewById(R.id.rg_deaseases_hypertension);
+          rg_deaseases_cancer = (RadioGroup) findViewById(R.id.rg_deaseases_cancer);
+          rg_deaseases_diabatic = (RadioGroup) findViewById(R.id.rg_deaseases_diabatic);
+
+
+
+        myCalendar = Calendar.getInstance();
+        date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateBirthLabel();
+            }
+        };
+
+        edittext_date_of_birth.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                new DatePickerDialog(activity, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+
+        });
+
+        myDeathCalender = Calendar.getInstance();
+        deathdate = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+
+                myDeathCalender.set(Calendar.YEAR, year);
+                myDeathCalender.set(Calendar.MONTH, monthOfYear);
+                myDeathCalender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateDeathLabel();
+            }
+        };
+
+        editText_death_date.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                new DatePickerDialog(activity, deathdate, myDeathCalender
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+
+        });
+
+
+
+
+        progressDialog = new ProgressDialog(activity);
+        progressDialog.setMessage(getString(R.string.loading_message));
+        progressDialog.setTitle(getString(R.string.waiting));
+        progressDialog.setCancelable(true);
+
+
+        setheader();
+
+    }
+
+   void resetRadioButton(){
+
+       rg_fever.clearCheck();
+       rg_rash  .clearCheck();
+       rg_growth .clearCheck();
+       rg_jaundice.clearCheck();
+       rg_cough.clearCheck();
+       rg_respiratory .clearCheck();
+       rg_diarea .clearCheck();
+       rg_vomitting .clearCheck();
+       rg_abdominal_pain .clearCheck();
+       rg_abdominal_distension .clearCheck();
+       rg_weight_loss.clearCheck();
+       rg_chest_pain .clearCheck();
+       rg_mass.clearCheck();
+       rg_stiff_neck.clearCheck();
+       rg_headache .clearCheck();
+       rg_convulsion.clearCheck();
+       rg_fits_unconsciousness .clearCheck();
+       rg_paralysis.clearCheck();
+       rg_urine_colour .clearCheck();
+       rg_surgery_operation .clearCheck();
+       rg_Others_specify .clearCheck();
+
+       rg_deaseases_heart.clearCheck(); ;
+       rg_deaseases_hypertension .clearCheck();
+       rg_deaseases_cancer  .clearCheck();
+       rg_deaseases_diabatic.clearCheck();
+
+   }
     String getRadioButtonSerial() {
 
         String result = "";
@@ -198,28 +274,6 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         try {
 
             // get value from radio button
-            RadioGroup rg_fever = (RadioGroup) findViewById(R.id.rg_fever);
-            RadioGroup rg_rash = (RadioGroup) findViewById(R.id.rg_rash);
-            RadioGroup rg_growth = (RadioGroup) findViewById(R.id.rg_growth);
-            RadioGroup rg_jaundice = (RadioGroup) findViewById(R.id.rg_jaundice);
-            RadioGroup rg_cough = (RadioGroup) findViewById(R.id.rg_cough);
-            RadioGroup rg_respiratory = (RadioGroup) findViewById(R.id.rg_respiratory);
-            RadioGroup rg_diarea = (RadioGroup) findViewById(R.id.rg_diarea);
-            RadioGroup rg_vomitting = (RadioGroup) findViewById(R.id.rg_vomitting);
-            RadioGroup rg_abdominal_pain = (RadioGroup) findViewById(R.id.rg_abdominal_pain);
-            RadioGroup rg_abdominal_distension = (RadioGroup) findViewById(R.id.rg_abdominal_distension);
-            RadioGroup rg_weight_loss = (RadioGroup) findViewById(R.id.rg_weight_loss);
-            RadioGroup rg_chest_pain = (RadioGroup) findViewById(R.id.rg_chest_pain);
-            RadioGroup rg_mass = (RadioGroup) findViewById(R.id.rg_mass);
-
-            RadioGroup rg_stiff_neck = (RadioGroup) findViewById(R.id.rg_stiff_neck);
-            RadioGroup rg_headache = (RadioGroup) findViewById(R.id.rg_headache);
-            RadioGroup rg_convulsion = (RadioGroup) findViewById(R.id.rg_convulsion);
-            RadioGroup rg_fits_unconsciousness = (RadioGroup) findViewById(R.id.rg_fits_unconsciousness);
-            RadioGroup rg_paralysis = (RadioGroup) findViewById(R.id.rg_paralysis);
-            RadioGroup rg_urine_colour = (RadioGroup) findViewById(R.id.rg_urine_colour);
-            RadioGroup rg_surgery_operation = (RadioGroup) findViewById(R.id.rg_surgery_operation);
-            RadioGroup rg_Others_specify = (RadioGroup) findViewById(R.id.rg_Others_specify);
 
 
             if (rg_fever.getCheckedRadioButtonId() == -1) {
@@ -342,16 +396,8 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
     String getRadioButtonGroupDataForChronicDeasease() {
 
-
         String result = "";
         try {
-
-            // get value from radio button
-            RadioGroup rg_deaseases_heart = (RadioGroup) findViewById(R.id.rg_deaseases_heart);
-            RadioGroup rg_deaseases_hypertension = (RadioGroup) findViewById(R.id.rg_deaseases_hypertension);
-            RadioGroup rg_deaseases_cancer = (RadioGroup) findViewById(R.id.rg_deaseases_cancer);
-            RadioGroup rg_deaseases_diabatic = (RadioGroup) findViewById(R.id.rg_deaseases_diabatic);
-
 
             if (rg_deaseases_heart.getCheckedRadioButtonId() == -1) {
                 // no radio buttons are checked
@@ -391,7 +437,6 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         if (spinner_occupasion.getSelectedItemPosition() != 0
                 && spinner_occupasion.getSelectedItemPosition() != 0
                 && spinner_marital_status.getSelectedItemPosition() != 0 &&
-
                 spinner_death_place.getSelectedItemPosition() != 0 && !editText_members_name.getText().toString().isEmpty()
                 && !edittext_current_age.getText().toString().isEmpty()) {
 
@@ -446,12 +491,11 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
     public void onClick(View v) {
 
 
-
-        if (v == button_next  && checkSpinner()) {
+        if (v == button_next && checkSpinner()) {
 
             // getRadioButtonGroupData();
-           // getRadioButtonSerial();
-          //  Toast.makeText(activity, getRadioButtonSerial(), Toast.LENGTH_LONG).show();
+            // getRadioButtonSerial();
+            //  Toast.makeText(activity, getRadioButtonSerial(), Toast.LENGTH_LONG).show();
 
             if (InternetConnection.checkNetworkConnection(this)) {
 
@@ -559,6 +603,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
     void cleartext() {
         setheader();
         setSpinnerDefaultState();
+        resetRadioButton();
 
         editText_members_name.getText().clear();
         edittext_date_of_birth.getText().clear();

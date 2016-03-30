@@ -1410,9 +1410,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:hint="days"
+                android:maxLength="2"
                 android:inputType="number" />
 
         </LinearLayout>
+
 
 
         <LinearLayout

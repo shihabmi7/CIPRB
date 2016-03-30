@@ -181,7 +181,6 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
         layout_disability_sides = (LinearLayout) findViewById(R.id.layout_disability_sides);
         layout_who_provided_the_treatment = (LinearLayout) findViewById(R.id.layout_who_provided_the_treatment);
         layout_where_recieve_treatment = (LinearLayout) findViewById(R.id.layout_where_recieve_treatment);
-
         layout_how_admitted_health_facility =(LinearLayout)findViewById(R.id.layout_how_admitted_health_facility);
         layout_time_take_health_facility =(LinearLayout)findViewById(R.id.layout_time_take_health_facility);
         layout_days_take_health_facility =(LinearLayout)findViewById(R.id.layout_days_take_health_facility);
@@ -794,14 +793,29 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
     void cleartext() {
 
-        setSpinnerDefaultState();
+        try{
 
-        edittext_date_of_injury.getText().clear();
-        edittext_time_of_injury.getText().clear();
+            setSpinnerDefaultState();
+
+            edittext_date_of_injury.getText().clear();
+            edittext_time_of_injury.getText().clear();
+            edittext_injured_type.getText().clear();
+            edittext_injured_parts.setText("");
+            edittext_number_of_days_assistance_for_daily_leaving.setText("");
+            edittext_how_much_cost_reatment.setText("");
+            edittext_number_of_days_work_loss.setText("");
+
+        }catch (Exception e){
+
+
+        }
+
+
 
        /* editText_members_name.getText().clear();
         edittext_date_of_birth.getText().clear();
-        edittext_current_age.getText().clear();
+
+        .getText().clear();
         editText_educatoin_level.getText().clear();
 
         if (edittext_how_many_injury_last_six != null)
