@@ -109,16 +109,25 @@ public class HomeActivity extends AppCompatActivity {
 //                    }else
                     //  {
 
+                    if (prefsValues.getMembers_died_no() > 0) {
 
-                    Intent intent = new Intent(getApplicationContext(),
-                            samples[position]);
-                    startActivity(intent);
+                        Toast.makeText(getApplicationContext(), getString(R.string.finish_current_house_hold_died), Toast.LENGTH_LONG).show();
+
+
+                        Intent intent = new Intent(getApplicationContext(),
+                                samples[position]);
+                        startActivity(intent);
+
+                    } else {
+                        Intent intent = new Intent(getApplicationContext(),
+                                samples[position]);
+                        startActivity(intent);
+
+                    }
 
                     // }
 
                     //
-
-
                 } else if (position == 1) {
                     if (prefsValues.getMembersNo() == 0) {
                         Toast.makeText(getApplicationContext(), getString(R.string.no_live_member), Toast.LENGTH_LONG).show();

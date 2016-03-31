@@ -93,6 +93,16 @@ public class CutInjuryActivity extends AppCompatActivity implements View.OnClick
 
     }
 
+
+    void setSpinnerDefaultState() {
+
+        spinner_k01.setSelection(0);
+        spinner_k02.setSelection(0);
+        spinner_k03.setSelection(0);
+
+
+    }
+
     void cleartext() {
 
       /*  editText_members_name.getText().clear();
@@ -240,7 +250,7 @@ public class CutInjuryActivity extends AppCompatActivity implements View.OnClick
         Toast.makeText(activity, "Successfully Data Saved", Toast.LENGTH_LONG).show();
         ApplicationData.INJURY_DATA_COLLECT = true;
         cleartext();
-        //onBackPressed();
+        setSpinnerDefaultState();
         activity.finish();
         // ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
         //activity.finish();

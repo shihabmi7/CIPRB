@@ -452,26 +452,18 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
             if (ApplicationData.INJURY_DATA_COLLECT == true) {
 
-                Toast.makeText(activity, "Adapter Updated....: " + ApplicationData.ALIVE_PERSON_NUMBER, Toast.LENGTH_LONG).show();
-                /*ApplicationData.alive_person_List.remove(ApplicationData.ALIVE_PERSON_NUMBER);
+                Log.e("Resume Mortality",">>> Adapter Updated....: " + ApplicationData.ALIVE_PERSON_NUMBER);
 
-
-                Toast.makeText(activity, "Adapter Updated....: " +
-                        ApplicationData.ALIVE_PERSON_NUMBER + "List size:" +
-                        ApplicationData.alive_person_List.size(), Toast.LENGTH_LONG).show();
-
-                list.remove(ApplicationData.ALIVE_PERSON_NUMBER);*/
                 list.remove(ApplicationData.ALIVE_PERSON_NUMBER);
-
                 dataAdapter.notifyDataSetChanged(); //added 30 march
-                //ciprbDatabase.open();
                 ciprbDatabase.deleteRowByIDFromDeath(person_id);
-                //ciprbDatabase.close();
+
 
                 if (list.size() <= 0) {
 
                     Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
                     activity.finish();
+                    ciprbDatabase.close();
                 }
 
             }
