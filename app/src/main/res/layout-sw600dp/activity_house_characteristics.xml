@@ -978,6 +978,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
+            android:weightSum="1"
             android:padding="20dp">
 
             <Button
@@ -985,6 +986,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:layout_weight=".5"
                 android:text="Cancel">
 
             </Button>
@@ -994,6 +996,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:layout_weight=".5"
                 android:text="Next">
 
             </Button>

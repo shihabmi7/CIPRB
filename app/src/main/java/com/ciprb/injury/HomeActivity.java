@@ -22,7 +22,7 @@ public class HomeActivity extends AppCompatActivity {
 
             // "DATABASE",
             "মডিউল-১  ফেস ফর্ম",
-            "খানা সদস্যদের ইঞ্জুরী তথ্য",
+            "খানা সদস্যদের ইনজুরি তথ্য",
             "মডিউল- ৩ ইনজুরি জনিত অসুস্থতার ফর্ম",
             "মডিউল-২ মৃত্যু নিশ্চিত করণ ফর্ম",
             "মডিউল-৪  ইনজুরি জনিত মৃত্যু ফর্ম",
@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
 
     //" Assult",
     Class[] samples =
-            {
+            { //HouseHoldInformationActivity
 
                     // AndroidDatabaseManager.class,
                     HouseHoldInformationActivity.class,
@@ -119,6 +119,7 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(intent);
 
                     } else {
+
                         Intent intent = new Intent(getApplicationContext(),
                                 samples[position]);
                         startActivity(intent);
@@ -164,6 +165,18 @@ public class HomeActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         ApplicationData.formList.clear();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (prefsValues.getMembers_died_no() > 0) {
+
+            Toast.makeText(getApplicationContext(), getString(R.string.finish_current_house_hold_died), Toast.LENGTH_LONG).show();
+
+
+
+        }
     }
 
     @Override

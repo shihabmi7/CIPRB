@@ -220,7 +220,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
     }
 
-   void resetRadioButton(){
+    void resetRadioButton(){
 
        rg_fever.clearCheck();
        rg_rash  .clearCheck();
@@ -610,6 +610,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
         editText_death_date.getText().clear();
         edittext_current_age.getText().clear();
         editText_educatoin_level.getText().clear();
+        editText_sicness_time.getText().clear();
 
     }
 

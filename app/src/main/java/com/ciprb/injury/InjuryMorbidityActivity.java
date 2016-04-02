@@ -35,7 +35,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
             edittext_how_much_cost_reatment, edittext_injured_parts, edittext_injured_type,
             edittext_number_of_days_work_loss,
             edittext_days_take_health_facility,
-            edittext_time_take_health_facility,edittext_number_of_days_assistance_for_daily_leaving;
+            edittext_time_take_health_facility, edittext_number_of_days_assistance_for_daily_leaving;
 
 
     Calendar myCalendar = null;
@@ -57,7 +57,6 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
             spinner_significant_source_of_income_for_family, spinner_person_name, spinner_disability_affects_sides,
             spinner_family_being_coping_loss_income;
 //    spinner_sex,
-
 
 
     ProgressDialog progressDialog;
@@ -182,11 +181,9 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
         layout_disability_sides = (LinearLayout) findViewById(R.id.layout_disability_sides);
         layout_who_provided_the_treatment = (LinearLayout) findViewById(R.id.layout_who_provided_the_treatment);
         layout_where_recieve_treatment = (LinearLayout) findViewById(R.id.layout_where_recieve_treatment);
-        layout_how_admitted_health_facility =(LinearLayout)findViewById(R.id.layout_how_admitted_health_facility);
-        layout_time_take_health_facility =(LinearLayout)findViewById(R.id.layout_time_take_health_facility);
-        layout_days_take_health_facility =(LinearLayout)findViewById(R.id.layout_days_take_health_facility);
-
-
+        layout_how_admitted_health_facility = (LinearLayout) findViewById(R.id.layout_how_admitted_health_facility);
+        layout_time_take_health_facility = (LinearLayout) findViewById(R.id.layout_time_take_health_facility);
+        layout_days_take_health_facility = (LinearLayout) findViewById(R.id.layout_days_take_health_facility);
 
 
         edittext_number_of_days_assistance_for_daily_leaving = (EditText) findViewById(R.id.edittext_number_of_days_assistance_for_daily_leaving);
@@ -255,17 +252,16 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                 if (position == 0) {
 
                     layout_type_admitted_health_facility.setVisibility(View.VISIBLE);
-                    layout_how_admitted_health_facility .setVisibility(View.VISIBLE);
-                    layout_time_take_health_facility .setVisibility(View.VISIBLE);
+                    layout_how_admitted_health_facility.setVisibility(View.VISIBLE);
+                    layout_time_take_health_facility.setVisibility(View.VISIBLE);
                     layout_days_take_health_facility.setVisibility(View.VISIBLE);
-
 
 
                 } else {
 
                     layout_type_admitted_health_facility.setVisibility(View.GONE);
-                    layout_how_admitted_health_facility .setVisibility(View.GONE);
-                    layout_time_take_health_facility .setVisibility(View.GONE);
+                    layout_how_admitted_health_facility.setVisibility(View.GONE);
+                    layout_time_take_health_facility.setVisibility(View.GONE);
                     layout_days_take_health_facility.setVisibility(View.GONE);
 
 
@@ -337,7 +333,6 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                     layout_where_recieve_treatment.setVisibility(View.VISIBLE);
 
 
-
                 } else {
 
                     layout_who_provided_the_treatment.setVisibility(View.GONE);
@@ -374,6 +369,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                 && edittext_time_of_injury.getText().length() > 0) {
 
             //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
+
 
             return true;
 
@@ -418,8 +414,8 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
             if (ApplicationData.INJURY_DATA_COLLECT == true) {
 
-                Log.e("Resume Moribidity",">>> Adapter Updated....: " + ApplicationData.ALIVE_PERSON_NUMBER);
-               // Toast.makeText(activity, "Adapter Updated....: " + ApplicationData.ALIVE_PERSON_NUMBER, Toast.LENGTH_LONG).show();
+                Log.e("Resume Moribidity", ">>> Adapter Updated....: " + ApplicationData.ALIVE_PERSON_NUMBER);
+                // Toast.makeText(activity, "Adapter Updated....: " + ApplicationData.ALIVE_PERSON_NUMBER, Toast.LENGTH_LONG).show();
 
                 list.remove(ApplicationData.ALIVE_PERSON_NUMBER);
                 dataAdapter.notifyDataSetChanged();
@@ -590,7 +586,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
         String e27 = "";
 
 
-        if(layout_who_provided_the_treatment.getVisibility() == View.VISIBLE){
+        if (layout_who_provided_the_treatment.getVisibility() == View.VISIBLE) {
 
             e14 = ApplicationData.spilitStringFirst(spinner_Who_provided_the_treatment.getSelectedItem().toString());
             e15 = ApplicationData.spilitStringFirst(spinner_Where_receive_treatment.getSelectedItem().toString());
@@ -599,9 +595,9 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
         if (layout_type_admitted_health_facility.getVisibility() == View.VISIBLE) {
             e17 = ApplicationData.spilitStringFirst(spinner_type_admitted_health_facility.getSelectedItem().toString());
-            e18= ApplicationData.spilitStringFirst(spinner_how_admitted_health_facility.getSelectedItem().toString());
+            e18 = ApplicationData.spilitStringFirst(spinner_how_admitted_health_facility.getSelectedItem().toString());
             e19 = edittext_time_take_health_facility.getText().toString();
-            e20= edittext_days_take_health_facility.getText().toString() ;
+            e20 = edittext_days_take_health_facility.getText().toString();
         }
         if (lay_type_of_disability.getVisibility() == View.VISIBLE) {
             e26 = ApplicationData.spilitStringFirst(spinner_type_of_disability.getSelectedItem().toString());
@@ -623,12 +619,12 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                 "" +
                 "\",\"e02\":\"" +
                 ApplicationData.spilitStringFirst(spinner_how_injured.getSelectedItem().toString()) +
-                        "\",\"e03\":\"" +
-                        edittext_date_of_injury.getText().toString() +
-                        "\",\"e04\":\"" +
-                        edittext_time_of_injury.getText().toString().toString() +
-                        "\",\"e05\":\"" +
-                        ApplicationData.spilitStringFirst(spinner_place_of_injury.getSelectedItem().toString()) +
+                "\",\"e03\":\"" +
+                edittext_date_of_injury.getText().toString() +
+                "\",\"e04\":\"" +
+                edittext_time_of_injury.getText().toString().toString() +
+                "\",\"e05\":\"" +
+                ApplicationData.spilitStringFirst(spinner_place_of_injury.getSelectedItem().toString()) +
                 "\",\"e06\":\"" +
                 ApplicationData.spilitStringFirst(spinner_injury_intent.getSelectedItem().toString()) +
                 "\",\"e07\":\"" +
@@ -788,7 +784,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
     void cleartext() {
 
-        try{
+        try {
 
             setSpinnerDefaultState();
 
@@ -803,7 +799,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
             edittext_days_take_health_facility.setText("");
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
 
 
         }

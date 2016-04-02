@@ -17,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ciprb.injury.localdb.CiprbDatabase;
+
 import java.io.IOException;
 
 public class HouseHoldCharacteristicsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -38,11 +40,16 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
     RadioGroup rg_radio, rg_television, rg_disher_line, rg_mobile, rg_telephone, rg_refregarator, rg_bicycle,
             rg_motorcycle, rg_vcd, rg_electric_fan, rg_car_microbus, rg_boat, rg_water_pump, rg_almari, rg_table, rg_chair, rg_computer, rg_bed,
             rg_sofa;
+    CiprbDatabase ciprbDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house_characteristics);
+
+        ciprbDatabase = new CiprbDatabase(context);
+        ciprbDatabase.open();
+
 
         try {
 
@@ -50,19 +57,27 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
             initUI();
 
             prefsValues = new PrefsValues(mContext);
-            String value = prefsValues.getHouseUniqueId();
+            // String value = prefsValues.getHouseUniqueId();
+
+            String value = prefsValues.getPerson_id_for_house_hold_characteristics();
 
             int member = prefsValues.getMembersNo();
 
             if (value.length() > 0) {
 
-
-                person_id = value + "01";
+                person_id = value;
                 textView_person_id.setText("House Hold ID: " + value);
 
-            } else
+//                for (Person aPerson : ciprbDatabase.getAlivePersonList()) {
+//
+//                    person_id = aPerson.getPerson_id();
+//                    textView_person_id.setText("House Hold ID: " + value);
+//                    ciprbDatabase.close();
+//                    break;
+//                    //  list.add(aPerson.getMembers_name() + "." + aPerson.getPerson_id());
+//                }
 
-            {
+            } else {
 
                 Toast.makeText(context, "Set House ID First && save a alive person data first", Toast.LENGTH_SHORT).show();
                 finish();
@@ -312,12 +327,12 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
             if (InternetConnection.checkNetworkConnection(context)) {
 
 
-
                 String url = ApplicationData.URL_CHARACTERISTIC + person_id;
                 new PutAsync().execute(url, createJsonBody());
 
                 Log.e("JSOn BOdy ", createJsonBody());
                 Log.e("URL are ", url);
+
             } else
 
             {
@@ -400,6 +415,7 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
 
     private class PutAsync extends AsyncTask<String, Void, String> {
         int value = 0;
+        String result = "";
 
         @Override
         protected void onPreExecute() {
@@ -417,7 +433,9 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
 
                 Log.e("URL are ", params[0]);
                 Log.e("URL are ", createJsonBody());
+                // working code below
                 value = ApplicationData.putRequestWithBody(params[0], params[1]);
+                // result = ApplicationData.putRequestWithHeaderAndBody(params[0], params[1]);
 
 
             } catch (IOException e) {
@@ -434,6 +452,23 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
             super.onPostExecute(result);
 
             progressDialog.dismiss();
+
+//            if (result.
+//                    isEmpty()) {
+//
+//                person_id = value +"0101";
+//
+//                String url = ApplicationData.URL_CHARACTERISTIC + person_id;
+//                new PutAsync().execute(url, createJsonBody());
+//
+//            } else {
+//
+//                prefsValues.setHouse_characteristics(true);
+//
+//                Toast.makeText(context, "SuccessFully Saved...", Toast.LENGTH_LONG).show();
+//                finish();
+//
+//            }
 
             if (value == ApplicationData.STATUS_SUCCESS) {
                 //// TODO: 3/22/2016

@@ -43,7 +43,7 @@
     <string name="household_no">খানার নম্বর</string>
     <string name="village">গ্রাম</string>
     <string name="house_head"> খানা প্রধান</string>
-    <string name="last_24_death_histry">গত ২৪ মাসে খানায় মৃতের সংখ্যা (কেউ মারা না গিয়ে থাকলে ০ লিখুন):</string>
+    <string name="last_24_death_histry">গত ২৪ মাসে খানায় মৃতের সংখ্যা (কেউ মারা না গিয়ে থাকলে 00 লিখুন):</string>
     <string name="members_number">খানায় সদস্য সংখ্যা</string>
     <string name="hh_details_hd">Household and Socio-Economic Information</string>
 
@@ -312,7 +312,7 @@
     <string name="admitted_health_facility">ব্যক্তিটি হাসপাতালে/স্বাস্থ্যকেন্দ্রে ভর্তি হয়েছিল কি ?  </string>
     <string name="type_admitted_health_facility">(উত্তর হ্যাঁ হলে)  আহত ব্যক্তিকে যদি হাসপাতাল/স্বাস্থ্যকেন্দ্রে /ক্লিনিকে ভর্তি করা হয়ে থাকে তাহলে কোন ধরনের হাসপাতাল ?</string>
     <string name="how_admitted_health_facility">হাসপাতালে/চিকিৎসা প্রদানকারীর নিকট কিভাবে নিয়ে যাওয়াv হয়েছিল ?</string>
-    <string name="time_take_health_facility">আঘাত পাওয়ার পর হাসপাতালে /সেবাদানকারীর নিকট পৌছাতে কত সময় লেগেছিল ? (ঘন্টায় লিখুন) যদিএক ঘস্টার কম হয় তবে 000</string>
+    <string name="time_take_health_facility">আঘাত পাওয়ার পর হাসপাতালে /সেবাদানকারীর নিকট পৌছাতে কত সময় লেগেছিল ? (ঘন্টায় লিখুন) যদিএক ঘস্টার কম হয় তবে 00</string>
     <string name="days_take_health_facility">ব্যক্তিটি হাসপাতালে কতদিন ভর্তি ছিল ?</string>
     <string name="any_surgery_operation_done">আহত ব্যক্তির সার্জারি বা অপারেশন হয়েছিল কি ?</string>
     <string name="type_of_anesthesia_given">(উত্তর হ্যাঁ হলে)  অপারেশনে কি ধরনের অ্যানেসথেসিয়া দেয়া হয়েছিল?</string>
@@ -453,7 +453,7 @@
 
     </string-array>
     <string-array name="survey_Who_provided_the_treatment">
-        <item>  নির্বাচন করুন</item>
+        <item>0.  নির্বাচন করুন</item>
         <item>A. রেজিষ্টাড© ডাক্তার</item>
         <item>B. মেডিকেল এসিস্ট্যান্ট</item>
         <item>C. স্বাস্থ্য সহকারী /পরিবার কল্যান পরিদর্শিকা /পরিবার কল্যান সহকারী</item>
@@ -465,7 +465,7 @@
     </string-array>
     <string-array name="survey_Where_receive_treatment">
 
-        <item>  নির্বাচন করুন</item>
+        <item>0.  নির্বাচন করুন</item>
         <item>A. বিশেষায়িত হাসপাতাল মেডিকেল কলেজ হাসপাতাল, পঙ্গু হাসপাতাল,পি. জি.হাসপাতাল ইত্যাদি)</item>
         <item>B. জেলা হাসপাতাল</item>
         <item>C. উপজেলা স্বাস্থ্য কমপ্লেক্স</item>
@@ -480,7 +480,7 @@
     </string-array>
     <string-array name="survey_type_admitted_health_facility">
 
-        <item>  নির্বাচন করুন</item>
+        <item>0.  নির্বাচন করুন</item>
         <item>1. বিশেষায়িত হাসপাতাল মেডিকেল কলেজ হাসপাতাল, পঙ্গু হাসপাতাল,পি. জি.হাসপাতাল ইত্যাদি) </item>
         <item>2. জেলা হাসপাতাল </item>
         <item>3. উপজেলা স্বাস্থ্য কমপ্লেক্স </item>
@@ -490,7 +490,7 @@
     </string-array>
     <string-array name="survey_how_admitted_health_facility">
 
-        <item>  নির্বাচন করুন</item>
+        <item>0.  নির্বাচন করুন</item>
         <item>A. এ্যাম্বুলেন্স </item>
         <item>B. অন্য কোন মোটর চালিত গাড়ীতে (বাস, জীপ, কার এবং তিন চাকা বিশিষ্টগাড়ি) </item>
         <item>C. মোটরবিহীন  যানবাহন (রিক্স, রিক্সা ভ্যান, ঠেলা গাড়ি)</item>
@@ -502,7 +502,7 @@
     </string-array>
     <string-array name="survey_type_of_anesthesia_given">
 
-        <item>  নির্বাচন করুন</item>
+        <item>0.  নির্বাচন করুন</item>
         <item>1. স্থানীয়</item>
         <item>2. সম্পূন© </item>
         <item>3. দেয়া হয় নি</item>
@@ -998,6 +998,7 @@
         <item>4.বিষ্ফোরক </item>
         <item>5.রাসায়নিকপদাথ</item>
         <item>9.অন্যান্য</item>
+        <item>99.জানা নেই</item>
 
 
     </string-array>
@@ -1014,6 +1015,7 @@
         <item>7. বিদ্যু</item>
         <item>8. মোমের আগুন</item>
         <item>9. অন্যান্য</item>
+        <item>99.জানা নেই</item>
 
 
     </string-array>
@@ -1030,6 +1032,7 @@
         <item>10.বাড়ীতেধান সিদ্ধেরগড়ম পানি</item>
         <item>97.শিল্প কারখানার তরল</item>
         <item>09.অন্যান্য</item>
+        <item>99.জানা নেই</item>
 
     </string-array>
     <string-array name="Burn4">
@@ -1042,6 +1045,7 @@
         <item>5.হিটার</item>
         <item>6.কর্মংস্থলের উত্তপ্ত বস্তু </item>
         <item>9.অন্যান্য</item>
+        <item>99.জানা নেই</item>
 
 
     </string-array>
@@ -1051,6 +1055,7 @@
         <item>2.নিমা©ণ কাজে </item>
         <item>3.সন্ত্রাসী কায© কলাপে</item>
         <item>9.অন্যান্য</item>
+        <item>99.জানা নেই</item>
 
     </string-array>
     <string-array name="Burn6">
@@ -1058,6 +1063,7 @@
         <item>1.এসিড</item>
         <item>2.চুন</item>
         <item>9.অন্যান্য</item>
+        <item>99.জানা নেই</item>
 
     </string-array>
     <string-array name="Burn7">
@@ -1067,6 +1073,7 @@
         <item>3.রান্না ছাড়া অন্যান্য গৃহস্থালীর কাজ</item>
         <item>4.বাড়ীতে ধান সিদ্ধ করছিল</item>
         <item>9.অন্যান্য</item>
+        <item>99.জানা নেই</item>
     </string-array>
 
     <string name="Drowning1">01.ব্যক্তিটি (নাম উল্লেখ করুন) কোতায় ডুবে গিয়েছিল? </string>

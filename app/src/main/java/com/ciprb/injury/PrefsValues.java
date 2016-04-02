@@ -17,9 +17,18 @@ public class PrefsValues {
     private String serial = "serial";
     private String death_serial = "death_serial";
 
+    private String person_id_for_house_hold_characteristics = "person_id_for_house_hold_characteristics";
     private String house_characteristics = "house_characteristics";
 
     Context context = null;
+
+    public String getPerson_id_for_house_hold_characteristics() {
+        return mPrefs.getString(person_id_for_house_hold_characteristics, "");
+    }
+
+    public void setPerson_id_for_house_hold_characteristics(String person_id) {
+        mPrefs.edit().putString(person_id_for_house_hold_characteristics, person_id).commit();
+    }
 
     public boolean getHouse_characteristics() {
         return mPrefs.getBoolean(this.house_characteristics, true);

@@ -20,16 +20,18 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="com.ciprb.injury.SplashActivity" android:windowSoftInputMode="stateHidden"
-
+            android:name="com.ciprb.injury.SplashActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name="com.ciprb.injury.HomeActivity"
-            android:configChanges="orientation" android:windowSoftInputMode="stateHidden"
-
+            android:configChanges="orientation"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait">
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,126 +43,139 @@
         </activity>
         <activity
             android:name="com.ciprb.injury.HouseHoldInformationActivity"
-            android:windowSoftInputMode="stateHidden"
-
             android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name="com.ciprb.injury.HouseHoldMemberDetailsActivity"
-            android:windowSoftInputMode="stateHidden"
-
             android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name="com.ciprb.injury.DeathConfirmationActivity"
-            android:windowSoftInputMode="stateHidden"
-
             android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name="com.ciprb.injury.InjuryMorbidityActivity"
-            android:windowSoftInputMode="stateHidden"
-
             android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
-            android:name="com.ciprb.injury.InjuryMortalityActivity" android:windowSoftInputMode="stateHidden"
-
+            android:name="com.ciprb.injury.InjuryMortalityActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
-            android:name="com.ciprb.injury.localdb.AndroidDatabaseManager" android:windowSoftInputMode="stateHidden"
-
+            android:name="com.ciprb.injury.localdb.AndroidDatabaseManager"
             android:configChanges="orientation"
-            android:screenOrientation="portrait" />
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.ciprb.injury.SuicideAttemptActivity" android:windowSoftInputMode="stateHidden"
-
+            android:name="com.ciprb.injury.SuicideAttemptActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait">
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
 
         </activity>
         <activity
             android:name="com.ciprb.injury.RoadTransportInjuryActivity"
-            android:configChanges="orientation" android:windowSoftInputMode="stateHidden"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
 
-            android:screenOrientation="portrait" />
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.ciprb.injury.ViolenceInjuryActivity"
-            android:configChanges="orientation" android:windowSoftInputMode="stateHidden"
-
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.ciprb.injury.BurnInjuryActivity" android:windowSoftInputMode="stateHidden"
-
             android:configChanges="orientation"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.ciprb.injury.CutInjuryActivity" android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"
 
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
+            android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.ciprb.injury.ElectrocautionActivity" android:windowSoftInputMode="stateHidden"
-
+            android:name="com.ciprb.injury.BurnInjuryActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.ciprb.injury.FallInjuryActivity" android:windowSoftInputMode="stateHidden"
-
+            android:name="com.ciprb.injury.CutInjuryActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
-            android:name="com.ciprb.injury.InjuryBluntActivity" android:windowSoftInputMode="stateHidden"
-
+            android:name="com.ciprb.injury.ElectrocautionActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
-            android:name="com.ciprb.injury.InsectInjuryActivity" android:windowSoftInputMode="stateHidden"
-
+            android:name="com.ciprb.injury.FallInjuryActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name="com.ciprb.injury.InjuryBluntActivity"
+            android:configChanges="orientation"
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name="com.ciprb.injury.InsectInjuryActivity"
+            android:configChanges="orientation"
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name="com.ciprb.injury.NearDrowningActivity"
-            android:windowSoftInputMode="stateHidden"
-
             android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name="com.ciprb.injury.QualityOfLifeActivity"
-            android:windowSoftInputMode="stateHidden"
-
             android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name="com.ciprb.injury.HouseHoldCharacteristicsActivity"
             android:configChanges="orientation"
-            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"
 
-            android:screenOrientation="portrait"></activity>
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name="com.ciprb.injury.SuffocationActivity"
             android:configChanges="orientation"
-            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"
 
-            android:screenOrientation="portrait" />
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name="com.ciprb.injury.ToolInjuryActivity"></activity>
         <activity
             android:name="com.ciprb.injury.UnintentionalPoisoningActivity"
-            android:windowSoftInputMode="stateHidden"
-
             android:configChanges="orientation"
-            android:screenOrientation="portrait" />
+
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
 
         <activity
             android:name="com.ciprb.injury.SpinnerTest"
-            android:windowSoftInputMode="stateHidden"
             android:configChanges="orientation"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
 
 
-    </activity>
+        </activity>
 
+
+        <activity android:name=".HouseHoldMemberDetailsActivityTest"></activity>
 
         <meta-data
             android:name="com.google.android.gms.version"

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.util.JsonWriter;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,12 +24,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ciprb.injury.localdb.CiprbDatabase;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -36,7 +45,7 @@ import java.util.Locale;
 
 import cz.msebera.android.httpclient.Header;
 
-public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements View.OnClickListener {
+public class HouseHoldMemberDetailsActivityTest extends AppCompatActivity implements View.OnClickListener {
 
 
     EditText editText_educatoin_level, edittext_date_of_birth, edittext_current_age, editText_members_name, edittext_how_many_injury_last_six;
@@ -50,7 +59,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
     PrefsValues prefsValues;
     RelativeLayout linerar_how_injury;
     int count = 01;
-    int injury_count=01;
+    int injury_count = 01;
     int calculate_member = 0;
     Button button_cancel, button_next;
     int member_no;
@@ -69,6 +78,11 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
     CiprbDatabase ciprbDatabase;
     ScrollView scrollView;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -194,6 +208,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
             // showTextLong(""+spinner_injury_last_six.getSelectedItem().toString());
             setheader();
+            createJsonFile();
 
         } catch (NullPointerException e) {
 
@@ -203,6 +218,9 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
             Toast.makeText(getApplicationContext(), "" + e.toString(), Toast.LENGTH_LONG).show();
         }
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client2 = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     boolean checkSpinner() {
@@ -214,7 +232,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                 && spinner_smoking.getSelectedItemPosition() != 0 &&
                 spinner_buttle_nut.getSelectedItemPosition() != 0 &&
                 spinner_swiming.getSelectedItemPosition() != 0 &&
-                spinner_injury_last_six.getSelectedItemPosition()!=0) {
+                spinner_injury_last_six.getSelectedItemPosition() != 0) {
 
             //Toast.makeText(getApplicationContext(),"Good",Toast.LENGTH_LONG).show();
 
@@ -231,7 +249,6 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
     void setSpinnerDefaultState() {
 
-        spinner_realation_with_hh.setSelection(0);
         spinner_sex.setSelection(0);
         spinner_marital_status.setSelection(0);
         spinner_occupasion.setSelection(0);
@@ -239,7 +256,8 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
         spinner_buttle_nut.setSelection(0);
         spinner_swiming.setSelection(0);
         spinner_injury_last_six.setSelection(0);
-        edittext_date_of_birth.getText().clear();;
+        edittext_date_of_birth.getText().clear();
+        ;
         edittext_current_age.setText("");
         edittext_how_many_injury_last_six.setText("");
 
@@ -304,7 +322,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                         ciprbDatabase.open();
                         for (int i = 1; i <= num; i++) {
 
-                            mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId() + "" + formatter.format(count)+""+ formatter.format(injury_count);
+                            mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId() + "" + formatter.format(count) + "" + formatter.format(injury_count);
                             //count++; //
                             //prefsValues.setSerial(count);
                             aPerson = new Person();
@@ -313,16 +331,15 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                             aPerson.setInjury_number(num);
                             aPerson.setPerson_id(mCURRENT_MEMBER_ID);
 
-                            prefsValues.setPerson_id_for_house_hold_characteristics(mCURRENT_MEMBER_ID);
-
                             ciprbDatabase.insertIntoDB(mCURRENT_MEMBER_ID, editText_members_name.getText().toString());
                             //ApplicationData.alive_person_List.add(aPerson);
                             saveDataToOnlineForInjuredPerson(aPerson);
                             injury_count++; // added newly
                         }
                         count++;
-                        injury_count=01;
-                        calculate_member++;; // added newly
+                        injury_count = 01;
+                        calculate_member++;
+                        ; // added newly
                         // ciprbDatabase.close();
                     }
                     // if no injury happen
@@ -336,8 +353,6 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                         count++;
                         //prefsValues.setSerial(count);
                         aPerson.setPerson_id(mCURRENT_MEMBER_ID);
-                        prefsValues.setPerson_id_for_house_hold_characteristics(mCURRENT_MEMBER_ID);
-
                         saveDataToOnline(aPerson);
 
                     }
@@ -628,6 +643,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
         super.onDestroy();
 
     }
+
     void cleartext() {
         setheader();
         setSpinnerDefaultState();
@@ -642,5 +658,79 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
             edittext_how_many_injury_last_six.getText().clear();
 
     }
+
+    void createJsonFile() {
+
+        try {
+
+            //Create a JSONObject:
+            JSONObject jsonObject = new JSONObject();
+
+            // To put a specific value
+            jsonObject.put("id", 10);
+            jsonObject.put("name", "myname");
+
+            //To create a specific array
+            JSONArray jsonArrayMessages = new JSONArray();
+            JSONObject jsonMessage = new JSONObject();
+            jsonMessage.put("id_message", 1);
+            jsonMessage.put("value", 10);
+            jsonArrayMessages.put(jsonMessage);
+
+            // To put a specific array in a JSONObject
+            jsonObject.put("listMessages", jsonArrayMessages);
+
+            // Create a JSONObject from a JSON String:
+            // JSONObject jsonObject = new JSONObject(result);
+
+            //To get a specific string from JSON Object
+            //String name = jsonObject.getString("name");
+
+            //To get a specific int
+            int id = jsonObject.getInt("id");
+
+            //To get a specific array
+            //JSONArray jArray = jsonObject.getJSONArray("listMessages");
+
+            //To get the items from the array
+            //JSONObject msg = jArray.getJSONObject(1);
+            // int id_message = msg.getInt("id_message");
+
+            //File file = new File(activity.getExternalCacheDir(), "/ciprb/testJson.json");
+
+            File file = new File(activity.getExternalFilesDir(null), "testJson.json");
+            if (!file.exists())
+                file.createNewFile();
+
+
+            try {
+                FileOutputStream out = new FileOutputStream(file);
+                writeJson(out);
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.e("File Error", e.toString());
+            }
+        } catch (Exception e) {
+
+
+        }
+
+    }
+
+    public void writeJson(OutputStream out) throws IOException {
+        JsonWriter writer = new JsonWriter(new OutputStreamWriter(out, "UTF-8"));
+        writer.setIndent("    ");
+        jsonFinal(writer);
+
+    }
+
+    public void jsonFinal(JsonWriter writer) throws IOException {
+        writer.beginObject();
+        writer.name("status").value("OK");
+        writer.name("num_results").value("");
+        writer.endObject();
+        writer.close();
+    }
+
 
 }
