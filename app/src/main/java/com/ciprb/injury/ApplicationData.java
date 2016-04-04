@@ -29,7 +29,6 @@ import okhttp3.Response;
  */
 public class ApplicationData {
 
-    /*
     public static String URL_BASE = "http://saeradesign.com/";
 
     public static String URL_HOUSE_HOLD_MEMBERS =  URL_BASE + "LumenApi/public/index.php/api/household";
@@ -55,8 +54,8 @@ public class ApplicationData {
     public static String URL_QUALITY_OF_LIFE =  URL_BASE + "LumenApi/public/index.php/api/activity/qualityoflife/";
     public static String URL_CHARACTERISTIC =  URL_BASE + "LumenApi/public/index.php/api/household/characteristics/";
 
-    */
-    public static String URL_BASE = "http://10.20.122.24:8080/api";
+
+/*    public static String URL_BASE = "http://10.20.122.24:8080/api";
 
     public static String URL_HOUSE_HOLD_MEMBERS =  URL_BASE + "/household";
     public static String URL_DEATH_CONFIRMATION =  URL_BASE + "/household";
@@ -79,7 +78,7 @@ public class ApplicationData {
 
 
     public static String URL_QUALITY_OF_LIFE =  URL_BASE + "/activity/qualityoflife/";
-    public static String URL_CHARACTERISTIC =  URL_BASE + "/household/characteristics/";
+    public static String URL_CHARACTERISTIC =  URL_BASE + "/household/characteristics/";*/
 
 
     public static int STATUS_SUCCESS = 200;
