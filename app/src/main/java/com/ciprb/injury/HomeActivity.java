@@ -325,7 +325,14 @@ public class HomeActivity extends AppCompatActivity {
                 try {
 
                     Log.d("AMLOG::upload: ", aDataArray);
-                    new PostAsync().execute(apiUri, aDataArray);
+                    if (InternetConnection.checkNetworkConnection(this)) {
+
+                        new PostAsync().execute(apiUri, aDataArray);
+                    } else  {
+
+                        Toast.makeText(getApplicationContext(),"Internet connection not available",Toast.LENGTH_LONG).show();
+                        ApplicationData.writeToFile(this, fileName, aDataArray);
+                    }
                 } catch (Exception e) {
                     Log.e("AMLOG::: ", e.getMessage());
                     e.printStackTrace();
@@ -353,9 +360,8 @@ public class HomeActivity extends AppCompatActivity {
                         new PutAsync().execute(apiUri+personId, aDataArray);
                     }else  {
 
-                        Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Internet connection not available",Toast.LENGTH_LONG).show();
                         ApplicationData.writeToFile(this, fileName, aDataArray);
-                        finishTask();
                     }
                 } catch (Exception e) {
                     Log.e("AMLOG::: ", e.getMessage());

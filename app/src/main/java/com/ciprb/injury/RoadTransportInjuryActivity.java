@@ -220,12 +220,20 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("household_unique_code", person_id);
-            jsonObject.put("h01", person_id);
+            jsonObject.put("h01",  ApplicationData.spilitStringFirst(spinner_h01.getSelectedItem().toString()));
+            jsonObject.put("h02",  ApplicationData.spilitStringFirst(spinner_h02.getSelectedItem().toString()));
+            jsonObject.put("h03",  ApplicationData.spilitStringFirst(spinner_h03.getSelectedItem().toString()));
+            jsonObject.put("h04",  ApplicationData.spilitStringFirst(spinner_h04.getSelectedItem().toString()));
+            jsonObject.put("h05",  ApplicationData.spilitStringFirst(spinner_h05.getSelectedItem().toString()));
+            jsonObject.put("h06",  ApplicationData.spilitStringFirst(spinner_h06.getSelectedItem().toString()));
+            jsonObject.put("h07",  ApplicationData.spilitStringFirst(spinner_h07.getSelectedItem().toString()));
+            jsonObject.put("h08",  ApplicationData.spilitStringFirst(spinner_h08.getSelectedItem().toString()));
+            jsonObject.put("h09",  ApplicationData.spilitStringFirst(spinner_h09.getSelectedItem().toString()));
 
         } catch (Exception e) {
 
         }
-        String jsonData = "{" +
+       /* String jsonData = "{" +
                 "\"h01\":\"" +
                 ApplicationData.spilitStringFirst(spinner_h01.getSelectedItem().toString()) +
                 "\",\"h02\":\"" +
@@ -244,8 +252,8 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
                 ApplicationData.spilitStringFirst(spinner_h08.getSelectedItem().toString()) +
                 "\",\"h09\":\"" +
                 ApplicationData.spilitStringFirst(spinner_h09.getSelectedItem().toString()) +
-                "\"}";
-        return jsonData;
+                "\"}";*/
+        return jsonObject.toString();
     }
 
     private class PutAsync extends AsyncTask<String, Void, String> {
