@@ -15,6 +15,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 public class NearDrowningActivity extends AppCompatActivity implements View.OnClickListener {
@@ -237,7 +240,9 @@ public class NearDrowningActivity extends AppCompatActivity implements View.OnCl
 
             } else {
 
-                showAlert(activity);
+                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_NEAR_DROWNING, createJsonBody());
+                finishTask();
             }
 
         } else if (v == button_cancel) {
@@ -248,9 +253,32 @@ public class NearDrowningActivity extends AppCompatActivity implements View.OnCl
     }
 
     String createJsonBody() {
-//        Log.i("Test String ", ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString()));
 
-        String rep = "{" +
+        JSONObject jsonObject = new JSONObject();
+        try {
+
+            jsonObject.put("household_unique_code", person_id);
+            jsonObject.put("m01", ApplicationData.spilitStringFirst(sp_Drowning1.getSelectedItem().toString()));
+            jsonObject.put("m02", ApplicationData.spilitStringFirst(sp_Drowning2.getSelectedItem().toString()));
+            jsonObject.put("m03", et_Drowning3.getText().toString() );
+            jsonObject.put("m04", ApplicationData.spilitStringFirst(sp_Drowning4.getSelectedItem().toString()));
+            jsonObject.put("m05", ApplicationData.spilitStringFirst(sp_Drowning5.getSelectedItem().toString()));
+            jsonObject.put("m06", ApplicationData.spilitStringFirst(sp_Drowning6.getSelectedItem().toString()));
+            jsonObject.put("m07", ApplicationData.spilitStringFirst(sp_Drowning7.getSelectedItem().toString()));
+            jsonObject.put("m08", ApplicationData.spilitStringFirst(sp_Drowning8.getSelectedItem().toString()));
+            jsonObject.put("m09", ApplicationData.spilitStringFirst(sp_Drowning9.getSelectedItem().toString()));
+            jsonObject.put("m10", et_Drowning10.getText().toString());
+            jsonObject.put("m11", ApplicationData.spilitStringFirst(sp_Drowning11.getSelectedItem().toString()));
+            jsonObject.put("m12", ApplicationData.spilitStringFirst(sp_Drowning12.getSelectedItem().toString()));
+            jsonObject.put("m13", ApplicationData.spilitStringFirst(sp_Drowning13.getSelectedItem().toString()));
+            jsonObject.put("m14", ApplicationData.spilitStringFirst(sp_Drowning14.getSelectedItem().toString()));
+            jsonObject.put("m15", ApplicationData.spilitStringFirst(sp_Drowning15.getSelectedItem().toString()));
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        /*String rep = "{" +
                 "\"m01\":\"" +
                 ApplicationData.spilitStringFirst(sp_Drowning1.getSelectedItem().toString()) +
                 "\",\"m02\":\"" +
@@ -281,9 +309,8 @@ public class NearDrowningActivity extends AppCompatActivity implements View.OnCl
                 ApplicationData.spilitStringFirst(sp_Drowning14.getSelectedItem().toString()) +
                 "\",\"m15\":\"" +
                 ApplicationData.spilitStringFirst(sp_Drowning15.getSelectedItem().toString()) +
-                "\"}";
-
+                "\"}";*/
         //return "{\"g03\":\"10\"}";
-        return rep;
+        return jsonObject.toString();
     }
 }

@@ -18,6 +18,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -170,16 +171,27 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
 
     String createJsonBody() {
         Log.i("Test String ", ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString()));
-        String rep = "{" +
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("household_unique_code", person_id);
+            jsonObject.put("g01", ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString()));
+            jsonObject.put("g02", ApplicationData.spilitStringFirst(spinner_survey_suicide_how.getSelectedItem().toString()));
+            jsonObject.put("g03", ApplicationData.spilitStringFirst(spinner_survey_suicide_type.getSelectedItem().toString()));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    /*    String rep = "{" +
                 "\"g01\":\"" +
                 ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString()) +
                 "\",\"g02\":\"" +
                 ApplicationData.spilitStringFirst(spinner_survey_suicide_how.getSelectedItem().toString()) +
                 "\",\"g03\":\"" +
                 ApplicationData.spilitStringFirst(spinner_survey_suicide_type.getSelectedItem().toString()) +
-                "\"}";
+                "\"}";*/
         //return "{\"g03\":\"10\"}";
-        return rep;
+        return jsonObject.toString();
     }
 
     String PostcreateJsonBody() {
@@ -461,7 +473,9 @@ public class SuicideAttemptActivity extends AppCompatActivity implements View.On
 
                 } else {
 
-                    showAlert(activity);
+                    Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                    ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_SUICIDE_ATTEMPT, createJsonBody());
+                    finishTask();
                 }
 
             } catch (Exception e) {

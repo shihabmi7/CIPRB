@@ -19,6 +19,9 @@ import android.widget.Toast;
 
 import com.ciprb.injury.localdb.CiprbDatabase;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 public class HouseHoldCharacteristicsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -333,10 +336,10 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
                 Log.e("JSOn BOdy ", createJsonBody());
                 Log.e("URL are ", url);
 
-            } else
+            } else {
 
-            {
-                showAlert(this);
+                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_HOUSE_HOLD_CHARACTERISTICS, createJsonBody());
 
             }
 
@@ -386,6 +389,25 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
 
 
     String createJsonBody() {
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("household_unique_code", person_id);
+            jsonObject.put("c01", edit_c01.getText().toString());
+            jsonObject.put("c02", edit_c02.getText().toString());
+            jsonObject.put("c03", ApplicationData.spilitStringFirst(spinner_c03.getSelectedItem().toString()));
+            jsonObject.put("c04", ApplicationData.spilitStringFirst(spinner_c04.getSelectedItem().toString()));
+            jsonObject.put("c05", ApplicationData.spilitStringFirst(spinner_c05.getSelectedItem().toString()));
+            jsonObject.put("c06", edittext_c06.getText().toString());
+            jsonObject.put("c07", ApplicationData.spilitStringFirst(spinner_c07.getSelectedItem().toString()) );
+            jsonObject.put("c08", ApplicationData.spilitStringFirst(spinner_c08.getSelectedItem().toString()));
+            jsonObject.put("c09", getRadioButtonGroupData());
+            jsonObject.put("c10", ApplicationData.spilitStringFirst(spinner_c10.getSelectedItem().toString()));
+            jsonObject.put("c11", edittext_c11.getText().toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    /*
         String jsonData = "{" +
                 "\"c01\":\"" +
                 edit_c01.getText().toString() +
@@ -409,8 +431,8 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
                 ApplicationData.spilitStringFirst(spinner_c10.getSelectedItem().toString()) +
                 "\",\"c11\":\"" +
                 edittext_c11.getText().toString() +
-                "\"}";
-        return jsonData;
+                "\"}";*/
+        return jsonObject.toString();
     }
 
     private class PutAsync extends AsyncTask<String, Void, String> {

@@ -15,6 +15,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 import okhttp3.MediaType;
@@ -206,10 +209,11 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
                 } else
                     Toast.makeText(activity, " Set Eleven (11) digit unique code", Toast.LENGTH_LONG).show();
 
-            } else
+            } else {
 
-            {
-                showAlert(this);
+                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_QUALITY_OF_LIFE, createJsonBody());
+                finishTask();
             }
 
 
@@ -246,6 +250,21 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
     }
 
     String createJsonBody() {
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("household_unique_code", person_id);
+            jsonObject.put("s01", ApplicationData.spilitStringFirst(spinner_s1.getSelectedItem().toString()));
+            jsonObject.put("s02", ApplicationData.spilitStringFirst(spinner_s2.getSelectedItem().toString()) );
+            jsonObject.put("s03", ApplicationData.spilitStringFirst(spinner_s3.getSelectedItem().toString()) );
+            jsonObject.put("s04", ApplicationData.spilitStringFirst(spinner_s4.getSelectedItem().toString()) );
+            jsonObject.put("s05", ApplicationData.spilitStringFirst(spinner_s5.getSelectedItem().toString()) );
+            jsonObject.put("s06", edt_s6.getText().toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+ /*
         String jsonData = "{" +
                 "\"s1\":\"" +
                 ApplicationData.spilitStringFirst(spinner_s1.getSelectedItem().toString()) +
@@ -259,8 +278,9 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
                 ApplicationData.spilitStringFirst(spinner_s5.getSelectedItem().toString()) +
                 "\",\"s6\":\"" +
                 edt_s6.getText().toString() +
-                "\"}";
-        return jsonData;
+                "\"}";*/
+
+        return jsonObject.toString();
     }
 
     private class PutAsync extends AsyncTask<String, Void, String> {

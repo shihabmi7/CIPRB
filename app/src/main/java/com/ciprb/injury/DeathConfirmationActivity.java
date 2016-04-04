@@ -497,15 +497,15 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
             // getRadioButtonSerial();
             //  Toast.makeText(activity, getRadioButtonSerial(), Toast.LENGTH_LONG).show();
 
+            mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId() + formatter.format(count);
+            count++;
+            Log.e("Death Person ID:", mCURRENT_MEMBER_ID);
+            Log.e("Count:", "" + count);
             if (InternetConnection.checkNetworkConnection(this)) {
 
-                mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId() + formatter.format(count);
-                Log.e("Death Person ID:", mCURRENT_MEMBER_ID);
 
                 //  mCURRENT_MEMBER_ID = "" + 1013232 + "" + formatter.format(count);
                 //prefsValues.setSerial(count);
-                count++;
-                Log.e("Death Person ID:", "" + count);
                 // have to find a solution if only one man is there or no injury
                 //showTextLong(mCURRENT_MEMBER_ID);
                 //  saveDataToOnline(aPerson);
@@ -513,7 +513,48 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
             } else {
 
-                showAlert(aPerson);
+                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_DEATH_CONFIRMATION, createJsonBody());
+                int death_type = Integer.parseInt(ApplicationData.spilitStringFirst(spinner_cause_death.getSelectedItem().toString()));
+
+                // if death is caused by injury 1 0r 2
+                if (death_type == 1) {
+
+                    ciprbDatabase.insertIntoDeathDB(mCURRENT_MEMBER_ID, editText_members_name.getText().toString());
+
+                    Toast.makeText(activity, "Success: Saved In Device Database " + death_type, Toast.LENGTH_LONG).show();
+
+                }
+
+                // starts from zero & increment here
+                calculate_member++;
+                // Toast.makeText(activity, "Success: Death Type" + death_type, Toast.LENGTH_LONG).show();
+                prefsValues.setDeathSerial(count);
+                cleartext();
+
+
+                if (calculate_member >= death_member_no) {
+
+                    if (!ciprbDatabase.getDeathPersonList().isEmpty()) {
+
+
+                        ApplicationData.gotToNextActivity(activity, InjuryMortalityActivity.class);
+                        finish();
+
+                    } else {
+                        //  go to home activity n fill up home characteristics
+
+                        ApplicationData.gotToNextActivity(activity, HomeActivity.class);
+                        finish();
+
+                    }
+
+
+                } else {
+
+                    Toast.makeText(activity, "Success: Enter Another Died Person Data" + death_type, Toast.LENGTH_LONG).show();
+
+                }
 
             }
         } else if (v == button_cancel) {

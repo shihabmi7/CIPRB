@@ -8,6 +8,7 @@
 
 
     <string name="update">আপডেট করুন</string>
+    <string name="sync">sync</string>
     <string name="suggestion">প্রতিটি প্রশ্নের উত্তর নিন</string>
     <string name="no_live_member">কোন জীবিত সদস্য নেই</string>
     <string name="no_died_member">কোন মৃত সদস্য নেই</string>

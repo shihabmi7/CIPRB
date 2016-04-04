@@ -14,6 +14,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 public class CutInjuryActivity extends AppCompatActivity implements View.OnClickListener {
@@ -175,7 +178,9 @@ public class CutInjuryActivity extends AppCompatActivity implements View.OnClick
 
             }else{
 
-                showAlert(activity);
+                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_CUT_INJURY, createJsonBody());
+                finishTask();
             }
 
 
@@ -189,15 +194,30 @@ public class CutInjuryActivity extends AppCompatActivity implements View.OnClick
     }
 
     String createJsonBody() {
-        String jsonData = "{" +
+
+        JSONObject jsonData = new JSONObject();
+        try {
+
+            jsonData.put("household_unique_code", person_id);
+            jsonData.put("k01", ApplicationData.spilitStringFirst(spinner_k01.getSelectedItem().toString()));
+            jsonData.put("k02", ApplicationData.spilitStringFirst(spinner_k02.getSelectedItem().toString()));
+            jsonData.put("k03", ApplicationData.spilitStringFirst(spinner_k03.getSelectedItem().toString()) );
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+/*        String jsonData = "{" +
                 "\"k01\":\"" +
                 ApplicationData.spilitStringFirst(spinner_k01.getSelectedItem().toString()) +
                 "\",\"k02\":\"" +
                 ApplicationData.spilitStringFirst(spinner_k02.getSelectedItem().toString()) +
                 "\",\"k03\":\"" +
                 ApplicationData.spilitStringFirst(spinner_k03.getSelectedItem().toString()) +
-                "\"}";
-        return jsonData;
+                "\"}";*/
+
+
+        return jsonData.toString();
     }
 
     private class PutAsync extends AsyncTask<String, Void, String> {

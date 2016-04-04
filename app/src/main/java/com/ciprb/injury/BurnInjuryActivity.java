@@ -18,6 +18,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -232,7 +233,10 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
                 String url = ApplicationData.URL_BURNINJURY + person_id;
                 new PutAsync().execute(url, createJsonBody());
             } else {
-                showAlert(activity);
+
+                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_BURN_INJURY, createJsonBody());
+                finishTask();
             }
 
 
@@ -303,7 +307,22 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
     }
 
     String createJsonBody() {
-        String jsonData = "{" +
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("household_unique_code", person_id);
+            jsonObject.put("l01", ApplicationData.spilitStringFirst(spinner_l01.getSelectedItem().toString()));
+            jsonObject.put("l01", ApplicationData.spilitStringFirst(spinner_l01.getSelectedItem().toString()));
+            jsonObject.put("l02", ApplicationData.spilitStringFirst(spinner_l02.getSelectedItem().toString()));
+            jsonObject.put("l03", ApplicationData.spilitStringFirst(spinner_l03.getSelectedItem().toString()));
+            jsonObject.put("l04", ApplicationData.spilitStringFirst(spinner_l04.getSelectedItem().toString()));
+            jsonObject.put("l05", ApplicationData.spilitStringFirst(spinner_l05.getSelectedItem().toString()));
+            jsonObject.put("l06", ApplicationData.spilitStringFirst(spinner_l06.getSelectedItem().toString()));
+            jsonObject.put("l07", ApplicationData.spilitStringFirst(spinner_l07.getSelectedItem().toString()));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+      /*  String jsonData = "{" +
                 "\"l01\":\"" +
                 ApplicationData.spilitStringFirst(spinner_l01.getSelectedItem().toString()) +
                 "\",\"l02\":\"" +
@@ -318,8 +337,8 @@ public class BurnInjuryActivity extends AppCompatActivity implements View.OnClic
                 ApplicationData.spilitStringFirst(spinner_l06.getSelectedItem().toString()) +
                 "\",\"l07\":\"" +
                 ApplicationData.spilitStringFirst(spinner_l07.getSelectedItem().toString()) +
-                "\"}";
-        return jsonData;
+                "\"}";*/
+        return jsonObject.toString();
     }
 
     private class PutAsync extends AsyncTask<String, Void, String> {

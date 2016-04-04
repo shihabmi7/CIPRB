@@ -14,6 +14,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 public class FallInjuryActivity extends AppCompatActivity implements View.OnClickListener {
@@ -253,10 +256,17 @@ public class FallInjuryActivity extends AppCompatActivity implements View.OnClic
             if (person_id.length() > 0) {
 
                 //putRequestWithHeaderAndBody(ApplicationData.URL_SUICIDE + person_id);
-                String url = ApplicationData.URL_FALL + person_id;
+                if(InternetConnection.checkNetworkConnection(activity)){
+                    String url = ApplicationData.URL_FALL + person_id;
+                    Log.i("String are ", createJsonBody());
+                    new PutAsync().execute(url, createJsonBody());
+                }else{
+
+                    Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                    ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_FALL_INJURY, createJsonBody());
+                    finishTask();
+                }
                 //Put
-                Log.i("String are ", createJsonBody());
-                new PutAsync().execute(url, createJsonBody());
 
             } else {
             }
@@ -272,7 +282,22 @@ public class FallInjuryActivity extends AppCompatActivity implements View.OnClic
     String createJsonBody() {
 //        Log.i("Test String ", ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString()));
 
-        String rep = "{" +
+
+        JSONObject jsonData = new JSONObject();
+        try {
+
+            jsonData.put("household_unique_code", person_id);
+            jsonData.put("j01", ApplicationData.spilitStringFirst(sp_fall1.getSelectedItem().toString())) ;
+            jsonData.put("j02", ApplicationData.spilitStringFirst(sp_fall2.getSelectedItem().toString())) ;
+            jsonData.put("j03", ApplicationData.spilitStringFirst(sp_fall3.getSelectedItem().toString())) ;
+            jsonData.put("j04", ApplicationData.spilitStringFirst(sp_fall4.getSelectedItem().toString())) ;
+            jsonData.put("j05", ApplicationData.spilitStringFirst(sp_fall5.getSelectedItem().toString())) ;
+            jsonData.put("j06", ApplicationData.spilitStringFirst(sp_fall06.getSelectedItem().toString())) ;
+        } catch (JSONException e) {
+            e.printStackTrace();
+
+        }
+      /*  String rep = "{" +
                 "\"j01\":\"" +
                 ApplicationData.spilitStringFirst(sp_fall1.getSelectedItem().toString()) +
                 "\",\"j02\":\"" +
@@ -286,8 +311,8 @@ public class FallInjuryActivity extends AppCompatActivity implements View.OnClic
                 "\",\"j06\":\"" +
                 ApplicationData.spilitStringFirst(sp_fall06.getSelectedItem().toString()) +
                 "\"}";
-
+*/
         //return "{\"g03\":\"10\"}";
-        return rep;
+        return jsonData.toString();
     }
 }

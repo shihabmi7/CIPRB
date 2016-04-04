@@ -1,0 +1,40 @@
+[
+
+  {
+    "id": 1,
+    "household_unique_code": "30404363601",
+    "name": "s",
+    "sex": "01",
+    "maritial_status": "01",
+    "education": "12",
+    "relation_with_hh": "01",
+    "occupasion": "01",
+    "smoking": "01",
+    "bettle_nut_chew": "02",
+    "swimming": "02",
+    "responder": "false",
+    "injury_last_six": "01",
+    "how_many_injury_last_six": "1",
+    "interviewer_code": "23"
+  },
+  {
+    "id": 1,
+    "household_unique_code": "30404363602",
+    "name": "s",
+    "sex": "01",
+    "maritial_status": "01",
+    "education": "12",
+    "relation_with_hh": "01",
+    "occupasion": "01",
+    "smoking": "01",
+    "bettle_nut_chew": "02",
+    "swimming": "02",
+    "responder": "false",
+    "injury_last_six": "01",
+    "how_many_injury_last_six": "1",
+    "interviewer_code": "23"
+  }
+
+]
+
+interview_time=01-04-2016+02%3A27&injury_last_six=02&date_of_birth=01%2F04%2F2016&responder=yes&interviewer_code=12&maritial_status=02&smoking=02&relation_with_hh=01&occupasion=02&age=23&name=Mr%2C+Bean&household_no=01&household_unique_code=10198890101&sex=01&education=5&swimming=01&bettle_nut_chew=01

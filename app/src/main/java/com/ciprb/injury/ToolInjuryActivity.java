@@ -15,6 +15,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 import okhttp3.MediaType;
@@ -210,7 +213,9 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
 
             } else {
 
-                showAlert(activity);
+                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_TOOL_INJURY, createJsonBody());
+                finishTask();
             }
 
         } else if (v == button_cancel) {
@@ -243,7 +248,22 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
     }
 
     String createJsonBody() {
-        String jsonData = "{" +
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+
+            jsonObject.put("household_unique_code", person_id);
+            jsonObject.put("o01", ApplicationData.spilitStringFirst(spinner_o01.getSelectedItem().toString()));
+            jsonObject.put("o02", ApplicationData.spilitStringFirst(spinner_o02.getSelectedItem().toString()));
+            jsonObject.put("o03", ApplicationData.spilitStringFirst(spinner_o03.getSelectedItem().toString()));
+            jsonObject.put("o04", ApplicationData.spilitStringFirst(spinner_o04.getSelectedItem().toString()));
+            jsonObject.put("o05", ApplicationData.spilitStringFirst(spinner_o05.getSelectedItem().toString()));
+            jsonObject.put("o06", ApplicationData.spilitStringFirst(spinner_o06.getSelectedItem().toString()));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+       /* String jsonData = "{" +
                 "\"o01\":\"" +
                 ApplicationData.spilitStringFirst(spinner_o01.getSelectedItem().toString()) +
                 "\",\"o02\":\"" +
@@ -256,8 +276,8 @@ public class ToolInjuryActivity extends AppCompatActivity implements View.OnClic
                 ApplicationData.spilitStringFirst(spinner_o05.getSelectedItem().toString()) +
                 "\",\"o06\":\"" +
                 ApplicationData.spilitStringFirst(spinner_o06.getSelectedItem().toString()) +
-                "\"}";
-        return jsonData;
+                "\"}";*/
+        return jsonObject.toString();
     }
 
     private class PutAsync extends AsyncTask<String, Void, String> {

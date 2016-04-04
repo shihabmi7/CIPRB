@@ -18,6 +18,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -205,8 +206,9 @@ public class InsectInjuryActivity extends AppCompatActivity implements View.OnCl
                 new PutAsync().execute(url, createJsonBody());
             } else {
 
-                showAlert(activity);
-
+                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_INSECT_INJURY, createJsonBody());
+                finishTask();
             }
 
 
@@ -240,7 +242,18 @@ public class InsectInjuryActivity extends AppCompatActivity implements View.OnCl
     }
 
     String createJsonBody() {
-        String jsonData = "{" +
+
+        JSONObject jsonData = new JSONObject();
+        try {
+            jsonData.put("household_unique_code", person_id);
+            jsonData.put("t01", ApplicationData.spilitStringFirst(spinner_t01.getSelectedItem().toString()));
+            jsonData.put("t02", ApplicationData.spilitStringFirst(spinner_t02.getSelectedItem().toString()) );
+            jsonData.put("t03", ApplicationData.spilitStringFirst(spinner_t03.getSelectedItem().toString()) );
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        /*String jsonData = "{" +
                 "\"t01\":\"" +
                 ApplicationData.spilitStringFirst(spinner_t01.getSelectedItem().toString()) +
                 "\",\"t02\":\"" +
@@ -248,7 +261,8 @@ public class InsectInjuryActivity extends AppCompatActivity implements View.OnCl
                 "\",\"t03\":\"" +
                 ApplicationData.spilitStringFirst(spinner_t03.getSelectedItem().toString()) +
                 "\"}";
-        return jsonData;
+        */
+        return jsonData.toString();
     }
 
     private class PutAsync extends AsyncTask<String, Void, String> {

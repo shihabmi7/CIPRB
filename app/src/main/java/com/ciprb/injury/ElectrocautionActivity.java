@@ -18,6 +18,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -206,7 +207,9 @@ public class ElectrocautionActivity extends AppCompatActivity implements View.On
 
             }else{
 
-                showAlert(activity);
+                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_ELECTROCATION, createJsonBody());
+                finishTask();
             }
 
 
@@ -220,6 +223,19 @@ public class ElectrocautionActivity extends AppCompatActivity implements View.On
 
 
     String createJsonBody() {
+
+        JSONObject jsonData = new JSONObject();
+
+        try {
+            jsonData.put("household_unique_code", person_id);
+            jsonData.put("p01", ApplicationData.spilitStringFirst(spinner_p01.getSelectedItem().toString()) );
+            jsonData.put("p02", ApplicationData.spilitStringFirst(spinner_p02.getSelectedItem().toString()));
+            jsonData.put("p03", ApplicationData.spilitStringFirst(spinner_p03.getSelectedItem().toString()));
+            jsonData.put("p04", ApplicationData.spilitStringFirst(spinner_p04.getSelectedItem().toString()));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        /*
         String jsonData = "{" +
                 "\"p01\":\"" +
                 ApplicationData.spilitStringFirst(spinner_p01.getSelectedItem().toString()) +
@@ -230,7 +246,9 @@ public class ElectrocautionActivity extends AppCompatActivity implements View.On
                 "\",\"p04\":\"" +
                 ApplicationData.spilitStringFirst(spinner_p04.getSelectedItem().toString()) +
                 "\"}";
-        return jsonData;
+
+        */
+        return jsonData.toString();
     }
 
     private class PutAsync extends AsyncTask<String, Void, String> {

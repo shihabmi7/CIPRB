@@ -536,11 +536,9 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
     @Override
     public void onClick(View v) {
 
-
         if (v == button_next && checkSpinner()) {
 
             if (InternetConnection.checkNetworkConnection(activity)) {
-
 
                 person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
                 String url = ApplicationData.URL_INJURY_MORTALITY + person_id;
@@ -550,10 +548,20 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
                 new PutAsync().execute(url, createJsonBody());
 
+            } else {
 
-            } else
+                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_INJURY_MORTALITY, createJsonBody());
+                int type = spinner_how_injured.getSelectedItemPosition();
+                //showTextLong("Success! Select Type:" + type);
+                Toast.makeText(activity, "Success" + type, Toast.LENGTH_LONG).show();
 
-                showAlert(this);
+                ApplicationData.ALIVE_PERSON_NUMBER = spinner_person_name.getSelectedItemPosition();
+                person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
+                cleartext();
+                moveToInjurySelectionActivity(type, person_id);
+            }
+
 
         } else if (v == button_cancel) {
 
@@ -634,13 +642,11 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
         if (lay_spinner_Who_provided_the_treatment.getVisibility() == View.VISIBLE) {
 
-
             f14 = ApplicationData.spilitStringFirst(spinner_Who_provided_the_treatment.getSelectedItem().toString());
             f15 = ApplicationData.spilitStringFirst(spinner_Where_receive_treatment.getSelectedItem().toString());
         }
 
         if (layout_type_admitted_health_facility.getVisibility() == View.VISIBLE) {
-
 
             f17 = ApplicationData.spilitStringFirst(spinner_type_admitted_health_facility.getSelectedItem().toString());
             f18 = ApplicationData.spilitStringFirst(spinner_how_admitted_health_facility.getSelectedItem().toString());
@@ -661,10 +667,9 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
         }
 
         //Log.i("Test String ", ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString()));
-        String rep = "{" +
-                "\"f01\":\"" +
-                "" +
-                "\",\"f02\":\"" +
+        String rep = "{" + "\"f01\":\"" + "" + "\","
+                +"\"household_unique_code\":\"" + "" + person_id +"\"," +
+                "\"f02\":\"" +
                 ApplicationData.spilitStringFirst(spinner_how_injured.getSelectedItem().toString()) +
                 "\",\"f03\":\"" +
                 editText_injury_date.getText().toString() +

@@ -358,8 +358,10 @@ public class HouseHoldMemberDetailsActivityTest extends AppCompatActivity implem
                     }
                     // have to find a solution if only one man is there or no injury
 
-                } else
+                } else  {
+
                     showAlert(aPerson);
+                }
 
             } else if (v == button_cancel) {
                 //onBackPressed();

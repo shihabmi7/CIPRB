@@ -14,6 +14,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 import okhttp3.MediaType;
@@ -169,13 +171,18 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
 
         if (v == button_next && checkSpinner()) {
 
-            String url = ApplicationData.URL_ROADTRANSPORTINJURY + person_id;
+            if (InternetConnection.checkNetworkConnection(this)) {
+                String url = ApplicationData.URL_ROADTRANSPORTINJURY + person_id;
+                Log.e("URL",url);
+                Log.e("Json Body",createJsonBody());
+                new PutAsync().execute(url, createJsonBody());
+            } else  {
 
-            Log.e("URL",url);
+                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_ROAD_TRANSPORT, createJsonBody());
+                finishTask();
+            }
 
-
-            Log.e("Json Body",createJsonBody());
-            new PutAsync().execute(url, createJsonBody());
 
         } else if (v == button_cancel) {
             this.finish();
@@ -209,6 +216,15 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
     }
 
     String createJsonBody() {
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("household_unique_code", person_id);
+            jsonObject.put("h01", person_id);
+
+        } catch (Exception e) {
+
+        }
         String jsonData = "{" +
                 "\"h01\":\"" +
                 ApplicationData.spilitStringFirst(spinner_h01.getSelectedItem().toString()) +

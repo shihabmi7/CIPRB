@@ -14,6 +14,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 import okhttp3.MediaType;
@@ -220,8 +223,9 @@ public class UnintentionalPoisoningActivity extends AppCompatActivity implements
 
             }else{
 
-                showAlert(activity);
-
+                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_UNINTENTIONAL_POISIONING, createJsonBody());
+                finishTask();
             }
 
 
@@ -256,7 +260,25 @@ public class UnintentionalPoisoningActivity extends AppCompatActivity implements
     }
 
     String createJsonBody() {
-        String jsonData = "{" +
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+
+            jsonObject.put("household_unique_code", person_id);
+            jsonObject.put("n01", ApplicationData.spilitStringFirst(spinner_n01.getSelectedItem().toString()));
+            jsonObject.put("n02", ApplicationData.spilitStringFirst(spinner_n02.getSelectedItem().toString()));
+            jsonObject.put("n03", ApplicationData.spilitStringFirst(spinner_n03.getSelectedItem().toString()));
+            jsonObject.put("n04", ApplicationData.spilitStringFirst(spinner_n04.getSelectedItem().toString()));
+            jsonObject.put("n05", ApplicationData.spilitStringFirst(spinner_n05.getSelectedItem().toString()));
+            jsonObject.put("n06", ApplicationData.spilitStringFirst(spinner_n06.getSelectedItem().toString()));
+            jsonObject.put("n07", ApplicationData.spilitStringFirst(spinner_n07.getSelectedItem().toString()));
+            jsonObject.put("n08", ApplicationData.spilitStringFirst(spinner_n08.getSelectedItem().toString()));
+            jsonObject.put("n09", ApplicationData.spilitStringFirst(spinner_n09.getSelectedItem().toString()));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+ /*       String jsonData = "{" +
                 "\"n01\":\"" +
                 ApplicationData.spilitStringFirst(spinner_n01.getSelectedItem().toString()) +
                 "\",\"n02\":\"" +
@@ -275,8 +297,8 @@ public class UnintentionalPoisoningActivity extends AppCompatActivity implements
                 ApplicationData.spilitStringFirst(spinner_n08.getSelectedItem().toString()) +
                 "\",\"n09\":\"" +
                 ApplicationData.spilitStringFirst(spinner_n09.getSelectedItem().toString()) +
-                "\"}";
-        return jsonData;
+                "\"}";*/
+        return jsonObject.toString();
     }
 
     private class PutAsync extends AsyncTask<String, Void, String> {
@@ -309,9 +331,7 @@ public class UnintentionalPoisoningActivity extends AppCompatActivity implements
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             progressDialog.dismiss();
-            if (value == ApplicationData.STATUS_SUCCESS)
-
-            {
+            if (value == ApplicationData.STATUS_SUCCESS) {
                 finishTask();
             } else {
                 Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();

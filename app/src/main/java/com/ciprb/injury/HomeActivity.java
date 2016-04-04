@@ -1,11 +1,15 @@
 package com.ciprb.injury;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,9 +19,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 public class HomeActivity extends AppCompatActivity {
 
     PrefsValues prefsValues;
+    ProgressDialog progressDialog = null;
     String form[] = {
 
             // "DATABASE",
@@ -76,6 +86,10 @@ public class HomeActivity extends AppCompatActivity {
         // wake lock
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(getString(R.string.loading_message));
+        progressDialog.setTitle(getString(R.string.waiting));
+        progressDialog.setCancelable(true);
         prefsValues = new PrefsValues(this);
         listView = (ListView) findViewById(R.id.listView_form_list);
         getFormList();
@@ -246,18 +260,212 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         super.onOptionsItemSelected(item);
-
         switch (item.getItemId()) {
             case R.id.update:
                 //Toast.makeText(getBaseContext(), "You selected Phone", Toast.LENGTH_SHORT).show();
 
                 goForRateUs();
-
                 break;
 
+            case R.id.sync:
+
+                try {
+
+                    Toast.makeText(getApplicationContext(),"Synce button called",Toast.LENGTH_LONG).show();
+                    postDataOnServer(ApplicationData.URL_HOUSE_HOLD_MEMBERS, ApplicationData.OFFLINE_DB_HOUSE_HOLD_MEMBERS);
+                    putDataOnServer(ApplicationData.URL_INJURY_MORBIDITY, ApplicationData.OFFLINE_DB_MORBIDITY);
+                    putDataOnServer(ApplicationData.URL_BURNINJURY, ApplicationData.OFFLINE_DB_BURN_INJURY);
+                    putDataOnServer(ApplicationData.URL_CUTINJURY, ApplicationData.OFFLINE_DB_CUT_INJURY);
+                    putDataOnServer(ApplicationData.URL_DEATH_CONFIRMATION, ApplicationData.OFFLINE_DB_DEATH_CONFIRMATION);
+                    putDataOnServer(ApplicationData.URL_ELECTROCAUTION, ApplicationData.OFFLINE_DB_ELECTROCATION);
+                    putDataOnServer(ApplicationData.URL_CHARACTERISTIC, ApplicationData.OFFLINE_DB_HOUSE_HOLD_CHARACTERISTICS);
+                    putDataOnServer(ApplicationData.URL_INJURY_MORTALITY, ApplicationData.OFFLINE_DB_INJURY_MORTALITY);
+                    putDataOnServer(ApplicationData.URL_INSECT_INJURY, ApplicationData.OFFLINE_DB_INSECT_INJURY);
+                    putDataOnServer(ApplicationData.URL_NEAR_DROWN, ApplicationData.OFFLINE_DB_NEAR_DROWNING);
+                    putDataOnServer(ApplicationData.URL_QUALITY_OF_LIFE, ApplicationData.OFFLINE_DB_QUALITY_OF_LIFE);
+                    putDataOnServer(ApplicationData.URL_SUICIDE, ApplicationData.OFFLINE_DB_SUICIDE_ATTEMPT);
+                    putDataOnServer(ApplicationData.URL_TOOl_INJURY, ApplicationData.OFFLINE_DB_TOOL_INJURY);
+                    putDataOnServer(ApplicationData.URL_UNINTENTIONAL_INJURY, ApplicationData.OFFLINE_DB_UNINTENTIONAL_POISIONING);
+                    putDataOnServer(ApplicationData.URL_VIOLENCEINJURY, ApplicationData.OFFLINE_DB_VIOLENCE_INJURY);
+                    putDataOnServer(ApplicationData.URL_SUFFOGATION, ApplicationData.OFFLINE_DB_SUFFOCATION);
+                    putDataOnServer(ApplicationData.URL_BLUNT_INJURY, ApplicationData.OFFLINE_DB_INJURY_BLUNT);
+                    putDataOnServer(ApplicationData.URL_FALL, ApplicationData.OFFLINE_DB_FALL_INJURY);
+                    putDataOnServer(ApplicationData.URL_ROADTRANSPORTINJURY, ApplicationData.OFFLINE_DB_ROAD_TRANSPORT);
+
+
+                }catch (Exception e) {
+
+                    Log.e("AMLOG::: ", e.getMessage());
+                    e.printStackTrace();
+                }
+
+                break;
 
         }
         return true;
 
     }
+
+    private String[] getJsonArray(String fileName) {
+        StringBuilder stringBuilder = ApplicationData.readFile(getApplicationContext(), fileName);
+        ApplicationData.doFileEmpty(getApplicationContext(), fileName);
+        if(stringBuilder.length() > 0)
+            return ApplicationData.getDataArray(stringBuilder.toString());
+        else
+            return null;
+    }
+
+    private void postDataOnServer(String apiUri, String fileName) {
+
+        String[] dataArray = getJsonArray(fileName);
+        if(dataArray != null && dataArray.length > 0) {
+
+            Log.e("postData:: ", "dataArray length: " + dataArray.length);
+            for (String aDataArray : dataArray) {
+                try {
+
+                    Log.d("AMLOG::upload: ", aDataArray);
+                    new PostAsync().execute(apiUri, aDataArray);
+                } catch (Exception e) {
+                    Log.e("AMLOG::: ", e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+            ApplicationData.doFileEmpty(getApplicationContext(), fileName);
+        }
+    }
+
+    private void putDataOnServer(String apiUri, String fileName) {
+
+        String[] dataArray = getJsonArray(fileName);
+        if( dataArray != null && dataArray.length > 0) {
+
+            for (String aDataArray : dataArray) {
+                try {
+
+                    JSONObject obj = new JSONObject(aDataArray);
+                    String personId = obj.getString("household_unique_code");
+                    Log.d("AMLOG::upload: ", aDataArray);
+                    Log.d("AMLOG::personId: ", personId);
+
+                    if (InternetConnection.checkNetworkConnection(this)) {
+
+                        new PutAsync().execute(apiUri+personId, aDataArray);
+                    }else  {
+
+                        Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                        ApplicationData.writeToFile(this, fileName, aDataArray);
+                        finishTask();
+                    }
+                } catch (Exception e) {
+                    Log.e("AMLOG::: ", e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+
+//
+        }
+
+    }
+
+
+
+    private class PostAsync extends AsyncTask<String, Void, String> {
+
+        int value = 0;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+
+                Log.e("URL are ", params[0]);
+                value = ApplicationData.postRequestWithHeaderAndBody(params[0], params[1]);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            progressDialog.dismiss();
+
+            if (value == ApplicationData.STATUS_SUCCESS) {
+
+                Log.d("", "Data uploaded successfully");
+//                finishTask();
+
+            } else {
+//                Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
+            }
+
+        }
+
+    }
+
+    private class PutAsync extends AsyncTask<String, Void, String> {
+
+        int value = 0;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+
+                Log.e("URL are ", params[0]);
+
+                value = ApplicationData.putRequestWithBody(params[0], params[1]);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            progressDialog.dismiss();
+
+            if (value == ApplicationData.STATUS_SUCCESS) {
+
+                Log.d("", "Data uploaded successfully");
+//                finishTask();
+
+            } else {
+//                Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
+            }
+
+        }
+
+    }
+
+
+
+    void finishTask() {
+
+        Toast.makeText(this, "Successfully Data Saved", Toast.LENGTH_LONG).show();
+    }
+
 }

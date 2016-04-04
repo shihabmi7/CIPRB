@@ -18,6 +18,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -195,8 +196,17 @@ public class ViolenceInjuryActivity extends AppCompatActivity implements View.On
 
 
         if (v == button_next) {
-            String url = ApplicationData.URL_VIOLENCEINJURY + person_id;
-            new PutAsync().execute(url, createJsonBody());
+
+            if(InternetConnection.checkNetworkConnection(activity)){
+
+                String url = ApplicationData.URL_VIOLENCEINJURY + person_id;
+                new PutAsync().execute(url, createJsonBody());
+            } else {
+                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_VIOLENCE_INJURY, createJsonBody());
+                finishTask();
+            }
+
 
         } else if (v == button_cancel) {
 
@@ -229,7 +239,20 @@ public class ViolenceInjuryActivity extends AppCompatActivity implements View.On
     }
 
     String createJsonBody() {
-        String jsonData = "{" +
+
+
+        JSONObject jsonData = new JSONObject();
+        try {
+
+            jsonData.put("household_unique_code", person_id);
+            jsonData.put("i01", ApplicationData.spilitStringFirst(spinner_i01.getSelectedItem().toString()) );
+            jsonData.put("i02", ApplicationData.spilitStringFirst(spinner_i02.getSelectedItem().toString()) );
+            jsonData.put("i03", ApplicationData.spilitStringFirst(spinner_i03.getSelectedItem().toString()) );
+            jsonData.put("i04", ApplicationData.spilitStringFirst(spinner_i04.getSelectedItem().toString()) );
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+   /*     String jsonData = "{" +
                 "\"i01\":\"" +
                 ApplicationData.spilitStringFirst(spinner_i01.getSelectedItem().toString()) +
                 "\",\"i02\":\"" +
@@ -238,8 +261,8 @@ public class ViolenceInjuryActivity extends AppCompatActivity implements View.On
                 ApplicationData.spilitStringFirst(spinner_i03.getSelectedItem().toString()) +
                 "\",\"i04\":\"" +
                 ApplicationData.spilitStringFirst(spinner_i04.getSelectedItem().toString()) +
-                "\"}";
-        return jsonData;
+                "\"}";*/
+        return jsonData.toString();
     }
 
     private class PutAsync extends AsyncTask<String, Void, String> {

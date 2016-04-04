@@ -15,6 +15,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 public class SuffocationActivity extends AppCompatActivity implements View.OnClickListener {
@@ -156,8 +159,18 @@ public class SuffocationActivity extends AppCompatActivity implements View.OnCli
 
         if (v == button_next && checkSpinner()) {
 
-            String url = ApplicationData.URL_SUFFOGATION + person_id;
-            new PutAsync().execute(url, createJsonBody());
+            if(InternetConnection.checkNetworkConnection(activity)){
+
+                String url = ApplicationData.URL_SUFFOGATION + person_id;
+                new PutAsync().execute(url, createJsonBody());
+            }else{
+
+                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_SUFFOCATION, createJsonBody());
+                finishTask();
+            }
+
+
 
         } else if (v == button_cancel) {
 
@@ -169,13 +182,25 @@ public class SuffocationActivity extends AppCompatActivity implements View.OnCli
 
 
     String createJsonBody() {
-        String jsonData = "{" +
+
+
+        JSONObject jsonData = new JSONObject();
+        try {
+
+            jsonData.put("household_unique_code", person_id);
+            jsonData.put("r01", ApplicationData.spilitStringFirst(spinner_r01.getSelectedItem().toString()));
+            jsonData.put("r02", edt_r02.getText().toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+
+        }
+          /*  String jsonData = "{" +
                 "\"r01\":\"" +
                 ApplicationData.spilitStringFirst(spinner_r01.getSelectedItem().toString()) +
                 "\",\"r02\":\"" +
                 edt_r02.getText().toString() +
-                "\"}";
-        return jsonData;
+                "\"}";*/
+        return jsonData.toString();
     }
 
     private class PutAsync extends AsyncTask<String, Void, String> {

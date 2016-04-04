@@ -49,7 +49,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
     PrefsValues prefsValues;
     RelativeLayout linerar_how_injury;
-    int count = 01;
+    int count = 00;
     int injury_count=01;
     int calculate_member = 0;
     Button button_cancel, button_next;
@@ -247,6 +247,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
     void setheader() {
 
+        Log.e("setheader","called:" +"Total Members: " + member_no + "   Remain Member: " + (member_no - calculate_member));
         house_hold_id.setText("Total Members: " + member_no + "   Remain Member: " + (member_no - calculate_member));
         prefsValues.setMembers_no(member_no - calculate_member);
     }
@@ -264,7 +265,6 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
         super.onResume();
         //count = 1;
     }
-
 
     String responderStatus() {
 
@@ -288,11 +288,12 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
         try {
             // set check must
 //
-            if (v == button_next && checkFieldStatus() && checkSpinner()) {
+//            && checkFieldStatus() && checkSpinner()
+            if (v == button_next ) {
 
                 // Toast.makeText(activity, responderStatus(), Toast.LENGTH_LONG).show();
 
-                if (InternetConnection.checkNetworkConnection(this)) {
+//                if (InternetConnection.checkNetworkConnection(this)) {
 
 
                     // if a injury happen
@@ -302,6 +303,9 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
                         int num = Integer.parseInt(edittext_how_many_injury_last_six.getText().toString());
                         ciprbDatabase.open();
+                        calculate_member++;
+
+                        Log.e("count", "" + count);
                         for (int i = 1; i <= num; i++) {
 
                             mCURRENT_MEMBER_ID = prefsValues.getHouseUniqueId() + "" + formatter.format(count)+""+ formatter.format(injury_count);
@@ -317,12 +321,14 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
                             ciprbDatabase.insertIntoDB(mCURRENT_MEMBER_ID, editText_members_name.getText().toString());
                             //ApplicationData.alive_person_List.add(aPerson);
-                            saveDataToOnlineForInjuredPerson(aPerson);
+                            saveDataForInjuredPerson(aPerson);
                             injury_count++; // added newly
                         }
+                        cleartext();
                         count++;
                         injury_count=01;
-                        calculate_member++;; // added newly
+                         // added newly
+                        Log.d("AMLOG:: Mem++", "calculate_member: " + calculate_member);
                         // ciprbDatabase.close();
                     }
                     // if no injury happen
@@ -338,17 +344,19 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                         aPerson.setPerson_id(mCURRENT_MEMBER_ID);
                         prefsValues.setPerson_id_for_house_hold_characteristics(mCURRENT_MEMBER_ID);
 
-                        saveDataToOnline(aPerson);
+                        saveDataForNormalPerson(aPerson);
 
                     }
                     // have to find a solution if only one man is there or no injury
 
-                } else
-                    showAlert(aPerson);
+                }
+           /* else
 
-            } else if (v == button_cancel) {
+                    showAlert(aPerson);*/
+
+          /*  } else if (v == button_cancel) {
                 //onBackPressed();
-            }
+            }*/
 
         } catch (NullPointerException e) {
 
@@ -363,11 +371,10 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
     }
 
-    void saveDataToOnlineForInjuredPerson(Person person) {
+    void saveDataForInjuredPerson(Person person) {
 
         try {
 
-            progressDialog.show();
 
             AsyncHttpClient client = new AsyncHttpClient();
             RequestParams params = new RequestParams();
@@ -395,46 +402,189 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
             }
 
-            client.post(ApplicationData.URL_HOUSE_HOLD_MEMBERS, params,
-                    new JsonHttpResponseHandler() {
-                        // save to data base ,
-                        // check if count > member then go to next activity n save to
-                        @Override
-                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+            if (InternetConnection.checkNetworkConnection(this)) {
 
-                            if (statusCode == ApplicationData.STATUS_SUCCESS) {
-                                progressDialog.dismiss();
-                                showTextLong(" : Data saved Successfully...: " + mCURRENT_MEMBER_ID);
-                                prefsValues.setSerial(count);
-                                scrollView.setY(0);
-                                if (calculate_member >= member_no) {
+                progressDialog.show();
 
-                                    if (ciprbDatabase.getAlivePersonList().size() != 0) {
+                client.post(ApplicationData.URL_HOUSE_HOLD_MEMBERS, params,
+                        new JsonHttpResponseHandler() {
+                            // save to data base ,
+                            // check if count > member then go to next activity n save to
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
-                                        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
-                                        ciprbDatabase.close();
-                                        finish();
-                                    } else {
-                                        //  go to home activity n fill up home characteristics
-                                        ApplicationData.gotToNextActivity(activity, HomeActivity.class);
-                                        finish();
+                                if (statusCode == ApplicationData.STATUS_SUCCESS) {
+                                    progressDialog.dismiss();
+                                    showTextLong(" : Data saved Successfully...: " + mCURRENT_MEMBER_ID);
+                                    prefsValues.setSerial(count);
+                                    scrollView.setY(0);
+                                    if (calculate_member >= member_no) {
+
+                                        if (ciprbDatabase.getAlivePersonList().size() != 0) {
+
+                                            ciprbDatabase.close();
+                                            ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+                                            finish();
+                                        } else {
+                                            //  go to home activity n fill up home characteristics
+                                            ApplicationData.gotToNextActivity(activity, HomeActivity.class);
+                                            finish();
+                                        }
                                     }
+
                                 }
-                                cleartext();
+                            }
+
+                            @Override
+                            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+
+                                progressDialog.dismiss();
+                                showTextLong(" : Data not Saved Successfully...: " + statusCode);
+                                super.onFailure(statusCode, headers, responseString, throwable);
+
+                                Log.e("" + getTitle(), "OnFailure" + statusCode);
                             }
                         }
+                );
+            } else {  // No internet connection
 
-                        @Override
-                        public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                String json = getJsonObject(person).toString();
+                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_HOUSE_HOLD_MEMBERS, json);
 
-                            progressDialog.dismiss();
-                            showTextLong(" : Data not Saved Successfully...: " + statusCode);
-                            super.onFailure(statusCode, headers, responseString, throwable);
+                //calculate_member++;
+                prefsValues.setSerial(count);
+                Toast.makeText(getApplicationContext(),"Offline Data Saved...",Toast.LENGTH_LONG).show();
+                Log.e("saveDataInjuredPerson","calculate member: "+calculate_member+"   member_no:  "+member_no);
+                if (calculate_member >= member_no) {
 
-                            Log.e("" + getTitle(), "OnFailure" + statusCode);
-                        }
+                    if (ciprbDatabase.getAlivePersonList().size() != 0) {
+//                        ciprbDatabase.close();
+                        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+                        finish();
+                    } else {
+                        //  go to home activity n fill up home characteristics
+                        ApplicationData.gotToNextActivity(activity, HomeActivity.class);
+                        finish();
                     }
-            );
+                }
+              //  cleartext();
+
+
+            }
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    void saveDataForNormalPerson(Person person) {
+
+        try {
+
+            AsyncHttpClient client = new AsyncHttpClient();
+            RequestParams params = new RequestParams();
+            params.put("household_unique_code", person.getPerson_id());
+            params.put("name", person.getMembers_name());
+            params.put("sex", ApplicationData.spilitStringFirst(person.getSex()));
+            params.put("date_of_birth", edittext_date_of_birth.getText().toString());
+            params.put("maritial_status", ApplicationData.spilitStringFirst(spinner_marital_status.getSelectedItem().toString()));
+            params.put("education", editText_educatoin_level.getText().toString());
+            params.put("relation_with_hh", ApplicationData.spilitStringFirst(spinner_realation_with_hh.getSelectedItem().toString()));
+            params.put("age", edittext_current_age.getText().toString());
+            params.put("occupasion", ApplicationData.spilitStringFirst(spinner_occupasion.getSelectedItem().toString()));
+            params.put("smoking", ApplicationData.spilitStringFirst(spinner_smoking.getSelectedItem().toString()));
+            params.put("bettle_nut_chew", ApplicationData.spilitStringFirst(spinner_buttle_nut.getSelectedItem().toString()));
+            params.put("swimming", ApplicationData.spilitStringFirst(spinner_swiming.getSelectedItem().toString()));
+            params.put("responder", responderStatus());
+            params.put("interviewer_code", prefsValues.getInterviewer_code());
+            params.put("injury_last_six", ApplicationData.spilitStringFirst(spinner_injury_last_six.getSelectedItem().toString()));
+            params.put("interview_time", ApplicationData.getCurrentDate());
+            params.put("household_no", prefsValues.gethouse_hold_no());
+            if (linerar_how_injury.getVisibility() == View.VISIBLE) {
+
+                params.put("how_many_injury_last_six", person.getInjury_number());
+                //params.put("e02", person.getInjury_type());
+
+            }
+
+            if (InternetConnection.checkNetworkConnection(this)) {
+
+                progressDialog.show();
+                client.post(ApplicationData.URL_HOUSE_HOLD_MEMBERS, params,
+                        new JsonHttpResponseHandler() {
+                            // save to data base ,
+                            // check if count > member then go to next activity n save to
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                calculate_member++;
+                                if (statusCode == ApplicationData.STATUS_SUCCESS) {
+                                    progressDialog.dismiss();
+                                    showTextLong(" : Data saved Successfully...: " + mCURRENT_MEMBER_ID);
+                                    prefsValues.setSerial(count);
+                                    scrollView.setY(0);
+                                    Log.e("saveDataNormalPerson", "calculate member: " + calculate_member + "   member_no:  " + member_no);
+                                    if (calculate_member >= member_no) {
+
+                                        if (ciprbDatabase.getAlivePersonList().size() != 0) {
+                                            ciprbDatabase.close();
+                                            ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+                                            finish();
+                                        } else {
+                                            //  go to home activity n fill up home characteristics
+                                            ApplicationData.gotToNextActivity(activity, HomeActivity.class);
+                                            finish();
+                                        }
+                                    }
+                                    cleartext();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+
+                                progressDialog.dismiss();
+                                showTextLong(" : Data not Saved Successfully...: " + statusCode);
+                                super.onFailure(statusCode, headers, responseString, throwable);
+
+                                Log.e("" + getTitle(), "OnFailure" + statusCode);
+                            }
+                        }
+                );
+            }  else {
+             // No internet connection
+                Log.e("AMLOG:saveINjury", "No Internet connection");
+                Log.e("AMLOG:: ", "Save Offline");
+
+                String json = getJsonObject(person).toString();
+                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_HOUSE_HOLD_MEMBERS, json);
+                StringBuilder stringBuilder = ApplicationData.readFile(this, ApplicationData.OFFLINE_DB_HOUSE_HOLD_MEMBERS);
+                Log.e("AMLOG::filedata: ", stringBuilder.toString());
+
+                calculate_member++;
+                prefsValues.setSerial(count);
+
+                Toast.makeText(getApplicationContext()," Save Data Offline, To get update to server Press Sync when internet available",Toast.LENGTH_LONG).show();
+                scrollView.setY(0);
+                if (calculate_member >= member_no) {
+
+                    if (ciprbDatabase.getAlivePersonList().size() != 0) {
+//                        ciprbDatabase.close();
+                        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
+                        finish();
+                    } else {
+                        //  go to home activity n fill up home characteristics
+                        ApplicationData.gotToNextActivity(activity, HomeActivity.class);
+                        finish();
+                    }
+                }
+
+                cleartext();
+            }
+
+
         } catch (NullPointerException e) {
 
             Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
@@ -442,92 +592,44 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
     }
 
+    public JSONObject getJsonObject(Person person) {
 
-    void saveDataToOnline(Person person) {
-
+        JSONObject houseHoldPostJson = new JSONObject();
         try {
 
-            progressDialog.show();
-
-            AsyncHttpClient client = new AsyncHttpClient();
-            RequestParams params = new RequestParams();
-            params.put("household_unique_code", person.getPerson_id());
-            params.put("name", person.getMembers_name());
-            params.put("sex", ApplicationData.spilitStringFirst(person.getSex()));
-            params.put("date_of_birth", edittext_date_of_birth.getText().toString());
-            params.put("maritial_status", ApplicationData.spilitStringFirst(spinner_marital_status.getSelectedItem().toString()));
-            params.put("education", editText_educatoin_level.getText().toString());
-            params.put("relation_with_hh", ApplicationData.spilitStringFirst(spinner_realation_with_hh.getSelectedItem().toString()));
-            params.put("age", edittext_current_age.getText().toString());
-            params.put("occupasion", ApplicationData.spilitStringFirst(spinner_occupasion.getSelectedItem().toString()));
-            params.put("smoking", ApplicationData.spilitStringFirst(spinner_smoking.getSelectedItem().toString()));
-            params.put("bettle_nut_chew", ApplicationData.spilitStringFirst(spinner_buttle_nut.getSelectedItem().toString()));
-            params.put("swimming", ApplicationData.spilitStringFirst(spinner_swiming.getSelectedItem().toString()));
-            params.put("responder", responderStatus());
-            params.put("interviewer_code", prefsValues.getInterviewer_code());
-            params.put("injury_last_six", ApplicationData.spilitStringFirst(spinner_injury_last_six.getSelectedItem().toString()));
-            params.put("interview_time", ApplicationData.getCurrentDate());
-            params.put("household_no", prefsValues.gethouse_hold_no());
+            houseHoldPostJson.put("household_unique_code", person.getPerson_id());
+            houseHoldPostJson.put("name", person.getMembers_name());
+            houseHoldPostJson.put("sex", ApplicationData.spilitStringFirst(person.getSex()));
+            houseHoldPostJson.put("date_of_birth", edittext_date_of_birth.getText().toString());
+            houseHoldPostJson.put("maritial_status", ApplicationData.spilitStringFirst(spinner_marital_status.getSelectedItem().toString()));
+            houseHoldPostJson.put("education", editText_educatoin_level.getText().toString());
+            houseHoldPostJson.put("relation_with_hh", ApplicationData.spilitStringFirst(spinner_realation_with_hh.getSelectedItem().toString()));
+            houseHoldPostJson.put("age", edittext_current_age.getText().toString());
+            houseHoldPostJson.put("occupasion", ApplicationData.spilitStringFirst(spinner_occupasion.getSelectedItem().toString()));
+            houseHoldPostJson.put("smoking", ApplicationData.spilitStringFirst(spinner_smoking.getSelectedItem().toString()));
+            houseHoldPostJson.put("bettle_nut_chew", ApplicationData.spilitStringFirst(spinner_buttle_nut.getSelectedItem().toString()));
+            houseHoldPostJson.put("swimming", ApplicationData.spilitStringFirst(spinner_swiming.getSelectedItem().toString()));
+            houseHoldPostJson.put("responder", responderStatus());
+            houseHoldPostJson.put("interviewer_code", prefsValues.getInterviewer_code());
+            houseHoldPostJson.put("injury_last_six", ApplicationData.spilitStringFirst(spinner_injury_last_six.getSelectedItem().toString()));
+            houseHoldPostJson.put("interview_time", ApplicationData.getCurrentDate());
+            houseHoldPostJson.put("household_no", prefsValues.gethouse_hold_no());
             if (linerar_how_injury.getVisibility() == View.VISIBLE) {
 
-                params.put("how_many_injury_last_six", person.getInjury_number());
+                houseHoldPostJson.put("how_many_injury_last_six", person.getInjury_number());
                 //params.put("e02", person.getInjury_type());
 
             }
+        }catch (Exception e) {
 
-            client.post(ApplicationData.URL_HOUSE_HOLD_MEMBERS, params,
-                    new JsonHttpResponseHandler() {
-                        // save to data base ,
-                        // check if count > member then go to next activity n save to
-                        @Override
-                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                            calculate_member++;
-                            if (statusCode == ApplicationData.STATUS_SUCCESS) {
-                                progressDialog.dismiss();
-                                showTextLong(" : Data saved Successfully...: " + mCURRENT_MEMBER_ID);
-                                prefsValues.setSerial(count);
-                                scrollView.setY(0);
-                                if (calculate_member >= member_no) {
-
-                                    if (ciprbDatabase.getAlivePersonList().size() != 0) {
-                                        ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
-                                        ciprbDatabase.close();
-                                        finish();
-                                    } else {
-                                        //  go to home activity n fill up home characteristics
-                                        ApplicationData.gotToNextActivity(activity, HomeActivity.class);
-                                        finish();
-                                    }
-                                }
-                                cleartext();
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-
-                            progressDialog.dismiss();
-                            showTextLong(" : Data not Saved Successfully...: " + statusCode);
-                            super.onFailure(statusCode, headers, responseString, throwable);
-
-                            Log.e("" + getTitle(), "OnFailure" + statusCode);
-                        }
-                    }
-            );
-        } catch (NullPointerException e) {
-
-            Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
         }
-
+        return houseHoldPostJson;
     }
 
     public void showAlert(final Person person) {
 
         if (InternetConnection.isAvailable(activity)) {
 
-            if (person != null) {
-                saveDataToOnline(person);
-            }
 
         } else {
 

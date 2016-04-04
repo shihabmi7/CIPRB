@@ -1,11 +1,17 @@
 package com.ciprb.injury;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.DatePicker;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -252,5 +258,90 @@ public class ApplicationData {
 
 
         return memberListHashMap;
+    }
+
+
+    // amjad <code></code>
+
+    public static String OFFLINE_DB_HOUSE_HOLD_MEMBERS = "householdmemberdetails.json";
+
+    public static String OFFLINE_DB_MORBIDITY = "morbidity.json";
+    public static String OFFLINE_DB_BURN_INJURY = "burninjury.json";
+    public static String OFFLINE_DB_CUT_INJURY = "cutinjury.json";
+    public static String OFFLINE_DB_DEATH_CONFIRMATION = "deathconfirmation.json";
+    public static String OFFLINE_DB_ELECTROCATION = "electrocation.json";
+    public static String OFFLINE_DB_HOUSE_HOLD_CHARACTERISTICS = "householdcharacteristics.json";
+    public static String OFFLINE_DB_INJURY_MORTALITY = "injurymortality.json";
+    public static String OFFLINE_DB_INSECT_INJURY = "insectinjury.json";
+    public static String OFFLINE_DB_NEAR_DROWNING = "neardrowning.json";
+    public static String OFFLINE_DB_QUALITY_OF_LIFE = "qualityoflife.json";
+    public static String OFFLINE_DB_SUICIDE_ATTEMPT = "suicideattempt.json";
+    public static String OFFLINE_DB_TOOL_INJURY = "toolinjury.json";
+    public static String OFFLINE_DB_UNINTENTIONAL_POISIONING = "unintentionalpoi.json";
+    public static String OFFLINE_DB_ROAD_TRANSPORT = "roadtransport.json";
+    public static String OFFLINE_DB_VIOLENCE_INJURY= "violenceinjury.json";
+    public static String OFFLINE_DB_SUFFOCATION= "suffocation.json";
+    public static String OFFLINE_DB_INJURY_BLUNT= "injuryblunt.json";
+    public static String OFFLINE_DB_FALL_INJURY= "fallinjury.json";
+
+    public static StringBuilder readFile(Context context, String fileName) {
+
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+
+            String filePath = context.getFilesDir().getAbsolutePath()+"/" + fileName;
+            Log.e("readFile: " , filePath);
+            File file = new File (filePath);
+
+            if ( file.exists() ) {
+                InputStream inputStream = context.openFileInput(fileName);
+                BufferedReader r = new BufferedReader(new InputStreamReader(inputStream));
+                String line;
+                while ((line = r.readLine()) != null) {
+                    stringBuilder.append(line);
+                }
+                inputStream.close();
+            } else {
+                Log.e("readFile: " ,"File not exist");
+            }
+        } catch (Exception e) {
+            Log.e("Exception", "File read failed: " + e.toString());
+        }
+        return stringBuilder;
+    }
+
+    public static void writeToFile(Context context, String fileName, String data) {
+
+        try {
+
+            data = data + ";";
+            FileOutputStream outputStreamWriter = context.openFileOutput(fileName, Context.MODE_APPEND);
+            outputStreamWriter.write(data.getBytes());
+            outputStreamWriter.close();
+            Log.e("writeToFile", "data: " + data);
+        } catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
+    }
+
+
+    public static String[] getDataArray(String fileData) {
+
+        return fileData.split("\\;");
+
+    }
+
+    public static void doFileEmpty(Context context, String fileName) {
+
+        try {
+
+            String empty = "";
+            FileOutputStream outputStreamWriter = context.openFileOutput(fileName, Context.MODE_PRIVATE);
+            outputStreamWriter.write(empty.getBytes());
+            outputStreamWriter.close();
+        } catch (IOException e) {
+            Log.e("Exception", "File do empty: " + e.toString());
+        }
+        Log.e("Exception", "Erase file content done");
     }
 }

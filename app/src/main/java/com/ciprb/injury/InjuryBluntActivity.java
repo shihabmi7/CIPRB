@@ -18,6 +18,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -191,8 +192,16 @@ public class InjuryBluntActivity extends AppCompatActivity implements View.OnCli
 
         if (v == button_next && checkSpinner()) {
 
-            String url = ApplicationData.URL_BLUNT_INJURY + person_id;
-            new PutAsync().execute(url, createJsonBody());
+            if(InternetConnection.checkNetworkConnection(activity)){
+                String url = ApplicationData.URL_BLUNT_INJURY + person_id;
+                new PutAsync().execute(url, createJsonBody());
+            } else{
+
+                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_INJURY_BLUNT, createJsonBody());
+                finishTask();
+            }
+
 
         } else if (v == button_cancel) {
 
@@ -203,13 +212,25 @@ public class InjuryBluntActivity extends AppCompatActivity implements View.OnCli
 
 
     String createJsonBody() {
+
+        JSONObject jsonData = new JSONObject();
+        try {
+
+            jsonData.put("household_unique_code", person_id);
+            jsonData.put("q01", ApplicationData.spilitStringFirst(sp_blunt1.getSelectedItem().toString()));
+            jsonData.put("q02", ApplicationData.spilitStringFirst(sp_blunt2.getSelectedItem().toString()));
+        } catch (JSONException e) {
+            e.printStackTrace();
+
+        }
+       /*
         String jsonData = "{" +
                 "\"q01\":\"" +
                 ApplicationData.spilitStringFirst(sp_blunt1.getSelectedItem().toString()) +
                 "\",\"q02\":\"" +
                 ApplicationData.spilitStringFirst(sp_blunt2.getSelectedItem().toString()) +
-                "\"}";
-        return jsonData;
+                "\"}";*/
+        return jsonData.toString();
     }
 
     private class PutAsync extends AsyncTask<String, Void, String> {
