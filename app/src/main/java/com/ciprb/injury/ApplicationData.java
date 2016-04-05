@@ -55,7 +55,8 @@ public class ApplicationData {
     public static String URL_CHARACTERISTIC =  URL_BASE + "LumenApi/public/index.php/api/household/characteristics/";
 
 
-/*    public static String URL_BASE = "http://10.20.122.24:8080/api";
+/*
+    public static String URL_BASE = "http://10.20.122.24:8080/api";
 
     public static String URL_HOUSE_HOLD_MEMBERS =  URL_BASE + "/household";
     public static String URL_DEATH_CONFIRMATION =  URL_BASE + "/household";
@@ -75,10 +76,9 @@ public class ApplicationData {
     public static String URL_INSECT_INJURY =   URL_BASE + "/injuryactivity/insectinjury/";
     public static String URL_BLUNT_INJURY =  URL_BASE + "/injuryactivity/injuryblunt/";
     public static String URL_SUFFOGATION =  URL_BASE + "/activity/suffocation/";
-
-
     public static String URL_QUALITY_OF_LIFE =  URL_BASE + "/activity/qualityoflife/";
-    public static String URL_CHARACTERISTIC =  URL_BASE + "/household/characteristics/";*/
+    public static String URL_CHARACTERISTIC =  URL_BASE + "/household/characteristics/";
+*/
 
 
     public static int STATUS_SUCCESS = 200;
@@ -91,6 +91,7 @@ public class ApplicationData {
     public static String TAG_HOUSE_HOLD_UNIQE_ID = "house_unique_id";
     public static String HOUSE_HOLD_UNIQE_ID = "";
     public static String HOUSE_HOLD_MWMBERS_NO = "";
+    public static String OFFLINE_SAVED_SUCCESSFULLY = "Data saved successfully";
 
     public static int HOUSE_HOLD_MWMBERS_MAX = 15;
     public static int HOUSE_HOLD_MWMBERS_MIN = 0;

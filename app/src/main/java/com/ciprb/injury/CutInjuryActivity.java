@@ -178,7 +178,7 @@ public class CutInjuryActivity extends AppCompatActivity implements View.OnClick
 
             }else{
 
-                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),ApplicationData.OFFLINE_SAVED_SUCCESSFULLY,Toast.LENGTH_LONG).show();
                 ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_CUT_INJURY, createJsonBody());
                 finishTask();
             }

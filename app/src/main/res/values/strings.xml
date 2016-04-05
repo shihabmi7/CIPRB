@@ -8,7 +8,11 @@
 
 
     <string name="update">আপডেট করুন</string>
-    <string name="sync">sync</string>
+    <string name="sync">সংরক্ষিত তথ্য আপলোড করুন</string>
+    <string name="no_data">সংরক্ষনের জন্য কোন ডাটা নেই</string>
+
+
+    <string name="sync_doing">সংরক্ষিত তথ্য আপলোড হচ্ছে.... </string>
     <string name="suggestion">প্রতিটি প্রশ্নের উত্তর নিন</string>
     <string name="no_live_member">কোন জীবিত সদস্য নেই</string>
     <string name="no_died_member">কোন মৃত সদস্য নেই</string>
@@ -51,7 +55,7 @@
     <!--// form 3-->
 
     <string name="death_conf_hd"> Death Confirmation</string>
-    <string name="death_date">মৃত্যূর তারিখ</string>
+    <string name="death_date">কত তারিখে ইনজুরি হয়েছিল?</string>
     <string name="death_location">মৃত্যূর স্থান</string>
     <string name="death_symptoms">শেষ অসুস্থতার সময়ের লক্ষণ ও উপসর্গ (আঘাত /ইনজুরি ব্যতীত মৃত্যূর ক্ষেত্রে)
     (প্রতিটি প্রশ্ন জিজ্ঞাসা করুন)</string>
@@ -273,6 +277,7 @@
 
 
     <string-array name="survey_cause_of_death">
+        <item>  নির্বাচন করুন</item>
         <item>1. ইনিজুরী জনিত মৃত্যু</item>
         <item>2. অসুস্থ্যতা জনিত মৃত্যু </item>
     </string-array>
@@ -889,6 +894,7 @@
         <item>3. নদী /খালের পার হতে </item>
         <item>4. পানির ড্রেনে </item>
         <item>5. পানির সেফটি ট্যাংক </item>
+        <item>99. জানা নেই </item>
 
     </string-array>
 

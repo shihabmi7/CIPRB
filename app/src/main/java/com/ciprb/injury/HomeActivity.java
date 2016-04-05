@@ -28,6 +28,9 @@ public class HomeActivity extends AppCompatActivity {
 
     PrefsValues prefsValues;
     ProgressDialog progressDialog = null;
+
+    boolean hasData=false;
+
     String form[] = {
 
             // "DATABASE",
@@ -184,13 +187,11 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
         if (prefsValues.getMembers_died_no() > 0) {
-
             Toast.makeText(getApplicationContext(), getString(R.string.finish_current_house_hold_died), Toast.LENGTH_LONG).show();
-
-
-
         }
+        hasData =false;
     }
 
     @Override
@@ -271,12 +272,12 @@ public class HomeActivity extends AppCompatActivity {
 
                 try {
 
-                    Toast.makeText(getApplicationContext(),"Synce button called",Toast.LENGTH_LONG).show();
+
                     postDataOnServer(ApplicationData.URL_HOUSE_HOLD_MEMBERS, ApplicationData.OFFLINE_DB_HOUSE_HOLD_MEMBERS);
                     putDataOnServer(ApplicationData.URL_INJURY_MORBIDITY, ApplicationData.OFFLINE_DB_MORBIDITY);
                     putDataOnServer(ApplicationData.URL_BURNINJURY, ApplicationData.OFFLINE_DB_BURN_INJURY);
                     putDataOnServer(ApplicationData.URL_CUTINJURY, ApplicationData.OFFLINE_DB_CUT_INJURY);
-                    putDataOnServer(ApplicationData.URL_DEATH_CONFIRMATION, ApplicationData.OFFLINE_DB_DEATH_CONFIRMATION);
+                    postDataOnServer(ApplicationData.URL_DEATH_CONFIRMATION, ApplicationData.OFFLINE_DB_DEATH_CONFIRMATION);
                     putDataOnServer(ApplicationData.URL_ELECTROCAUTION, ApplicationData.OFFLINE_DB_ELECTROCATION);
                     putDataOnServer(ApplicationData.URL_CHARACTERISTIC, ApplicationData.OFFLINE_DB_HOUSE_HOLD_CHARACTERISTICS);
                     putDataOnServer(ApplicationData.URL_INJURY_MORTALITY, ApplicationData.OFFLINE_DB_INJURY_MORTALITY);
@@ -291,6 +292,16 @@ public class HomeActivity extends AppCompatActivity {
                     putDataOnServer(ApplicationData.URL_BLUNT_INJURY, ApplicationData.OFFLINE_DB_INJURY_BLUNT);
                     putDataOnServer(ApplicationData.URL_FALL, ApplicationData.OFFLINE_DB_FALL_INJURY);
                     putDataOnServer(ApplicationData.URL_ROADTRANSPORTINJURY, ApplicationData.OFFLINE_DB_ROAD_TRANSPORT);
+
+                    if (hasData) {
+
+                        Toast.makeText(getApplicationContext(), getString(R.string.sync_doing), Toast.LENGTH_LONG).show();
+
+                    } else {
+
+                        Toast.makeText(getApplicationContext(), getString(R.string.no_data), Toast.LENGTH_LONG).show();
+                    }
+
 
 
                 }catch (Exception e) {
@@ -320,25 +331,31 @@ public class HomeActivity extends AppCompatActivity {
         String[] dataArray = getJsonArray(fileName);
         if(dataArray != null && dataArray.length > 0) {
 
+            ApplicationData.doFileEmpty(getApplicationContext(), fileName);
+            hasData = true;
             Log.e("postData:: ", "dataArray length: " + dataArray.length);
             for (String aDataArray : dataArray) {
+
                 try {
 
                     Log.d("AMLOG::upload: ", aDataArray);
                     if (InternetConnection.checkNetworkConnection(this)) {
 
-                        new PostAsync().execute(apiUri, aDataArray);
+                        Log.e("AMLOG:::" , "Internet connection found!");
+                        new PostAsync(fileName).execute(apiUri, aDataArray);
+
                     } else  {
 
-                        Toast.makeText(getApplicationContext(),"Internet connection not available",Toast.LENGTH_LONG).show();
+                        Log.e("AMLOG:::" , "No internet");
                         ApplicationData.writeToFile(this, fileName, aDataArray);
+                        Toast.makeText(getApplicationContext(),"Internet connection not available",Toast.LENGTH_LONG).show();
                     }
                 } catch (Exception e) {
                     Log.e("AMLOG::: ", e.getMessage());
                     e.printStackTrace();
                 }
             }
-            ApplicationData.doFileEmpty(getApplicationContext(), fileName);
+
         }
     }
 
@@ -347,6 +364,8 @@ public class HomeActivity extends AppCompatActivity {
         String[] dataArray = getJsonArray(fileName);
         if( dataArray != null && dataArray.length > 0) {
 
+            ApplicationData.doFileEmpty(getApplicationContext(), fileName);
+            hasData = true;
             for (String aDataArray : dataArray) {
                 try {
 
@@ -357,7 +376,7 @@ public class HomeActivity extends AppCompatActivity {
 
                     if (InternetConnection.checkNetworkConnection(this)) {
 
-                        new PutAsync().execute(apiUri+personId, aDataArray);
+                        new PutAsync(fileName).execute(apiUri+personId, aDataArray);
                     }else  {
 
                         Toast.makeText(getApplicationContext(),"Internet connection not available",Toast.LENGTH_LONG).show();
@@ -380,6 +399,14 @@ public class HomeActivity extends AppCompatActivity {
 
         int value = 0;
 
+        String file;
+        String data = null;
+        PostAsync() {
+
+        }
+        PostAsync(String fileName) {
+            file = fileName;
+        }
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -392,11 +419,13 @@ public class HomeActivity extends AppCompatActivity {
             try {
 
                 Log.e("URL are ", params[0]);
+                Log.e("Data ", params[1]);
+                data = params[1];
                 value = ApplicationData.postRequestWithHeaderAndBody(params[0], params[1]);
 
-            } catch (IOException e) {
-                e.printStackTrace();
             } catch (Exception e) {
+                Log.e("doInBackground: ", e.getMessage());
+                ApplicationData.writeToFile(getApplicationContext(), file, params[1]);
                 e.printStackTrace();
             }
 
@@ -414,7 +443,7 @@ public class HomeActivity extends AppCompatActivity {
 //                finishTask();
 
             } else {
-//                Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
+                Log.d("", "Data uploaded failed.");
             }
 
         }
@@ -424,6 +453,16 @@ public class HomeActivity extends AppCompatActivity {
     private class PutAsync extends AsyncTask<String, Void, String> {
 
         int value = 0;
+        String data = null;
+        String file;
+
+        PutAsync() {
+
+        }
+
+        PutAsync(String file) {
+            this.file = file;
+        }
 
         @Override
         protected void onPreExecute() {
@@ -437,12 +476,12 @@ public class HomeActivity extends AppCompatActivity {
             try {
 
                 Log.e("URL are ", params[0]);
-
+                data = params[1];
                 value = ApplicationData.putRequestWithBody(params[0], params[1]);
 
-            } catch (IOException e) {
-                e.printStackTrace();
             } catch (Exception e) {
+                Log.e("doInBackground: ", e.getMessage());
+                ApplicationData.writeToFile(getApplicationContext(), file, params[1]);
                 e.printStackTrace();
             }
 
@@ -460,8 +499,9 @@ public class HomeActivity extends AppCompatActivity {
 //                finishTask();
 
             } else {
-//                Toast.makeText(activity, "Failed", Toast.LENGTH_LONG).show();
+                Log.d("", "Data uploaded failed.");
             }
+
 
         }
 

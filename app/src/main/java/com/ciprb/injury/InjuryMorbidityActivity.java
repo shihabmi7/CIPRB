@@ -822,7 +822,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
     public void onClick(View v) {
 
 //        checkSpinner())
-        if (v == button_next ) {
+        if (v == button_next && checkSpinner()) {
 
 
             person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
@@ -839,7 +839,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
             } else{
 
-                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),ApplicationData.OFFLINE_SAVED_SUCCESSFULLY,Toast.LENGTH_LONG).show();
                 ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_MORBIDITY, createJsonBody(person_id));
                 int type = spinner_how_injured.getSelectedItemPosition();
                 //showTextLong("Success! Select Type:" + type);

@@ -240,7 +240,7 @@ public class NearDrowningActivity extends AppCompatActivity implements View.OnCl
 
             } else {
 
-                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),ApplicationData.OFFLINE_SAVED_SUCCESSFULLY,Toast.LENGTH_LONG).show();
                 ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_NEAR_DROWNING, createJsonBody());
                 finishTask();
             }

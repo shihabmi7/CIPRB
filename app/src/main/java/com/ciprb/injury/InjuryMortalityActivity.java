@@ -238,7 +238,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                    if (position == 0) {
+                    if (position == 1) {
 
                         lay_who_gave_first_aid.setVisibility(View.VISIBLE);
                         layout_Was_he_trained_in_first_aid.setVisibility(View.VISIBLE);
@@ -550,7 +550,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
             } else {
 
-                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),ApplicationData.OFFLINE_SAVED_SUCCESSFULLY,Toast.LENGTH_LONG).show();
                 ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_INJURY_MORTALITY, createJsonBody());
                 int type = spinner_how_injured.getSelectedItemPosition();
                 //showTextLong("Success! Select Type:" + type);

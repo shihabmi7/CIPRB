@@ -453,7 +453,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
                 //calculate_member++;
                 prefsValues.setSerial(count);
-                Toast.makeText(getApplicationContext(),"Offline Data Saved...",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),ApplicationData.OFFLINE_SAVED_SUCCESSFULLY,Toast.LENGTH_LONG).show();
                 Log.e("saveDataInjuredPerson","calculate member: "+calculate_member+"   member_no:  "+member_no);
                 if (calculate_member >= member_no) {
 
@@ -560,13 +560,11 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
                 String json = getJsonObject(person).toString();
                 ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_HOUSE_HOLD_MEMBERS, json);
-                StringBuilder stringBuilder = ApplicationData.readFile(this, ApplicationData.OFFLINE_DB_HOUSE_HOLD_MEMBERS);
-                Log.e("AMLOG::filedata: ", stringBuilder.toString());
 
                 calculate_member++;
                 prefsValues.setSerial(count);
 
-                Toast.makeText(getApplicationContext()," Save Data Offline, To get update to server Press Sync when internet available",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),ApplicationData.OFFLINE_SAVED_SUCCESSFULLY,Toast.LENGTH_LONG).show();
                 scrollView.setY(0);
                 if (calculate_member >= member_no) {
 

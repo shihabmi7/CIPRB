@@ -211,9 +211,9 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
 
             } else {
 
-                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),ApplicationData.OFFLINE_SAVED_SUCCESSFULLY,Toast.LENGTH_LONG).show();
                 ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_QUALITY_OF_LIFE, createJsonBody());
-                finishTask();
+                finish();
             }
 
 
@@ -263,22 +263,6 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
- /*
-        String jsonData = "{" +
-                "\"s1\":\"" +
-                ApplicationData.spilitStringFirst(spinner_s1.getSelectedItem().toString()) +
-                "\",\"s2\":\"" +
-                ApplicationData.spilitStringFirst(spinner_s2.getSelectedItem().toString()) +
-                "\",\"s3\":\"" +
-                ApplicationData.spilitStringFirst(spinner_s3.getSelectedItem().toString()) +
-                "\",\"s4\":\"" +
-                ApplicationData.spilitStringFirst(spinner_s4.getSelectedItem().toString()) +
-                "\",\"s5\":\"" +
-                ApplicationData.spilitStringFirst(spinner_s5.getSelectedItem().toString()) +
-                "\",\"s6\":\"" +
-                edt_s6.getText().toString() +
-                "\"}";*/
 
         return jsonObject.toString();
     }

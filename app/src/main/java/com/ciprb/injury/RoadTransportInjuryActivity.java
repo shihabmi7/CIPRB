@@ -178,7 +178,7 @@ public class RoadTransportInjuryActivity extends AppCompatActivity implements Vi
                 new PutAsync().execute(url, createJsonBody());
             } else  {
 
-                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),ApplicationData.OFFLINE_SAVED_SUCCESSFULLY,Toast.LENGTH_LONG).show();
                 ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_ROAD_TRANSPORT, createJsonBody());
                 finishTask();
             }

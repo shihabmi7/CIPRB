@@ -436,7 +436,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
         if (spinner_occupasion.getSelectedItemPosition() != 0
                 && spinner_occupasion.getSelectedItemPosition() != 0
-                && spinner_marital_status.getSelectedItemPosition() != 0 &&
+                && spinner_marital_status.getSelectedItemPosition() != 0 && spinner_cause_death.getSelectedItemPosition() != 0 &&
                 spinner_death_place.getSelectedItemPosition() != 0 && !editText_members_name.getText().toString().isEmpty()
                 && !edittext_current_age.getText().toString().isEmpty()) {
 
@@ -513,7 +513,7 @@ public class DeathConfirmationActivity extends AppCompatActivity implements View
 
             } else {
 
-                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),ApplicationData.OFFLINE_SAVED_SUCCESSFULLY,Toast.LENGTH_LONG).show();
                 ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_DEATH_CONFIRMATION, createJsonBody());
                 int death_type = Integer.parseInt(ApplicationData.spilitStringFirst(spinner_cause_death.getSelectedItem().toString()));
 
