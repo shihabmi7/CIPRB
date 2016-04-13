@@ -821,12 +821,9 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
     @Override
     public void onClick(View v) {
 
-//        checkSpinner())
         if (v == button_next && checkSpinner()) {
 
-
             person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
-
 
             if (InternetConnection.checkNetworkConnection(this)) {
 

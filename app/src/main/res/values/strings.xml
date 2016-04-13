@@ -55,7 +55,7 @@
     <!--// form 3-->
 
     <string name="death_conf_hd"> Death Confirmation</string>
-    <string name="death_date">কত তারিখে ইনজুরি হয়েছিল?</string>
+    <string name="death_date">মৃত্যুর তারিখ</string>
     <string name="death_location">মৃত্যূর স্থান</string>
     <string name="death_symptoms">শেষ অসুস্থতার সময়ের লক্ষণ ও উপসর্গ (আঘাত /ইনজুরি ব্যতীত মৃত্যূর ক্ষেত্রে)
     (প্রতিটি প্রশ্ন জিজ্ঞাসা করুন)</string>
