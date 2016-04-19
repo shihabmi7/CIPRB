@@ -8,8 +8,8 @@ android {
         applicationId "com.ciprb.injury"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 21
-        versionName "21.0"
+        versionCode 24
+        versionName "24.0"
     }
     buildTypes {
         release {

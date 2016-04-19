@@ -207,7 +207,7 @@ public class ElectrocautionActivity extends AppCompatActivity implements View.On
 
             }else{
 
-                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),ApplicationData.OFFLINE_SAVED_SUCCESSFULLY,Toast.LENGTH_LONG).show();
                 ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_ELECTROCATION, createJsonBody());
                 finishTask();
             }

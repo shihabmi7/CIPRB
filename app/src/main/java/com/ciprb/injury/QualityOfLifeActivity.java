@@ -9,16 +9,21 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ciprb.injury.localdb.CiprbDatabase;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -29,9 +34,9 @@ import okhttp3.Response;
 public class QualityOfLifeActivity extends AppCompatActivity implements View.OnClickListener {
     private Button button_cancel, button_next;
     private TextView Quality1, Quality2, Quality3, Quality4, Quality5;
-    private Spinner spinner_s1, spinner_s2, spinner_s3, spinner_s4, spinner_s5;
+    private Spinner spinner_person_name, spinner_s1, spinner_s2, spinner_s3, spinner_s4, spinner_s5;
 
-    EditText edt_s6, editText_person_id;
+    EditText edt_s6;
 
     ProgressDialog progressDialog;
     Activity activity = this;
@@ -40,16 +45,36 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
     String person_id = "";
     TextView textView_person_id;
 
+    CiprbDatabase ciprbDatabase;
+    ArrayAdapter<String> dataAdapter;
+    int alive_count = 0;
+    List<String> list;
+    // jsut changed
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quality_of_life);
 
+        ciprbDatabase = new CiprbDatabase(getApplicationContext());
+        ciprbDatabase.open();
+
 
         try {
             setTitle(getResources().getStringArray(R.array.survey_activity_title)[6]);
             initUI();
+
+            list = new ArrayList<String>();
+            if (ciprbDatabase.getAlivePersonList().isEmpty()) {
+
+                Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
+                finish();
+
+            } else {
+
+                setMemberSpinner(list);
+
+            }
 
             // person_id = getIntent().getExtras().getString(ApplicationData.KEY_PERSON);
             //textView_person_id.setText("Person Id:" + person_id);
@@ -66,9 +91,27 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
         progressDialog.setCancelable(true);
     }
 
+    private void setMemberSpinner(List<String> list) {
+        list.clear();
+        alive_count = ciprbDatabase.getAlivePersonList().size();
+        for (Person aPerson : ciprbDatabase.getAlivePersonList()) {
+            list.add(aPerson.getMembers_name() + "." + aPerson.getPerson_id());
+        }
+        dataAdapter = new ArrayAdapter<String>
+                (this, android.R.layout.simple_spinner_item, list);
+
+        dataAdapter.setDropDownViewResource
+                (android.R.layout.simple_spinner_dropdown_item);
+
+        spinner_person_name.setAdapter(dataAdapter);
+        dataAdapter.notifyDataSetChanged();
+    }
+
     private void initUI() {
+        spinner_person_name = (Spinner) findViewById(R.id.spinner_person_name);
+
         textView_person_id = (TextView) findViewById(R.id.textView_person_id);
-        editText_person_id = (EditText) findViewById(R.id.editText_person_id);
+
         spinner_s1 = (Spinner) findViewById(R.id.spinner_s1);
         spinner_s2 = (Spinner) findViewById(R.id.spinner_s2);
         spinner_s3 = (Spinner) findViewById(R.id.spinner_s3);
@@ -99,7 +142,22 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    void setSpinnerDefaultState() {
+
+        spinner_s1.setSelection(0);
+        spinner_s2.setSelection(0);
+        spinner_s3.setSelection(0);
+        spinner_s4.setSelection(0);
+        spinner_s5.setSelection(0);
+
+
+    }
+
     void cleartext() {
+
+        setSpinnerDefaultState();
+
+        edt_s6.getText().clear();
 
       /*  editText_members_name.getText().clear();
         edittext_date_of_birth.getText().clear();
@@ -111,6 +169,55 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        try {
+
+            if (ciprbDatabase.getAlivePersonList().isEmpty()) {
+
+                Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
+                activity.finish();
+                ciprbDatabase.close();
+
+            }
+
+            /*if (ApplicationData.INJURY_DATA_COLLECT == true) {
+
+                Log.e("Resume Moribidity", ">>> Adapter Updated....: " + ApplicationData.ALIVE_PERSON_NUMBER);
+                // Toast.makeText(activity, "Adapter Updated....: " + ApplicationData.ALIVE_PERSON_NUMBER, Toast.LENGTH_LONG).show();
+
+                list.remove(ApplicationData.ALIVE_PERSON_NUMBER);
+                dataAdapter.notifyDataSetChanged();
+                ciprbDatabase.deleteRowByID(person_id);
+
+                if (list.size() <= 0) {
+
+                    Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
+                    activity.finish();
+                    ciprbDatabase.close();
+                }
+            }*/
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), getTitle() + "" + e.toString(), Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
     /*void saveDataToOnline(Person person) {
 
         progressDialog.show();
@@ -199,21 +306,19 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
 
             if (InternetConnection.checkNetworkConnection(activity)) {
 
-                person_id = editText_person_id.getText().toString();
+                // person_id = editText_person_id.getText().toString();
+                // shihab changed
+                person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
 
-                if (person_id.length() == 11) {
-
-                    String url = ApplicationData.URL_QUALITY_OF_LIFE + person_id;
-                    new PutAsync().execute(url, createJsonBody());
-
-                } else
-                    Toast.makeText(activity, " Set Eleven (11) digit unique code", Toast.LENGTH_LONG).show();
+                String url = ApplicationData.URL_QUALITY_OF_LIFE + person_id;
+                new PutAsync().execute(url, createJsonBody());
+                //Toast.makeText(activity, " Set Eleven (11) digit unique code", Toast.LENGTH_LONG).show();
 
             } else {
 
-                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), ApplicationData.OFFLINE_SAVED_SUCCESSFULLY, Toast.LENGTH_LONG).show();
                 ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_QUALITY_OF_LIFE, createJsonBody());
-                finishTask();
+                finish();
             }
 
 
@@ -255,30 +360,14 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
         try {
             jsonObject.put("household_unique_code", person_id);
             jsonObject.put("s01", ApplicationData.spilitStringFirst(spinner_s1.getSelectedItem().toString()));
-            jsonObject.put("s02", ApplicationData.spilitStringFirst(spinner_s2.getSelectedItem().toString()) );
-            jsonObject.put("s03", ApplicationData.spilitStringFirst(spinner_s3.getSelectedItem().toString()) );
-            jsonObject.put("s04", ApplicationData.spilitStringFirst(spinner_s4.getSelectedItem().toString()) );
-            jsonObject.put("s05", ApplicationData.spilitStringFirst(spinner_s5.getSelectedItem().toString()) );
+            jsonObject.put("s02", ApplicationData.spilitStringFirst(spinner_s2.getSelectedItem().toString()));
+            jsonObject.put("s03", ApplicationData.spilitStringFirst(spinner_s3.getSelectedItem().toString()));
+            jsonObject.put("s04", ApplicationData.spilitStringFirst(spinner_s4.getSelectedItem().toString()));
+            jsonObject.put("s05", ApplicationData.spilitStringFirst(spinner_s5.getSelectedItem().toString()));
             jsonObject.put("s06", edt_s6.getText().toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
- /*
-        String jsonData = "{" +
-                "\"s1\":\"" +
-                ApplicationData.spilitStringFirst(spinner_s1.getSelectedItem().toString()) +
-                "\",\"s2\":\"" +
-                ApplicationData.spilitStringFirst(spinner_s2.getSelectedItem().toString()) +
-                "\",\"s3\":\"" +
-                ApplicationData.spilitStringFirst(spinner_s3.getSelectedItem().toString()) +
-                "\",\"s4\":\"" +
-                ApplicationData.spilitStringFirst(spinner_s4.getSelectedItem().toString()) +
-                "\",\"s5\":\"" +
-                ApplicationData.spilitStringFirst(spinner_s5.getSelectedItem().toString()) +
-                "\",\"s6\":\"" +
-                edt_s6.getText().toString() +
-                "\"}";*/
 
         return jsonObject.toString();
     }
@@ -329,13 +418,27 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
 
     void finishTask() {
 
+
+        Log.e("Resume Moribidity", ">>> Adapter Updated....: " + ApplicationData.ALIVE_PERSON_NUMBER);
+        // Toast.makeText(activity, "Adapter Updated....: " + ApplicationData.ALIVE_PERSON_NUMBER, Toast.LENGTH_LONG).show();
+
+        ApplicationData.ALIVE_PERSON_NUMBER = spinner_person_name.getSelectedItemPosition();
+        list.remove(ApplicationData.ALIVE_PERSON_NUMBER);
+        dataAdapter.notifyDataSetChanged();
+        // ciprbDatabase.deleteRowByID(person_id);
+
+        if (list.size() <= 0) {
+
+            //Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
+            activity.finish();
+            ciprbDatabase.close();
+        }
+
         Toast.makeText(activity, "Successfully Data Saved", Toast.LENGTH_LONG).show();
-        //ApplicationData.INJURY_DATA_COLLECT = true;
         cleartext();
         //onBackPressed();
-        activity.finish();
-        //ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
-
+//        activity.finish();
+//        ApplicationData.gotToNextActivity(activity, HomeActivity.class);
 
     }
 

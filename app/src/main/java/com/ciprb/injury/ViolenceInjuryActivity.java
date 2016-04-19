@@ -202,7 +202,7 @@ public class ViolenceInjuryActivity extends AppCompatActivity implements View.On
                 String url = ApplicationData.URL_VIOLENCEINJURY + person_id;
                 new PutAsync().execute(url, createJsonBody());
             } else {
-                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),ApplicationData.OFFLINE_SAVED_SUCCESSFULLY,Toast.LENGTH_LONG).show();
                 ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_VIOLENCE_INJURY, createJsonBody());
                 finishTask();
             }

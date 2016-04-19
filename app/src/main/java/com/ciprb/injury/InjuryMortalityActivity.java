@@ -235,10 +235,11 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
             //   spinner_family_being_coping_loss_income = (Spinner) findViewById(R.id.spinner_family_being_coping_loss_income);
 
             spinner_did_receive_first_aid.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                    if (position == 0) {
+                    if (position == 1) {
 
                         lay_who_gave_first_aid.setVisibility(View.VISIBLE);
                         layout_Was_he_trained_in_first_aid.setVisibility(View.VISIBLE);
@@ -538,20 +539,20 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
         if (v == button_next && checkSpinner()) {
 
+            person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
             if (InternetConnection.checkNetworkConnection(activity)) {
 
-                person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
                 String url = ApplicationData.URL_INJURY_MORTALITY + person_id;
                 //Put
-                Log.e("String are ", createJsonBody());
+                Log.e("String are ", createJsonBody(person_id));
                 Log.e("URL", url);
 
-                new PutAsync().execute(url, createJsonBody());
+                new PutAsync().execute(url, createJsonBody(person_id));
 
             } else {
 
-                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
-                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_INJURY_MORTALITY, createJsonBody());
+                Toast.makeText(getApplicationContext(),ApplicationData.OFFLINE_SAVED_SUCCESSFULLY,Toast.LENGTH_LONG).show();
+                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_INJURY_MORTALITY, createJsonBody(person_id));
                 int type = spinner_how_injured.getSelectedItemPosition();
                 //showTextLong("Success! Select Type:" + type);
                 Toast.makeText(activity, "Success" + type, Toast.LENGTH_LONG).show();
@@ -627,7 +628,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
         }
     }
 
-    String createJsonBody() {
+    String createJsonBody( String personId) {
 
         String f11 = "";
         String f14 = "";
@@ -668,7 +669,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
         //Log.i("Test String ", ApplicationData.spilitStringFirst(spinner_survey_suicide_where.getSelectedItem().toString()));
         String rep = "{" + "\"f01\":\"" + "" + "\","
-                +"\"household_unique_code\":\"" + "" + person_id +"\"," +
+                +"\"household_unique_code\":\"" + "" + personId +"\"," +
                 "\"f02\":\"" +
                 ApplicationData.spilitStringFirst(spinner_how_injured.getSelectedItem().toString()) +
                 "\",\"f03\":\"" +

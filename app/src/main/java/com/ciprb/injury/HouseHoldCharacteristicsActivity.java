@@ -338,9 +338,9 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
 
             } else {
 
-                Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),ApplicationData.OFFLINE_SAVED_SUCCESSFULLY,Toast.LENGTH_LONG).show();
                 ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_HOUSE_HOLD_CHARACTERISTICS, createJsonBody());
-
+                finish();
             }
 
         }
@@ -407,31 +407,7 @@ public class HouseHoldCharacteristicsActivity extends AppCompatActivity implemen
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    /*
-        String jsonData = "{" +
-                "\"c01\":\"" +
-                edit_c01.getText().toString() +
-                "\",\"c02\":\"" +
-                edit_c02.getText().toString() +
-                "\",\"c03\":\"" +
-                ApplicationData.spilitStringFirst(spinner_c03.getSelectedItem().toString()) +
-                "\",\"c04\":\"" +
-                ApplicationData.spilitStringFirst(spinner_c04.getSelectedItem().toString()) +
-                "\",\"c05\":\"" +
-                ApplicationData.spilitStringFirst(spinner_c05.getSelectedItem().toString()) +
-                "\",\"c06\":\"" +
-                edittext_c06.getText().toString() +
-                "\",\"c07\":\"" +
-                ApplicationData.spilitStringFirst(spinner_c07.getSelectedItem().toString()) +
-                "\",\"c08\":\"" +
-                ApplicationData.spilitStringFirst(spinner_c08.getSelectedItem().toString()) +
-                "\",\"c09\":\"" +
-                getRadioButtonGroupData() +
-                "\",\"c10\":\"" +
-                ApplicationData.spilitStringFirst(spinner_c10.getSelectedItem().toString()) +
-                "\",\"c11\":\"" +
-                edittext_c11.getText().toString() +
-                "\"}";*/
+
         return jsonObject.toString();
     }
 

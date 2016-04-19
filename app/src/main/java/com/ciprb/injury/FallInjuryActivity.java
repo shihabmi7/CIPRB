@@ -262,7 +262,7 @@ public class FallInjuryActivity extends AppCompatActivity implements View.OnClic
                     new PutAsync().execute(url, createJsonBody());
                 }else{
 
-                    Toast.makeText(getApplicationContext(),"Offline Works",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),ApplicationData.OFFLINE_SAVED_SUCCESSFULLY,Toast.LENGTH_LONG).show();
                     ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_FALL_INJURY, createJsonBody());
                     finishTask();
                 }

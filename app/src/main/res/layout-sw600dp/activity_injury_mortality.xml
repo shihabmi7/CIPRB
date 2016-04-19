@@ -112,7 +112,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="@string/death_date"
+                android:text="@string/date_of_injury"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
 
