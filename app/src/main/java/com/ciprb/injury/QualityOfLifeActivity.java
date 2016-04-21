@@ -302,6 +302,7 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
     public void onClick(View v) {
 
         person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
+        int number = spinner_person_name.getSelectedItemPosition();
 
         if (v == button_next && checkSpinner()) {
 
@@ -325,9 +326,19 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
         } else if (v == button_cancel) {
 
             ciprbDatabase.updatePersonQuality(person_id);
+            list.remove(number);
+            dataAdapter.notifyDataSetChanged();
+
+            if (ciprbDatabase.getAllPersonNeverSkipped().isEmpty()) {
+
+                Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
+                ciprbDatabase.close();
+                activity.finish();
+            }
+            //ciprbDatabase.deleteRowByID(person_id);
+
             Toast.makeText(getApplicationContext(), "This person skipped", Toast.LENGTH_LONG).show();
             //finish();
-
         }
 
     }
