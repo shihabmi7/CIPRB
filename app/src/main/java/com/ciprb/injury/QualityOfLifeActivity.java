@@ -49,7 +49,7 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
     ArrayAdapter<String> dataAdapter;
     int alive_count = 0;
     List<String> list;
-    //  changed
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
