@@ -248,6 +248,15 @@ public class CiprbDatabase {
         mynetDatabase.update(DATA_TABLE, cv, PERSON_UNIQUE_ID + "=" + person_id, null);
     }
 
+    public void deleteRowForNonInjuredPerson(String id) {
+
+        String deleteQuery = "DELETE FROM " +
+                DATA_TABLE
+                + " WHERE person_id" + " = " + "'" + id + "'" + "And "+INJURY_STATUS+"=0";
+        mynetDatabase.execSQL(deleteQuery);
+        //return mynetDatabase.delete(AddToCart, deleteQuery, null)>0;
+
+    }
     public void deleteRowByID(String id) {
 
         String deleteQuery = "DELETE FROM " +
