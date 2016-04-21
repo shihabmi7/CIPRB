@@ -1,294 +1,323 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.ciprb.injury.QualityOfLifeActivity">
 
-    <ScrollView
-        android:id="@+id/scrollView4"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/scrollView4"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:id="@+id/layout_header"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/heading_bg"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="20dp">
 
-
-            <LinearLayout
-                android:id="@+id/layout_header"
-                android:layout_width="fill_parent"
+            <TextView
+                android:id="@+id/textView_heading"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/heading_bg"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="20dp">
+                android:padding="6dp"
+                android:text="Quality of life assessment"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/textView_heading"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="6dp"
-                    android:text="Quality of life assessment"
-                    android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp">
-
-                <TextView
-                    android:id="@+id/textView_person_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:gravity="center_vertical"
-                    android:text="@string/enter_person_id"
-                    android:textColor="@android:color/black"
-                    android:textSize="22sp" />
-
-                <!--<EditText-->
-                    <!--android:id="@+id/editText_person_id"-->
-                    <!--android:layout_width="145dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignParentRight="true"-->
-                    <!--android:layout_marginLeft="20dp"-->
-                    <!--android:layout_toRightOf="@+id/textView_person_id"-->
-                    <!--android:gravity="right"-->
-                    <!--android:inputType="number"-->
-                    <!--android:maxLength="11" />-->
-
-                <Spinner
-                    android:id="@+id/spinner_person_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:entries="@array/survey_sex"
-                    android:focusable="false"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@+id/textView_person_id"
-                    android:spinnerMode="dropdown" />
-
-
-            </RelativeLayout>
-
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-
-                <TextView
-                    android:id="@+id/Quality1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/Quality1"
-                    android:textColor="@android:color/black"
-                    android:textSize="22sp" />
-
-                <Spinner
-                    android:id="@+id/spinner_s1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:entries="@array/q_1"
-                    android:focusable="false"
-                    android:spinnerMode="dropdown" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-
-                <TextView
-                    android:id="@+id/Quality2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/Quality2"
-                    android:textColor="@android:color/black"
-                    android:textSize="22sp" />
-
-                <Spinner
-                    android:id="@+id/spinner_s2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:entries="@array/q_2"
-                    android:focusable="false"
-                    android:spinnerMode="dropdown" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-
-                <TextView
-                    android:id="@+id/Quality3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/Quality3"
-                    android:textColor="@android:color/black"
-                    android:textSize="22sp" />
-
-
-                <Spinner
-                    android:id="@+id/spinner_s3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:entries="@array/q_3"
-                    android:focusable="false"
-                    android:spinnerMode="dropdown" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-
-                <TextView
-                    android:id="@+id/Quality4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/Quality4"
-                    android:textColor="@android:color/black"
-                    android:textSize="22sp" />
-
-
-                <Spinner
-                    android:id="@+id/spinner_s4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:entries="@array/q_4"
-                    android:focusable="false"
-                    android:spinnerMode="dropdown" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-
-                <TextView
-                    android:id="@+id/Quality5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/Quality5"
-                    android:textColor="@android:color/black"
-                    android:textSize="22sp" />
-
-
-                <Spinner
-                    android:id="@+id/spinner_s5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:entries="@array/q_5"
-                    android:focusable="false"
-                    android:spinnerMode="dropdown" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/Quality6"
-                    android:textColor="@android:color/black"
-                    android:textSize="22sp" />
-
-
-                <EditText
-                    android:id="@+id/edt_s6"
-                    android:layout_width="145dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:gravity="right"
-                    android:inputType="numberDecimal"
-                    android:maxLength="3" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="20dp"
-                android:weightSum="1">
-
-                <Button
-                    android:id="@+id/button_cancel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight=".5"
-                    android:gravity="center"
-                    android:text="Skip">
-
-                </Button>
-
-                <Button
-                    android:id="@+id/button_next"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight=".5"
-                    android:gravity="center"
-                    android:text="Save">
-
-                </Button>
-
-            </LinearLayout>
 
         </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/textView_person_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:gravity="center_vertical"
+                android:text="@string/enter_person_id"
+                android:textColor="@android:color/black"
+                android:textSize="22sp" />
+
+            <!--<EditText-->
+            <!--android:id="@+id/editText_person_id"-->
+            <!--android:layout_width="145dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_toRightOf="@+id/textView_person_id"-->
+            <!--android:gravity="right"-->
+            <!--android:inputType="number"-->
+            <!--android:maxLength="11" />-->
+
+            <Spinner
+                android:id="@+id/spinner_person_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView_person_id"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+
+                android:entries="@array/survey_sex"
+                android:focusable="false"
+                android:spinnerMode="dropdown" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+
+            <TextView
+                android:id="@+id/Quality1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/Quality1"
+                android:textColor="@android:color/black"
+                android:textSize="22sp" />
+
+            <Spinner
+                android:id="@+id/spinner_s1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:entries="@array/q_1"
+                android:focusable="false"
+                android:spinnerMode="dropdown" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+
+            <TextView
+                android:id="@+id/Quality2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/Quality2"
+                android:textColor="@android:color/black"
+                android:textSize="22sp" />
+
+            <Spinner
+                android:id="@+id/spinner_s2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:entries="@array/q_2"
+                android:focusable="false"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+
+            <TextView
+                android:id="@+id/Quality3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/Quality3"
+                android:textColor="@android:color/black"
+                android:textSize="22sp" />
+
+
+            <Spinner
+                android:id="@+id/spinner_s3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:entries="@array/q_3"
+                android:focusable="false"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+
+            <TextView
+                android:id="@+id/Quality4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/Quality4"
+                android:textColor="@android:color/black"
+                android:textSize="22sp" />
+
+
+            <Spinner
+                android:id="@+id/spinner_s4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:entries="@array/q_4"
+                android:focusable="false"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+
+            <TextView
+                android:id="@+id/Quality5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/Quality5"
+                android:textColor="@android:color/black"
+                android:textSize="22sp" />
+
+
+            <Spinner
+                android:id="@+id/spinner_s5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:entries="@array/q_5"
+                android:focusable="false"
+                android:spinnerMode="dropdown" />
+
+
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/Quality6"
+                android:textColor="@android:color/black"
+                android:textSize="22sp" />
+
+
+            <EditText
+                android:id="@+id/edt_s6"
+                android:layout_width="145dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="right"
+                android:inputType="numberDecimal"
+                android:maxLength="3" />
+
+
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/heading_bg"></LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="20dp"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/button_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:gravity="center"
+                android:text="Skip">
+
+            </Button>
+
+            <Button
+                android:id="@+id/button_next"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:gravity="center"
+                android:text="Save">
+
+            </Button>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
+
