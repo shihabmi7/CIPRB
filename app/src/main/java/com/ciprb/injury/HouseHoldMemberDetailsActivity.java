@@ -570,7 +570,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                 if (calculate_member >= member_no) {
 
                     if (ciprbDatabase.getAlivePersonList().size() != 0) {
-//                        ciprbDatabase.close();
+                        ciprbDatabase.close();
                         ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
                         finish();
                     } else {
