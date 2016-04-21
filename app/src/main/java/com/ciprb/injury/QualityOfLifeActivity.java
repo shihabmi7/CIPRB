@@ -95,7 +95,7 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
         list.clear();
         alive_count = ciprbDatabase.getAlivePersonList().size();
         for (Person aPerson : ciprbDatabase.getAlivePersonList()) {
-            list.add(aPerson.getMembers_name() + "." + aPerson.getPerson_id());
+            list.add(aPerson.getMembers_name() + " : " + aPerson.getPerson_id());
         }
         dataAdapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_item, list);

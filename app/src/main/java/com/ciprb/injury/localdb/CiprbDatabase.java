@@ -21,8 +21,8 @@ public  class CiprbDatabase {
 	private static String DATA_TABLE = "Data_Table";
 	private static String DEATH_TABLE = "death_table";
 	private static String PERSON_UNIQUE_ID = "person_id";
-	private static String EXTRA_1 = "extra_1";
-	private static String EXTRA_2 = "extra_2";
+	private static String PERRSON_NAME = "extra_1";
+	private static String INJURY_STATUS = "extra_2";
 
 	private static DbHelper _DbHelper;
 	private static Context context;
@@ -58,30 +58,30 @@ public  class CiprbDatabase {
 			//get writable database
 			SQLiteDatabase sqlDB = this.getWritableDatabase();
 			String[] columns = new String[] { "mesage" };
-			//an array list of cursor to save two cursors one has results from the query 
+			//an array list of cursor to save two cursors one has results from the query
 			//other cursor stores error message if any errors are triggered
 			ArrayList<Cursor> alc = new ArrayList<Cursor>(2);
 			MatrixCursor Cursor2= new MatrixCursor(columns);
 			alc.add(null);
 			alc.add(null);
-			
-			
+
+
 			try{
 				String maxQuery = Query ;
 				//execute the query results will be save in Cursor c
 				Cursor c = sqlDB.rawQuery(maxQuery, null);
-				
+
 
 				//add value to cursor2
 				Cursor2.addRow(new Object[] { "Success" });
-				
+
 				alc.set(1,Cursor2);
 				if (null != c && c.getCount() > 0) {
 
-					
+
 					alc.set(0,c);
 					c.moveToFirst();
-					
+
 					return alc ;
 				}
 				return alc;
@@ -101,22 +101,22 @@ public  class CiprbDatabase {
 				return alc;
 			}
 
-			
+
 		}
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			SQL = "CREATE TABLE " +DATA_TABLE +"("
-					+ "_id INTEGER PRIMARY KEY AUTOINCREMENT,"					
+					+ "_id INTEGER PRIMARY KEY AUTOINCREMENT,"
 					+ PERSON_UNIQUE_ID + " nvarchar(1000) NULL,"
-					+ EXTRA_1 + " nvarchar(1000) NULL,"
-					+ EXTRA_2 + " nvarchar(1000)  NULL"
+					+ PERRSON_NAME + " nvarchar(1000) NULL,"
+					+ INJURY_STATUS + " INTEGER (10)  NULL"
 					+ ")";
 			db.execSQL(SQL);
 			SQL = "CREATE TABLE " +DEATH_TABLE +"("
 					+ "_id INTEGER PRIMARY KEY AUTOINCREMENT,"
 					+ PERSON_UNIQUE_ID + " nvarchar(1000) NULL,"
-					+ EXTRA_1 + " nvarchar(1000) NULL,"
-					+ EXTRA_2 + " nvarchar(1000)  NULL"
+					+ PERRSON_NAME + " nvarchar(1000) NULL,"
+					+ INJURY_STATUS + " nvarchar(1000)  NULL"
 					+ ")";
 			db.execSQL(SQL);
 
@@ -128,12 +128,12 @@ public  class CiprbDatabase {
 			onCreate(db);
 		}
 	}
-	public long insertIntoDB(String person_id,String personName) {
+	public long insertIntoDB(String person_id,String personName,int status) {
 		Log.i("test ki", "" + "sadsad");
 		ContentValues contentValues = new ContentValues();
 		contentValues.put(PERSON_UNIQUE_ID, person_id);
-		contentValues.put(EXTRA_1, personName);
-		contentValues.put(EXTRA_2, "extra2");
+		contentValues.put(PERRSON_NAME, personName);
+		contentValues.put(INJURY_STATUS, status);
 
 
 		return mynetDatabase.insertOrThrow(DATA_TABLE, null,
@@ -143,8 +143,8 @@ public  class CiprbDatabase {
 		Log.i("test ki", "" + "sadsad");
 		ContentValues contentValues = new ContentValues();
 		contentValues.put(PERSON_UNIQUE_ID, person_id);
-		contentValues.put(EXTRA_1, personName);
-		contentValues.put(EXTRA_2, "extra2");
+		contentValues.put(PERRSON_NAME, personName);
+		contentValues.put(INJURY_STATUS, "extra2");
 
 
 		return mynetDatabase.insertOrThrow(DEATH_TABLE, null,
@@ -170,6 +170,26 @@ public  class CiprbDatabase {
 		c.close();
 		return customModes;
 	}
+
+    public static ArrayList<Person> getAllPersonWhoHaveInjury() {
+        ArrayList<Person> customModes = new ArrayList<Person>();
+        Cursor c = mynetDatabase.rawQuery(
+                "SELECT  * FROM " + DATA_TABLE + " where " + INJURY_STATUS + "=1", null);
+        Person customMode = null;
+        if (c != null && c.getCount() > 0) {
+            c.moveToFirst();
+            for (int rowIndex = 0; rowIndex < c.getCount(); rowIndex++) {
+                customMode = new Person();
+                customMode.setMembers_name(c.getString(2));
+                //customMode.setSex(c.getString(1));
+                customMode.setPerson_id(c.getString(1));
+                customModes.add(customMode);
+                c.moveToNext();
+            }
+        }
+        c.close();
+        return customModes;
+    }
 	public static ArrayList<Person> getDeathPersonList() {
 		ArrayList<Person> customModes = new ArrayList<Person>();
 		Cursor c = mynetDatabase.rawQuery(
@@ -211,7 +231,7 @@ public  class CiprbDatabase {
 		context = _context;
 		DbHelper.getInstance(context);
 	}
-	
+
 	public CiprbDatabase open() {
 
 		return this;

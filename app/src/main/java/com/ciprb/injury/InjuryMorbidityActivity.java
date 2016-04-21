@@ -94,7 +94,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
             list = new ArrayList<String>();
             //list = ApplicationData.alive_person_List;
 
-            if (ciprbDatabase.getAlivePersonList().isEmpty()) {
+            if (ciprbDatabase.getAllPersonWhoHaveInjury().isEmpty()) {
 
                 Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
                 finish();
@@ -405,7 +405,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
         try {
 
-            if (ciprbDatabase.getAlivePersonList().isEmpty()) {
+            if (ciprbDatabase.getAllPersonWhoHaveInjury().isEmpty()) {
 
                 Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
                 activity.finish();
@@ -455,8 +455,8 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
     private void setMemberSpinner(List<String> list) {
         list.clear();
-        alive_count = ciprbDatabase.getAlivePersonList().size();
-        for (Person aPerson : ciprbDatabase.getAlivePersonList()) {
+        alive_count = ciprbDatabase.getAllPersonWhoHaveInjury().size();
+        for (Person aPerson : ciprbDatabase.getAllPersonWhoHaveInjury()) {
             list.add(aPerson.getMembers_name() + "." + aPerson.getPerson_id());
         }
         dataAdapter = new ArrayAdapter<String>

@@ -319,7 +319,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
                             prefsValues.setPerson_id_for_house_hold_characteristics(mCURRENT_MEMBER_ID);
 
-                            ciprbDatabase.insertIntoDB(mCURRENT_MEMBER_ID, editText_members_name.getText().toString());
+                            ciprbDatabase.insertIntoDB(mCURRENT_MEMBER_ID, editText_members_name.getText().toString(),1);
                             //ApplicationData.alive_person_List.add(aPerson);
                             saveDataForInjuredPerson(aPerson);
                             injury_count++; // added newly
@@ -344,11 +344,12 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
                         aPerson.setPerson_id(mCURRENT_MEMBER_ID);
                         prefsValues.setPerson_id_for_house_hold_characteristics(mCURRENT_MEMBER_ID);
 
-                        saveDataForNormalPerson(aPerson);
+                        // added below line v 25
+                        ciprbDatabase.insertIntoDB(mCURRENT_MEMBER_ID, editText_members_name.getText().toString(),0);
 
+                        saveDataForNormalPerson(aPerson);
                     }
                     // have to find a solution if only one man is there or no injury
-
                 }
            /* else
 
@@ -422,7 +423,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
 
                                         if (ciprbDatabase.getAlivePersonList().size() != 0) {
 
-                                            ciprbDatabase.close();
+                                            //ciprbDatabase.close();
                                             ApplicationData.gotToNextActivity(activity, InjuryMorbidityActivity.class);
                                             finish();
                                         } else {
