@@ -420,7 +420,8 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
                 list.remove(ApplicationData.ALIVE_PERSON_NUMBER);
                 dataAdapter.notifyDataSetChanged();
-                ciprbDatabase.deleteRowByID(person_id);
+                // v 27 i comment this line
+                //ciprbDatabase.deleteRowByID(person_id);
 
                 if (list.size() <= 0) {
 

@@ -248,6 +248,17 @@ public class CiprbDatabase {
         mynetDatabase.update(DATA_TABLE, cv, PERSON_UNIQUE_ID + "=" + person_id, null);
     }
 
+    // THIS WILL USE IN INJURY MORBIDITY DATA SAVED
+    public void updatePersonInjury(String person_id) {
+
+        ContentValues cv = new ContentValues();
+//		cv.put("Field1","Bob"); //These Fields should be your String values of actual column names
+//		cv.put("Field2","19");
+        cv.put(INJURY_STATUS, 0);
+
+        mynetDatabase.update(DATA_TABLE, cv, PERSON_UNIQUE_ID + "=" + person_id, null);
+    }
+
     public void deleteRowForNonInjuredPerson(String id) {
 
         String deleteQuery = "DELETE FROM " +
