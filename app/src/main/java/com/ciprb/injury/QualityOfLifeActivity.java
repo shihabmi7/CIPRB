@@ -49,7 +49,7 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
     ArrayAdapter<String> dataAdapter;
     int alive_count = 0;
     List<String> list;
-    // jsut changed
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +65,7 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
             initUI();
 
             list = new ArrayList<String>();
-            if (ciprbDatabase.getAlivePersonList().isEmpty()) {
+            if (ciprbDatabase.getAllPersonNeverSkipped().isEmpty()) {
 
                 Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
                 finish();
@@ -93,8 +93,8 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
 
     private void setMemberSpinner(List<String> list) {
         list.clear();
-        alive_count = ciprbDatabase.getAlivePersonList().size();
-        for (Person aPerson : ciprbDatabase.getAlivePersonList()) {
+        alive_count = ciprbDatabase.getAllPersonNeverSkipped().size();
+        for (Person aPerson : ciprbDatabase.getAllPersonNeverSkipped()) {
             list.add(aPerson.getMembers_name() + "." + aPerson.getPerson_id());
         }
         dataAdapter = new ArrayAdapter<String>
@@ -175,7 +175,7 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
 
         try {
 
-            if (ciprbDatabase.getAlivePersonList().isEmpty()) {
+            if (ciprbDatabase.getAllPersonNeverSkipped().isEmpty()) {
 
                 Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
                 activity.finish();
@@ -301,6 +301,8 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View v) {
 
+        person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
+        int number = spinner_person_name.getSelectedItemPosition();
 
         if (v == button_next && checkSpinner()) {
 
@@ -308,7 +310,6 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
 
                 // person_id = editText_person_id.getText().toString();
                 // shihab changed
-                person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
 
                 String url = ApplicationData.URL_QUALITY_OF_LIFE + person_id;
                 new PutAsync().execute(url, createJsonBody());
@@ -319,13 +320,25 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
                 Toast.makeText(getApplicationContext(), ApplicationData.OFFLINE_SAVED_SUCCESSFULLY, Toast.LENGTH_LONG).show();
                 ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_QUALITY_OF_LIFE, createJsonBody());
                 finish();
-            }
 
+            }
 
         } else if (v == button_cancel) {
 
+            ciprbDatabase.updatePersonQuality(person_id);
+            list.remove(number);
+            dataAdapter.notifyDataSetChanged();
 
-            finish();
+            if (ciprbDatabase.getAllPersonNeverSkipped().isEmpty()) {
+
+                Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
+                ciprbDatabase.close();
+                activity.finish();
+            }
+            //ciprbDatabase.deleteRowByID(person_id);
+
+            Toast.makeText(getApplicationContext(), "This person skipped", Toast.LENGTH_LONG).show();
+            //finish();
         }
 
     }

@@ -331,7 +331,7 @@ public class HouseHoldMemberDetailsActivityTest extends AppCompatActivity implem
                             aPerson.setInjury_number(num);
                             aPerson.setPerson_id(mCURRENT_MEMBER_ID);
 
-                            ciprbDatabase.insertIntoDB(mCURRENT_MEMBER_ID, editText_members_name.getText().toString());
+                           // ciprbDatabase.insertIntoDB(mCURRENT_MEMBER_ID, editText_members_name.getText().toString(),1);
                             //ApplicationData.alive_person_List.add(aPerson);
                             saveDataToOnlineForInjuredPerson(aPerson);
                             injury_count++; // added newly
