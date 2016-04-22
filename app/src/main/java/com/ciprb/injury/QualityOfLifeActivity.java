@@ -67,7 +67,7 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
             list = new ArrayList<String>();
             if (ciprbDatabase.getAllPersonNeverSkipped().isEmpty()) {
 
-                Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, getString(R.string.no_data), Toast.LENGTH_LONG).show();
                 finish();
 
             } else {
@@ -301,44 +301,57 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View v) {
 
-        person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
-        int number = spinner_person_name.getSelectedItemPosition();
+        try {
+            person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
+            int number = spinner_person_name.getSelectedItemPosition();
 
-        if (v == button_next && checkSpinner()) {
+            if (v == button_next && checkSpinner()) {
 
-            if (InternetConnection.checkNetworkConnection(activity)) {
+                if (InternetConnection.checkNetworkConnection(activity)) {
 
-                // person_id = editText_person_id.getText().toString();
-                // shihab changed
+                    // person_id = editText_person_id.getText().toString();
+                    // shihab changed
 
-                String url = ApplicationData.URL_QUALITY_OF_LIFE + person_id;
-                new PutAsync().execute(url, createJsonBody());
-                //Toast.makeText(activity, " Set Eleven (11) digit unique code", Toast.LENGTH_LONG).show();
+                    String url = ApplicationData.URL_QUALITY_OF_LIFE + person_id;
+                    new PutAsync().execute(url, createJsonBody());
+                    //Toast.makeText(activity, " Set Eleven (11) digit unique code", Toast.LENGTH_LONG).show();
 
-            } else {
+                } else {
 
-                Toast.makeText(getApplicationContext(), ApplicationData.OFFLINE_SAVED_SUCCESSFULLY, Toast.LENGTH_LONG).show();
-                ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_QUALITY_OF_LIFE, createJsonBody());
-                finish();
+                    Toast.makeText(getApplicationContext(), ApplicationData.OFFLINE_SAVED_SUCCESSFULLY, Toast.LENGTH_LONG).show();
+                    ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_QUALITY_OF_LIFE, createJsonBody());
+                    ciprbDatabase.updatePersonQuality(person_id);
+                    ciprbDatabase.deleteRowForNonInjuredPerson(person_id);
+                    list.remove(number);
+                    dataAdapter.notifyDataSetChanged();
 
+                    if (ciprbDatabase.getAllPersonNeverSkipped().isEmpty()) {
+                        Toast.makeText(activity, getString(R.string.no_data), Toast.LENGTH_LONG).show();
+                        ciprbDatabase.close();
+                        activity.finish();
+                    }
+                    Toast.makeText(getApplicationContext(), getString(R.string.success), Toast.LENGTH_LONG).show();
+                }
+
+            } else if (v == button_cancel) {
+
+                ciprbDatabase.updatePersonQuality(person_id);
+                ciprbDatabase.deleteRowForNonInjuredPerson(person_id);
+                list.remove(number);
+                dataAdapter.notifyDataSetChanged();
+
+                if (ciprbDatabase.getAllPersonNeverSkipped().isEmpty()) {
+
+                    Toast.makeText(activity, getString(R.string.no_data), Toast.LENGTH_LONG).show();
+                    ciprbDatabase.close();
+                    activity.finish();
+                }
+
+                Toast.makeText(getApplicationContext(), getString(R.string.skipped), Toast.LENGTH_LONG).show();
+                //finish();
             }
+        } catch (Exception e) {
 
-        } else if (v == button_cancel) {
-
-            ciprbDatabase.updatePersonQuality(person_id);
-            list.remove(number);
-            dataAdapter.notifyDataSetChanged();
-
-            if (ciprbDatabase.getAllPersonNeverSkipped().isEmpty()) {
-
-                Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
-                ciprbDatabase.close();
-                activity.finish();
-            }
-            //ciprbDatabase.deleteRowByID(person_id);
-
-            Toast.makeText(getApplicationContext(), "This person skipped", Toast.LENGTH_LONG).show();
-            //finish();
         }
 
     }

@@ -5,11 +5,15 @@
     <string name="loading_message">ডাটা সংরক্ষিত হচ্ছে..</string>
     <string name="waiting">অপেক্ষা করুন</string>
 
+    <string name="success">ডাটা সংরক্ষিত হয়েছে</string>
 
 
     <string name="update">আপডেট করুন</string>
     <string name="sync">সংরক্ষিত তথ্য আপলোড করুন</string>
     <string name="no_data">সংরক্ষনের জন্য কোন ডাটা নেই</string>
+
+    <string name="skipped">এই ব্যক্তির ডাটা নেয়া হয়নি</string>
+
 
 
     <string name="sync_doing">সংরক্ষিত তথ্য আপলোড হচ্ছে.... </string>

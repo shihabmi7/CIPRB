@@ -96,7 +96,7 @@ public class InjuryMortalityActivity extends AppCompatActivity implements View.O
 
             if (ciprbDatabase.getDeathPersonList().isEmpty()) {
 
-                Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, getString(R.string.no_data), Toast.LENGTH_LONG).show();
 
                 finish();
                 ciprbDatabase.close();

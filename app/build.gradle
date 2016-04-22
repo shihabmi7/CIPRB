@@ -8,10 +8,12 @@ android {
         applicationId "com.ciprb.injury"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 26
-        versionName "26.0"
+        versionCode 27
+        versionName "27.0"
     }
+
     buildTypes {
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

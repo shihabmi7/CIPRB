@@ -254,6 +254,7 @@ public class CiprbDatabase {
                 DATA_TABLE
                 + " WHERE person_id" + " = " + "'" + id + "'" + "And "+INJURY_STATUS+"=0";
         mynetDatabase.execSQL(deleteQuery);
+        
         //return mynetDatabase.delete(AddToCart, deleteQuery, null)>0;
 
     }
