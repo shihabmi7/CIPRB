@@ -289,7 +289,7 @@ public class HouseHoldMemberDetailsActivity extends AppCompatActivity implements
             // set check must
 //
 //
-            if (v == button_next && checkFieldStatus() && checkSpinner()) {
+            if (v == button_next && checkFieldStatus() && checkSpinner() ) {
 
                 // Toast.makeText(activity, responderStatus(), Toast.LENGTH_LONG).show();
 

@@ -96,7 +96,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
             if (ciprbDatabase.getAllPersonWhoHaveInjury().isEmpty()) {
 
-                Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, getString(R.string.no_data), Toast.LENGTH_LONG).show();
                 finish();
 
             } else {
@@ -407,7 +407,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
             if (ciprbDatabase.getAllPersonWhoHaveInjury().isEmpty()) {
 
-                Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, getString(R.string.no_data), Toast.LENGTH_LONG).show();
                 activity.finish();
                 ciprbDatabase.close();
 
@@ -422,10 +422,11 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                 dataAdapter.notifyDataSetChanged();
                 // v 27 i comment this line
                 //ciprbDatabase.deleteRowByID(person_id);
+                ciprbDatabase.updatePersonInjury(person_id);
 
                 if (list.size() <= 0) {
 
-                    Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity, getString(R.string.no_data), Toast.LENGTH_LONG).show();
                     activity.finish();
                     ciprbDatabase.close();
                 }
@@ -730,7 +731,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
 
                 int type = spinner_how_injured.getSelectedItemPosition();
                 //showTextLong("Success! Select Type:" + type);
-                Toast.makeText(activity, "Success" + type, Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, getString(R.string.success), Toast.LENGTH_LONG).show();
 
                 ApplicationData.ALIVE_PERSON_NUMBER = spinner_person_name.getSelectedItemPosition();
                 person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
@@ -822,6 +823,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
     @Override
     public void onClick(View v) {
 
+//
         if (v == button_next && checkSpinner()) {
 
             person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());
@@ -841,7 +843,7 @@ public class InjuryMorbidityActivity extends AppCompatActivity implements View.O
                 ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_MORBIDITY, createJsonBody(person_id));
                 int type = spinner_how_injured.getSelectedItemPosition();
                 //showTextLong("Success! Select Type:" + type);
-                Toast.makeText(activity, "Success" + type, Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, getString(R.string.success), Toast.LENGTH_LONG).show();
 
                 ApplicationData.ALIVE_PERSON_NUMBER = spinner_person_name.getSelectedItemPosition();
                 person_id = ApplicationData.spilitStringSecond(spinner_person_name.getSelectedItem().toString());

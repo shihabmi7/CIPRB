@@ -177,7 +177,7 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
 
             if (ciprbDatabase.getAllPersonNeverSkipped().isEmpty()) {
 
-                Toast.makeText(activity, "No Data to store", Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, getString(R.string.no_data), Toast.LENGTH_LONG).show();
                 activity.finish();
                 ciprbDatabase.close();
 
@@ -318,10 +318,11 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
 
                 } else {
 
+                    cleartext();
                     Toast.makeText(getApplicationContext(), ApplicationData.OFFLINE_SAVED_SUCCESSFULLY, Toast.LENGTH_LONG).show();
                     ApplicationData.writeToFile(this, ApplicationData.OFFLINE_DB_QUALITY_OF_LIFE, createJsonBody());
-                    ciprbDatabase.updatePersonQuality(person_id);
-                    ciprbDatabase.deleteRowForNonInjuredPerson(person_id);
+                    //ciprbDatabase.updatePersonQuality(person_id);
+                    ciprbDatabase.deleteRowByID(person_id);
                     list.remove(number);
                     dataAdapter.notifyDataSetChanged();
 
@@ -335,8 +336,9 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
 
             } else if (v == button_cancel) {
 
-                ciprbDatabase.updatePersonQuality(person_id);
-                ciprbDatabase.deleteRowForNonInjuredPerson(person_id);
+                //ciprbDatabase.updatePersonQuality(person_id);
+                cleartext();
+                ciprbDatabase.deleteRowByID(person_id);
                 list.remove(number);
                 dataAdapter.notifyDataSetChanged();
 
@@ -451,7 +453,7 @@ public class QualityOfLifeActivity extends AppCompatActivity implements View.OnC
         ApplicationData.ALIVE_PERSON_NUMBER = spinner_person_name.getSelectedItemPosition();
         list.remove(ApplicationData.ALIVE_PERSON_NUMBER);
         dataAdapter.notifyDataSetChanged();
-        // ciprbDatabase.deleteRowByID(person_id);
+        ciprbDatabase.deleteRowByID(person_id);
 
         if (list.size() <= 0) {
 
